@@ -10,31 +10,23 @@ import UIKit
 
 class MatchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var segmentControl: UISegmentedControl!
-    var ds = Datasource2()
-   
-
-    @IBAction func indexChanged(sender: AnyObject) {
-        tableView.dataSource = ds
-        tableView.reloadData()
-//        switch segmentControl.selectedSegmentIndex{
-//        case 0:
-//            tableView.dataSource = self
-//            NSLog("Popular selected")
-//            //show popular view
-//        case 1:
-//            tableView.dataSource = ds
-//            NSLog("History selected")
-//            //show history view
-//        default:
-//            break;
-//        }
-
-    }
-    var classes = ["J19", "G18", "G20"]
     
-    override func viewDidLoad() {
+    @IBAction func indexChanged(sender: AnyObject) {
+        current = teams;
+//        let ds = Datasource2()
+//        tableView.dataSource = ds
+        tableView.reloadData()
+    }
+//    var ds = Datasource2()
+//    var ds : Datasource2!
+//    var ds : TableDataSource!
+    var current : [String]!
+    var classes = ["J19", "G18", "G20"]
+    var teams = ["lag1", "lag2"]
+    
+   override func viewDidLoad() {
         super.viewDidLoad()
+        current = classes
         tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view, typically from a nib.
@@ -48,7 +40,7 @@ class MatchViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     //datasource funcitons
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return classes.count
+        return current.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) ->   UITableViewCell{
@@ -57,7 +49,7 @@ class MatchViewController: UIViewController, UITableViewDataSource, UITableViewD
 //        label.text = classes[indexPath.row]
 //        cell.addSubview(label)
         let cell = tableView.dequeueReusableCellWithIdentifier("classCell") as UITableViewCell!
-        cell.textLabel?.text = classes[indexPath.row]
+        cell.textLabel?.text = current[indexPath.row]
         return cell
     }
     

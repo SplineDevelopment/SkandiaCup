@@ -57,17 +57,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="opR-bh-GZi">
-                                <rect key="frame" x="61" y="20" width="479" height="29"/>
-                                <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                </segments>
-                                <connections>
-                                    <action selector="changedTest:" destination="8rJ-Kc-sve" eventType="valueChanged" id="uff-zL-z8Q"/>
-                                    <action selector="indexChanged:" destination="8rJ-Kc-sve" eventType="valueChanged" id="doj-nM-0Es"/>
-                                </connections>
-                            </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ylv-Pz-qIJ">
                                 <rect key="frame" x="0.0" y="56" width="600" height="495"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -112,24 +101,33 @@
                                 <rect key="frame" x="554" y="18" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="R66-2e-Alh">
+                                <rect key="frame" x="105" y="20" width="390" height="29"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <connections>
+                                    <action selector="indexChanged:" destination="8rJ-Kc-sve" eventType="valueChanged" id="7hb-qQ-ASp"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Ylv-Pz-qIJ" firstAttribute="top" secondItem="opR-bh-GZi" secondAttribute="bottom" constant="8" symbolic="YES" id="0PU-Of-bmS"/>
-                            <constraint firstItem="opR-bh-GZi" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="CIg-ra-J2G"/>
-                            <constraint firstItem="Ylv-Pz-qIJ" firstAttribute="centerX" secondItem="opR-bh-GZi" secondAttribute="centerX" id="Fwk-rD-tpS"/>
-                            <constraint firstItem="opR-bh-GZi" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="41" id="KKG-zj-KJJ"/>
-                            <constraint firstItem="Ylv-Pz-qIJ" firstAttribute="bottom" secondItem="Djb-ko-YwX" secondAttribute="top" id="LfK-CA-pEr"/>
-                            <constraint firstAttribute="trailing" secondItem="Ylv-Pz-qIJ" secondAttribute="trailing" id="Sqj-Uz-a1y"/>
-                            <constraint firstItem="Ylv-Pz-qIJ" firstAttribute="trailing" secondItem="bN2-Rk-8WL" secondAttribute="trailing" id="fGa-Nt-DVL"/>
-                            <constraint firstItem="Ylv-Pz-qIJ" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="udD-8b-Khr"/>
-                            <constraint firstItem="Ylv-Pz-qIJ" firstAttribute="top" secondItem="bN2-Rk-8WL" secondAttribute="bottom" constant="8" symbolic="YES" id="yij-f9-NUc"/>
+                            <constraint firstItem="R66-2e-Alh" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="85" id="6O3-J7-Ryd"/>
+                            <constraint firstItem="Ylv-Pz-qIJ" firstAttribute="top" secondItem="bN2-Rk-8WL" secondAttribute="bottom" constant="8" symbolic="YES" id="9E9-bU-qJX"/>
+                            <constraint firstItem="Ylv-Pz-qIJ" firstAttribute="bottom" secondItem="Djb-ko-YwX" secondAttribute="top" id="A3c-oI-6OW"/>
+                            <constraint firstItem="R66-2e-Alh" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="GZh-O4-TKF"/>
+                            <constraint firstItem="bN2-Rk-8WL" firstAttribute="trailing" secondItem="Ylv-Pz-qIJ" secondAttribute="trailing" id="JTl-AL-zUD"/>
+                            <constraint firstItem="Ylv-Pz-qIJ" firstAttribute="top" secondItem="R66-2e-Alh" secondAttribute="bottom" constant="8" symbolic="YES" id="Qdp-8a-scq"/>
+                            <constraint firstItem="R66-2e-Alh" firstAttribute="centerX" secondItem="Ylv-Pz-qIJ" secondAttribute="centerX" id="VFI-tP-tSz"/>
+                            <constraint firstItem="Ylv-Pz-qIJ" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="xo5-JF-03i"/>
+                            <constraint firstAttribute="trailing" secondItem="bN2-Rk-8WL" secondAttribute="trailing" id="zdJ-av-s0S"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Oversikt" image="second" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="TableView" destination="Ylv-Pz-qIJ" id="keM-eG-x7S"/>
-                        <outlet property="segmentControl" destination="opR-bh-GZi" id="Zwc-dv-mzn"/>
                         <outlet property="tableView" destination="Ylv-Pz-qIJ" id="DKY-LV-lSm"/>
                     </connections>
                 </viewController>
