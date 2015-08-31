@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Scandiacup.xcscheme</key>
+		<key>Skandiacup.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,12 +12,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>D5D6CB831B81DDAB005D2DFE</key>
+		<key>D51E4B071B94A1E700FF5DDB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D5D6CB981B81DDAB005D2DFE</key>
+		<key>D51E4B1D1B94A1E700FF5DDB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D51E4B281B94A1E700FF5DDB</key>
 		<dict>
 			<key>primary</key>
 			<true/>

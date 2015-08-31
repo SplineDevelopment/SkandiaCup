@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0640"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,91 +14,90 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D5D6CB831B81DDAB005D2DFE"
-               BuildableName = "Scandiacup.app"
-               BlueprintName = "Scandiacup"
-               ReferencedContainer = "container:Scandiacup.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D5D6CB981B81DDAB005D2DFE"
-               BuildableName = "ScandiacupTests.xctest"
-               BlueprintName = "ScandiacupTests"
-               ReferencedContainer = "container:Scandiacup.xcodeproj">
+               BlueprintIdentifier = "D51E4B071B94A1E700FF5DDB"
+               BuildableName = "Skandiacup.app"
+               BlueprintName = "Skandiacup"
+               ReferencedContainer = "container:Skandiacup.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      buildConfiguration = "Debug">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D5D6CB981B81DDAB005D2DFE"
-               BuildableName = "ScandiacupTests.xctest"
-               BlueprintName = "ScandiacupTests"
-               ReferencedContainer = "container:Scandiacup.xcodeproj">
+               BlueprintIdentifier = "D51E4B1D1B94A1E700FF5DDB"
+               BuildableName = "SkandiacupTests.xctest"
+               BlueprintName = "SkandiacupTests"
+               ReferencedContainer = "container:Skandiacup.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D51E4B281B94A1E700FF5DDB"
+               BuildableName = "SkandiacupUITests.xctest"
+               BlueprintName = "SkandiacupUITests"
+               ReferencedContainer = "container:Skandiacup.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D5D6CB831B81DDAB005D2DFE"
-            BuildableName = "Scandiacup.app"
-            BlueprintName = "Scandiacup"
-            ReferencedContainer = "container:Scandiacup.xcodeproj">
+            BlueprintIdentifier = "D51E4B071B94A1E700FF5DDB"
+            BuildableName = "Skandiacup.app"
+            BlueprintName = "Skandiacup"
+            ReferencedContainer = "container:Skandiacup.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </TestAction>
    <LaunchAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D5D6CB831B81DDAB005D2DFE"
-            BuildableName = "Scandiacup.app"
-            BlueprintName = "Scandiacup"
-            ReferencedContainer = "container:Scandiacup.xcodeproj">
+            BlueprintIdentifier = "D51E4B071B94A1E700FF5DDB"
+            BuildableName = "Skandiacup.app"
+            BlueprintName = "Skandiacup"
+            ReferencedContainer = "container:Skandiacup.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
+      buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D5D6CB831B81DDAB005D2DFE"
-            BuildableName = "Scandiacup.app"
-            BlueprintName = "Scandiacup"
-            ReferencedContainer = "container:Scandiacup.xcodeproj">
+            BlueprintIdentifier = "D51E4B071B94A1E700FF5DDB"
+            BuildableName = "Skandiacup.app"
+            BlueprintName = "Skandiacup"
+            ReferencedContainer = "container:Skandiacup.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

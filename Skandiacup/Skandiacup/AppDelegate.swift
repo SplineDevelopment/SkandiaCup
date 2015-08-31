@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  Scandiacup
+//  Skandiacup
 //
-//  Created by Jørgen Wilhelmsen on 17/08/15.
-//  Copyright (c) 2015 TeamTobb. All rights reserved.
+//  Created by Jørgen Wilhelmsen on 31/08/15.
+//  Copyright © 2015 Spline Development. All rights reserved.
 //
 
 import UIKit
@@ -39,7 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        
     }
 
 
