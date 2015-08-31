@@ -54,7 +54,7 @@
 		D51E4B2F1B94A1E700FF5DDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5FD4EC41B94A41F009B53FC /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		D5FD4EC61B94AFEB009B53FC /* Datasource2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Datasource2.swift; sourceTree = "<group>"; };
-		D5FD4ECA1B94B8CA009B53FC /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		D5FD4ECA1B94B8CA009B53FC /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritesViewController.swift; path = ../FavoritesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +85,6 @@
 		D51E4AFF1B94A1E700FF5DDB = {
 			isa = PBXGroup;
 			children = (
-				D5FD4ECA1B94B8CA009B53FC /* FavoritesViewController.swift */,
 				D51E4B0A1B94A1E700FF5DDB /* Skandiacup */,
 				D51E4B211B94A1E700FF5DDB /* SkandiacupTests */,
 				D51E4B2C1B94A1E700FF5DDB /* SkandiacupUITests */,
@@ -108,6 +107,7 @@
 			children = (
 				D51E4B0B1B94A1E700FF5DDB /* AppDelegate.swift */,
 				D51E4B0D1B94A1E700FF5DDB /* FirstViewController.swift */,
+				D5FD4ECA1B94B8CA009B53FC /* FavoritesViewController.swift */,
 				D51E4B0F1B94A1E700FF5DDB /* MatchViewController.swift */,
 				D5FD4EC61B94AFEB009B53FC /* Datasource2.swift */,
 				D51E4B111B94A1E700FF5DDB /* Main.storyboard */,
