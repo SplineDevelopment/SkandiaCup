@@ -9,12 +9,15 @@
 /* Begin PBXBuildFile section */
 		D51E4B0C1B94A1E700FF5DDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51E4B0B1B94A1E700FF5DDB /* AppDelegate.swift */; };
 		D51E4B0E1B94A1E700FF5DDB /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51E4B0D1B94A1E700FF5DDB /* FirstViewController.swift */; };
-		D51E4B101B94A1E700FF5DDB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51E4B0F1B94A1E700FF5DDB /* SecondViewController.swift */; };
+		D51E4B101B94A1E700FF5DDB /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51E4B0F1B94A1E700FF5DDB /* MatchViewController.swift */; };
 		D51E4B131B94A1E700FF5DDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D51E4B111B94A1E700FF5DDB /* Main.storyboard */; };
 		D51E4B151B94A1E700FF5DDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D51E4B141B94A1E700FF5DDB /* Assets.xcassets */; };
 		D51E4B181B94A1E700FF5DDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D51E4B161B94A1E700FF5DDB /* LaunchScreen.storyboard */; };
 		D51E4B231B94A1E700FF5DDB /* SkandiacupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51E4B221B94A1E700FF5DDB /* SkandiacupTests.swift */; };
 		D51E4B2E1B94A1E700FF5DDB /* SkandiacupUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51E4B2D1B94A1E700FF5DDB /* SkandiacupUITests.swift */; };
+		D5FD4EC51B94A41F009B53FC /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD4EC41B94A41F009B53FC /* NewsViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		D5FD4EC71B94AFEB009B53FC /* Datasource2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD4EC61B94AFEB009B53FC /* Datasource2.swift */; settings = {ASSET_TAGS = (); }; };
+		D5FD4ECB1B94B8CA009B53FC /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD4ECA1B94B8CA009B53FC /* FavoritesViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +41,7 @@
 		D51E4B081B94A1E700FF5DDB /* Skandiacup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skandiacup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D51E4B0B1B94A1E700FF5DDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D51E4B0D1B94A1E700FF5DDB /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		D51E4B0F1B94A1E700FF5DDB /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		D51E4B0F1B94A1E700FF5DDB /* MatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewController.swift; sourceTree = "<group>"; };
 		D51E4B121B94A1E700FF5DDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D51E4B141B94A1E700FF5DDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D51E4B171B94A1E700FF5DDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +52,9 @@
 		D51E4B291B94A1E700FF5DDB /* SkandiacupUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkandiacupUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D51E4B2D1B94A1E700FF5DDB /* SkandiacupUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkandiacupUITests.swift; sourceTree = "<group>"; };
 		D51E4B2F1B94A1E700FF5DDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5FD4EC41B94A41F009B53FC /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		D5FD4EC61B94AFEB009B53FC /* Datasource2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Datasource2.swift; sourceTree = "<group>"; };
+		D5FD4ECA1B94B8CA009B53FC /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,7 @@
 		D51E4AFF1B94A1E700FF5DDB = {
 			isa = PBXGroup;
 			children = (
+				D5FD4ECA1B94B8CA009B53FC /* FavoritesViewController.swift */,
 				D51E4B0A1B94A1E700FF5DDB /* Skandiacup */,
 				D51E4B211B94A1E700FF5DDB /* SkandiacupTests */,
 				D51E4B2C1B94A1E700FF5DDB /* SkandiacupUITests */,
@@ -101,8 +108,10 @@
 			children = (
 				D51E4B0B1B94A1E700FF5DDB /* AppDelegate.swift */,
 				D51E4B0D1B94A1E700FF5DDB /* FirstViewController.swift */,
-				D51E4B0F1B94A1E700FF5DDB /* SecondViewController.swift */,
+				D51E4B0F1B94A1E700FF5DDB /* MatchViewController.swift */,
+				D5FD4EC61B94AFEB009B53FC /* Datasource2.swift */,
 				D51E4B111B94A1E700FF5DDB /* Main.storyboard */,
+				D5FD4EC41B94A41F009B53FC /* NewsViewController.swift */,
 				D51E4B141B94A1E700FF5DDB /* Assets.xcassets */,
 				D51E4B161B94A1E700FF5DDB /* LaunchScreen.storyboard */,
 				D51E4B191B94A1E700FF5DDB /* Info.plist */,
@@ -258,9 +267,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D51E4B101B94A1E700FF5DDB /* SecondViewController.swift in Sources */,
+				D51E4B101B94A1E700FF5DDB /* MatchViewController.swift in Sources */,
+				D5FD4EC71B94AFEB009B53FC /* Datasource2.swift in Sources */,
 				D51E4B0C1B94A1E700FF5DDB /* AppDelegate.swift in Sources */,
 				D51E4B0E1B94A1E700FF5DDB /* FirstViewController.swift in Sources */,
+				D5FD4ECB1B94B8CA009B53FC /* FavoritesViewController.swift in Sources */,
+				D5FD4EC51B94A41F009B53FC /* NewsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +499,7 @@
 				D51E4B341B94A1E700FF5DDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D51E4B351B94A1E700FF5DDB /* Build configuration list for PBXNativeTarget "SkandiacupTests" */ = {
 			isa = XCConfigurationList;
@@ -495,6 +508,7 @@
 				D51E4B371B94A1E700FF5DDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D51E4B381B94A1E700FF5DDB /* Build configuration list for PBXNativeTarget "SkandiacupUITests" */ = {
 			isa = XCConfigurationList;
@@ -503,6 +517,7 @@
 				D51E4B3A1B94A1E700FF5DDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
