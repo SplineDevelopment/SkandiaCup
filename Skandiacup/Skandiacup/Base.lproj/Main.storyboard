@@ -149,19 +149,44 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Her er det masse bra nyheter?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFl-r3-yoE">
                                 <rect key="frame" x="78" y="28" width="444" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="zXw-Ek-KgE"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Phv-ue-M1v">
+                                <rect key="frame" x="89" y="307" width="423" height="244"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x72-BB-O4m">
+                                <rect key="frame" x="277" y="269" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="btnPressed:" destination="CmJ-NW-PCB" eventType="touchUpInside" id="awg-iS-y0N"/>
+                                </connections>
+                            </button>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="cFl-r3-yoE" firstAttribute="top" secondItem="DJf-vS-ezc" secondAttribute="bottom" constant="8" symbolic="YES" id="8Lj-7R-1iY"/>
-                            <constraint firstItem="cFl-r3-yoE" firstAttribute="centerX" secondItem="o8U-rT-IOx" secondAttribute="centerX" id="ETh-qH-KQ0"/>
-                            <constraint firstItem="cFl-r3-yoE" firstAttribute="leading" secondItem="o8U-rT-IOx" secondAttribute="leadingMargin" constant="58" id="IBY-wr-Kyr"/>
-                            <constraint firstItem="N01-SL-Fqc" firstAttribute="top" secondItem="cFl-r3-yoE" secondAttribute="bottom" constant="363" id="dtQ-xh-OiS"/>
+                            <constraint firstItem="Phv-ue-M1v" firstAttribute="leading" secondItem="o8U-rT-IOx" secondAttribute="leadingMargin" constant="69" id="9I2-Yj-AUO"/>
+                            <constraint firstItem="Phv-ue-M1v" firstAttribute="top" secondItem="x72-BB-O4m" secondAttribute="bottom" constant="8" symbolic="YES" id="Kka-Fi-2DB"/>
+                            <constraint firstItem="Phv-ue-M1v" firstAttribute="bottom" secondItem="N01-SL-Fqc" secondAttribute="top" id="MXN-1P-4tG"/>
+                            <constraint firstItem="cFl-r3-yoE" firstAttribute="centerX" secondItem="x72-BB-O4m" secondAttribute="centerX" id="QfA-lq-3GA"/>
+                            <constraint firstItem="Phv-ue-M1v" firstAttribute="centerX" secondItem="x72-BB-O4m" secondAttribute="centerX" id="Ru6-LF-Zbs"/>
+                            <constraint firstItem="cFl-r3-yoE" firstAttribute="centerX" secondItem="o8U-rT-IOx" secondAttribute="centerX" id="WDG-SX-amo"/>
+                            <constraint firstItem="cFl-r3-yoE" firstAttribute="top" secondItem="DJf-vS-ezc" secondAttribute="bottom" constant="8" symbolic="YES" id="duy-5K-RGK"/>
+                            <constraint firstItem="cFl-r3-yoE" firstAttribute="leading" secondItem="o8U-rT-IOx" secondAttribute="leadingMargin" constant="58" id="nmv-aL-cA7"/>
+                            <constraint firstItem="x72-BB-O4m" firstAttribute="top" secondItem="cFl-r3-yoE" secondAttribute="bottom" constant="81" id="uZz-0y-3dP"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Nyheter" image="second" id="mSB-P2-C2f"/>
+                    <connections>
+                        <outlet property="textBox" destination="Phv-ue-M1v" id="taC-Md-Hyj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YeF-Nw-afm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

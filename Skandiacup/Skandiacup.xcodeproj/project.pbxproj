@@ -15,6 +15,7 @@
 		D51E4B181B94A1E700FF5DDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D51E4B161B94A1E700FF5DDB /* LaunchScreen.storyboard */; };
 		D51E4B231B94A1E700FF5DDB /* SkandiacupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51E4B221B94A1E700FF5DDB /* SkandiacupTests.swift */; };
 		D51E4B2E1B94A1E700FF5DDB /* SkandiacupUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51E4B2D1B94A1E700FF5DDB /* SkandiacupUITests.swift */; };
+		D5A1FFCF1B975A2B00938025 /* SOAPrepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A1FFCE1B975A2B00938025 /* SOAPrepo.swift */; settings = {ASSET_TAGS = (); }; };
 		D5FD4EC51B94A41F009B53FC /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD4EC41B94A41F009B53FC /* NewsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D5FD4EC71B94AFEB009B53FC /* Datasource2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD4EC61B94AFEB009B53FC /* Datasource2.swift */; settings = {ASSET_TAGS = (); }; };
 		D5FD4ECB1B94B8CA009B53FC /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD4ECA1B94B8CA009B53FC /* FavoritesViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -63,6 +64,7 @@
 		D51E4B291B94A1E700FF5DDB /* SkandiacupUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkandiacupUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D51E4B2D1B94A1E700FF5DDB /* SkandiacupUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkandiacupUITests.swift; sourceTree = "<group>"; };
 		D51E4B2F1B94A1E700FF5DDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5A1FFCE1B975A2B00938025 /* SOAPrepo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOAPrepo.swift; sourceTree = "<group>"; };
 		D5FD4EC41B94A41F009B53FC /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		D5FD4EC61B94AFEB009B53FC /* Datasource2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Datasource2.swift; sourceTree = "<group>"; };
 		D5FD4ECA1B94B8CA009B53FC /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritesViewController.swift; path = ../FavoritesViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				D51E4B141B94A1E700FF5DDB /* Assets.xcassets */,
 				D51E4B161B94A1E700FF5DDB /* LaunchScreen.storyboard */,
 				D51E4B191B94A1E700FF5DDB /* Info.plist */,
+				D5A1FFCE1B975A2B00938025 /* SOAPrepo.swift */,
 			);
 			path = Skandiacup;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				D5FD4EDE1B94CF3E009B53FC /* MatchTable.swift in Sources */,
 				D5FD4ED01B94C79B009B53FC /* Arena.swift in Sources */,
 				D5FD4EDA1B94CD4D009B53FC /* TournamentMatch.swift in Sources */,
+				D5A1FFCF1B975A2B00938025 /* SOAPrepo.swift in Sources */,
 				D5FD4ECB1B94B8CA009B53FC /* FavoritesViewController.swift in Sources */,
 				D5FD4EC51B94A41F009B53FC /* NewsViewController.swift in Sources */,
 				D5FD4EE21B94CFB7009B53FC /* Tournament.swift in Sources */,
