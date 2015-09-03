@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InfoViewControllerContainer: UIView {
+class InfoViewControllerContainer: UIViewController {
 
     /*
     // Only override drawRect: if you perform custom drawing.

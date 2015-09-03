@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SosialViewControllerContainer: UIView {
+class SosialViewControllerContainer: UIViewController {
 
     /*
     // Only override drawRect: if you perform custom drawing.

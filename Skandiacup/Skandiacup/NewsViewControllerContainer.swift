@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewsViewControllerContainer: UIView {
+class NewsViewControllerContainer: UIViewController {
 
     /*
     // Only override drawRect: if you perform custom drawing.

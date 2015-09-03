@@ -135,7 +135,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bpH-Qz-bUA">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bpH-Qz-bUA">
                                 <rect key="frame" x="20" y="20" width="560" height="29"/>
                                 <animations/>
                                 <segments>
@@ -144,21 +144,21 @@
                                     <segment title="Sosial"/>
                                 </segments>
                             </segmentedControl>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jRY-rd-7tn" userLabel="NewsViewContainer" customClass="NewsViewControllerContainer" customModule="Skandiacup" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="56" width="600" height="502"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jRY-rd-7tn" userLabel="NewsViewContainer">
+                                <rect key="frame" x="0.0" y="56" width="600" height="495"/>
                                 <animations/>
                                 <connections>
                                     <segue destination="sgG-Yq-zj2" kind="embed" id="RrC-b7-JUd"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3IL-db-8ZM" userLabel="InfoViewContainer" customClass="InfoViewControllerContainer" customModule="Skandiacup" customModuleProvider="target">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3IL-db-8ZM" userLabel="InfoViewContainer">
                                 <rect key="frame" x="0.0" y="56" width="600" height="495"/>
                                 <animations/>
                                 <connections>
                                     <segue destination="CGu-XW-1gR" kind="embed" id="Wy7-hq-5aa"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KcI-wu-gBL" userLabel="SosialViewContainer" customClass="SosialViewControllerContainer" customModule="Skandiacup" customModuleProvider="target">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KcI-wu-gBL" userLabel="SosialViewContainer">
                                 <rect key="frame" x="0.0" y="56" width="600" height="495"/>
                                 <animations/>
                                 <connections>
@@ -168,6 +168,23 @@
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bpH-Qz-bUA" firstAttribute="top" secondItem="DJf-vS-ezc" secondAttribute="bottom" id="2Dz-JD-XAR"/>
+                            <constraint firstItem="3IL-db-8ZM" firstAttribute="leading" secondItem="o8U-rT-IOx" secondAttribute="leading" id="52w-Q5-upR"/>
+                            <constraint firstItem="3IL-db-8ZM" firstAttribute="bottom" secondItem="N01-SL-Fqc" secondAttribute="top" id="ITu-Zw-1ID"/>
+                            <constraint firstItem="KcI-wu-gBL" firstAttribute="bottom" secondItem="N01-SL-Fqc" secondAttribute="top" id="IUQ-ib-QFc"/>
+                            <constraint firstAttribute="trailing" secondItem="3IL-db-8ZM" secondAttribute="trailing" id="RTy-OB-uEc"/>
+                            <constraint firstItem="jRY-rd-7tn" firstAttribute="bottom" secondItem="N01-SL-Fqc" secondAttribute="top" id="Vu9-Qv-zIi"/>
+                            <constraint firstItem="3IL-db-8ZM" firstAttribute="trailing" secondItem="KcI-wu-gBL" secondAttribute="trailing" id="Y7F-6R-BM9"/>
+                            <constraint firstItem="3IL-db-8ZM" firstAttribute="trailing" secondItem="jRY-rd-7tn" secondAttribute="trailing" id="a0Z-d6-yKw"/>
+                            <constraint firstItem="3IL-db-8ZM" firstAttribute="centerX" secondItem="bpH-Qz-bUA" secondAttribute="centerX" id="cim-nT-F2M"/>
+                            <constraint firstItem="jRY-rd-7tn" firstAttribute="top" secondItem="bpH-Qz-bUA" secondAttribute="bottom" constant="8" symbolic="YES" id="gBP-je-hLN"/>
+                            <constraint firstItem="KcI-wu-gBL" firstAttribute="top" secondItem="3IL-db-8ZM" secondAttribute="top" id="huT-zg-ULQ"/>
+                            <constraint firstItem="3IL-db-8ZM" firstAttribute="leading" secondItem="KcI-wu-gBL" secondAttribute="leading" id="m6c-hN-rWE"/>
+                            <constraint firstItem="jRY-rd-7tn" firstAttribute="top" secondItem="KcI-wu-gBL" secondAttribute="top" id="tZZ-IA-wNq"/>
+                            <constraint firstItem="bpH-Qz-bUA" firstAttribute="leading" secondItem="o8U-rT-IOx" secondAttribute="leadingMargin" id="w3Y-jz-2cJ"/>
+                            <constraint firstItem="jRY-rd-7tn" firstAttribute="leading" secondItem="3IL-db-8ZM" secondAttribute="leading" id="xnV-mh-Nqh"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Nyheter" image="second" id="mSB-P2-C2f"/>
                 </viewController>
@@ -218,7 +235,7 @@
                                         <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xA8-Vz-1hT" id="9Xj-ac-sUO">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <animations/>
                                         </tableViewCellContentView>
@@ -263,7 +280,7 @@
                                         <rect key="frame" x="0.0" y="72" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zOx-fh-pIg" id="wha-xf-aEu">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <animations/>
                                         </tableViewCellContentView>
@@ -318,7 +335,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3wQ-Ri-52g" id="tpM-Cq-5wF">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <animations/>
                                         </tableViewCellContentView>
@@ -370,7 +387,7 @@
                                         <rect key="frame" x="0.0" y="72" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="X65-TL-ShU" id="WgH-mE-W57">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <animations/>
                                         </tableViewCellContentView>
@@ -462,7 +479,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PWF-Bb-s4T" id="ytY-Tu-SJQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <animations/>
                                         </tableViewCellContentView>
@@ -551,13 +568,26 @@
             </objects>
             <point key="canvasLocation" x="-226" y="1851"/>
         </scene>
-        <!--View Controller-->
+        <!--InfoView-->
         <scene sceneID="O4H-aL-HFI">
             <objects>
-                <viewController id="CGu-XW-1gR" sceneMemberID="viewController">
+                <viewController id="CGu-XW-1gR" userLabel="InfoView" customClass="InfoViewControllerContainer" customModule="Skandiacup" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4dh-9x-D9u"/>
+                        <viewControllerLayoutGuide type="bottom" id="MtX-G9-B3o"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="MpP-qb-dLr">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="495"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3U3-Bb-0it">
+                                <rect key="frame" x="292" y="237" width="29" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -566,13 +596,26 @@
             </objects>
             <point key="canvasLocation" x="-2589" y="1993.5"/>
         </scene>
-        <!--View Controller-->
+        <!--NewsView Controller-->
         <scene sceneID="uKL-ka-wzE">
             <objects>
-                <viewController id="sgG-Yq-zj2" sceneMemberID="viewController">
+                <viewController id="sgG-Yq-zj2" userLabel="NewsView Controller" customClass="NewsViewControllerContainer" customModule="Skandiacup" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kiK-vm-oef"/>
+                        <viewControllerLayoutGuide type="bottom" id="qOQ-Eb-CG1"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Fes-KB-Gmj">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="502"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="495"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="News" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DsO-8f-Edu">
+                                <rect key="frame" x="278" y="237" width="43" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -581,13 +624,26 @@
             </objects>
             <point key="canvasLocation" x="-1937" y="1997"/>
         </scene>
-        <!--View Controller-->
+        <!--SosialView-->
         <scene sceneID="TAe-WG-XAF">
             <objects>
-                <viewController id="S4z-HY-aDu" sceneMemberID="viewController">
+                <viewController id="S4z-HY-aDu" userLabel="SosialView" customClass="SosialViewControllerContainer" customModule="Skandiacup" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kvz-uz-D14"/>
+                        <viewControllerLayoutGuide type="bottom" id="wvh-cJ-icI"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eVo-NQ-dr2">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="495"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sosial" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1H-4T-qtw">
+                                <rect key="frame" x="275" y="237" width="46" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
