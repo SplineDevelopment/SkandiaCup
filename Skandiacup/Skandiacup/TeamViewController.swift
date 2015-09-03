@@ -1,19 +1,21 @@
 //
-//  NewsViewController.swift
+//  TeamViewController.swift
 //  Skandiacup
 //
-//  Created by Jørgen Wilhelmsen on 31/08/15.
+//  Created by Jørgen Wilhelmsen on 03/09/15.
 //  Copyright © 2015 Spline Development. All rights reserved.
 //
 
 import UIKit
 
-class NewsViewController: UIViewController, NSXMLParserDelegate {
-    @IBOutlet weak var textBox: UITextView!
-
+class TeamViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    @IBOutlet weak var matchTableView: UITableView!
+    var matches = ["Kamp1", "Kamp2", "Kamp3"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        matchTableView.delegate = self
+        matchTableView.dataSource = self
         // Do any additional setup after loading the view.
     }
 
@@ -33,6 +35,12 @@ class NewsViewController: UIViewController, NSXMLParserDelegate {
         }
     }
     
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as UITableViewCell!
+        cell.textLabel?.text = matches[indexPath.row]
+        return cell
+    }
+
     /*
     // MARK: - Navigation
 
@@ -42,6 +50,5 @@ class NewsViewController: UIViewController, NSXMLParserDelegate {
         // Pass the selected object to the new view controller.
     }
     */
-    
 
 }

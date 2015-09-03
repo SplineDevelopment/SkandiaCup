@@ -1,22 +1,22 @@
 //
-//  FavoritesViewController.swift
+//  TeamViewController.swift
 //  Skandiacup
 //
-//  Created by Jørgen Wilhelmsen on 31/08/15.
+//  Created by Jørgen Wilhelmsen on 03/09/15.
 //  Copyright © 2015 Spline Development. All rights reserved.
 //
 
 import UIKit
 
-class FavoritesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    @IBOutlet weak var favoriteTableView: UITableView!
-    var favorites: [String] = ["Lag1", "Lag2", "Lag3"]
+class TeamsViewController: UIViewController , UITableViewDataSource, UITableViewDelegate{
+    @IBOutlet weak var teamTableView: UITableView!
+    var teams: [String] = ["Lag1", "Lag2", "Lag3"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        favoriteTableView.delegate = self
-        favoriteTableView.dataSource = self
-
+        teamTableView.dataSource = self
+        teamTableView.delegate = self
+        
         // Do any additional setup after loading the view.
     }
 
@@ -26,19 +26,20 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("favoriteCell") as UITableViewCell!
-        cell.textLabel?.text = favorites[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("teamCell") as UITableViewCell!
+        cell.textLabel?.text = teams[indexPath.row]
         return cell
     }
     
-    //    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    //
-    //    }
+//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//
+//    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return favorites.count
+        return teams.count
     }
-
+    
+    // UITableViewDelegate Functions
 
     /*
     // MARK: - Navigation
