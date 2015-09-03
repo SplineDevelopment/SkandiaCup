@@ -14,8 +14,27 @@ class SoapMock: Soap {
         arena.append(Arena(arenaID: 1, arenaName: "Test1", arenaDescription: "Desc1", update_timestamp: "0"))
         arena.append(Arena(arenaID: 2, arenaName: "Test2", arenaDescription: "Desc2", update_timestamp: "123"))
         arena.append(Arena(arenaID: 3, arenaName: "Test3", arenaDescription: "Desc3", update_timestamp: "666"))
+        arena.append(Arena(arenaID: 4, arenaName: "Test4", arenaDescription: "Desc4", update_timestamp: "999"))
         return arena.filter({id.contains($0.arenaID!)})
     }
+    
+    
+    func getTournamentClub(id: [Int]) -> [TournamentClub]?{
+        var tournamentClub = [TournamentClub]()
+        tournamentClub.append(TournamentClub(id: 1, name: "Club1", countryCode: "NO"))
+        tournamentClub.append(TournamentClub(id: 2, name: "Club2", countryCode: "NO"))
+        tournamentClub.append(TournamentClub(id: 3, name: "Club3", countryCode: "NO"))
+        return tournamentClub.filter({id.contains($0.id!)})
+    }
+    
+    func getField(id: [Int]) -> [Field]?{
+        var field = [Field]()
+        field.append(Field(fieldID: 1, arenaID: 1, fieldName: "Bane1", fieldDescription: "Bane1Nord", update_timestamp: ""))
+        field.append(Field(fieldID: 2, arenaID: 1, fieldName: "Bane2", fieldDescription: "Bane2Nord", update_timestamp: ""))
+        field.append(Field(fieldID: 3, arenaID: 1, fieldName: "Bane2", fieldDescription: "Bane3Nord", update_timestamp: ""))
+        return field.filter({id.contains($0.fieldID!)})
+    }
+
     
 
 }
