@@ -124,18 +124,18 @@
             <point key="canvasLocation" x="570" y="428"/>
         </scene>
         <!--Home-->
-        <scene sceneID="xCb-x7-wHO">
+        <scene sceneID="Mpr-rl-rEM">
             <objects>
-                <viewController title="News" id="CmJ-NW-PCB" userLabel="Home" sceneMemberID="viewController">
+                <viewController id="yV0-gc-hZs" userLabel="Home" customClass="HomeViewController" customModule="Skandiacup" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="DJf-vS-ezc"/>
-                        <viewControllerLayoutGuide type="bottom" id="N01-SL-Fqc"/>
+                        <viewControllerLayoutGuide type="top" id="Y7Z-kq-6Pp"/>
+                        <viewControllerLayoutGuide type="bottom" id="xkd-iy-A95"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="o8U-rT-IOx" customClass="HomeViewController" customModule="Skandiacup" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="mQT-Yc-fC5">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bpH-Qz-bUA">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LNv-VN-HDd">
                                 <rect key="frame" x="20" y="20" width="560" height="29"/>
                                 <animations/>
                                 <segments>
@@ -143,54 +143,63 @@
                                     <segment title="Info"/>
                                     <segment title="Sosial"/>
                                 </segments>
+                                <connections>
+                                    <action selector="indexChanged:" destination="yV0-gc-hZs" eventType="valueChanged" id="KoK-Sa-ZQT"/>
+                                </connections>
                             </segmentedControl>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jRY-rd-7tn" userLabel="NewsViewContainer">
-                                <rect key="frame" x="0.0" y="56" width="600" height="495"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q6T-Tt-ud8">
+                                <rect key="frame" x="20" y="56" width="560" height="487"/>
                                 <animations/>
                                 <connections>
-                                    <segue destination="sgG-Yq-zj2" kind="embed" id="RrC-b7-JUd"/>
+                                    <segue destination="5J1-RU-nxD" kind="embed" id="XBJ-6K-H9u"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3IL-db-8ZM" userLabel="InfoViewContainer">
-                                <rect key="frame" x="0.0" y="56" width="600" height="495"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f8h-Wx-zgN">
+                                <rect key="frame" x="20" y="56" width="560" height="487"/>
                                 <animations/>
                                 <connections>
-                                    <segue destination="CGu-XW-1gR" kind="embed" id="Wy7-hq-5aa"/>
+                                    <segue destination="cEe-Vm-il8" kind="embed" id="ao1-Nf-7Hx"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KcI-wu-gBL" userLabel="SosialViewContainer">
-                                <rect key="frame" x="0.0" y="56" width="600" height="495"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yqr-t1-GtD">
+                                <rect key="frame" x="20" y="56" width="560" height="487"/>
                                 <animations/>
                                 <connections>
-                                    <segue destination="S4z-HY-aDu" kind="embed" id="UWB-0K-6gg"/>
+                                    <segue destination="M2V-gG-DgE" kind="embed" id="q2K-hb-8jH"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="bpH-Qz-bUA" firstAttribute="top" secondItem="DJf-vS-ezc" secondAttribute="bottom" id="2Dz-JD-XAR"/>
-                            <constraint firstItem="3IL-db-8ZM" firstAttribute="leading" secondItem="o8U-rT-IOx" secondAttribute="leading" id="52w-Q5-upR"/>
-                            <constraint firstItem="3IL-db-8ZM" firstAttribute="bottom" secondItem="N01-SL-Fqc" secondAttribute="top" id="ITu-Zw-1ID"/>
-                            <constraint firstItem="KcI-wu-gBL" firstAttribute="bottom" secondItem="N01-SL-Fqc" secondAttribute="top" id="IUQ-ib-QFc"/>
-                            <constraint firstAttribute="trailing" secondItem="3IL-db-8ZM" secondAttribute="trailing" id="RTy-OB-uEc"/>
-                            <constraint firstItem="jRY-rd-7tn" firstAttribute="bottom" secondItem="N01-SL-Fqc" secondAttribute="top" id="Vu9-Qv-zIi"/>
-                            <constraint firstItem="3IL-db-8ZM" firstAttribute="trailing" secondItem="KcI-wu-gBL" secondAttribute="trailing" id="Y7F-6R-BM9"/>
-                            <constraint firstItem="3IL-db-8ZM" firstAttribute="trailing" secondItem="jRY-rd-7tn" secondAttribute="trailing" id="a0Z-d6-yKw"/>
-                            <constraint firstItem="3IL-db-8ZM" firstAttribute="centerX" secondItem="bpH-Qz-bUA" secondAttribute="centerX" id="cim-nT-F2M"/>
-                            <constraint firstItem="jRY-rd-7tn" firstAttribute="top" secondItem="bpH-Qz-bUA" secondAttribute="bottom" constant="8" symbolic="YES" id="gBP-je-hLN"/>
-                            <constraint firstItem="KcI-wu-gBL" firstAttribute="top" secondItem="3IL-db-8ZM" secondAttribute="top" id="huT-zg-ULQ"/>
-                            <constraint firstItem="3IL-db-8ZM" firstAttribute="leading" secondItem="KcI-wu-gBL" secondAttribute="leading" id="m6c-hN-rWE"/>
-                            <constraint firstItem="jRY-rd-7tn" firstAttribute="top" secondItem="KcI-wu-gBL" secondAttribute="top" id="tZZ-IA-wNq"/>
-                            <constraint firstItem="bpH-Qz-bUA" firstAttribute="leading" secondItem="o8U-rT-IOx" secondAttribute="leadingMargin" id="w3Y-jz-2cJ"/>
-                            <constraint firstItem="jRY-rd-7tn" firstAttribute="leading" secondItem="3IL-db-8ZM" secondAttribute="leading" id="xnV-mh-Nqh"/>
+                            <constraint firstItem="xkd-iy-A95" firstAttribute="top" secondItem="f8h-Wx-zgN" secondAttribute="bottom" constant="8" symbolic="YES" id="55c-bD-dTf"/>
+                            <constraint firstItem="f8h-Wx-zgN" firstAttribute="trailing" secondItem="Q6T-Tt-ud8" secondAttribute="trailing" id="H2I-aC-CNf"/>
+                            <constraint firstItem="f8h-Wx-zgN" firstAttribute="leading" secondItem="Q6T-Tt-ud8" secondAttribute="leading" id="QCb-sq-WYm"/>
+                            <constraint firstItem="LNv-VN-HDd" firstAttribute="trailing" secondItem="Q6T-Tt-ud8" secondAttribute="trailing" id="ZaR-cD-bNO"/>
+                            <constraint firstItem="Yqr-t1-GtD" firstAttribute="top" secondItem="f8h-Wx-zgN" secondAttribute="top" id="dhO-RL-dGA"/>
+                            <constraint firstItem="xkd-iy-A95" firstAttribute="top" secondItem="Yqr-t1-GtD" secondAttribute="bottom" constant="8" symbolic="YES" id="g8C-f5-Hfi"/>
+                            <constraint firstItem="Q6T-Tt-ud8" firstAttribute="leading" secondItem="Yqr-t1-GtD" secondAttribute="leading" id="jYG-UL-fY6"/>
+                            <constraint firstItem="LNv-VN-HDd" firstAttribute="top" secondItem="Y7Z-kq-6Pp" secondAttribute="bottom" id="kQz-pC-ggM"/>
+                            <constraint firstItem="xkd-iy-A95" firstAttribute="top" secondItem="Q6T-Tt-ud8" secondAttribute="bottom" constant="8" symbolic="YES" id="mUc-CR-SUd"/>
+                            <constraint firstItem="Yqr-t1-GtD" firstAttribute="top" secondItem="Q6T-Tt-ud8" secondAttribute="top" id="nMr-Qp-x51"/>
+                            <constraint firstItem="Yqr-t1-GtD" firstAttribute="trailing" secondItem="f8h-Wx-zgN" secondAttribute="trailing" id="rSf-nU-Obp"/>
+                            <constraint firstItem="LNv-VN-HDd" firstAttribute="leading" secondItem="Q6T-Tt-ud8" secondAttribute="leading" id="stg-ym-x1P"/>
+                            <constraint firstItem="f8h-Wx-zgN" firstAttribute="top" secondItem="LNv-VN-HDd" secondAttribute="bottom" constant="8" symbolic="YES" id="uFA-is-EEg"/>
+                            <constraint firstItem="LNv-VN-HDd" firstAttribute="trailing" secondItem="mQT-Yc-fC5" secondAttribute="trailingMargin" id="x97-gp-fIz"/>
+                            <constraint firstItem="f8h-Wx-zgN" firstAttribute="leading" secondItem="mQT-Yc-fC5" secondAttribute="leadingMargin" id="xLe-44-wqM"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Nyheter" image="second" id="mSB-P2-C2f"/>
+                    <tabBarItem key="tabBarItem" title="Item" id="ppy-iN-LIH"/>
+                    <connections>
+                        <outlet property="infoView" destination="Q6T-Tt-ud8" id="tHf-aP-V5X"/>
+                        <outlet property="newsView" destination="f8h-Wx-zgN" id="T8S-gx-APc"/>
+                        <outlet property="segmentedControl" destination="LNv-VN-HDd" id="rwz-0T-V8y"/>
+                        <outlet property="sosialView" destination="Yqr-t1-GtD" id="g8Y-3T-0uL"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YeF-Nw-afm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7o5-ZV-OfA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-588" y="1188"/>
+            <point key="canvasLocation" x="-888" y="428"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -204,7 +213,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="CmJ-NW-PCB" kind="relationship" relationship="viewControllers" id="I1L-db-Jni"/>
+                        <segue destination="yV0-gc-hZs" kind="relationship" relationship="viewControllers" id="QXH-f2-4fZ"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="E4l-bT-3KC" kind="relationship" relationship="viewControllers" id="m4r-rh-lXV"/>
@@ -568,20 +577,20 @@
             </objects>
             <point key="canvasLocation" x="-226" y="1851"/>
         </scene>
-        <!--InfoView-->
-        <scene sceneID="O4H-aL-HFI">
+        <!--Info-->
+        <scene sceneID="6g1-Cq-DvR">
             <objects>
-                <viewController id="CGu-XW-1gR" userLabel="InfoView" customClass="InfoViewControllerContainer" customModule="Skandiacup" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5J1-RU-nxD" userLabel="Info" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="4dh-9x-D9u"/>
-                        <viewControllerLayoutGuide type="bottom" id="MtX-G9-B3o"/>
+                        <viewControllerLayoutGuide type="top" id="dIU-e5-Hvv"/>
+                        <viewControllerLayoutGuide type="bottom" id="hYx-9M-4pQ"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="MpP-qb-dLr">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="495"/>
+                    <view key="view" contentMode="scaleToFill" id="iFJ-Eb-xyD">
+                        <rect key="frame" x="0.0" y="0.0" width="560" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3U3-Bb-0it">
-                                <rect key="frame" x="292" y="237" width="29" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vud-41-llj">
+                                <rect key="frame" x="116" y="53" width="8" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -589,68 +598,46 @@
                             </label>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.78002733443806482" green="1" blue="0.79954164086650692" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0pq-C1-kfb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PFJ-TU-DfO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2589" y="1993.5"/>
+            <point key="canvasLocation" x="-888" y="1017"/>
         </scene>
-        <!--NewsView Controller-->
-        <scene sceneID="uKL-ka-wzE">
+        <!--News-->
+        <scene sceneID="E5Q-Ho-HTY">
             <objects>
-                <viewController id="sgG-Yq-zj2" userLabel="NewsView Controller" customClass="NewsViewControllerContainer" customModule="Skandiacup" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cEe-Vm-il8" userLabel="News" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="kiK-vm-oef"/>
-                        <viewControllerLayoutGuide type="bottom" id="qOQ-Eb-CG1"/>
+                        <viewControllerLayoutGuide type="top" id="lBD-ZD-dm7"/>
+                        <viewControllerLayoutGuide type="bottom" id="nRY-jZ-gPv"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Fes-KB-Gmj">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="495"/>
+                    <view key="view" contentMode="scaleToFill" id="c5i-Y2-gch">
+                        <rect key="frame" x="0.0" y="0.0" width="560" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="News" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DsO-8f-Edu">
-                                <rect key="frame" x="278" y="237" width="43" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.83845903190000004" green="0.85202087339999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="179-b6-gRJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hhc-Mr-lQN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1937" y="1997"/>
+            <point key="canvasLocation" x="-1628" y="1016.5"/>
         </scene>
-        <!--SosialView-->
-        <scene sceneID="TAe-WG-XAF">
+        <!--Sosial-->
+        <scene sceneID="Enk-FI-3E0">
             <objects>
-                <viewController id="S4z-HY-aDu" userLabel="SosialView" customClass="SosialViewControllerContainer" customModule="Skandiacup" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="kvz-uz-D14"/>
-                        <viewControllerLayoutGuide type="bottom" id="wvh-cJ-icI"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="eVo-NQ-dr2">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="495"/>
+                <viewController id="M2V-gG-DgE" userLabel="Sosial" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KDB-7U-cUC">
+                        <rect key="frame" x="0.0" y="0.0" width="560" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sosial" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1H-4T-qtw">
-                                <rect key="frame" x="275" y="237" width="46" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.98058478198359911" green="1" blue="0.86543521234313636" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yf8-Bl-kSj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ulk-BN-H4A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1273" y="1993.5"/>
+            <point key="canvasLocation" x="-2244" y="1016.5"/>
         </scene>
     </scenes>
     <resources>
