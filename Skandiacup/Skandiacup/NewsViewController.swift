@@ -26,8 +26,14 @@ class NewsViewController: UIViewController, NSXMLParserDelegate {
     @IBAction func btnPressed(sender: AnyObject) {
         print(Date.getCurrentTimeInSoapFormat()+"\n")
         
-        
-        print(SharingManager.soap.getArena([1,2,3,10]))
+        /*
+        print(SharingManager.soap.getArena([1,3]))
+        print("\n");
+        print(SharingManager.soap.getField([1,3]))
+        print("\n");
+        print(SharingManager.soap.getTournamentClub([1,2]))
+        print("\n")
+        */
         
         let soapMessage = "<soapenv:Envelope xmlns:soapenv='http://schemas.xmlsoap.org/soap/envelope/' xmlns:for='http://profixio.com/soap/tournament/ForTournamentExt.php'><soapenv:Header/><soapenv:Body><for:getTournamentMatchStatus><application_key>demo2015uefa</application_key><tournamentID>11</tournamentID><since>2015-09-03 09:00:00</since></for:getTournamentMatchStatus></soapenv:Body></soapenv:Envelope>"
         

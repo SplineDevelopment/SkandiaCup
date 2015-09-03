@@ -9,9 +9,16 @@
 import Foundation
 
 class SoapImpl: Soap {
-   func getArena(id: [Int]) -> [Arena]?{
+    func getArena(id: [Int]) -> [Arena]?{
         return nil
     }
+    func getTournamentClub(id: [Int]) -> [TournamentClub]?{
+        return nil
+    }
+    func getField(id: [Int]) -> [Field]?{
+        return nil
+    }
+
     
     
 }

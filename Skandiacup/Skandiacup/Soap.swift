@@ -10,4 +10,7 @@ import Foundation
 
 protocol Soap {
     func getArena(id: [Int]) -> [Arena]?
+    func getTournamentClub(id: [Int]) -> [TournamentClub]?
+    func getField(id: [Int]) -> [Field]?
+
 }
