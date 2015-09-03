@@ -52,13 +52,7 @@ class SoapMock: Soap {
         return matchGroup
     }
 
-    
-    var id: Int?
-    var name: String?
-    var matchClassId: String?
-    var isPlayoff: Bool?
-    var playOffId: String?
-    var endGameLevel: Int?
+
     
 
 }
