@@ -24,7 +24,7 @@ class NewsViewController: UIViewController, NSXMLParserDelegate {
     
 
     @IBAction func btnPressed(sender: AnyObject) {
-        print("Button")
+        print(getCurrentTimeInSoapFormat()+"\n")
         let soapMessage = "<soapenv:Envelope xmlns:soapenv='http://schemas.xmlsoap.org/soap/envelope/' xmlns:for='http://profixio.com/soap/tournament/ForTournamentExt.php'><soapenv:Header/><soapenv:Body><for:getTournamentMatchStatus><application_key>demo2015uefa</application_key><tournamentID>11</tournamentID><since>2015-09-03 09:00:00</since></for:getTournamentMatchStatus></soapenv:Body></soapenv:Envelope>"
         
 //        let soapMessage2 = "<?xml version='1.0' encoding='utf-8'?><soap:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'><soap:Body><CelsiusToFahrenheit xmlns='http://www.w3schools.com/webservices/'><Celsius>10</Celsius></CelsiusToFahrenheit></soap:Body></soap:Envelope>"
@@ -90,5 +90,13 @@ class NewsViewController: UIViewController, NSXMLParserDelegate {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func getCurrentTimeInSoapFormat() -> String {
+        let date = NSDate()
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
+        let stringValue = formatter.stringFromDate(date)
+        return stringValue
+    }
 
 }
