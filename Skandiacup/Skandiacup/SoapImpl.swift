@@ -9,7 +9,7 @@
 import Foundation
 
 class SoapImpl: Soap {
-   func getArena(id: [String]) -> [Arena]?{
+   func getArena(id: [Int]) -> [Arena]?{
         return nil
     }
     

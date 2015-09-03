@@ -9,5 +9,5 @@
 import Foundation
 
 protocol Soap {
-    func getArena(id: [String]) -> [Arena]?
+    func getArena(id: [Int]) -> [Arena]?
 }

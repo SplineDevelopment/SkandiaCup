@@ -9,22 +9,12 @@
 import Foundation
 
 class SoapMock: Soap {
-    func getArena(id: [String]) -> [Arena]? {
+    func getArena(id: [Int]) -> [Arena]? {
         var arena = [Arena]()
-        
-        var a1 = Arena()
-        a1.arenaID = 1
-        a1.arenaName = "Bane 1"
-        a1.arenaDescription = "Sor-Ost"
-        arena.append(a1)
-
-        var a2 = Arena()
-        a2.arenaID = 2
-        a2.arenaName = "Bane 2"
-        a2.arenaDescription = "Nord"
-        arena.append(a2)
-        print(arena)
-        return arena
+        arena.append(Arena(arenaID: 1, arenaName: "Test1", arenaDescription: "Desc1", update_timestamp: "0"))
+        arena.append(Arena(arenaID: 2, arenaName: "Test2", arenaDescription: "Desc2", update_timestamp: "123"))
+        arena.append(Arena(arenaID: 3, arenaName: "Test3", arenaDescription: "Desc3", update_timestamp: "666"))
+        return arena.filter({id.contains($0.arenaID!)})
     }
     
 
