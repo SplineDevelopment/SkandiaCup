@@ -21,6 +21,10 @@
 		D51E4B181B94A1E700FF5DDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D51E4B161B94A1E700FF5DDB /* LaunchScreen.storyboard */; };
 		D51E4B231B94A1E700FF5DDB /* SkandiacupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51E4B221B94A1E700FF5DDB /* SkandiacupTests.swift */; };
 		D51E4B2E1B94A1E700FF5DDB /* SkandiacupUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51E4B2D1B94A1E700FF5DDB /* SkandiacupUITests.swift */; };
+		D524965E1B9876EC001D3577 /* TeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D524965D1B9876EC001D3577 /* TeamsViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		D52496601B9876F4001D3577 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D524965F1B9876F4001D3577 /* GroupsViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		D52496621B988364001D3577 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52496611B988364001D3577 /* TeamViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		D52496641B988546001D3577 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52496631B988546001D3577 /* GroupViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D5A1FFCF1B975A2B00938025 /* SOAPrepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A1FFCE1B975A2B00938025 /* SOAPrepo.swift */; settings = {ASSET_TAGS = (); }; };
 		D5FD4EC51B94A41F009B53FC /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD4EC41B94A41F009B53FC /* NewsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D5FD4EC71B94AFEB009B53FC /* Datasource2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD4EC61B94AFEB009B53FC /* Datasource2.swift */; settings = {ASSET_TAGS = (); }; };
@@ -75,6 +79,10 @@
 		D51E4B291B94A1E700FF5DDB /* SkandiacupUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkandiacupUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D51E4B2D1B94A1E700FF5DDB /* SkandiacupUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkandiacupUITests.swift; sourceTree = "<group>"; };
 		D51E4B2F1B94A1E700FF5DDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D524965D1B9876EC001D3577 /* TeamsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamsViewController.swift; sourceTree = "<group>"; };
+		D524965F1B9876F4001D3577 /* GroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
+		D52496611B988364001D3577 /* TeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
+		D52496631B988546001D3577 /* GroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		D5A1FFCE1B975A2B00938025 /* SOAPrepo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOAPrepo.swift; sourceTree = "<group>"; };
 		D5FD4EC41B94A41F009B53FC /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		D5FD4EC61B94AFEB009B53FC /* Datasource2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Datasource2.swift; sourceTree = "<group>"; };
@@ -131,6 +139,10 @@
 				D5FD4ECA1B94B8CA009B53FC /* FavoritesViewController.swift */,
 				D51E4B0F1B94A1E700FF5DDB /* MatchViewController.swift */,
 				D5FD4EC41B94A41F009B53FC /* NewsViewController.swift */,
+				D524965D1B9876EC001D3577 /* TeamsViewController.swift */,
+				D524965F1B9876F4001D3577 /* GroupsViewController.swift */,
+				D52496611B988364001D3577 /* TeamViewController.swift */,
+				D52496631B988546001D3577 /* GroupViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -351,8 +363,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5FD4ED41B94C8FF009B53FC /* Field.swift in Sources */,
+				D524965E1B9876EC001D3577 /* TeamsViewController.swift in Sources */,
 				D5FD4ED81B94CA23009B53FC /* MatchGroup.swift in Sources */,
 				D5FD4EE01B94CF70009B53FC /* TournamentTeam.swift in Sources */,
+				D52496601B9876F4001D3577 /* GroupsViewController.swift in Sources */,
 				D5FD4EDC1B94CEC3009B53FC /* MatchTableRow.swift in Sources */,
 				D5FD4ED61B94C9C8009B53FC /* MatchClass.swift in Sources */,
 				D5FD4ED21B94C8B7009B53FC /* TournamentClub.swift in Sources */,
@@ -363,8 +377,10 @@
 				3C803E501B984D46001A51AA /* Functions.swift in Sources */,
 				D5FD4EDE1B94CF3E009B53FC /* MatchTable.swift in Sources */,
 				D5FD4ED01B94C79B009B53FC /* Arena.swift in Sources */,
+				D52496621B988364001D3577 /* TeamViewController.swift in Sources */,
 				D5FD4EDA1B94CD4D009B53FC /* TournamentMatch.swift in Sources */,
 				3C803E5C1B98563F001A51AA /* SharingManager.swift in Sources */,
+				D52496641B988546001D3577 /* GroupViewController.swift in Sources */,
 				3C803E541B98528A001A51AA /* Soap.swift in Sources */,
 				D5A1FFCF1B975A2B00938025 /* SOAPrepo.swift in Sources */,
 				D5FD4ECB1B94B8CA009B53FC /* FavoritesViewController.swift in Sources */,

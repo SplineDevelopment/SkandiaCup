@@ -1,21 +1,21 @@
 //
-//  FavoritesViewController.swift
+//  GroupViewController.swift
 //  Skandiacup
 //
-//  Created by Jørgen Wilhelmsen on 31/08/15.
+//  Created by Jørgen Wilhelmsen on 03/09/15.
 //  Copyright © 2015 Spline Development. All rights reserved.
 //
 
 import UIKit
 
-class FavoritesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    @IBOutlet weak var favoriteTableView: UITableView!
-    var favorites: [String] = ["Lag1", "Lag2", "Lag3"]
-    
+class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    var groups: [String] = ["Lag1", "Lag2", "Lag3"]
+    @IBOutlet weak var groupTableView: UITableView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        favoriteTableView.delegate = self
-        favoriteTableView.dataSource = self
+        groupTableView.delegate = self
+        groupTableView.dataSource = self
 
         // Do any additional setup after loading the view.
     }
@@ -25,21 +25,16 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         // Dispose of any resources that can be recreated.
     }
     
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("favoriteCell") as UITableViewCell!
-        cell.textLabel?.text = favorites[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("teamCell") as UITableViewCell!
+        cell.textLabel?.text = groups[indexPath.row]
         return cell
     }
     
-    //    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    //
-    //    }
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return favorites.count
+        return groups.count
     }
-
-
     /*
     // MARK: - Navigation
 
