@@ -24,9 +24,13 @@ class NewsViewController: UIViewController, NSXMLParserDelegate {
     
 
     @IBAction func btnPressed(sender: AnyObject) {
-        print(Date.getCurrentTimeInSoapFormat()+"\n")
-        print(SharingManager.soap.getArena([1,2,3,10]))
-        Parser.instance.test1()
+        //print(Date.getCurrentTimeInSoapFormat()+"\n")
+        //print(SharingManager.soap.getArena([1,2,3,10]))
+        //var test = SharingManager.soap.getArena([1])
+        SharingManager.soap.getArena([1,2,3,10]) { (arenas) -> Void in
+            //self.textBox.text = arenas?.description
+            print(arenas)
+        }
     }
     
     /*

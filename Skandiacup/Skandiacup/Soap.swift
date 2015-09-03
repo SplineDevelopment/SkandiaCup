@@ -9,7 +9,7 @@
 import Foundation
 
 protocol Soap {
-    func getArena(id: [Int]) -> [Arena]?
+    func getArena(id: [Int], completionHandler: (arenas: [Arena]?) -> Void) -> Void
     func getTournamentClub(id: [Int]) -> [TournamentClub]?
     func getField(id: [Int]) -> [Field]?
     func getMatchClass(id: [Int]) -> [MatchClass]?
