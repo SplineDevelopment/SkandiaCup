@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		236B0C391B9875FD00CDEC89 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236B0C381B9875FD00CDEC89 /* Parser.swift */; settings = {ASSET_TAGS = (); }; };
 		236B0C3B1B987C6700CDEC89 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236B0C3A1B987C6700CDEC89 /* Generator.swift */; settings = {ASSET_TAGS = (); }; };
+		3C3B9E181B9893690070A1FF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3B9E171B9893690070A1FF /* HomeViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		3C3B9E1C1B9894360070A1FF /* InfoViewControllerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3B9E1B1B9894360070A1FF /* InfoViewControllerContainer.swift */; settings = {ASSET_TAGS = (); }; };
+		3C3B9E1E1B9894550070A1FF /* NewsViewControllerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3B9E1D1B9894550070A1FF /* NewsViewControllerContainer.swift */; settings = {ASSET_TAGS = (); }; };
+		3C3B9E201B98947B0070A1FF /* SosialViewControllerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3B9E1F1B98947B0070A1FF /* SosialViewControllerContainer.swift */; settings = {ASSET_TAGS = (); }; };
 		3C803E501B984D46001A51AA /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C803E4F1B984D46001A51AA /* Functions.swift */; settings = {ASSET_TAGS = (); }; };
 		3C803E541B98528A001A51AA /* Soap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C803E531B98528A001A51AA /* Soap.swift */; settings = {ASSET_TAGS = (); }; };
 		3C803E561B9852EF001A51AA /* SoapMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C803E551B9852EF001A51AA /* SoapMock.swift */; settings = {ASSET_TAGS = (); }; };
@@ -28,7 +32,6 @@
 		D52496621B988364001D3577 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52496611B988364001D3577 /* TeamViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D52496641B988546001D3577 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52496631B988546001D3577 /* GroupViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D5A1FFCF1B975A2B00938025 /* SOAPrepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A1FFCE1B975A2B00938025 /* SOAPrepo.swift */; settings = {ASSET_TAGS = (); }; };
-		D5FD4EC51B94A41F009B53FC /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD4EC41B94A41F009B53FC /* NewsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D5FD4EC71B94AFEB009B53FC /* Datasource2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD4EC61B94AFEB009B53FC /* Datasource2.swift */; settings = {ASSET_TAGS = (); }; };
 		D5FD4ECB1B94B8CA009B53FC /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD4ECA1B94B8CA009B53FC /* FavoritesViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D5FD4ED01B94C79B009B53FC /* Arena.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD4ECF1B94C79B009B53FC /* Arena.swift */; settings = {ASSET_TAGS = (); }; };
@@ -63,6 +66,10 @@
 /* Begin PBXFileReference section */
 		236B0C381B9875FD00CDEC89 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		236B0C3A1B987C6700CDEC89 /* Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
+		3C3B9E171B9893690070A1FF /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		3C3B9E1B1B9894360070A1FF /* InfoViewControllerContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewControllerContainer.swift; sourceTree = "<group>"; };
+		3C3B9E1D1B9894550070A1FF /* NewsViewControllerContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewControllerContainer.swift; sourceTree = "<group>"; };
+		3C3B9E1F1B98947B0070A1FF /* SosialViewControllerContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SosialViewControllerContainer.swift; sourceTree = "<group>"; };
 		3C803E4F1B984D46001A51AA /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		3C803E531B98528A001A51AA /* Soap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Soap.swift; sourceTree = "<group>"; };
 		3C803E551B9852EF001A51AA /* SoapMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoapMock.swift; sourceTree = "<group>"; };
@@ -88,7 +95,6 @@
 		D52496611B988364001D3577 /* TeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
 		D52496631B988546001D3577 /* GroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		D5A1FFCE1B975A2B00938025 /* SOAPrepo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOAPrepo.swift; sourceTree = "<group>"; };
-		D5FD4EC41B94A41F009B53FC /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		D5FD4EC61B94AFEB009B53FC /* Datasource2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Datasource2.swift; sourceTree = "<group>"; };
 		D5FD4ECA1B94B8CA009B53FC /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritesViewController.swift; path = ../FavoritesViewController.swift; sourceTree = "<group>"; };
 		D5FD4ECF1B94C79B009B53FC /* Arena.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Arena.swift; sourceTree = "<group>"; };
@@ -128,6 +134,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C3B9E141B9891310070A1FF /* HomeViewContainers */ = {
+			isa = PBXGroup;
+			children = (
+				3C3B9E1B1B9894360070A1FF /* InfoViewControllerContainer.swift */,
+				3C3B9E1D1B9894550070A1FF /* NewsViewControllerContainer.swift */,
+				3C3B9E1F1B98947B0070A1FF /* SosialViewControllerContainer.swift */,
+			);
+			name = HomeViewContainers;
+			sourceTree = "<group>";
+		};
 		3C803E4E1B984CAE001A51AA /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,14 +157,15 @@
 		3C803E511B984F75001A51AA /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				3C3B9E141B9891310070A1FF /* HomeViewContainers */,
 				D51E4B0D1B94A1E700FF5DDB /* FirstViewController.swift */,
 				D5FD4ECA1B94B8CA009B53FC /* FavoritesViewController.swift */,
 				D51E4B0F1B94A1E700FF5DDB /* MatchViewController.swift */,
-				D5FD4EC41B94A41F009B53FC /* NewsViewController.swift */,
 				D524965D1B9876EC001D3577 /* TeamsViewController.swift */,
 				D524965F1B9876F4001D3577 /* GroupsViewController.swift */,
 				D52496611B988364001D3577 /* TeamViewController.swift */,
 				D52496631B988546001D3577 /* GroupViewController.swift */,
+				3C3B9E171B9893690070A1FF /* HomeViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -371,12 +388,14 @@
 				D5FD4ED41B94C8FF009B53FC /* Field.swift in Sources */,
 				D524965E1B9876EC001D3577 /* TeamsViewController.swift in Sources */,
 				D5FD4ED81B94CA23009B53FC /* MatchGroup.swift in Sources */,
+				3C3B9E201B98947B0070A1FF /* SosialViewControllerContainer.swift in Sources */,
 				D5FD4EE01B94CF70009B53FC /* TournamentTeam.swift in Sources */,
 				D52496601B9876F4001D3577 /* GroupsViewController.swift in Sources */,
 				D5FD4EDC1B94CEC3009B53FC /* MatchTableRow.swift in Sources */,
 				D5FD4ED61B94C9C8009B53FC /* MatchClass.swift in Sources */,
 				D5FD4ED21B94C8B7009B53FC /* TournamentClub.swift in Sources */,
 				D51E4B101B94A1E700FF5DDB /* MatchViewController.swift in Sources */,
+				3C3B9E1C1B9894360070A1FF /* InfoViewControllerContainer.swift in Sources */,
 				D5FD4EC71B94AFEB009B53FC /* Datasource2.swift in Sources */,
 				D51E4B0C1B94A1E700FF5DDB /* AppDelegate.swift in Sources */,
 				D51E4B0E1B94A1E700FF5DDB /* FirstViewController.swift in Sources */,
@@ -387,11 +406,12 @@
 				D5FD4EDA1B94CD4D009B53FC /* TournamentMatch.swift in Sources */,
 				3C803E5C1B98563F001A51AA /* SharingManager.swift in Sources */,
 				D52496641B988546001D3577 /* GroupViewController.swift in Sources */,
+				3C3B9E181B9893690070A1FF /* HomeViewController.swift in Sources */,
 				3C803E541B98528A001A51AA /* Soap.swift in Sources */,
 				D5A1FFCF1B975A2B00938025 /* SOAPrepo.swift in Sources */,
+				3C3B9E1E1B9894550070A1FF /* NewsViewControllerContainer.swift in Sources */,
 				D5FD4ECB1B94B8CA009B53FC /* FavoritesViewController.swift in Sources */,
 				3C803E5A1B98550D001A51AA /* Config.swift in Sources */,
-				D5FD4EC51B94A41F009B53FC /* NewsViewController.swift in Sources */,
 				236B0C391B9875FD00CDEC89 /* Parser.swift in Sources */,
 				3C803E561B9852EF001A51AA /* SoapMock.swift in Sources */,
 				D5FD4EE21B94CFB7009B53FC /* Tournament.swift in Sources */,
