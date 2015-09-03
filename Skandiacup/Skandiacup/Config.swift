@@ -9,7 +9,7 @@
 import Foundation
 
 class Config{
-    static let soapMock = true //True = mock
+    static let soapMock = false //True = mock
     
     
 }

@@ -13,6 +13,10 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        // TESTING 
+        SharingManager.soap.getArena([1,2,3,10]) { (arenas) -> Void in
+            print(arenas)
+        }
     }
 
     override func didReceiveMemoryWarning() {
