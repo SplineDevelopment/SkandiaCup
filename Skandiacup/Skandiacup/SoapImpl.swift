@@ -19,6 +19,13 @@ class SoapImpl: Soap {
         return nil
     }
 
-    
+    func getMatchClass(id: [Int]) -> [MatchClass]?{
+        return nil
+    }
+    func getMatchGroup(id: [Int]) -> [MatchGroup]?{
+        return nil
+    }
+
+
     
 }

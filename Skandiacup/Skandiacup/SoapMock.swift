@@ -34,6 +34,24 @@ class SoapMock: Soap {
         field.append(Field(fieldID: 3, arenaID: 1, fieldName: "Bane2", fieldDescription: "Bane3Nord", update_timestamp: ""))
         return field.filter({id.contains($0.fieldID!)})
     }
+        
+    func getMatchClass(id: [Int]) -> [MatchClass]?{
+        var matchClass = [MatchClass]()
+        
+        matchClass.append(MatchClass(id: 1, code: "19", gender: "male", periodLengthInMinutes: "90", numberOfPeriodsInMatch: "2", matchGroups: getMatchGroup([1])));
+        matchClass.append(MatchClass(id: 2, code: "15", gender: "male", periodLengthInMinutes: "90", numberOfPeriodsInMatch: "2", matchGroups: getMatchGroup([2])));
+        matchClass.append(MatchClass(id: 3, code: "13", gender: "female", periodLengthInMinutes: "90", numberOfPeriodsInMatch: "2", matchGroups: getMatchGroup([3])));
+        return matchClass
+    }
+    
+    func getMatchGroup(id: [Int]) -> [MatchGroup]?{
+        var matchGroup = [MatchGroup]()
+        matchGroup.append(MatchGroup(id:1, name: "Gruppe1", matchClassId: "1", isPlayoff: true, playOffId: "1", endGameLevel: 1))
+        matchGroup.append(MatchGroup(id:2, name: "Gruppe2", matchClassId: "2", isPlayoff: true, playOffId: "1", endGameLevel: 1))
+        matchGroup.append(MatchGroup(id:3, name: "Gruppe3", matchClassId: "3", isPlayoff: true, playOffId: "1", endGameLevel: 1))
+        return matchGroup
+    }
+
 
     
 
