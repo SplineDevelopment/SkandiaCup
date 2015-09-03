@@ -13,4 +13,7 @@ struct Arena{
     var arenaName: String?
     var arenaDescription: String?
     var update_timestamp: String?
+    
 }
+
+
