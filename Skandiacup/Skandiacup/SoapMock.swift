@@ -9,14 +9,13 @@
 import Foundation
 
 class SoapMock: Soap {
-    func getArena(id: [Int], completionHandler: (arenas: [Arena]?) -> Void) -> Void {
+    func getArena(id: [Int], completionHandler: (arenas: [Arena]?) -> ()) {
         var arena = [Arena]()
         arena.append(Arena(arenaID: 1, arenaName: "Test1", arenaDescription: "Desc1", update_timestamp: "0"))
         arena.append(Arena(arenaID: 2, arenaName: "Test2", arenaDescription: "Desc2", update_timestamp: "123"))
         arena.append(Arena(arenaID: 3, arenaName: "Test3", arenaDescription: "Desc3", update_timestamp: "666"))
         arena.append(Arena(arenaID: 4, arenaName: "Test4", arenaDescription: "Desc4", update_timestamp: "999"))
         completionHandler(arenas: arena.filter({id.contains($0.arenaID!)}))
-        //return arena.filter({id.contains($0.arenaID!)})
     }
     
     
@@ -53,7 +52,9 @@ class SoapMock: Soap {
         return matchGroup
     }
 
-
+    func getMatches(completionHandler: (matches: [TournamentMatch]?) -> ()) {
+        completionHandler(matches: nil)
+    }
     
 
 }
