@@ -1,5 +1,5 @@
 //
-//  MatchViewController.swift
+//  SosialViewController.swift
 //  Skandiacup
 //
 //  Created by Bjørn Hoxmark on 04/09/15.
@@ -8,37 +8,11 @@
 
 import UIKit
 
-class MatchViewController: UIViewController {
-    
-    @IBOutlet weak var flagOne: UILabel!
-    
-    @IBOutlet weak var scoreOne: UILabel!
-    
-    @IBOutlet weak var teamOne: UILabel!
-    
-    @IBOutlet weak var teamTwo: UILabel!
-    
-    @IBOutlet weak var scoreTwo: UILabel!
-    
-    @IBOutlet weak var flagTwo: UILabel!
+class SosialViewController: UIViewController {
 
-    @IBAction func btnPushed(sender: AnyObject) {
-        
-        //flagOne.text = "🇳🇴"
-        teamOne.text = "Rosenborg"
-        scoreOne.text = "3"
-        teamTwo.text = "Abugutha"
-        scoreTwo.text = "2"
-        //flagTwo.text = "🇰🇲"
-
-        
-        
-        
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         // Do any additional setup after loading the view.
     }
 

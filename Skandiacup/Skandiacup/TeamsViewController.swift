@@ -12,6 +12,8 @@ class TeamsViewController: UIViewController , UITableViewDataSource, UITableView
     @IBOutlet weak var teamTableView: UITableView!
     var teams: [String] = ["Lag1", "Lag2", "Lag3"]
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         teamTableView.dataSource = self
@@ -50,5 +52,12 @@ class TeamsViewController: UIViewController , UITableViewDataSource, UITableView
         // Pass the selected object to the new view controller.
     }
     */
+    override func viewWillAppear(animated: Bool) {
+        
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        
+    }
 
 }

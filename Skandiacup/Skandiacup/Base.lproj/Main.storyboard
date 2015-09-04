@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -48,10 +48,10 @@
             </objects>
             <point key="canvasLocation" x="-146" y="-238"/>
         </scene>
-        <!--Match-->
+        <!--Tournament-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController title="Match" id="8rJ-Kc-sve" customClass="MatchViewController" customModule="Skandiacup" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Match" id="8rJ-Kc-sve" userLabel="Tournament" customClass="TournamentViewController" customModule="Skandiacup" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -423,7 +423,7 @@
         <!--matchView-->
         <scene sceneID="RSJ-5s-64t">
             <objects>
-                <viewController title="matchView" id="idp-YS-O2B" sceneMemberID="viewController">
+                <viewController title="matchView" id="idp-YS-O2B" customClass="MatchViewController" customModule="Skandiacup" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nee-15-9cJ"/>
                         <viewControllerLayoutGuide type="bottom" id="zhO-p6-vDd"/>
@@ -432,29 +432,73 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="495"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info om kamp her. " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DB5-QG-qPj">
-                                <rect key="frame" x="229" y="52" width="142" height="21"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8L-mc-y1u">
+                                <rect key="frame" x="153" y="369" width="47" height="30"/>
                                 <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="142" id="8Xx-Dl-SKG"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Push it"/>
+                                <connections>
+                                    <action selector="btnPushed:" destination="idp-YS-O2B" eventType="touchUpInside" id="HFd-HU-a6O"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="team 1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hpI-cv-SSn">
+                                <rect key="frame" x="20" y="52" width="120" height="45"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="score 1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEq-jL-wFC">
+                                <rect key="frame" x="20" y="105" width="120" height="45"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="team 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XrD-WQ-1Wc">
+                                <rect key="frame" x="460" y="52" width="120" height="45"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="score 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfo-Rn-gtR">
+                                <rect key="frame" x="460" y="105" width="120" height="45"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="DB5-QG-qPj" firstAttribute="centerX" secondItem="FQ9-CF-mcY" secondAttribute="centerX" id="N3n-yf-JWW"/>
-                            <constraint firstItem="zhO-p6-vDd" firstAttribute="top" secondItem="DB5-QG-qPj" secondAttribute="bottom" constant="422" id="Rau-kh-0Eu"/>
-                            <constraint firstItem="DB5-QG-qPj" firstAttribute="top" secondItem="nee-15-9cJ" secondAttribute="bottom" constant="8" symbolic="YES" id="oo8-1x-nVV"/>
+                            <constraint firstItem="gEq-jL-wFC" firstAttribute="width" secondItem="bfo-Rn-gtR" secondAttribute="width" id="3EZ-D4-t20"/>
+                            <constraint firstItem="hpI-cv-SSn" firstAttribute="width" secondItem="XrD-WQ-1Wc" secondAttribute="width" id="Cej-wc-pnZ"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="gEq-jL-wFC" secondAttribute="leading" id="HlV-L4-dQk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="XrD-WQ-1Wc" secondAttribute="trailing" id="LwY-ml-tz2"/>
+                            <constraint firstItem="gEq-jL-wFC" firstAttribute="top" secondItem="hpI-cv-SSn" secondAttribute="bottom" constant="8" symbolic="YES" id="PG5-ZR-hwk"/>
+                            <constraint firstItem="bfo-Rn-gtR" firstAttribute="leading" secondItem="gEq-jL-wFC" secondAttribute="trailing" constant="8" symbolic="YES" id="RmH-od-mgS"/>
+                            <constraint firstItem="XrD-WQ-1Wc" firstAttribute="top" secondItem="nee-15-9cJ" secondAttribute="bottom" constant="8" id="bZY-XF-Vzx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bfo-Rn-gtR" secondAttribute="trailing" id="c6l-yu-bRv"/>
+                            <constraint firstItem="XrD-WQ-1Wc" firstAttribute="baseline" secondItem="hpI-cv-SSn" secondAttribute="baseline" id="eas-4R-jxj"/>
+                            <constraint firstItem="XrD-WQ-1Wc" firstAttribute="leading" secondItem="hpI-cv-SSn" secondAttribute="trailing" constant="8" symbolic="YES" id="hJo-KZ-IdM"/>
+                            <constraint firstItem="bfo-Rn-gtR" firstAttribute="top" secondItem="XrD-WQ-1Wc" secondAttribute="bottom" constant="8" symbolic="YES" id="p81-9l-XrW"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="hpI-cv-SSn" secondAttribute="leading" id="uLf-FH-A7a"/>
+                            <constraint firstItem="hpI-cv-SSn" firstAttribute="top" secondItem="nee-15-9cJ" secondAttribute="bottom" constant="8" id="wJK-0P-VjP"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="scoreOne" destination="gEq-jL-wFC" id="Utc-fP-qDr"/>
+                        <outlet property="scoreTwo" destination="bfo-Rn-gtR" id="Lgs-0E-2qH"/>
+                        <outlet property="teamOne" destination="hpI-cv-SSn" id="lc8-SB-buw"/>
+                        <outlet property="teamTwo" destination="XrD-WQ-1Wc" id="9Gl-RK-kKn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Olf-rK-hXZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2914" y="1871"/>
+            <point key="canvasLocation" x="2914" y="1870.5"/>
         </scene>
         <!--teamView-->
         <scene sceneID="l84-4Y-fBT">
@@ -580,7 +624,7 @@
         <!--Info-->
         <scene sceneID="6g1-Cq-DvR">
             <objects>
-                <viewController id="5J1-RU-nxD" userLabel="Info" sceneMemberID="viewController">
+                <viewController id="5J1-RU-nxD" userLabel="Info" customClass="InfoViewController" customModule="Skandiacup" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dIU-e5-Hvv"/>
                         <viewControllerLayoutGuide type="bottom" id="hYx-9M-4pQ"/>
@@ -603,12 +647,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PFJ-TU-DfO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-888" y="1017"/>
+            <point key="canvasLocation" x="-1006" y="1016.5"/>
         </scene>
         <!--News-->
         <scene sceneID="E5Q-Ho-HTY">
             <objects>
-                <viewController id="cEe-Vm-il8" userLabel="News" sceneMemberID="viewController">
+                <viewController id="cEe-Vm-il8" userLabel="News" customClass="NewsViewController" customModule="Skandiacup" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lBD-ZD-dm7"/>
                         <viewControllerLayoutGuide type="bottom" id="nRY-jZ-gPv"/>
@@ -627,7 +671,7 @@
         <!--Sosial-->
         <scene sceneID="Enk-FI-3E0">
             <objects>
-                <viewController id="M2V-gG-DgE" userLabel="Sosial" sceneMemberID="viewController">
+                <viewController id="M2V-gG-DgE" userLabel="Sosial" customClass="SosialViewController" customModule="Skandiacup" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IqF-r9-bXc"/>
                         <viewControllerLayoutGuide type="bottom" id="kpI-zb-aHU"/>
