@@ -31,6 +31,8 @@ class MatchViewController: UIViewController{
     
    override func viewDidLoad() {
         super.viewDidLoad()
+        teamView2.hidden = false
+        groupView2.hidden = true
         // Do any additional setup after loading the view, typically from a nib.
     }
 
