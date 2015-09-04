@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		236B0C391B9875FD00CDEC89 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236B0C381B9875FD00CDEC89 /* Parser.swift */; settings = {ASSET_TAGS = (); }; };
 		236B0C3B1B987C6700CDEC89 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236B0C3A1B987C6700CDEC89 /* Generator.swift */; settings = {ASSET_TAGS = (); }; };
+		2388C1511B99A73B00637F6E /* ArenaMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2388C1501B99A73B00637F6E /* ArenaMapper.swift */; settings = {ASSET_TAGS = (); }; };
 		3C803E501B984D46001A51AA /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C803E4F1B984D46001A51AA /* Functions.swift */; settings = {ASSET_TAGS = (); }; };
 		3C803E541B98528A001A51AA /* Soap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C803E531B98528A001A51AA /* Soap.swift */; settings = {ASSET_TAGS = (); }; };
 		3C803E561B9852EF001A51AA /* SoapMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C803E551B9852EF001A51AA /* SoapMock.swift */; settings = {ASSET_TAGS = (); }; };
@@ -33,6 +34,7 @@
 		D52496621B988364001D3577 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52496611B988364001D3577 /* TeamViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D52496641B988546001D3577 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52496631B988546001D3577 /* GroupViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D55D9CF61B99949B00DD01E1 /* SWXMLHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55D9CF51B99949B00DD01E1 /* SWXMLHash.swift */; settings = {ASSET_TAGS = (); }; };
+		D5774F451B999D3B002F9451 /* MatchesMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5774F441B999D3B002F9451 /* MatchesMapper.swift */; settings = {ASSET_TAGS = (); }; };
 		D5A1FFCF1B975A2B00938025 /* SOAPrepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A1FFCE1B975A2B00938025 /* SOAPrepo.swift */; settings = {ASSET_TAGS = (); }; };
 		D5FD4EC71B94AFEB009B53FC /* Datasource2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD4EC61B94AFEB009B53FC /* Datasource2.swift */; settings = {ASSET_TAGS = (); }; };
 		D5FD4ECB1B94B8CA009B53FC /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD4ECA1B94B8CA009B53FC /* FavoritesViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -68,6 +70,7 @@
 /* Begin PBXFileReference section */
 		236B0C381B9875FD00CDEC89 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		236B0C3A1B987C6700CDEC89 /* Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
+		2388C1501B99A73B00637F6E /* ArenaMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArenaMapper.swift; sourceTree = "<group>"; };
 		3C803E4F1B984D46001A51AA /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		3C803E531B98528A001A51AA /* Soap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Soap.swift; sourceTree = "<group>"; };
 		3C803E551B9852EF001A51AA /* SoapMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoapMock.swift; sourceTree = "<group>"; };
@@ -98,6 +101,7 @@
 		D52496611B988364001D3577 /* TeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
 		D52496631B988546001D3577 /* GroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		D55D9CF51B99949B00DD01E1 /* SWXMLHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWXMLHash.swift; sourceTree = "<group>"; };
+		D5774F441B999D3B002F9451 /* MatchesMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesMapper.swift; sourceTree = "<group>"; };
 		D5A1FFCE1B975A2B00938025 /* SOAPrepo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOAPrepo.swift; sourceTree = "<group>"; };
 		D5FD4EC61B94AFEB009B53FC /* Datasource2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Datasource2.swift; sourceTree = "<group>"; };
 		D5FD4ECA1B94B8CA009B53FC /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritesViewController.swift; path = ../FavoritesViewController.swift; sourceTree = "<group>"; };
@@ -209,6 +213,7 @@
 		D51E4B0A1B94A1E700FF5DDB /* Skandiacup */ = {
 			isa = PBXGroup;
 			children = (
+				D5774F431B999CDC002F9451 /* Mappers */,
 				3C803E521B985270001A51AA /* Service */,
 				3C803E511B984F75001A51AA /* ViewController */,
 				3C803E4E1B984CAE001A51AA /* Utils */,
@@ -242,6 +247,15 @@
 				D51E4B2F1B94A1E700FF5DDB /* Info.plist */,
 			);
 			path = SkandiacupUITests;
+			sourceTree = "<group>";
+		};
+		D5774F431B999CDC002F9451 /* Mappers */ = {
+			isa = PBXGroup;
+			children = (
+				D5774F441B999D3B002F9451 /* MatchesMapper.swift */,
+				2388C1501B99A73B00637F6E /* ArenaMapper.swift */,
+			);
+			name = Mappers;
 			sourceTree = "<group>";
 		};
 		D5FD4ECE1B94C781009B53FC /* Domain */ = {
@@ -418,6 +432,8 @@
 				3C803E541B98528A001A51AA /* Soap.swift in Sources */,
 				D5A1FFCF1B975A2B00938025 /* SOAPrepo.swift in Sources */,
 				D5FD4ECB1B94B8CA009B53FC /* FavoritesViewController.swift in Sources */,
+				2388C1511B99A73B00637F6E /* ArenaMapper.swift in Sources */,
+				D5774F451B999D3B002F9451 /* MatchesMapper.swift in Sources */,
 				3C803E5A1B98550D001A51AA /* Config.swift in Sources */,
 				236B0C391B9875FD00CDEC89 /* Parser.swift in Sources */,
 				3C803E561B9852EF001A51AA /* SoapMock.swift in Sources */,
