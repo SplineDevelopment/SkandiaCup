@@ -24,7 +24,7 @@ class FirstViewController: UIViewController {
             //print(matches)
             print(matches.count)
         }
-        SharingManager.soap.getTournamentClub(nil, countryCode: nil) { (clubs) -> () in
+        SharingManager.soap.getTournamentClub([7161221], countryCode: nil) { (clubs) -> () in
             print(clubs)
         }
     }

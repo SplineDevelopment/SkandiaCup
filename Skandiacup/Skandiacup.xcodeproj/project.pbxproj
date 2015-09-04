@@ -258,6 +258,8 @@
 				D5774F441B999D3B002F9451 /* MatchesMapper.swift */,
 				2388C1501B99A73B00637F6E /* ArenaMapper.swift */,
 				2388C1521B99D5CD00637F6E /* TournamentClubsMapper.swift */,
+				D5EAE5471B99C55100AA3AF1 /* FieldsMapper.swift */,
+				D5EAE5491B99C82700AA3AF1 /* MatchTablesMapper.swift */,
 			);
 			name = Mappers;
 			sourceTree = "<group>";
