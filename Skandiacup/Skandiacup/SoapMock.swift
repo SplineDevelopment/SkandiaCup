@@ -9,22 +9,31 @@
 import Foundation
 
 class SoapMock: Soap {
-    func getArena(id: [Int], completionHandler: (arenas: [Arena]) -> ()) {
-        var arena = [Arena]()
-        arena.append(Arena(arenaID: 1, arenaName: "Test1", arenaDescription: "Desc1", update_timestamp: "0"))
-        arena.append(Arena(arenaID: 2, arenaName: "Test2", arenaDescription: "Desc2", update_timestamp: "123"))
-        arena.append(Arena(arenaID: 3, arenaName: "Test3", arenaDescription: "Desc3", update_timestamp: "666"))
-        arena.append(Arena(arenaID: 4, arenaName: "Test4", arenaDescription: "Desc4", update_timestamp: "999"))
-        completionHandler(arenas: arena.filter({id.contains($0.arenaID!)}))
+    func getArena(id: [Int]?, completionHandler: (arenas: [Arena]) -> ()) {
+        var arenaTab = [Arena]()
+        arenaTab.append(Arena(arenaID: 1, arenaName: "Test1", arenaDescription: "Desc1", update_timestamp: "0"))
+        arenaTab.append(Arena(arenaID: 2, arenaName: "Test2", arenaDescription: "Desc2", update_timestamp: "123"))
+        arenaTab.append(Arena(arenaID: 3, arenaName: "Test3", arenaDescription: "Desc3", update_timestamp: "666"))
+        arenaTab.append(Arena(arenaID: 4, arenaName: "Test4", arenaDescription: "Desc4", update_timestamp: "999"))
+        completionHandler(arenas: id != nil ? arenaTab.filter({id!.contains($0.arenaID!)}) : arenaTab)
     }
     
-    
-    func getTournamentClub(id: [Int]) -> [TournamentClub]?{
-        var tournamentClub = [TournamentClub]()
-        tournamentClub.append(TournamentClub(id: 1, name: "Club1", countryCode: "NO"))
-        tournamentClub.append(TournamentClub(id: 2, name: "Club2", countryCode: "NO"))
-        tournamentClub.append(TournamentClub(id: 3, name: "Club3", countryCode: "NO"))
-        return tournamentClub.filter({id.contains($0.id!)})
+    func getTournamentClub(id: [Int]?, countryCode: String?, completionHandler: (clubs: [TournamentClub]) -> ()) {
+        var clubTab = [TournamentClub]()
+        clubTab.append(TournamentClub(id: 1, name: "Club1", countryCode: "NO"))
+        clubTab.append(TournamentClub(id: 2, name: "Club2", countryCode: "NO"))
+        clubTab.append(TournamentClub(id: 3, name: "Club3", countryCode: "NO"))
+        if id != nil {
+            completionHandler(clubs: clubTab.filter({
+                $0.id != nil ? id!.contains($0.id!) : false
+            }))
+        }
+        else if countryCode != nil {
+            completionHandler(clubs: clubTab.filter({$0.countryCode == countryCode}))
+        }
+        else {
+            completionHandler(clubs: clubTab)
+        }
     }
     
     func getField(id: [Int]) -> [Field]?{

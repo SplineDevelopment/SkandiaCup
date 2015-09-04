@@ -14,8 +14,18 @@ class FirstViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         // TESTING 
-        SharingManager.soap.getArena([1,2,3,10]) { (arenas) -> Void in
+        SharingManager.soap.getArena([1,2,182256]) { (arenas) -> () in
             print(arenas)
+        }
+        SharingManager.soap.getArena(nil) { (arenas) -> () in
+            print(arenas)
+        }
+        SharingManager.soap.getMatches(nil, groupID: 3001448, teamID: 14084631) { (matches) -> () in
+            //print(matches)
+            print(matches.count)
+        }
+        SharingManager.soap.getTournamentClub(nil, countryCode: nil) { (clubs) -> () in
+            print(clubs)
         }
     }
 

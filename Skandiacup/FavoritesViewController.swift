@@ -28,8 +28,8 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
 ////        print(xml["root"]["catalog"]["book"][1]["author"].element?.text)
 //        print(xml["SOAP-ENV:Envelope"]["SOAP-ENV:Body"])
         
-        SharingManager.soap.getMatches { (matches) -> () in
-        }
+        //SharingManager.soap.getMatches { (matches) -> () in
+        //}
         
 
         // Do any additional setup after loading the view.

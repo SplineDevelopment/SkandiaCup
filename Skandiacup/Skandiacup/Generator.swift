@@ -10,32 +10,53 @@ import Foundation
 
 class Generator {
     
-    static let instance: Generator = Generator()
+    private static func generateMessage(messageFor: String, innerXML: String?) -> String {
+        let start = "<soapenv:Envelope xmlns:soapenv='http://schemas.xmlsoap.org/soap/envelope/' xmlns:for='http://profixio.com/soap/tournament/ForTournamentExt.php'><soapenv:Header/><soapenv:Body>"
+        let forXML = "<for:" + messageFor + ">"
+        let appKeyTournamentID = Config.appKeyTournamentID
+        let endForXML = "</for:" + messageFor + ">"
+        let end = "</soapenv:Body></soapenv:Envelope>"
+        if innerXML != nil {
+            return start + forXML + appKeyTournamentID + innerXML! + endForXML + end
+        }
+        return start + forXML + appKeyTournamentID + endForXML + end
+    }
     
-    let soapMessage = "<soapenv:Envelope xmlns:soapenv='http://schemas.xmlsoap.org/soap/envelope/' xmlns:for='http://profixio.com/soap/tournament/ForTournamentExt.php'><soapenv:Header/><soapenv:Body><for:getTournamentMatchStatus><application_key>demo2015uefa</application_key><tournamentID>11</tournamentID><since>2015-09-03 09:00:00</since></for:getTournamentMatchStatus></soapenv:Body></soapenv:Envelope>"
-    
-    let getArenasMessage = "<soapenv:Envelope xmlns:soapenv='http://schemas.xmlsoap.org/soap/envelope/' xmlns:for='http://profixio.com/soap/tournament/ForTournamentExt.php'><soapenv:Header/><soapenv:Body><for:getArenas><application_key>demo2015uefa</application_key><tournamentID>11</tournamentID><since>2015-09-03 09:00:00</since></for:getArenas></soapenv:Body></soapenv:Envelope>"
-    
-    let getTournamentMatches = "<soapenv:Envelope xmlns:soapenv='http://schemas.xmlsoap.org/soap/envelope/' xmlns:for='http://profixio.com/soap/tournament/ForTournamentExt.php'><soapenv:Header/><soapenv:Body><for:getMatches><application_key>demo2015uefa</application_key><tournamentID>11</tournamentID><since>2014-09-03 09:00:00</since></for:getMatches></soapenv:Body></soapenv:Envelope>"
-    
-    func testArenaGenerator() -> NSMutableURLRequest {
+    private static func generateRequest(message: String) -> NSMutableURLRequest {
         let request = NSMutableURLRequest(URL: NSURL(string: "http://profixio.com/soap/tournament/ForTournamentExt.php")!)
         request.HTTPMethod = "POST"
         request.addValue("text/xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        request.addValue(String(soapMessage.characters.count), forHTTPHeaderField: "Content-Length")
-        let postString = getArenasMessage
-        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+        request.addValue(String(message.characters.count), forHTTPHeaderField: "Content-Length")
+        request.HTTPBody = message.dataUsingEncoding(NSUTF8StringEncoding)
         return request
     }
     
-    func generateGetMatchesXML() -> NSMutableURLRequest {
-        let request = NSMutableURLRequest(URL: NSURL(string: "http://profixio.com/soap/tournament/ForTournamentExt.php")!)
-        request.HTTPMethod = "POST"
-        request.addValue("text/xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        request.addValue(String(soapMessage.characters.count), forHTTPHeaderField: "Content-Length")
-        let postString = getTournamentMatches
-        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
-        return request
+    static func generateGetArenasXML() -> NSMutableURLRequest {
+        let messageFor = "getArenas"
+        let innerXML = "<since>2015-09-03 09:00:00</since>"
+        let getArenaMessage = generateMessage(messageFor, innerXML: innerXML)
+        return generateRequest(getArenaMessage)
     }
     
+    static func generateGetMatchesXML(classID: Int?, groupID: Int?) -> NSMutableURLRequest {
+        let messageFor = "getMatches"
+        var innerXML = ""
+        if classID != nil {
+            innerXML += "<classID>" + String(classID!) + "</classID>"
+        }
+        if groupID != nil {
+            innerXML += "<groupID>" + String(groupID!) + "</groupID>"
+        }
+        let since = "<since>2014-09-03 09:00:00</since>"
+        innerXML += since
+        let getTournamentMatches = generateMessage(messageFor, innerXML: innerXML)
+        return generateRequest(getTournamentMatches)
+    }
+    
+    static func generateGetClubsXML() -> NSMutableURLRequest {
+        let messageFor = "getClubs"
+        let innerXML : String? = nil
+        let getClubs = generateMessage(messageFor, innerXML: innerXML)
+        return generateRequest(getClubs)
+    }
 }
