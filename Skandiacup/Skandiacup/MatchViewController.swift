@@ -10,19 +10,18 @@ import UIKit
 
 class MatchViewController: UIViewController{
     @IBOutlet weak var segmentControl: UISegmentedControl!
-//    @IBOutlet weak var teamView: UIView!
-    @IBOutlet weak var groupView2: UIView!
-    @IBOutlet weak var teamView2: UIView!
-//    @IBOutlet weak var groupView: UIView!
+    @IBOutlet weak var teamsView: UIView!
+    @IBOutlet weak var groupsView: UIView!
+
     
     @IBAction func indexChanged(sender: AnyObject) {
         switch segmentControl.selectedSegmentIndex {
         case 0:
-            teamView2.hidden = false
-            groupView2.hidden = true
+            teamsView.hidden = false
+            groupsView.hidden = true
         case 1:
-            teamView2.hidden = true
-            groupView2.hidden = false
+            teamsView.hidden = true
+            groupsView.hidden = false
         default:
             break;
         }
@@ -31,8 +30,8 @@ class MatchViewController: UIViewController{
     
    override func viewDidLoad() {
         super.viewDidLoad()
-        teamView2.hidden = false
-        groupView2.hidden = true
+        teamsView.hidden = false
+        groupsView.hidden = true
         // Do any additional setup after loading the view, typically from a nib.
     }
 
