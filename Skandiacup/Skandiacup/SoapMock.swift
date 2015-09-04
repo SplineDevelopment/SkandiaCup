@@ -61,9 +61,8 @@ class SoapMock: Soap {
         return matchGroup
     }
 
-    func getMatches(classID: Int?, groupID: Int?, teamID: Int?, completionHandler: (matches: [TournamentMatch]) -> ()) {
-        let matchesTab = [TournamentMatch]()
-        completionHandler(matches: matchesTab)
+    func getMatches(completionHandler: (matches: [TournamentMatch]) -> ()) {
+        //completionHandler(matches: nil)
     }
     
 
