@@ -28,6 +28,7 @@
 		D52496601B9876F4001D3577 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D524965F1B9876F4001D3577 /* GroupsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D52496621B988364001D3577 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52496611B988364001D3577 /* TeamViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D52496641B988546001D3577 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52496631B988546001D3577 /* GroupViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		D55D9CF61B99949B00DD01E1 /* SWXMLHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55D9CF51B99949B00DD01E1 /* SWXMLHash.swift */; settings = {ASSET_TAGS = (); }; };
 		D5A1FFCF1B975A2B00938025 /* SOAPrepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A1FFCE1B975A2B00938025 /* SOAPrepo.swift */; settings = {ASSET_TAGS = (); }; };
 		D5FD4EC71B94AFEB009B53FC /* Datasource2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD4EC61B94AFEB009B53FC /* Datasource2.swift */; settings = {ASSET_TAGS = (); }; };
 		D5FD4ECB1B94B8CA009B53FC /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD4ECA1B94B8CA009B53FC /* FavoritesViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -88,6 +89,7 @@
 		D524965F1B9876F4001D3577 /* GroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		D52496611B988364001D3577 /* TeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
 		D52496631B988546001D3577 /* GroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
+		D55D9CF51B99949B00DD01E1 /* SWXMLHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWXMLHash.swift; sourceTree = "<group>"; };
 		D5A1FFCE1B975A2B00938025 /* SOAPrepo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOAPrepo.swift; sourceTree = "<group>"; };
 		D5FD4EC61B94AFEB009B53FC /* Datasource2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Datasource2.swift; sourceTree = "<group>"; };
 		D5FD4ECA1B94B8CA009B53FC /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritesViewController.swift; path = ../FavoritesViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 		3C803E4E1B984CAE001A51AA /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D55D9CF51B99949B00DD01E1 /* SWXMLHash.swift */,
 				3C803E4F1B984D46001A51AA /* Functions.swift */,
 				236B0C381B9875FD00CDEC89 /* Parser.swift */,
 				236B0C3A1B987C6700CDEC89 /* Generator.swift */,
@@ -389,6 +392,7 @@
 				D51E4B0C1B94A1E700FF5DDB /* AppDelegate.swift in Sources */,
 				D51E4B0E1B94A1E700FF5DDB /* FirstViewController.swift in Sources */,
 				3C803E501B984D46001A51AA /* Functions.swift in Sources */,
+				D55D9CF61B99949B00DD01E1 /* SWXMLHash.swift in Sources */,
 				D5FD4EDE1B94CF3E009B53FC /* MatchTable.swift in Sources */,
 				D5FD4ED01B94C79B009B53FC /* Arena.swift in Sources */,
 				D52496621B988364001D3577 /* TeamViewController.swift in Sources */,
