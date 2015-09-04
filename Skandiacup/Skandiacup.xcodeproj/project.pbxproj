@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		236B0C391B9875FD00CDEC89 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236B0C381B9875FD00CDEC89 /* Parser.swift */; settings = {ASSET_TAGS = (); }; };
 		236B0C3B1B987C6700CDEC89 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236B0C3A1B987C6700CDEC89 /* Generator.swift */; settings = {ASSET_TAGS = (); }; };
+		2388C1511B99A73B00637F6E /* ArenaMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2388C1501B99A73B00637F6E /* ArenaMapper.swift */; settings = {ASSET_TAGS = (); }; };
 		3C803E501B984D46001A51AA /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C803E4F1B984D46001A51AA /* Functions.swift */; settings = {ASSET_TAGS = (); }; };
 		3C803E541B98528A001A51AA /* Soap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C803E531B98528A001A51AA /* Soap.swift */; settings = {ASSET_TAGS = (); }; };
 		3C803E561B9852EF001A51AA /* SoapMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C803E551B9852EF001A51AA /* SoapMock.swift */; settings = {ASSET_TAGS = (); }; };
@@ -65,6 +66,7 @@
 /* Begin PBXFileReference section */
 		236B0C381B9875FD00CDEC89 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		236B0C3A1B987C6700CDEC89 /* Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
+		2388C1501B99A73B00637F6E /* ArenaMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArenaMapper.swift; sourceTree = "<group>"; };
 		3C803E4F1B984D46001A51AA /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		3C803E531B98528A001A51AA /* Soap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Soap.swift; sourceTree = "<group>"; };
 		3C803E551B9852EF001A51AA /* SoapMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoapMock.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				D5774F441B999D3B002F9451 /* MatchesMapper.swift */,
+				2388C1501B99A73B00637F6E /* ArenaMapper.swift */,
 			);
 			name = Mappers;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 				3C803E541B98528A001A51AA /* Soap.swift in Sources */,
 				D5A1FFCF1B975A2B00938025 /* SOAPrepo.swift in Sources */,
 				D5FD4ECB1B94B8CA009B53FC /* FavoritesViewController.swift in Sources */,
+				2388C1511B99A73B00637F6E /* ArenaMapper.swift in Sources */,
 				D5774F451B999D3B002F9451 /* MatchesMapper.swift in Sources */,
 				3C803E5A1B98550D001A51AA /* Config.swift in Sources */,
 				236B0C391B9875FD00CDEC89 /* Parser.swift in Sources */,
