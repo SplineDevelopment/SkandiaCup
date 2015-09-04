@@ -25,27 +25,26 @@ class SoapImpl: Soap {
         task.resume()
     }
     
-    func getArena(id: [Int], completionHandler: (arenas: [Arena]?) -> Void) -> Void {
+    func getArena(id: [Int], completionHandler: (arenas: [Arena]?) -> ()) {
         let request = Generator.instance.testArenaGenerator()
-        
-        //let data : Dictionary<String, String>
-        
         self.sendReceive(request) { (responseData) -> Void in
             let xmlparser = NSXMLParser(data: responseData!)
             xmlparser.delegate = Parser.instance
             let key = Parser.instance.getCurrentKey()
             xmlparser.parse()
             let arenaDict = Parser.instance.getValue(key: key)!
-            //print(arenaDict)
             
+            // DO SOMETHING HERE ::: TODO
             var arenaTab = [Arena]()
             
             //let arenaDict1 = arenaDict[0]
             
-            let a1 = arenaDict["update_timestamp"]
-            let a2 = Int(arenaDict["arenaID"]!)
+            let a1 = Int(arenaDict["arenaID"]!)
+            let a3 = arenaDict["arenaDescription"]
+            let a2 = arenaDict["arenaName"]
+            let a4 = arenaDict["update_timestamp"]
                 
-            let arena1 = Arena(arenaID: a2, arenaName: "test", arenaDescription: "Test", update_timestamp: a1)
+            let arena1 = Arena(arenaID: a1, arenaName: a2, arenaDescription: a3, update_timestamp: a4)
             
             arenaTab.append(arena1)
             
@@ -79,6 +78,20 @@ class SoapImpl: Soap {
     
     func getMatchGroup(id: [Int]) -> [MatchGroup]?{
         return nil
+    }
+    
+    func getMatches(completionHandler: (matches: [TournamentMatch]?) -> ()) {
+        let request = Generator.instance.generateGetMatchesXML()
+        self.sendReceive(request) { (responseData) -> () in
+            
+            let xmlparser = NSXMLParser(data: responseData!)
+            xmlparser.delegate = Parser.instance
+            let key = Parser.instance.getCurrentKey()
+            xmlparser.parse()
+            let tournamentDict = Parser.instance.getValue(key: key)!
+            print(tournamentDict)
+            completionHandler(matches: nil)
+        }
     }
     
 }
