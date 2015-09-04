@@ -15,7 +15,7 @@ struct TournamentMatch{
     var classId: Int?
     var homeTeamId :Int?
     var homeTeamName: String?
-    var awayTeamId: String?
+    var awayTeamId: Int?
     var awayTeamName: String?
     var homeClubId: Int?
     var homeClubName: String?
