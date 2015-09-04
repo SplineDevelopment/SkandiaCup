@@ -24,13 +24,16 @@ class MatchViewController: UIViewController {
 
     @IBAction func btnPushed(sender: AnyObject) {
         
-        //flagOne.text = "🇳🇴"
+        flagOne.text = "🇳🇴"
         teamOne.text = "Rosenborg"
         scoreOne.text = "3"
         teamTwo.text = "Abugutha"
         scoreTwo.text = "2"
-        //flagTwo.text = "🇰🇲"
+        flagTwo.text = "🇰🇲"
 
+        flagOne.font = UIFont.systemFontOfSize(30)
+        
+        flagTwo.font = UIFont.systemFontOfSize(30)
         
         
         

@@ -53,7 +53,7 @@ class SoapMock: Soap {
     }
 
     func getMatches(completionHandler: (matches: [TournamentMatch]) -> ()) {
-        completionHandler(matches: nil)
+        //completionHandler(matches: nil)
     }
     
 
