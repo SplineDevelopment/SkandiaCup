@@ -10,12 +10,29 @@ import UIKit
 
 class TeamViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var matchTableView: UITableView!
+    @IBOutlet weak var infoLabel: UILabel!
     var matches = ["Kamp1", "Kamp2", "Kamp3"]
+    
+    var currentTeam: TournamentTeam? {
+        didSet {
+            configureView()
+        }
+    }
+    
+    func configureView(){
+        if let team = self.currentTeam{
+            if let label = self.infoLabel {
+                label.text = label.text! + team.name!
+            }
+            self.title = team.name
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         matchTableView.delegate = self
         matchTableView.dataSource = self
+        self.configureView()
         // Do any additional setup after loading the view.
     }
     

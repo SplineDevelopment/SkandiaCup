@@ -10,15 +10,21 @@ import UIKit
 
 class TeamsViewController: UIViewController , UITableViewDataSource, UITableViewDelegate{
     @IBOutlet weak var teamTableView: UITableView!
-    var teams: [String] = ["Lag1", "Lag2", "Lag3"]
     
-    
+    var teams: [TournamentTeam]? {
+        didSet{
+            self.teamTableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         teamTableView.dataSource = self
         teamTableView.delegate = self
         
+        SharingManager.soap.getTeams(nil) { (teams) -> () in
+            self.teams = teams
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -29,16 +35,13 @@ class TeamsViewController: UIViewController , UITableViewDataSource, UITableView
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("teamCell") as UITableViewCell!
-        cell.textLabel?.text = teams[indexPath.row]
+        cell.textLabel?.text = teams![indexPath.row].name
         return cell
     }
     
-//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//
-//    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return teams.count
+        return teams != nil ? teams!.count : 0
     }
     
     // UITableViewDelegate Functions
@@ -58,6 +61,15 @@ class TeamsViewController: UIViewController , UITableViewDataSource, UITableView
     
     override func viewWillDisappear(animated: Bool) {
         
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "listToTeamView") {
+            if let indexPath = self.teamTableView.indexPathForSelectedRow{
+                let selectedTeam = teams![indexPath.row]
+                (segue.destinationViewController as! TeamViewController).currentTeam = selectedTeam
+            }
+        }
     }
 
 }

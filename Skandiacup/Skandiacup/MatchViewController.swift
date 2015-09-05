@@ -9,6 +9,11 @@
 import UIKit
 
 class MatchViewController: UIViewController {
+    var selectedMatch: String? = "" {
+        didSet{
+            self.configureView()
+        }
+    }
     
     @IBOutlet weak var flagOne: UILabel!
     
@@ -38,10 +43,11 @@ class MatchViewController: UIViewController {
         
         
     }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
+        self.configureView()
         // Do any additional setup after loading the view.
     }
 
@@ -50,6 +56,9 @@ class MatchViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func configureView(){
+        
+    }
 
     /*
     // MARK: - Navigation

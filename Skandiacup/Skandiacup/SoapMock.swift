@@ -69,5 +69,16 @@ class SoapMock: Soap {
         
     }
     
+    func getTeams(id: [Int]?, completionHandler: (teams: [TournamentTeam]) -> ()){
+        var tournamentTeams = [TournamentTeam]()
+        tournamentTeams.append(TournamentTeam(id: 1, name: "Flint", clubId: 1, matchGroupId: 3, matchClassId: 3, tournamentTeamRegistrationId: 3, updateTimestamp: "nein", shirtColor: "Blå", countryCode: "NO"))
+        tournamentTeams.append(TournamentTeam(id: 2, name: "HISSI", clubId: 4, matchGroupId: 3, matchClassId: 3, tournamentTeamRegistrationId: 3, updateTimestamp: "nein", shirtColor: "Blå", countryCode: "NO"))
+        tournamentTeams.append(TournamentTeam(id: 3, name: "FKTonsberg", clubId: 1337, matchGroupId: 3, matchClassId: 3, tournamentTeamRegistrationId: 3, updateTimestamp: "nein", shirtColor: "Blå", countryCode: "NO"))
+        tournamentTeams.append(TournamentTeam(id: 4, name: "Rosenborg", clubId: 8, matchGroupId: 3, matchClassId: 3, tournamentTeamRegistrationId: 3, updateTimestamp: "nein", shirtColor: "Blå", countryCode: "NO"))
+        
+        completionHandler(teams: id != nil ? tournamentTeams.filter({id!.contains($0.id!)}) : tournamentTeams)
+        
+    }
+    
 
 }

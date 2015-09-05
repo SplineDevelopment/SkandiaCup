@@ -59,4 +59,11 @@ class Generator {
         let getClubs = generateMessage(messageFor, innerXML: innerXML)
         return generateRequest(getClubs)
     }
+    
+    static func generateGetTeamsXML() -> NSMutableURLRequest {
+        let messageFor = "getTeams"
+        let innerXML = "<since>2015-09-03 09:00:00</since>"
+        let getTeamsMessage = generateMessage(messageFor, innerXML: innerXML)
+        return generateRequest(getTeamsMessage)
+    }
 }
