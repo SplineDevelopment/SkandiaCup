@@ -11,12 +11,44 @@ import UIKit
 class TeamViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var matchTableView: UITableView!
     @IBOutlet weak var infoLabel: UILabel!
-    var matches = ["Kamp1", "Kamp2", "Kamp3"]
+    
+    var matches: [TournamentMatch]? {
+        didSet{
+            self.matchTableView.reloadData()
+        }
+    }
     
     var currentTeam: TournamentTeam? {
         didSet {
             configureView()
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        matchTableView.delegate = self
+        matchTableView.dataSource = self
+        self.configureView()
+        
+        SharingManager.soap.getMatches(nil, groupID: nil, teamID: currentTeam?.id) { (matches) -> () in
+            self.matches = matches
+        }
+        // Do any additional setup after loading the view.
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return matches != nil ? matches!.count : 0
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as UITableViewCell!
+        cell.textLabel?.text = "\(matches![indexPath.row].homeTeamName!) \(matches![indexPath.row].homegoal!)  - \(matches![indexPath.row].awaygoal!) \(matches![indexPath.row].awayTeamName!) "
+        return cell
     }
     
     func configureView(){
@@ -28,29 +60,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        matchTableView.delegate = self
-        matchTableView.dataSource = self
-        self.configureView()
-        // Do any additional setup after loading the view.
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return matches.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as UITableViewCell!
-        cell.textLabel?.text = matches[indexPath.row]
-        return cell
-    }
-    
     /*
     // MARK: - Navigation
     
@@ -60,5 +69,4 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     // Pass the selected object to the new view controller.
     }
     */
-    
 }
