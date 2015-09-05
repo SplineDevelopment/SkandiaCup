@@ -13,7 +13,9 @@ class TeamsViewController: UIViewController , UITableViewDataSource, UITableView
     
     var teams: [TournamentTeam]? {
         didSet{
-            self.teamTableView.reloadData()
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.teamTableView.reloadData()
+            })
         }
     }
     
