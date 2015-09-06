@@ -21,15 +21,19 @@ class FirstViewController: UIViewController {
             print(arenas)
         }
         SharingManager.soap.getMatches(nil, groupID: 3001448, teamID: 14084631) { (matches) -> () in
-            //print(matches)
             print(matches.count)
+            if matches.count > 0 {
+                print(matches[0])
+            }
         }
         SharingManager.soap.getTournamentClub([7161221], countryCode: nil) { (clubs) -> () in
             print(clubs)
         }
         SharingManager.soap.getField(nil, fieldID: nil) { (fields) -> () in
-            print(fields)
             print(fields.count)
+            if fields.count > 0 {
+                print(fields[0])
+            }
         }
     }
 

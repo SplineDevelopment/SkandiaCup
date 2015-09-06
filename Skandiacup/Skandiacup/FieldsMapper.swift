@@ -11,14 +11,10 @@ import Foundation
 class FieldsMapper: NSObject {
     static func mapFields(xml: XMLIndexer) -> [Field] {
         var arr = [Field]()
-//        SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="http://profixio.com/soap/tournament/ForTournamentExt.php"
-//        ????
-//        TODO,, replace? bug?
         for elem in xml["SOAP-ENV:Envelope"]["SOAP-ENV:Body"]["ns1:getFieldsResponse"]["getFieldsResult"]["item"]{
             var field: Field = Field()
-
-            if elem["fieldId"].element?.text != nil{
-                field.fieldID = Int((elem["fieldId"].element?.text)!)
+            if elem["fieldID"].element?.text != nil{
+                field.fieldID = Int((elem["fieldID"].element?.text)!)
             }
             
             if elem["arenaID"].element?.text != nil{
@@ -36,6 +32,7 @@ class FieldsMapper: NSObject {
             if elem["update_timestamp"].element?.text != nil{
                 field.update_timestamp = elem["update_timestamp"].element?.text
             }
+            arr.append(field)
         }
         return arr
     }
