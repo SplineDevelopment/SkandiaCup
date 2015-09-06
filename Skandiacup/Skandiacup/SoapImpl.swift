@@ -55,8 +55,23 @@ class SoapImpl: Soap {
         }
     }
     
-    func getField(id: [Int]) -> [Field]?{
-        return nil
+    func getField(arenaID: Int?, fieldID: Int?, completionHandler: (fields: [Field]) -> ()) {
+        let request = Generator.generateGetFieldsXML(arenaID)
+        self.sendReceive(request) { (responseData) -> Void in
+            print(responseData)
+            let xml = SWXMLHash.parse(responseData)
+            let fieldTab = FieldsMapper.mapFields(xml)
+            print(fieldTab)
+            if fieldID != nil {
+                print(fieldID)
+                print("test")
+                completionHandler(fields: fieldTab.filter({$0.fieldID == fieldID}))
+            }
+            else {
+                print("hei")
+                completionHandler(fields: fieldTab)
+            }
+        }
     }
 
     func getMatchClass(id: [Int]) -> [MatchClass]?{

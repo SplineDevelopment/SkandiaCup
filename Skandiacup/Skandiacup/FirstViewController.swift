@@ -27,6 +27,10 @@ class FirstViewController: UIViewController {
         SharingManager.soap.getTournamentClub([7161221], countryCode: nil) { (clubs) -> () in
             print(clubs)
         }
+        SharingManager.soap.getField(nil, fieldID: nil) { (fields) -> () in
+            print(fields)
+            print(fields.count)
+        }
     }
 
     override func didReceiveMemoryWarning() {

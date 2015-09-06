@@ -36,12 +36,23 @@ class SoapMock: Soap {
         }
     }
     
-    func getField(id: [Int]) -> [Field]?{
+    func getField(arenaID: Int?, fieldID: Int?, completionHandler: (fields: [Field]) -> ()) {
         var field = [Field]()
         field.append(Field(fieldID: 1, arenaID: 1, fieldName: "Bane1", fieldDescription: "Bane1Nord", update_timestamp: ""))
         field.append(Field(fieldID: 2, arenaID: 1, fieldName: "Bane2", fieldDescription: "Bane2Nord", update_timestamp: ""))
         field.append(Field(fieldID: 3, arenaID: 1, fieldName: "Bane2", fieldDescription: "Bane3Nord", update_timestamp: ""))
-        return field.filter({id.contains($0.fieldID!)})
+        completionHandler(fields: field.filter({
+            if arenaID != nil && fieldID != nil {
+                return $0.arenaID == arenaID && $0.fieldID == fieldID
+            }
+            if arenaID != nil {
+                return $0.arenaID == arenaID
+            }
+            if fieldID != nil {
+                return $0.fieldID == fieldID
+            }
+            return false
+        }))
     }
         
     func getMatchClass(id: [Int]) -> [MatchClass]?{

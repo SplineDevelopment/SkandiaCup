@@ -66,4 +66,15 @@ class Generator {
         let getTeamsMessage = generateMessage(messageFor, innerXML: innerXML)
         return generateRequest(getTeamsMessage)
     }
+    
+    static func generateGetFieldsXML(arenaID: Int?) -> NSMutableURLRequest {
+        let messageFor = "getFields"
+        var innerXML = ""
+        if arenaID != nil {
+            innerXML += "<arenaID>" + String(arenaID) + "</arenaID>"
+        }
+        innerXML += "<since>2015-09-03 09:00:00</since>"
+        let getFieldsMessage = generateMessage(messageFor, innerXML: innerXML)
+        return generateRequest(getFieldsMessage)
+    }
 }
