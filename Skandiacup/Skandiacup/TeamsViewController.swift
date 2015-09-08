@@ -11,11 +11,16 @@ import UIKit
 class TeamsViewController: UIViewController , UITableViewDataSource, UITableViewDelegate{
     @IBOutlet weak var teamTableView: UITableView!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     var teams: [TournamentTeam]? {
         didSet{
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.teamTableView.hidden = false
                 self.teamTableView.reloadData()
+                self.activityIndicator.stopAnimating()
             })
+            
         }
     }
     
@@ -23,8 +28,13 @@ class TeamsViewController: UIViewController , UITableViewDataSource, UITableView
         super.viewDidLoad()
         teamTableView.dataSource = self
         teamTableView.delegate = self
+        teamTableView.hidden = true
+        activityIndicator.hidden = false
+        activityIndicator.startAnimating()
+        
         
         SharingManager.soap.getTeams(nil) { (teams) -> () in
+            sleep(5)
             self.teams = teams
         }
         // Do any additional setup after loading the view.

@@ -16,6 +16,7 @@
 		3C803E5A1B98550D001A51AA /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C803E591B98550D001A51AA /* Config.swift */; settings = {ASSET_TAGS = (); }; };
 		3C803E5C1B98563F001A51AA /* SharingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C803E5B1B98563F001A51AA /* SharingManager.swift */; settings = {ASSET_TAGS = (); }; };
 		3C803E5E1B9856E8001A51AA /* SoapImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C803E5D1B9856E8001A51AA /* SoapImpl.swift */; settings = {ASSET_TAGS = (); }; };
+		3CB9B3241B9D8F1400B48037 /* DateExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB9B3231B9D8F1400B48037 /* DateExtention.swift */; settings = {ASSET_TAGS = (); }; };
 		3CC5530D1B98C2CA008FA445 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC5530C1B98C2CA008FA445 /* HomeViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		3CDB8B311B9991CE00439028 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDB8B301B9991CE00439028 /* NewsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		3CDB8B331B99922A00439028 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDB8B321B99922A00439028 /* InfoViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -80,6 +81,7 @@
 		3C803E591B98550D001A51AA /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		3C803E5B1B98563F001A51AA /* SharingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingManager.swift; sourceTree = "<group>"; };
 		3C803E5D1B9856E8001A51AA /* SoapImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoapImpl.swift; sourceTree = "<group>"; };
+		3CB9B3231B9D8F1400B48037 /* DateExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtention.swift; sourceTree = "<group>"; };
 		3CC5530C1B98C2CA008FA445 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3CDB8B301B9991CE00439028 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		3CDB8B321B99922A00439028 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +197,14 @@
 			name = Service;
 			sourceTree = "<group>";
 		};
+		3CB9B3221B9D8EF200B48037 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3CB9B3231B9D8F1400B48037 /* DateExtention.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		D51E4AFF1B94A1E700FF5DDB = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +228,7 @@
 		D51E4B0A1B94A1E700FF5DDB /* Skandiacup */ = {
 			isa = PBXGroup;
 			children = (
+				3CB9B3221B9D8EF200B48037 /* Extensions */,
 				D5774F431B999CDC002F9451 /* Mappers */,
 				3C803E521B985270001A51AA /* Service */,
 				3C803E511B984F75001A51AA /* ViewController */,
@@ -416,6 +427,7 @@
 			files = (
 				D5FD4ED41B94C8FF009B53FC /* Field.swift in Sources */,
 				2388C1531B99D5CD00637F6E /* TournamentClubsMapper.swift in Sources */,
+				3CB9B3241B9D8F1400B48037 /* DateExtention.swift in Sources */,
 				D524965E1B9876EC001D3577 /* TeamsViewController.swift in Sources */,
 				D5FD4ED81B94CA23009B53FC /* MatchGroup.swift in Sources */,
 				3CDB8B311B9991CE00439028 /* NewsViewController.swift in Sources */,

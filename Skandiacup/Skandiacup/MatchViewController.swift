@@ -9,9 +9,11 @@
 import UIKit
 
 class MatchViewController: UIViewController {
-    var selectedMatch: String? = "" {
+    var selectedMatch: TournamentMatch? {
         didSet{
-            self.configureView()
+            if (selectedMatch==nil){
+                print("send tilbake til start med feilmeld")
+            }
         }
     }
     
@@ -27,6 +29,10 @@ class MatchViewController: UIViewController {
     
     @IBOutlet weak var flagTwo: UILabel!
 
+    @IBOutlet weak var dateLabel: UILabel!
+    
+    @IBOutlet weak var kickoffTimeLabel: UILabel!
+    
     @IBAction func btnPushed(sender: AnyObject) {
         
         flagOne.text = "🇳🇴"
@@ -49,7 +55,8 @@ class MatchViewController: UIViewController {
         super.viewDidLoad()
         self.configureView()
         // Do any additional setup after loading the view.
-    }
+        //TODO find ut hva vi skal gjore
+            }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -57,6 +64,21 @@ class MatchViewController: UIViewController {
     }
     
     func configureView(){
+        //flagOne.text = "🇳🇴"
+        teamOne.text = selectedMatch?.homeTeamName
+        scoreOne.text = selectedMatch?.homegoal
+        teamTwo.text = selectedMatch?.awayTeamName
+        scoreTwo.text = selectedMatch?.awaygoal
+        //flagTwo.text = "🇰🇲"
+        
+        
+        dateLabel.text = Date.getDateMatchView((selectedMatch?.matchDate)!)
+        kickoffTimeLabel.text = Date.getKickoffTimeMatchView((selectedMatch?.matchDate)!)
+        
+        flagOne.font = UIFont.systemFontOfSize(30)
+        
+        flagTwo.font = UIFont.systemFontOfSize(30)
+
         
     }
 
@@ -69,5 +91,7 @@ class MatchViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
 
 }

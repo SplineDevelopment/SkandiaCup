@@ -71,4 +71,27 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     // Pass the selected object to the new view controller.
     }
     */
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        //code
+        
+        if (segue.identifier == "identifierFromTeamToMatch"){
+            if let indexPath = self.matchTableView.indexPathForSelectedRow{
+                let selectedTournamentMatch = matches![indexPath.row]
+                (segue.destinationViewController as! MatchViewController).selectedMatch = selectedTournamentMatch
+            }
+        }
+        
+        
+        /*
+        if (segue.identifier == "listToTeamView") {
+        if let indexPath = self.teamTableView.indexPathForSelectedRow{
+        let selectedTeam = teams![indexPath.row]
+        (segue.destinationViewController as! TeamViewController).currentTeam = selectedTeam
+        }
+        }
+
+*/
+        
+    }
 }
