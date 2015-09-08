@@ -21,11 +21,7 @@ struct TournamentMatch{
     var homeClubName: String?
     var awayClubId: Int?
     var awayClubName: String?
-    var matchDate: String?{
-        didSet{
-            matchDate = matchDate!.stringByReplacingOccurrencesOfString("T", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-        }
-    }
+    var matchDate: String?
     var matchComment: String?
     var homeTeamText: String?
     var awayTeamText: String?

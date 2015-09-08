@@ -11,6 +11,7 @@ import UIKit
 class MatchViewController: UIViewController {
     var selectedMatch: TournamentMatch? {
         didSet{
+            //TODO
             if (selectedMatch==nil){
                 print("send tilbake til start med feilmeld")
             }
@@ -18,45 +19,26 @@ class MatchViewController: UIViewController {
     }
     
     @IBOutlet weak var flagOne: UILabel!
-    
     @IBOutlet weak var scoreOne: UILabel!
-    
     @IBOutlet weak var teamOne: UILabel!
-    
     @IBOutlet weak var teamTwo: UILabel!
-    
     @IBOutlet weak var scoreTwo: UILabel!
-    
     @IBOutlet weak var flagTwo: UILabel!
-
     @IBOutlet weak var dateLabel: UILabel!
-    
     @IBOutlet weak var kickoffTimeLabel: UILabel!
-    
-    @IBAction func btnPushed(sender: AnyObject) {
-        
-        flagOne.text = "🇳🇴"
-        teamOne.text = "Rosenborg"
-        scoreOne.text = "3"
-        teamTwo.text = "Abugutha"
-        scoreTwo.text = "2"
-        flagTwo.text = "🇰🇲"
-
-        flagOne.font = UIFont.systemFontOfSize(30)
-        
-        flagTwo.font = UIFont.systemFontOfSize(30)
-        
-        
-        
-    }
-    
+    @IBOutlet weak var fieldLabel: UILabel!
+    @IBOutlet weak var fieldImage: UIImageView!
+    var imageFullscreen = false;
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureView()
-        // Do any additional setup after loading the view.
-        //TODO find ut hva vi skal gjore
-            }
+        
+        let imageView = fieldImage
+        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("imageTapped:"))
+        imageView.addGestureRecognizer(tapGestureRecognizer)
+        
+        }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -64,13 +46,14 @@ class MatchViewController: UIViewController {
     }
     
     func configureView(){
-        //flagOne.text = "🇳🇴"
+        flagOne.text = "🇳🇴"
         teamOne.text = selectedMatch?.homeTeamName
         scoreOne.text = selectedMatch?.homegoal
         teamTwo.text = selectedMatch?.awayTeamName
         scoreTwo.text = selectedMatch?.awaygoal
-        //flagTwo.text = "🇰🇲"
-        
+        flagTwo.text = "🇳🇴"
+        print(selectedMatch?.fieldId)
+        fieldLabel.text = "Bane nummer: \(selectedMatch?.fieldId)"
         
         dateLabel.text = Date.getDateMatchView((selectedMatch?.matchDate)!)
         kickoffTimeLabel.text = Date.getKickoffTimeMatchView((selectedMatch?.matchDate)!)
@@ -80,17 +63,21 @@ class MatchViewController: UIViewController {
         flagTwo.font = UIFont.systemFontOfSize(30)
 
         
-    }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
-    */
+    func imageTapped(img: AnyObject){
+        if (!imageFullscreen){
+        let screenSize: CGRect = UIScreen.mainScreen().bounds
+        let screenWidth = screenSize.width
+        let screenHeight = screenSize.height
+        fieldImage.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight)
+            imageFullscreen = true;
+        } else {
+            print("make image small")
+            
+        }
+    }
+    
     
     
 
