@@ -9,6 +9,7 @@
 import Foundation
 
 struct Tournament{
+    static let maxCacheTime = 60 * 60 * 24 * 2
     var id: Int?
     var tournamentName: String?
     var tournamentShortName: String?
