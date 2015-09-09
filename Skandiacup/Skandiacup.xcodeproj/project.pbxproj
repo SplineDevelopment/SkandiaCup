@@ -21,6 +21,7 @@
 		3C803E5A1B98550D001A51AA /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C803E591B98550D001A51AA /* Config.swift */; settings = {ASSET_TAGS = (); }; };
 		3C803E5C1B98563F001A51AA /* SharingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C803E5B1B98563F001A51AA /* SharingManager.swift */; settings = {ASSET_TAGS = (); }; };
 		3C803E5E1B9856E8001A51AA /* SoapImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C803E5D1B9856E8001A51AA /* SoapImpl.swift */; settings = {ASSET_TAGS = (); }; };
+		3CB9B3241B9D8F1400B48037 /* DateExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB9B3231B9D8F1400B48037 /* DateExtention.swift */; settings = {ASSET_TAGS = (); }; };
 		3CC5530D1B98C2CA008FA445 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC5530C1B98C2CA008FA445 /* HomeViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		3CDB8B311B9991CE00439028 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDB8B301B9991CE00439028 /* NewsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		3CDB8B331B99922A00439028 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDB8B321B99922A00439028 /* InfoViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -88,6 +89,7 @@
 		3C803E591B98550D001A51AA /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		3C803E5B1B98563F001A51AA /* SharingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingManager.swift; sourceTree = "<group>"; };
 		3C803E5D1B9856E8001A51AA /* SoapImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoapImpl.swift; sourceTree = "<group>"; };
+		3CB9B3231B9D8F1400B48037 /* DateExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtention.swift; sourceTree = "<group>"; };
 		3CC5530C1B98C2CA008FA445 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3CDB8B301B9991CE00439028 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		3CDB8B321B99922A00439028 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -210,6 +212,14 @@
 				236D8D5F1B9D8DF000669E51 /* DataManager.swift */,
 			);
 			name = Service;
+			sourceTree = "<group>";
+		};
+		3CB9B3221B9D8EF200B48037 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3CB9B3231B9D8F1400B48037 /* DateExtention.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		D51E4AFF1B94A1E700FF5DDB = {
@@ -435,6 +445,7 @@
 				236D8D671B9D8FE900669E51 /* CacheImpl.swift in Sources */,
 				236D8D601B9D8DF000669E51 /* DataManager.swift in Sources */,
 				2388C1531B99D5CD00637F6E /* TournamentClubsMapper.swift in Sources */,
+				3CB9B3241B9D8F1400B48037 /* DateExtention.swift in Sources */,
 				D524965E1B9876EC001D3577 /* TeamsViewController.swift in Sources */,
 				D5FD4ED81B94CA23009B53FC /* MatchGroup.swift in Sources */,
 				3CDB8B311B9991CE00439028 /* NewsViewController.swift in Sources */,
@@ -615,6 +626,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Skandiacup/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SplineDevelopment.Skandiacup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -626,6 +638,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Skandiacup/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SplineDevelopment.Skandiacup;
 				PRODUCT_NAME = "$(TARGET_NAME)";

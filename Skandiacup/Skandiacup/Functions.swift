@@ -16,6 +16,34 @@ struct Date{
         let stringValue = formatter.stringFromDate(date)
         return stringValue
     }
+    
+    static func getDateMatchView(stringDateFromProfixio:String) -> String {
+        let newString = stringDateFromProfixio.stringByReplacingOccurrencesOfString("T", withString: "")
+        
+        let date = NSDate(dateString: newString)
+        
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "YYYY-MM-dd"
+        
+        return formatter.stringFromDate(date)
+        
+    }
+    
+    static func getKickoffTimeMatchView(stringDateFromProfixio:String) -> String {
+        let newString = stringDateFromProfixio.stringByReplacingOccurrencesOfString("T", withString: "")
+        
+        let date = NSDate(dateString: newString)
+        
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "HH:mm"
+        
+        return formatter.stringFromDate(date)
+        
+    }
+
+    
+    
+    
 }
 
 struct Functions {
