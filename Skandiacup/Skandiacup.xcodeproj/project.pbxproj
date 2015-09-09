@@ -246,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				236D8D611B9D8ED500669E51 /* Repository */,
+				3CB9B3221B9D8EF200B48037 /* Extensions */,
 				D5774F431B999CDC002F9451 /* Mappers */,
 				3C803E521B985270001A51AA /* Service */,
 				3C803E511B984F75001A51AA /* ViewController */,
