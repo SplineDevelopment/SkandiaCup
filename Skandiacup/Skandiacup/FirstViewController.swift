@@ -18,10 +18,16 @@ class FirstViewController: UIViewController {
                 //print(matches[0])
             }
         }
+        
+        print("test2")
+        SharingManager.data.getTournamentClub([7161221], countryCode: nil) { (clubs) -> () in
+            print(clubs)
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         // Do any additional setup after loading the view, typically from a nib.
         // TESTING 
 //        SharingManager.soap.getArena([1,2,182256]) { (arenas) -> () in
