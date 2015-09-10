@@ -35,7 +35,22 @@ class DataManager {
     }
     
     func getTournamentClub(id: [Int]?, countryCode: String?, completionHandler: (clubs: [TournamentClub]) -> ()) {
+        if id == nil && countryCode == nil{
+            //What to do here
+        }
         
+        let cachedTournamentClubs = SharingManager.cache.getTournamentClub(id, countryCode: countryCode)
+        if cachedTournamentClubs.isEmpty{
+            print("Getting clubs from soap")
+            SharingManager.soap.getTournamentClub(id, countryCode: countryCode, completionHandler: { (clubs) -> () in
+                SharingManager.cache.setTournamentClub(clubs)
+                completionHandler(clubs: clubs)
+            })
+            return
+        }
+        
+        print("Getting clubs from cache")
+        completionHandler(clubs: cachedTournamentClubs)
     }
     func getField(arenaID: Int?, fieldID: Int?, completionHandler: (fields: [Field]) -> ()) {
         

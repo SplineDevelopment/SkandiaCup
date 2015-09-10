@@ -43,6 +43,48 @@ class ArenaTableCacheObject : GenericTableCacheObject<Arena> {
     }
 }
 
+class TournamentClubCacheObject: GenericTableCacheObject<TournamentClub>{
+    init(objects: [Int: CacheObject<TournamentClub>]){
+        super.init(objects: objects)
+    }
+    
+    func getTournamentClub(id: [Int]?, countryCode: String?) -> [CacheObject<TournamentClub>]{
+        var modifiedArray = Array(self.objects.values)
+        
+        if id != nil{
+            modifiedArray = modifiedArray.filter({
+                id!.contains($0.value.id!)
+            })
+        }
+        
+        if countryCode != nil{
+            modifiedArray = modifiedArray.filter({
+                $0.value.countryCode! == countryCode!
+            })
+        }
+        return modifiedArray
+    }
+    
+    func setTournamentClubs(clubs : [TournamentClub]) {
+        let currentTime = Functions.getCurrentTimeInSeconds()
+        clubs.forEach { (element) -> () in
+            var elementFound = false
+            for (key, dictValue) in self.objects {
+                // can matchID be nil ?
+                //print(dictValue.value)
+                if element.id == dictValue.value.id {
+                    elementFound = true
+                    self.objects[key] = CacheObject<TournamentClub>(cacheSetTime: currentTime, value: element)
+                    break
+                }
+            }
+            if !elementFound {
+                self.objects[self.objects.count+1] = CacheObject<TournamentClub>(cacheSetTime: currentTime, value: element)
+            }
+        }
+    }
+}
+
 class TournamentMatchTableCacheObject : GenericTableCacheObject<TournamentMatch> {
     init (objects: [Int : CacheObject<TournamentMatch>]) {
         super.init(objects: objects)

@@ -11,12 +11,16 @@ import Foundation
 class CacheImpl : Cache {
     var arenas : ArenaTableCacheObject
     var tournamentMatches : TournamentMatchTableCacheObject
+    var tournamentClubs : TournamentClubCacheObject
     
     init() {
 //        let defaults = NSUserDefaults.standardUserDefaults()
         
         let a = [Int : CacheObject<Arena>]()
         self.arenas = ArenaTableCacheObject(objects: a)
+        
+        let tc = [Int: CacheObject<TournamentClub>]()
+        self.tournamentClubs = TournamentClubCacheObject(objects: tc)
         
 //        test load matches from disk
 //        if let tournamentMatchesFromDisk = defaults.dataForKey("tournamentMatches") {
@@ -40,7 +44,15 @@ class CacheImpl : Cache {
     }
     
     func getTournamentClub(id: [Int]?, countryCode: String?) -> [TournamentClub] {
-        return [TournamentClub]()
+        let tc = self.tournamentClubs.getTournamentClub(id, countryCode: countryCode)
+        var clubsUpToDate = [TournamentClub]()
+        
+        for elem in tc{
+            if elem.cacheSetTime + TournamentClub.maxCacheTime > Functions.getCurrentTimeInSeconds() {
+                clubsUpToDate.append(elem.value)
+            }
+        }
+        return clubsUpToDate
     }
     func getField(arenaID: Int?, fieldID: Int?) -> [Field] {
         return [Field]()
@@ -72,7 +84,7 @@ class CacheImpl : Cache {
     }
     
     func setTournamentClub(clubs : [TournamentClub]) {
-        
+        self.tournamentClubs.setTournamentClubs(clubs)
     }
     func setField(fields: [Field]) {
         
