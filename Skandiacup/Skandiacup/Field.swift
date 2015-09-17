@@ -9,6 +9,7 @@
 import Foundation
 
 struct Field{
+    static let maxCacheTime = 60 * 60 * 24
     var fieldID: Int?
     var arenaID: Int?
     var fieldName: String?

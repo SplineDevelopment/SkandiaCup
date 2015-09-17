@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 struct Date{
     static func getCurrentTimeInSoapFormat() -> String {
         let date = NSDate()
@@ -45,4 +44,10 @@ struct Date{
     
     
     
+}
+
+struct Functions {
+    static func getCurrentTimeInSeconds() -> Int {
+        return Int(NSDate().timeIntervalSince1970)
+    }
 }

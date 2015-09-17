@@ -10,31 +10,47 @@ import UIKit
 
 class FirstViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        // TESTING 
-        SharingManager.soap.getArena([1,2,182256]) { (arenas) -> () in
-            print(arenas)
-        }
-        SharingManager.soap.getArena(nil) { (arenas) -> () in
-            print(arenas)
-        }
-        SharingManager.soap.getMatches(nil, groupID: 3001448, teamID: 14084631) { (matches) -> () in
+    @IBAction func cacheButtonTest(sender: AnyObject) {
+        print("test")
+        SharingManager.data.getMatches(nil, groupID: 3001448, teamID: 14084631) { (matches) -> () in
             print(matches.count)
             if matches.count > 0 {
-                print(matches[0])
+                //print(matches[0])
             }
         }
-        SharingManager.soap.getTournamentClub([7161221], countryCode: nil) { (clubs) -> () in
+        
+        print("test2")
+        SharingManager.data.getTournamentClub([7161221], countryCode: nil) { (clubs) -> () in
             print(clubs)
         }
-        SharingManager.soap.getField(nil, fieldID: nil) { (fields) -> () in
-            print(fields.count)
-            if fields.count > 0 {
-                print(fields[0])
-            }
-        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+       
+        // Do any additional setup after loading the view, typically from a nib.
+        // TESTING 
+//        SharingManager.soap.getArena([1,2,182256]) { (arenas) -> () in
+//            print(arenas)
+//        }
+//        SharingManager.soap.getArena(nil) { (arenas) -> () in
+//            print(arenas)
+//        }
+//        SharingManager.soap.getMatches(nil, groupID: 3001448, teamID: 14084631) { (matches) -> () in
+//            print(matches.count)
+//            if matches.count > 0 {
+//                print(matches[0])
+//            }
+//        }
+//        SharingManager.soap.getTournamentClub([7161221], countryCode: nil) { (clubs) -> () in
+//            print(clubs)
+//        }
+//        SharingManager.soap.getField(nil, fieldID: nil) { (fields) -> () in
+//            print(fields.count)
+//            if fields.count > 0 {
+//                print(fields[0])
+//            }
+//        }
     }
 
     override func didReceiveMemoryWarning() {

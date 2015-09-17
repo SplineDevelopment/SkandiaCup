@@ -9,7 +9,7 @@
 import Foundation
 
 class SharingManager{
-    static let soap:Soap = (Config.soapMock ? SoapMock() : SoapImpl())
-    
-    
+    static let soap : Soap = (Config.soapMock ? SoapMock() : SoapImpl())
+    static let cache : Cache = (Config.soapMock ? CacheMock() : CacheImpl())
+    static let data : DataManager = DataManager()
 }

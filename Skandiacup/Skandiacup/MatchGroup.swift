@@ -9,6 +9,7 @@
 import Foundation
 
 struct MatchGroup{
+    static let maxCacheTime = 60 * 60 * 12
     var id: Int?
     var name: String?
     var matchClassId: String?
