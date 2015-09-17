@@ -10,6 +10,7 @@ import UIKit
 
 class TeamsViewController: UIViewController , UITableViewDataSource, UITableViewDelegate{
     @IBOutlet weak var teamTableView: UITableView!
+    @IBOutlet weak var segmentController: UISegmentedControl!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
@@ -24,6 +25,12 @@ class TeamsViewController: UIViewController , UITableViewDataSource, UITableView
         }
     }
     
+    @IBAction func indexChanged(sender: AnyObject) {
+        (self.parentViewController?.parentViewController as! TournamentViewController).switchTable(segmentController.selectedSegmentIndex)
+            viewDidLoad()
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         teamTableView.dataSource = self
@@ -31,10 +38,10 @@ class TeamsViewController: UIViewController , UITableViewDataSource, UITableView
         teamTableView.hidden = true
         activityIndicator.hidden = false
         activityIndicator.startAnimating()
+        segmentController.selectedSegmentIndex = 0
         
         
         SharingManager.soap.getTeams(nil) { (teams) -> () in
-            sleep(5)
             self.teams = teams
         }
         // Do any additional setup after loading the view.
@@ -56,6 +63,10 @@ class TeamsViewController: UIViewController , UITableViewDataSource, UITableView
         return teams != nil ? teams!.count : 0
     }
     
+    func changeSegment(){
+        self.segmentController.selectedSegmentIndex = 0
+    }
+    
     // UITableViewDelegate Functions
 
     /*
@@ -68,7 +79,7 @@ class TeamsViewController: UIViewController , UITableViewDataSource, UITableView
     }
     */
     override func viewWillAppear(animated: Bool) {
-        
+        segmentController.setEnabled(true, forSegmentAtIndex: 0)
     }
     
     override func viewWillDisappear(animated: Bool) {

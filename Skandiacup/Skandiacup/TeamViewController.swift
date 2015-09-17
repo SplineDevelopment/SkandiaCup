@@ -11,6 +11,51 @@ import UIKit
 class TeamViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var matchTableView: UITableView!
     @IBOutlet weak var infoLabel: UILabel!
+    let defaults = NSUserDefaults.standardUserDefaults()
+    var favorites: FavoriteTeams = FavoriteTeams()
+    @IBOutlet weak var favButton: UIBarButtonItem!
+    
+    @IBAction func favoriteButton(sender: AnyObject) {
+        let dataRecieved = defaults.objectForKey("favorites") as? NSData
+        var tempFav : FavoriteTeams?
+        if dataRecieved != nil{
+            tempFav = NSKeyedUnarchiver.unarchiveObjectWithData(dataRecieved!) as? FavoriteTeams
+        }
+        if tempFav == nil {
+            let data = NSKeyedArchiver.archivedDataWithRootObject(favorites)
+            defaults.setObject(data, forKey: "favorites")
+            let dataRecieved = defaults.objectForKey("favorites") as? NSData
+            tempFav = NSKeyedUnarchiver.unarchiveObjectWithData(dataRecieved!) as? FavoriteTeams
+        }
+        tempFav!.addFav(currentTeam!)
+        // Prints out the faved teams in the code below
+        let data2 = NSKeyedArchiver.archivedDataWithRootObject(tempFav!)
+        defaults.setObject(data2, forKey: "favorites")
+        let dataRecieved2 = defaults.objectForKey("favorites") as? NSData
+        let name = NSKeyedUnarchiver.unarchiveObjectWithData(dataRecieved2!) as! FavoriteTeams
+        for index in 0...name.favorites.count-1{
+            print(name.favorites[index].name!)
+        }
+    }
+    
+    func checkIfFaved(team: TournamentTeam) -> Bool{
+        let dataRecieved = defaults.objectForKey("favorites") as? NSData
+        var tempFav : FavoriteTeams?
+        if dataRecieved != nil{
+            tempFav = NSKeyedUnarchiver.unarchiveObjectWithData(dataRecieved!) as? FavoriteTeams
+        }
+        if (tempFav != nil) {
+            if (tempFav!.favorites.count > 0) {
+                for index in 0...tempFav!.favorites.count-1{
+                    let convert = (tempFav!.favorites[index] as! NSObject) as! TournamentTeam
+                        if (convert.name! == team.name!) {
+                            return true
+                        }
+                }
+            }
+        }
+        return false
+    }
     
     var matches: [TournamentMatch]? {
         didSet{
@@ -31,12 +76,47 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         matchTableView.delegate = self
         matchTableView.dataSource = self
         self.configureView()
+
         
         SharingManager.soap.getMatches(nil, groupID: nil, teamID: currentTeam?.id) { (matches) -> () in
             self.matches = matches
         }
+        if (checkIfFaved(currentTeam!) == true){
+            let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Stop, target: self, action: "unFavorite")
+            self.navigationItem.rightBarButtonItem = button
+        }
         // Do any additional setup after loading the view.
     }
+    
+    func unFavorite(){
+        let dataRecieved = defaults.objectForKey("favorites") as? NSData
+        var tempFav : FavoriteTeams?
+        if dataRecieved != nil{
+            tempFav = NSKeyedUnarchiver.unarchiveObjectWithData(dataRecieved!) as? FavoriteTeams
+            if (checkIfFaved(currentTeam!) == true){
+                if (tempFav!.favorites.count > 0) {
+                    for index in 0...tempFav!.favorites.count-1{
+                        let favoriteTeam = (tempFav!.favorites[index] as! NSObject) as! TournamentTeam
+                        if (currentTeam!.name! == favoriteTeam.name!){
+                            tempFav!.removeFav(index)
+                            break
+                        }
+                    }
+                }
+                let data = NSKeyedArchiver.archivedDataWithRootObject(tempFav!)
+                defaults.setObject(data, forKey: "favorites")
+            }
+            // prints out the new faved teams
+            let data2 = NSKeyedArchiver.archivedDataWithRootObject(tempFav!)
+            defaults.setObject(data2, forKey: "favorites")
+            let dataRecieved2 = defaults.objectForKey("favorites") as? NSData
+            let name = NSKeyedUnarchiver.unarchiveObjectWithData(dataRecieved2!) as! FavoriteTeams
+            for index in 0...name.favorites.count-1{
+                print(name.favorites[index].name!)
+            }
+        }
+        }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -9,16 +9,16 @@
 import UIKit
 
 class TournamentViewController: UIViewController{
-    @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var teamsView: UIView!
     @IBOutlet weak var groupsView: UIView!
 
     
-    @IBAction func indexChanged(sender: AnyObject) {
-        switch segmentControl.selectedSegmentIndex {
+     func switchTable(index: Int) {
+        switch index {
         case 0:
             teamsView.hidden = false
             groupsView.hidden = true
+            
         case 1:
             teamsView.hidden = true
             groupsView.hidden = false

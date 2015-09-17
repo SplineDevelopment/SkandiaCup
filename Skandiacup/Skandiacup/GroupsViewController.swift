@@ -11,13 +11,20 @@ import UIKit
 class GroupsViewController: UIViewController , UITableViewDataSource, UITableViewDelegate{
     @IBOutlet weak var groupTableView: UITableView!
     var groups: [String] = ["Gruppe1", "Gruppe2", "Gruppe3"]
+    @IBOutlet weak var segmentController: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         groupTableView.dataSource = self
         groupTableView.delegate = self
+        segmentController.selectedSegmentIndex = 1
         
         // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func indexChanged(sender: AnyObject) {
+                (self.parentViewController?.parentViewController as! TournamentViewController).switchTable(segmentController.selectedSegmentIndex)
+                    viewDidLoad()
     }
     
     override func didReceiveMemoryWarning() {
@@ -37,6 +44,10 @@ class GroupsViewController: UIViewController , UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return groups.count
+    }
+    
+    func changeSegment(){
+        self.segmentController.selectedSegmentIndex = 1
     }
     
     // UITableViewDelegate Functions
