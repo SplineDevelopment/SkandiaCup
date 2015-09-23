@@ -388,12 +388,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="531"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="iRQ-5U-fT6">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="iRQ-5U-fT6">
                                 <rect key="frame" x="290" y="238" width="20" height="20"/>
                                 <animations/>
                             </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RHe-cH-bFp">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="531"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="487"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -401,7 +401,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="X65-TL-ShU" id="WgH-mE-W57">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <animations/>
                                         </tableViewCellContentView>
@@ -410,24 +410,61 @@
                                             <segue destination="dEn-gx-a0Q" kind="show" identifier="listToTeamView" id="wPc-nx-wgx"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchCell" rowHeight="169" id="w0G-pL-WOb">
+                                        <rect key="frame" x="0.0" y="72" width="600" height="169"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="w0G-pL-WOb" id="huT-ep-IGj">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="169"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O8c-aM-sTr">
+                                                    <rect key="frame" x="8" y="0.0" width="584" height="169"/>
+                                                    <subviews>
+                                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="wqb-Vb-KYZ">
+                                                            <rect key="frame" x="6" y="91" width="580" height="31"/>
+                                                        </slider>
+                                                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="QN9-x6-CBa">
+                                                            <rect key="frame" x="0.0" y="0.0" width="584" height="44"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </searchBar>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="QN9-x6-CBa" firstAttribute="leading" secondItem="O8c-aM-sTr" secondAttribute="leading" id="CBm-H1-IsJ"/>
+                                                        <constraint firstItem="QN9-x6-CBa" firstAttribute="top" secondItem="O8c-aM-sTr" secondAttribute="top" id="Db7-1N-5lg"/>
+                                                        <constraint firstItem="QN9-x6-CBa" firstAttribute="trailing" secondItem="wqb-Vb-KYZ" secondAttribute="trailing" id="NAb-SZ-Qno"/>
+                                                        <constraint firstItem="wqb-Vb-KYZ" firstAttribute="top" secondItem="QN9-x6-CBa" secondAttribute="bottom" constant="47" id="Zi2-AH-DEC"/>
+                                                        <constraint firstAttribute="trailing" secondItem="wqb-Vb-KYZ" secondAttribute="trailing" id="wxz-V1-Z85"/>
+                                                        <constraint firstItem="wqb-Vb-KYZ" firstAttribute="leading" secondItem="O8c-aM-sTr" secondAttribute="leadingMargin" id="x5K-OR-jMz"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="O8c-aM-sTr" firstAttribute="centerY" secondItem="huT-ep-IGj" secondAttribute="centerY" id="9rI-d6-oSn"/>
+                                                <constraint firstItem="O8c-aM-sTr" firstAttribute="leading" secondItem="huT-ep-IGj" secondAttribute="leadingMargin" id="DC9-CJ-Ovx"/>
+                                                <constraint firstItem="O8c-aM-sTr" firstAttribute="trailing" secondItem="huT-ep-IGj" secondAttribute="trailingMargin" id="jig-jS-z19"/>
+                                                <constraint firstItem="O8c-aM-sTr" firstAttribute="top" secondItem="huT-ep-IGj" secondAttribute="top" id="vnc-PT-n8z"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="RHe-cH-bFp" firstAttribute="bottom" secondItem="jq2-cL-TEe" secondAttribute="top" id="3Yb-nD-7hB"/>
-                            <constraint firstItem="iRQ-5U-fT6" firstAttribute="centerX" secondItem="RHe-cH-bFp" secondAttribute="centerX" id="5DG-vz-Rqw"/>
-                            <constraint firstItem="RHe-cH-bFp" firstAttribute="leading" secondItem="Hhn-F2-NvB" secondAttribute="leading" id="8hL-Cm-Zgk"/>
-                            <constraint firstItem="iRQ-5U-fT6" firstAttribute="centerY" secondItem="RHe-cH-bFp" secondAttribute="centerY" id="BKH-ga-9pS"/>
-                            <constraint firstItem="RHe-cH-bFp" firstAttribute="top" secondItem="Hhn-F2-NvB" secondAttribute="top" id="BTU-l4-xoh"/>
-                            <constraint firstAttribute="trailing" secondItem="RHe-cH-bFp" secondAttribute="trailing" id="dTH-yg-e1D"/>
+                            <constraint firstItem="RHe-cH-bFp" firstAttribute="centerX" secondItem="iRQ-5U-fT6" secondAttribute="centerX" id="49S-QG-FAn"/>
+                            <constraint firstItem="iRQ-5U-fT6" firstAttribute="top" secondItem="2wh-b4-GG0" secondAttribute="bottom" constant="194" id="C6e-fr-7QP"/>
+                            <constraint firstItem="RHe-cH-bFp" firstAttribute="leading" secondItem="Hhn-F2-NvB" secondAttribute="leading" id="PNg-Nv-EYa"/>
+                            <constraint firstItem="RHe-cH-bFp" firstAttribute="bottom" secondItem="jq2-cL-TEe" secondAttribute="top" id="e3y-3c-9dp"/>
+                            <constraint firstItem="RHe-cH-bFp" firstAttribute="top" secondItem="2wh-b4-GG0" secondAttribute="bottom" id="gG6-ny-lgM"/>
+                            <constraint firstAttribute="trailing" secondItem="RHe-cH-bFp" secondAttribute="trailing" id="uDK-7a-KgS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0Ab-Fe-lDL">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="R66-2e-Alh">
-                            <rect key="frame" x="105" y="8" width="390" height="29"/>
+                            <rect key="frame" x="105" y="7.5" width="390" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <animations/>
                             <segments>
@@ -439,6 +476,11 @@
                                 <action selector="indexChanged:" destination="Fqj-c4-U4g" eventType="valueChanged" id="T37-fX-pmt"/>
                             </connections>
                         </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="9i1-JF-jS1">
+                            <connections>
+                                <action selector="searchButtonPressed:" destination="Fqj-c4-U4g" id="3Op-NO-Xu3"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="SegmentController" destination="R66-2e-Alh" id="C4l-SA-t6W"/>
