@@ -15,6 +15,10 @@
 		236D8D671B9D8FE900669E51 /* CacheImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236D8D661B9D8FE900669E51 /* CacheImpl.swift */; settings = {ASSET_TAGS = (); }; };
 		2388C1511B99A73B00637F6E /* ArenaMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2388C1501B99A73B00637F6E /* ArenaMapper.swift */; settings = {ASSET_TAGS = (); }; };
 		2388C1531B99D5CD00637F6E /* TournamentClubsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2388C1521B99D5CD00637F6E /* TournamentClubsMapper.swift */; settings = {ASSET_TAGS = (); }; };
+		238C04C11BB2EA9D000492E7 /* InstagramRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238C04C01BB2EA9D000492E7 /* InstagramRepo.swift */; settings = {ASSET_TAGS = (); }; };
+		238C04C31BB2EAB7000492E7 /* InstagramRepoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238C04C21BB2EAB7000492E7 /* InstagramRepoImpl.swift */; settings = {ASSET_TAGS = (); }; };
+		238C04C51BB2EAC3000492E7 /* InstagramRepoMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238C04C41BB2EAC3000492E7 /* InstagramRepoMock.swift */; settings = {ASSET_TAGS = (); }; };
+		238C04C71BB2EB18000492E7 /* InstagramPhotoObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238C04C61BB2EB18000492E7 /* InstagramPhotoObject.swift */; settings = {ASSET_TAGS = (); }; };
 		3C803E501B984D46001A51AA /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C803E4F1B984D46001A51AA /* Functions.swift */; settings = {ASSET_TAGS = (); }; };
 		3C803E541B98528A001A51AA /* Soap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C803E531B98528A001A51AA /* Soap.swift */; settings = {ASSET_TAGS = (); }; };
 		3C803E561B9852EF001A51AA /* SoapMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C803E551B9852EF001A51AA /* SoapMock.swift */; settings = {ASSET_TAGS = (); }; };
@@ -84,6 +88,10 @@
 		236D8D661B9D8FE900669E51 /* CacheImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheImpl.swift; sourceTree = "<group>"; };
 		2388C1501B99A73B00637F6E /* ArenaMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArenaMapper.swift; sourceTree = "<group>"; };
 		2388C1521B99D5CD00637F6E /* TournamentClubsMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentClubsMapper.swift; sourceTree = "<group>"; };
+		238C04C01BB2EA9D000492E7 /* InstagramRepo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramRepo.swift; sourceTree = "<group>"; };
+		238C04C21BB2EAB7000492E7 /* InstagramRepoImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramRepoImpl.swift; sourceTree = "<group>"; };
+		238C04C41BB2EAC3000492E7 /* InstagramRepoMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramRepoMock.swift; sourceTree = "<group>"; };
+		238C04C61BB2EB18000492E7 /* InstagramPhotoObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramPhotoObject.swift; sourceTree = "<group>"; };
 		3C803E4F1B984D46001A51AA /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		3C803E531B98528A001A51AA /* Soap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Soap.swift; sourceTree = "<group>"; };
 		3C803E551B9852EF001A51AA /* SoapMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoapMock.swift; sourceTree = "<group>"; };
@@ -167,6 +175,9 @@
 				236D8D621B9D8F4600669E51 /* Cache.swift */,
 				236D8D641B9D8F6F00669E51 /* CacheMock.swift */,
 				236D8D661B9D8FE900669E51 /* CacheImpl.swift */,
+				238C04C01BB2EA9D000492E7 /* InstagramRepo.swift */,
+				238C04C21BB2EAB7000492E7 /* InstagramRepoImpl.swift */,
+				238C04C41BB2EAC3000492E7 /* InstagramRepoMock.swift */,
 			);
 			name = Repository;
 			sourceTree = "<group>";
@@ -205,7 +216,6 @@
 				D52496611B988364001D3577 /* TeamViewController.swift */,
 				D52496631B988546001D3577 /* GroupViewController.swift */,
 				3CDB8B361B999B3D00439028 /* MatchViewController.swift */,
-				3CF0AAE11BA1C9B800004180 /* FullscreenFieldPhotoView.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -312,6 +322,7 @@
 				D5FD4EDF1B94CF70009B53FC /* TournamentTeam.swift */,
 				D5FD4EE11B94CFB7009B53FC /* Tournament.swift */,
 				2362031F1B9ECAF000D7F6A7 /* CacheObjects.swift */,
+				238C04C61BB2EB18000492E7 /* InstagramPhotoObject.swift */,
 			);
 			name = Domain;
 			sourceTree = "<group>";
@@ -447,7 +458,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5FD4ED41B94C8FF009B53FC /* Field.swift in Sources */,
-				3CF0AAE21BA1C9B800004180 /* FullscreenFieldPhotoView.swift in Sources */,
 				236D8D671B9D8FE900669E51 /* CacheImpl.swift in Sources */,
 				236D8D601B9D8DF000669E51 /* DataManager.swift in Sources */,
 				2388C1531B99D5CD00637F6E /* TournamentClubsMapper.swift in Sources */,
@@ -459,6 +469,7 @@
 				3CDB8B331B99922A00439028 /* InfoViewController.swift in Sources */,
 				236D8D651B9D8F6F00669E51 /* CacheMock.swift in Sources */,
 				D52496601B9876F4001D3577 /* GroupsViewController.swift in Sources */,
+				238C04C71BB2EB18000492E7 /* InstagramPhotoObject.swift in Sources */,
 				D5FD4EDC1B94CEC3009B53FC /* MatchTableRow.swift in Sources */,
 				3CDB8B371B999B3D00439028 /* MatchViewController.swift in Sources */,
 				D5FD4ED61B94C9C8009B53FC /* MatchClass.swift in Sources */,
@@ -469,8 +480,10 @@
 				D51E4B0E1B94A1E700FF5DDB /* FirstViewController.swift in Sources */,
 				3C803E501B984D46001A51AA /* Functions.swift in Sources */,
 				236D8D631B9D8F4600669E51 /* Cache.swift in Sources */,
+				238C04C51BB2EAC3000492E7 /* InstagramRepoMock.swift in Sources */,
 				D55D9CF61B99949B00DD01E1 /* SWXMLHash.swift in Sources */,
 				D5FD4EDE1B94CF3E009B53FC /* MatchTable.swift in Sources */,
+				238C04C31BB2EAB7000492E7 /* InstagramRepoImpl.swift in Sources */,
 				D5FD4ED01B94C79B009B53FC /* Arena.swift in Sources */,
 				D52496621B988364001D3577 /* TeamViewController.swift in Sources */,
 				D5FD4EDA1B94CD4D009B53FC /* TournamentMatch.swift in Sources */,
@@ -490,6 +503,7 @@
 				D5EAE5481B99C55100AA3AF1 /* FieldsMapper.swift in Sources */,
 				236B0C3B1B987C6700CDEC89 /* Generator.swift in Sources */,
 				D5EAE54A1B99C82700AA3AF1 /* MatchTablesMapper.swift in Sources */,
+				238C04C11BB2EA9D000492E7 /* InstagramRepo.swift in Sources */,
 				3CDB8B351B99923200439028 /* SosialViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

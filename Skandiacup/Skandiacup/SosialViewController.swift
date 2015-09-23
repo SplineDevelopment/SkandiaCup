@@ -10,10 +10,27 @@ import UIKit
 
 class SosialViewController: UIViewController {
 
+    @IBOutlet weak var testImage: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    func completion(data : NSData) {
+        testImage.image = UIImage(data: data)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        SharingManager.data.getPhotoObject(1) { (photoObject) -> () in
+            NSURLSession.sharedSession().dataTaskWithURL(photoObject.url!) { (data, response, error) in
+                print(data)
+                print(error)
+                print(response)
+                self.completion(data!)
+                }.resume()
+        }
     }
 
     override func didReceiveMemoryWarning() {

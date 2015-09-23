@@ -80,4 +80,20 @@ class DataManager {
     func getTeams(id: [Int]?, completionHandler: (teams: [TournamentTeam]) -> ()) {
         
     }
+    
+    // cache with insta?
+    
+    func getAllPhotoObjects(completionHandler: (photoObjects: [InstagramPhotoObject]) -> ()) {
+        SharingManager.insta.getAllPhotoObjects { (photoObjects) -> () in
+            completionHandler(photoObjects: photoObjects)
+        }
+    }
+    
+    func getPhotoObject(id: Int, completionHandler: (photoObject: InstagramPhotoObject) -> ()) {
+        SharingManager.insta.getPhotoObject(id) { (photoObject) -> () in
+            completionHandler(photoObject: photoObject)
+        }
+    }
 }
+
+
