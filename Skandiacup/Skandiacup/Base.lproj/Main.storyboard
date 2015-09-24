@@ -393,6 +393,17 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mcn-v3-B3Q" customClass="filterView" customModule="Skandiacup" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="-125" width="600" height="169"/>
+                                <subviews>
+                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="JbJ-GU-gZ1">
+                                        <rect key="frame" x="0.0" y="63" width="600" height="44"/>
+                                        <animations/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="Fqj-c4-U4g" id="wDb-CJ-qcb"/>
+                                        </connections>
+                                    </searchBar>
+                                </subviews>
+                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="iRQ-5U-fT6">
