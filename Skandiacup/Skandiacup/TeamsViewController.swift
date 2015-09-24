@@ -12,9 +12,9 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     var searchActive : Bool = false
     @IBOutlet weak var teamTableView: UITableView!
     @IBOutlet weak var segmentController: UISegmentedControl!
-    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var dropDownView: UIView!
+    
     var teams: [TournamentTeam]? {
         didSet{
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -34,6 +34,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        (dropDownView as! filterView).setupSearchBar(self)
         teamTableView.dataSource = self
         teamTableView.delegate = self
         teamTableView.hidden = true
@@ -41,7 +42,6 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
         activityIndicator.startAnimating()
         self.dropDownView.hidden = true
         segmentController.selectedSegmentIndex = 0
-        
         SharingManager.soap.getTeams(nil) { (teams) -> () in
             self.teams = teams
         }
