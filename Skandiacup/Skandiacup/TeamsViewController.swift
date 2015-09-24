@@ -50,6 +50,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
         SharingManager.soap.getTeams(nil) { (teams) -> () in
             self.teams = teams
         }
+        (dropDownView as! filterView).ageLabel.text = "\(Int((dropDownView as! filterView).ageSlider.value))"
     }
 
     override func didReceiveMemoryWarning() {
