@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -99,7 +99,7 @@
                             <constraint firstItem="MBd-6f-lh0" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="yq0-po-G0d"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Oversikt" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Oversikt" image="football28" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="groupsView" destination="MBd-6f-lh0" id="sqe-rw-7Lx"/>
                         <outlet property="segmentControl" destination="R66-2e-Alh" id="fpw-Za-SAU"/>
@@ -176,7 +176,9 @@
                             <constraint firstItem="f8h-Wx-zgN" firstAttribute="leading" secondItem="mQT-Yc-fC5" secondAttribute="leadingMargin" id="xLe-44-wqM"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="ppy-iN-LIH"/>
+                    <tabBarItem key="tabBarItem" title="Nyheter" image="news29" id="ppy-iN-LIH">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="2" vertical="0.0"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="infoView" destination="Q6T-Tt-ud8" id="tHf-aP-V5X"/>
                         <outlet property="newsView" destination="f8h-Wx-zgN" id="T8S-gx-APc"/>
@@ -231,7 +233,7 @@
                                         <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xA8-Vz-1hT" id="9Xj-ac-sUO">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <animations/>
                                         </tableViewCellContentView>
@@ -276,7 +278,7 @@
                                         <rect key="frame" x="0.0" y="72" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zOx-fh-pIg" id="wha-xf-aEu">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <animations/>
                                         </tableViewCellContentView>
@@ -296,6 +298,7 @@
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="ewx-5A-qwn" userLabel="Segment Control">
                             <rect key="frame" x="105" y="7" width="390" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
                             <segments>
                                 <segment title="Alle lag"/>
                                 <segment title="Grupper"/>
@@ -345,7 +348,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3wQ-Ri-52g" id="tpM-Cq-5wF">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <animations/>
                                         </tableViewCellContentView>
@@ -393,12 +396,14 @@
                                 <subviews>
                                     <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="JbJ-GU-gZ1">
                                         <rect key="frame" x="0.0" y="63" width="600" height="44"/>
+                                        <animations/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <outlet property="delegate" destination="Fqj-c4-U4g" id="wDb-CJ-qcb"/>
                                         </connections>
                                     </searchBar>
                                 </subviews>
+                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="JbJ-GU-gZ1" firstAttribute="leading" secondItem="mcn-v3-B3Q" secondAttribute="leading" id="Vz3-ma-6Li"/>
@@ -420,7 +425,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="X65-TL-ShU" id="WgH-mE-W57">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <animations/>
                                         </tableViewCellContentView>
@@ -433,7 +438,7 @@
                                         <rect key="frame" x="0.0" y="72" width="600" height="169"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="w0G-pL-WOb" id="huT-ep-IGj">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="168"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="168.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O8c-aM-sTr">
@@ -441,12 +446,15 @@
                                                     <subviews>
                                                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="wqb-Vb-KYZ">
                                                             <rect key="frame" x="6" y="91" width="580" height="31"/>
+                                                            <animations/>
                                                         </slider>
                                                         <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="QN9-x6-CBa">
                                                             <rect key="frame" x="0.0" y="0.0" width="584" height="44"/>
+                                                            <animations/>
                                                             <textInputTraits key="textInputTraits"/>
                                                         </searchBar>
                                                     </subviews>
+                                                    <animations/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="QN9-x6-CBa" firstAttribute="leading" secondItem="O8c-aM-sTr" secondAttribute="leading" id="CBm-H1-IsJ"/>
@@ -458,6 +466,7 @@
                                                     </constraints>
                                                 </view>
                                             </subviews>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="O8c-aM-sTr" firstAttribute="centerY" secondItem="huT-ep-IGj" secondAttribute="centerY" id="9rI-d6-oSn"/>
                                                 <constraint firstItem="O8c-aM-sTr" firstAttribute="leading" secondItem="huT-ep-IGj" secondAttribute="leadingMargin" id="DC9-CJ-Ovx"/>
@@ -465,6 +474,7 @@
                                                 <constraint firstItem="O8c-aM-sTr" firstAttribute="top" secondItem="huT-ep-IGj" secondAttribute="top" id="vnc-PT-n8z"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -761,7 +771,7 @@
                                         <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PWF-Bb-s4T" id="ytY-Tu-SJQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <animations/>
                                         </tableViewCellContentView>
@@ -922,6 +932,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Z5J-9n-fCx">
                         <rect key="frame" x="0.0" y="0.0" width="560" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VC4-MO-qyk">
                             <size key="itemSize" width="138" height="84"/>
@@ -939,10 +950,13 @@
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rEH-bk-zu5">
                                             <rect key="frame" x="0.0" y="0.0" width="138" height="84"/>
+                                            <animations/>
                                         </imageView>
                                     </subviews>
+                                    <animations/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <animations/>
                                 <connections>
                                     <outlet property="imageView" destination="rEH-bk-zu5" id="rEB-BJ-lag"/>
                                 </connections>
@@ -964,7 +978,8 @@
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="football28" width="64" height="64"/>
+        <image name="news29" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="kq0-jH-SaH"/>
