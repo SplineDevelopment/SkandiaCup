@@ -40,7 +40,7 @@ class MatchViewController: UIViewController {
     }
     
     func configureView(){
-                teamOne.text = selectedMatch?.homeTeamName
+        teamOne.text = selectedMatch?.homeTeamName
         scoreOne.text = selectedMatch?.homegoal
         teamTwo.text = selectedMatch?.awayTeamName
         scoreTwo.text = selectedMatch?.awaygoal
