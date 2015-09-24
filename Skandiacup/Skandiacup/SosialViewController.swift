@@ -8,45 +8,78 @@
 
 import UIKit
 
-class SosialViewController: UIViewController {
-
-    @IBOutlet weak var testImage: UIImageView!
+class SosialViewController: UICollectionViewController {
+    @IBOutlet var viewOutlet: UICollectionView!
+    private let reuseIdentifier = "InstaCell";
+    private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
+    private var insta_photos = [InstagramPhotoObject]()
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
-    func completion(data : NSData) {
-        testImage.image = UIImage(data: data)
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            SharingManager.data.getAllPhotoObjects() { (photoObjects) -> () in
+                dispatch_async(dispatch_get_main_queue()) {
+                    //print(photoObjects)
+                    self.insta_photos.appendContentsOf(photoObjects)
+                }
+            }
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
-        SharingManager.data.getPhotoObject(1) { (photoObject) -> () in
-            NSURLSession.sharedSession().dataTaskWithURL(photoObject.url!) { (data, response, error) in
-                print(data)
-                print(error)
-                print(response)
-                self.completion(data!)
-                }.resume()
+        /*
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            SharingManager.data.getAllPhotoObjects() { (photoObjects) -> () in
+                dispatch_async(dispatch_get_main_queue()) {
+                    //print(photoObjects)
+                    self.insta_photos.appendContentsOf(photoObjects)
+                }
+            }
         }
+        */
+        // TODO::: wipe cells first?
+        self.viewOutlet.reloadData()
     }
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+extension SosialViewController {
+    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+        
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return insta_photos.count
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) ->UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as!InstaPhotoCell
+        cell.backgroundColor = UIColor.whiteColor()
+        if indexPath.item < insta_photos.count {
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            cell.instaPhotoObject = self.insta_photos[indexPath.item]
+            NSURLSession.sharedSession().dataTaskWithURL(self.insta_photos[indexPath.item].url!) { (data, response, error) in
+                dispatch_async(dispatch_get_main_queue()) {
+                    cell.imageView.image = UIImage(data: data!)
+                }
+            }.resume()
+        }
+        }
+        return cell
     }
-    */
+}
 
+extension SosialViewController {
+    func collectionView(collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+            return CGSize(width: 85, height: 85)
+    }
+    
+    func collectionView(collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+            return sectionInsets
+    }
 }

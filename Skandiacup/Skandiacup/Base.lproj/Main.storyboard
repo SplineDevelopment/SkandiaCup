@@ -99,7 +99,7 @@
                             <constraint firstItem="MBd-6f-lh0" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="yq0-po-G0d"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Oversikt" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Oversikt" image="football28" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="groupsView" destination="MBd-6f-lh0" id="sqe-rw-7Lx"/>
                         <outlet property="segmentControl" destination="R66-2e-Alh" id="fpw-Za-SAU"/>
@@ -152,7 +152,7 @@
                                 <rect key="frame" x="20" y="56" width="560" height="487"/>
                                 <animations/>
                                 <connections>
-                                    <segue destination="M2V-gG-DgE" kind="embed" id="q2K-hb-8jH"/>
+                                    <segue destination="qrD-5I-yrk" kind="embed" id="wP5-1X-GJX"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -176,7 +176,9 @@
                             <constraint firstItem="f8h-Wx-zgN" firstAttribute="leading" secondItem="mQT-Yc-fC5" secondAttribute="leadingMargin" id="xLe-44-wqM"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="ppy-iN-LIH"/>
+                    <tabBarItem key="tabBarItem" title="Nyheter" image="news29" id="ppy-iN-LIH">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="2" vertical="0.0"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="infoView" destination="Q6T-Tt-ud8" id="tHf-aP-V5X"/>
                         <outlet property="newsView" destination="f8h-Wx-zgN" id="T8S-gx-APc"/>
@@ -296,6 +298,7 @@
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="ewx-5A-qwn" userLabel="Segment Control">
                             <rect key="frame" x="105" y="7" width="390" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
                             <segments>
                                 <segment title="Alle lag"/>
                                 <segment title="Grupper"/>
@@ -413,6 +416,48 @@
                                         <connections>
                                             <segue destination="dEn-gx-a0Q" kind="show" identifier="listToTeamView" id="wPc-nx-wgx"/>
                                         </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchCell" rowHeight="169" id="w0G-pL-WOb">
+                                        <rect key="frame" x="0.0" y="72" width="600" height="169"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="w0G-pL-WOb" id="huT-ep-IGj">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="168.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O8c-aM-sTr">
+                                                    <rect key="frame" x="8" y="0.0" width="584" height="169"/>
+                                                    <subviews>
+                                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="wqb-Vb-KYZ">
+                                                            <rect key="frame" x="6" y="91" width="580" height="31"/>
+                                                            <animations/>
+                                                        </slider>
+                                                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="QN9-x6-CBa">
+                                                            <rect key="frame" x="0.0" y="0.0" width="584" height="44"/>
+                                                            <animations/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </searchBar>
+                                                    </subviews>
+                                                    <animations/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="QN9-x6-CBa" firstAttribute="leading" secondItem="O8c-aM-sTr" secondAttribute="leading" id="CBm-H1-IsJ"/>
+                                                        <constraint firstItem="QN9-x6-CBa" firstAttribute="top" secondItem="O8c-aM-sTr" secondAttribute="top" id="Db7-1N-5lg"/>
+                                                        <constraint firstItem="QN9-x6-CBa" firstAttribute="trailing" secondItem="wqb-Vb-KYZ" secondAttribute="trailing" id="NAb-SZ-Qno"/>
+                                                        <constraint firstItem="wqb-Vb-KYZ" firstAttribute="top" secondItem="QN9-x6-CBa" secondAttribute="bottom" constant="47" id="Zi2-AH-DEC"/>
+                                                        <constraint firstAttribute="trailing" secondItem="wqb-Vb-KYZ" secondAttribute="trailing" id="wxz-V1-Z85"/>
+                                                        <constraint firstItem="wqb-Vb-KYZ" firstAttribute="leading" secondItem="O8c-aM-sTr" secondAttribute="leadingMargin" id="x5K-OR-jMz"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstItem="O8c-aM-sTr" firstAttribute="centerY" secondItem="huT-ep-IGj" secondAttribute="centerY" id="9rI-d6-oSn"/>
+                                                <constraint firstItem="O8c-aM-sTr" firstAttribute="leading" secondItem="huT-ep-IGj" secondAttribute="leadingMargin" id="DC9-CJ-Ovx"/>
+                                                <constraint firstItem="O8c-aM-sTr" firstAttribute="trailing" secondItem="huT-ep-IGj" secondAttribute="trailingMargin" id="jig-jS-z19"/>
+                                                <constraint firstItem="O8c-aM-sTr" firstAttribute="top" secondItem="huT-ep-IGj" secondAttribute="top" id="vnc-PT-n8z"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -862,37 +907,61 @@
             </objects>
             <point key="canvasLocation" x="-1628" y="1016.5"/>
         </scene>
-        <!--Sosial-->
-        <scene sceneID="Enk-FI-3E0">
+        <!--Sosial View Controller-->
+        <scene sceneID="PCK-S3-hOe">
             <objects>
-                <viewController id="M2V-gG-DgE" userLabel="Sosial" customClass="SosialViewController" customModule="Skandiacup" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="IqF-r9-bXc"/>
-                        <viewControllerLayoutGuide type="bottom" id="kpI-zb-aHU"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="KDB-7U-cUC">
+                <collectionViewController id="qrD-5I-yrk" customClass="SosialViewController" customModule="Skandiacup" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Z5J-9n-fCx">
                         <rect key="frame" x="0.0" y="0.0" width="560" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PuC-uW-iDc">
-                                <rect key="frame" x="40" y="44" width="240" height="128"/>
-                            </imageView>
-                        </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.98058478198359911" green="1" blue="0.86543521234313636" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VC4-MO-qyk">
+                            <size key="itemSize" width="138" height="84"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="InstaCell" id="bcw-3d-45B" customClass="InstaPhotoCell" customModule="Skandiacup" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="138" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="138" height="84"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rEH-bk-zu5">
+                                            <rect key="frame" x="0.0" y="0.0" width="138" height="84"/>
+                                            <animations/>
+                                        </imageView>
+                                    </subviews>
+                                    <animations/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <animations/>
+                                <connections>
+                                    <outlet property="imageView" destination="rEH-bk-zu5" id="rEB-BJ-lag"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="qrD-5I-yrk" id="Djr-hL-8Au"/>
+                            <outlet property="delegate" destination="qrD-5I-yrk" id="78o-dH-SnZ"/>
+                        </connections>
+                    </collectionView>
                     <connections>
-                        <outlet property="testImage" destination="PuC-uW-iDc" id="Apj-B2-hj6"/>
+                        <outlet property="viewOutlet" destination="Z5J-9n-fCx" id="iV6-rn-i4x"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ulk-BN-H4A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F77-ek-lYn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2244" y="1016.5"/>
+            <point key="canvasLocation" x="-2314" y="1006.5"/>
         </scene>
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="football28" width="64" height="64"/>
+        <image name="news29" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="wPc-nx-wgx"/>
