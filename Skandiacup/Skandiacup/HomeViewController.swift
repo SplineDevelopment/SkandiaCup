@@ -48,7 +48,8 @@ class HomeViewController: UIViewController {
         infoView.hidden = true
         newsView.hidden = false
         sosialView.hidden = true
-        
+        self.tabBarController?.tabBar.barTintColor = UIColor(red: 41.0/255.0, green: 40.0/255.0, blue: 39.0/255.0, alpha: 1.0)
+        self.tabBarController?.tabBar.tintColor = UIColor(red:0.02, green:0.54, blue:0.02, alpha:1.0)
         // Do any additional setup after loading the view.
     }
 
