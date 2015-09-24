@@ -7,7 +7,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--First-->
+        <!--Banekart-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="Skandiacup" customModuleProvider="target" sceneMemberID="viewController">
@@ -52,7 +52,7 @@
                             <constraint firstAttribute="centerY" secondItem="KQZ-1w-vlD" secondAttribute="centerY" id="exm-UA-ej4"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Banekart" image="footballField69" id="acW-dT-cKf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -944,6 +944,7 @@
                                 <animations/>
                                 <connections>
                                     <outlet property="imageView" destination="rEH-bk-zu5" id="rEB-BJ-lag"/>
+                                    <segue destination="qwe-Xv-PEr" kind="presentation" id="96S-Dt-cSI"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -960,10 +961,29 @@
             </objects>
             <point key="canvasLocation" x="-2314" y="1006.5"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="HKs-qn-etv">
+            <objects>
+                <viewController id="qwe-Xv-PEr" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fbI-X3-zI6"/>
+                        <viewControllerLayoutGuide type="bottom" id="4VO-Qb-Zkx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5CK-Yc-VGJ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ArH-eW-t6s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3058" y="1017"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
         <image name="football28" width="64" height="64"/>
+        <image name="footballField69" width="64" height="64"/>
         <image name="news29" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
