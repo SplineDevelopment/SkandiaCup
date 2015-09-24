@@ -10,29 +10,19 @@ import UIKit
 
 class FavoritesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var favoriteTableView: UITableView!
-    var favorites: [String] = ["Lag1", "Lag2", "Lag3"]
+    let defaults = NSUserDefaults.standardUserDefaults()
+    var favorites: [TournamentTeam]? = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         favoriteTableView.delegate = self
         favoriteTableView.dataSource = self
-        var xmlToParse = "<root><catalog><book><author>Bob</author></book><book><author>John</author></book><book><author>Mark</author></book><catalog></root>"
-        
-        var arenastring = "<SOAP-ENV:Envelope xmlns:SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/' xmlns:ns1='http://profixio.com/soap/tournament/ForTournamentExt.php'><SOAP-ENV:Body><ns1:getArenasResponse><getArenasResult><item><arenaID>1111111</arenaID><arenaName></arenaName><arenaDescription></arenaDescription><update_timestamp>2015-09-01 10:16:02</update_timestamp></item><item><arenaID>22222</arenaID><arenaName></arenaName><arenaDescription></arenaDescription><update_timestamp>2015-09-01 10:16:02</update_timestamp></item><item><arenaID>182256</arenaID><arenaName></arenaName><arenaDescription></arenaDescription><update_timestamp>2015-09-01 10:16:02</update_timestamp></item></getArenasResult></ns1:getArenasResponse></SOAP-ENV:Body></SOAP-ENV:Envelope>"
-//        
-//        let xml = SWXMLHash.config {
-//            config in
-//                config.shouldProcessNamespaces = false
-//            }.parse(arenastring)
-//        
-////        print(xml["root"]["catalog"]["book"][1]["author"].element?.text)
-//        print(xml["SOAP-ENV:Envelope"]["SOAP-ENV:Body"])
-        
-        //SharingManager.soap.getMatches { (matches) -> () in
-        //}
-        
-
-        // Do any additional setup after loading the view.
+        favorites = getFavoritedTeams()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        favorites = getFavoritedTeams()
+        favoriteTableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,16 +32,41 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("favoriteCell") as UITableViewCell!
-        cell.textLabel?.text = favorites[indexPath.row]
+            cell.textLabel?.text = favorites?[indexPath.row].name! ?? "Ingen lag er lagt til som favoritter enda"
         return cell
     }
     
-    //    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    //
-    //    }
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return favorites.count
+        return favorites?.count ?? 1
+    }
+    
+    func getFavoritedTeams() -> [TournamentTeam]?{
+        var teams = [TournamentTeam]()
+        let dataRecieved = defaults.objectForKey("favorites") as? NSData
+        var tempFav : FavoriteTeams?
+        if dataRecieved != nil{
+            tempFav = NSKeyedUnarchiver.unarchiveObjectWithData(dataRecieved!) as? FavoriteTeams
+        }
+        if (tempFav != nil) {
+            if (tempFav!.favorites.count > 0) {
+                for index in 0...tempFav!.favorites.count-1{
+                    let convert = (tempFav!.favorites[index] as! NSObject) as! TournamentTeam
+                    teams.append(convert)
+                }
+                return teams
+            }
+        }
+        return nil
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "favoritesToTeamView") {
+            if let indexPath = self.favoriteTableView.indexPathForSelectedRow{
+                    let selectedTeam = favorites![indexPath.row]
+                    (segue.destinationViewController as! TeamViewController).currentTeam = selectedTeam
+                }
+            }
+        }
     }
 
 
@@ -65,4 +80,3 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     }
     */
 
-}
