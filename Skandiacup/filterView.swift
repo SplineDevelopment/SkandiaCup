@@ -8,18 +8,28 @@
 
 import UIKit
 
-class filterView: UIView, UISearchBarDelegate{
+class filterView: UIView{
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet var viewGUI: filterView!
-    @IBOutlet weak var searchBar: UISearchBar!
+//    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var countryTextField: UITextField!
     @IBOutlet weak var ageSlider: UISlider!
     @IBOutlet weak var sexTextField: UITextField!
     var sexPicker: UIPickerView!
     var countryPicker: UIPickerView!
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    
+    init(_ coder: NSCoder? = nil) {
+        if let coder = coder {
+            super.init(coder: coder)!
+        } else {
+            super.init()
+        }
+    }
+    
+    required convenience init(coder aDecoder: NSCoder) {
+        self.init(aDecoder)
+//        super.init(coder: aDecoder)
         NSBundle.mainBundle().loadNibNamed("filterView", owner: self, options: nil)
         self.addSubview(viewGUI)
     }
@@ -29,7 +39,7 @@ class filterView: UIView, UISearchBarDelegate{
     }
     
     func setupDelegates(vc: TeamsViewController){
-        self.searchBar.delegate = vc
+//        self.searchBar.delegate = vc
         sexPicker = UIPickerView()
         sexPicker.accessibilityIdentifier = "sexPicker"
         countryPicker = UIPickerView()
@@ -43,4 +53,8 @@ class filterView: UIView, UISearchBarDelegate{
         sexTextField.inputView = sexPicker
         countryTextField.inputView = countryPicker
     }
+    
+//    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+//        searchBar.endEditing(true)
+//    }
 }
