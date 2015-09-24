@@ -7,9 +7,14 @@
 
 import UIKit
 
-class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
+class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate{
     var dropDownViewIsDisplayed = false
     var searchActive : Bool = false
+    
+    let sexPickerValues = ["Menn", "Damer"]
+    //get this dynamicly from teams
+    let countryPickerValues: [String] = ["Norway", "Lol", "SwedenHAHAHAHAH"]
+    
     @IBOutlet weak var teamTableView: UITableView!
     @IBOutlet weak var segmentController: UISegmentedControl!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -34,7 +39,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        (dropDownView as! filterView).setupSearchBar(self)
+        (dropDownView as! filterView).setupDelegates(self)
         teamTableView.dataSource = self
         teamTableView.delegate = self
         teamTableView.hidden = true
@@ -67,7 +72,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 44
+        return Config.teamCellHeight
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -85,7 +90,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBAction func searchButtonPressed(sender: AnyObject) {
         if !dropDownViewIsDisplayed{
             dropDownView.hidden = false
-            let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, 169, 0)
+            let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, Config.filterViewHeight, 0)
             dropDownView.layer.transform = CATransform3DIdentity
             teamTableView.layer.transform = CATransform3DIdentity
             
@@ -93,12 +98,13 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
                 self.dropDownView.layer.transform = rotationTransform
                 self.teamTableView.layer.transform = rotationTransform
                 self.dropDownViewIsDisplayed = true
+                self.teamTableView.contentSize.height = self.teamTableView.contentSize.height + Config.filterViewHeight
                 }, completion: { (success) -> Void in
                     self.dropDownView.hidden = false
             })
         } else if dropDownViewIsDisplayed{
             dropDownView.hidden = false
-            let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, 169, 0)
+            let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, Config.filterViewHeight, 0)
             dropDownView.layer.transform = rotationTransform
             teamTableView.layer.transform = rotationTransform
             
@@ -106,6 +112,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
                 self.dropDownView.layer.transform = CATransform3DIdentity
                 self.teamTableView.layer.transform = CATransform3DIdentity
                 self.dropDownViewIsDisplayed = false
+                self.teamTableView.contentSize.height = self.teamTableView.contentSize.height - Config.filterViewHeight
                 }, completion: { (success) -> Void in
                     self.dropDownView.hidden = true
             })
@@ -141,7 +148,8 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
-    //search bar delegate
+    // UISearchBarDelegate funcitons
+    
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         searchActive = true;
     }
@@ -170,5 +178,42 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
             searchActive = true;
         }
         self.teamTableView.reloadData()
+    }
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int{
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
+        if(pickerView.restorationIdentifier == "sexPicker"){
+            return sexPickerValues.count
+        }
+        
+        if(pickerView.restorationIdentifier == "countryPicker"){
+            return countryPickerValues.count
+        }
+        return 0
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if(pickerView.restorationIdentifier == "sexPicker"){
+            return sexPickerValues[row]
+        }
+        
+        if(pickerView.restorationIdentifier == "countryPicker"){
+            return countryPickerValues[row]
+        }
+        return ""
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
+        if(pickerView.restorationIdentifier == "sexPicker"){
+            (dropDownView as! filterView).sexTextField.text = self.sexPickerValues[row]
+        }
+        
+        if(pickerView.restorationIdentifier == "countryPicker"){
+            (dropDownView as! filterView).countryTextField.text = self.countryPickerValues[row]
+        }
+        self.view.endEditing(true)
     }
 }
