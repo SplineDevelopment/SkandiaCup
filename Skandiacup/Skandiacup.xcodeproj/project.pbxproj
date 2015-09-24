@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		235D71631BB3D56E0091E345 /* InstaPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235D71621BB3D56E0091E345 /* InstaPhotoCell.swift */; settings = {ASSET_TAGS = (); }; };
 		235D71651BB3D8B70091E345 /* InstaUICollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235D71641BB3D8B70091E345 /* InstaUICollectionViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		235D71671BB4381F0091E345 /* InstaPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235D71661BB4381F0091E345 /* InstaPopover.swift */; settings = {ASSET_TAGS = (); }; };
 		236203201B9ECAF000D7F6A7 /* CacheObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2362031F1B9ECAF000D7F6A7 /* CacheObjects.swift */; settings = {ASSET_TAGS = (); }; };
 		236B0C3B1B987C6700CDEC89 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236B0C3A1B987C6700CDEC89 /* Generator.swift */; settings = {ASSET_TAGS = (); }; };
 		236D8D601B9D8DF000669E51 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236D8D5F1B9D8DF000669E51 /* DataManager.swift */; settings = {ASSET_TAGS = (); }; };
@@ -84,6 +85,7 @@
 /* Begin PBXFileReference section */
 		235D71621BB3D56E0091E345 /* InstaPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaPhotoCell.swift; sourceTree = "<group>"; };
 		235D71641BB3D8B70091E345 /* InstaUICollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaUICollectionViewController.swift; sourceTree = "<group>"; };
+		235D71661BB4381F0091E345 /* InstaPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaPopover.swift; sourceTree = "<group>"; };
 		2362031F1B9ECAF000D7F6A7 /* CacheObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheObjects.swift; sourceTree = "<group>"; };
 		236B0C3A1B987C6700CDEC89 /* Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
 		236D8D5F1B9D8DF000669E51 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				3CDB8B361B999B3D00439028 /* MatchViewController.swift */,
 				235D71621BB3D56E0091E345 /* InstaPhotoCell.swift */,
 				235D71641BB3D8B70091E345 /* InstaUICollectionViewController.swift */,
+				235D71661BB4381F0091E345 /* InstaPopover.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				235D71631BB3D56E0091E345 /* InstaPhotoCell.swift in Sources */,
 				D52496641B988546001D3577 /* GroupViewController.swift in Sources */,
 				3CC5530D1B98C2CA008FA445 /* HomeViewController.swift in Sources */,
+				235D71671BB4381F0091E345 /* InstaPopover.swift in Sources */,
 				3C803E541B98528A001A51AA /* Soap.swift in Sources */,
 				D5FD4ECB1B94B8CA009B53FC /* FavoritesViewController.swift in Sources */,
 				2388C1511B99A73B00637F6E /* ArenaMapper.swift in Sources */,

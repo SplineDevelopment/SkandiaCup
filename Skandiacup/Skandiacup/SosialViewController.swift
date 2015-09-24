@@ -11,9 +11,9 @@ import UIKit
 class SosialViewController: UICollectionViewController {
     @IBOutlet var viewOutlet: UICollectionView!
     private let reuseIdentifier = "InstaCell";
-    private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
+    private let sectionInsets = UIEdgeInsets(top: 20.0, left: 20.0, bottom: 20.0, right: 20.0)
     private var insta_photos = [InstagramPhotoObject]()
-    
+
     override func viewDidLoad() {
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
@@ -41,6 +41,15 @@ class SosialViewController: UICollectionViewController {
         // TODO::: wipe cells first?
         self.viewOutlet.reloadData()
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "cellSegueInstaPopover") {
+            let svc = segue.destinationViewController as! InstaPopover
+            let cell = sender as! InstaPhotoCell
+            svc.toPass = cell.instaPhotoObject
+        }
+    }
+    
 }
 
 extension SosialViewController {
