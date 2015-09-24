@@ -186,33 +186,33 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
-        if(pickerView.restorationIdentifier == "sexPicker"){
+        if(pickerView.accessibilityIdentifier == "sexPicker"){
             return sexPickerValues.count
         }
         
-        if(pickerView.restorationIdentifier == "countryPicker"){
+        if(pickerView.accessibilityIdentifier == "countryPicker"){
             return countryPickerValues.count
         }
         return 0
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if(pickerView.restorationIdentifier == "sexPicker"){
+        if(pickerView.accessibilityIdentifier == "sexPicker"){
             return sexPickerValues[row]
         }
         
-        if(pickerView.restorationIdentifier == "countryPicker"){
+        if(pickerView.accessibilityIdentifier == "countryPicker"){
             return countryPickerValues[row]
         }
         return ""
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
-        if(pickerView.restorationIdentifier == "sexPicker"){
+        if(pickerView.accessibilityIdentifier == "sexPicker"){
             (dropDownView as! filterView).sexTextField.text = self.sexPickerValues[row]
         }
         
-        if(pickerView.restorationIdentifier == "countryPicker"){
+        if(pickerView.accessibilityIdentifier == "countryPicker"){
             (dropDownView as! filterView).countryTextField.text = self.countryPickerValues[row]
         }
         self.view.endEditing(true)

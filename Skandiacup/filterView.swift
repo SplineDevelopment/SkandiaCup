@@ -31,9 +31,9 @@ class filterView: UIView, UISearchBarDelegate{
     func setupDelegates(vc: TeamsViewController){
         self.searchBar.delegate = vc
         sexPicker = UIPickerView()
-        sexPicker.restorationIdentifier = "sexPicker"
+        sexPicker.accessibilityIdentifier = "sexPicker"
         countryPicker = UIPickerView()
-        countryPicker.restorationIdentifier = "countryPicker"
+        countryPicker.accessibilityIdentifier = "countryPicker"
         sexPicker.dataSource = vc
         sexPicker.delegate = vc
         sexTextField.delegate = vc
