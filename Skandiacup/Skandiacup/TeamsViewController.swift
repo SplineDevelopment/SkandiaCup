@@ -7,14 +7,14 @@
 
 import UIKit
 
-class TeamsViewController: UIViewController , UITableViewDataSource, UITableViewDelegate{
+class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
+    var dropDownViewIsDisplayed = false
+    var searchActive : Bool = false
     @IBOutlet weak var teamTableView: UITableView!
     @IBOutlet weak var segmentController: UISegmentedControl!
-    var searchPressed = false
-    var animated = false
-    
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
+    @IBOutlet weak var dropDownView: UIView!
     var teams: [TournamentTeam]? {
         didSet{
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -24,6 +24,8 @@ class TeamsViewController: UIViewController , UITableViewDataSource, UITableView
             })
         }
     }
+    
+    var filteredTeams = [TournamentTeam]()
     
     @IBAction func indexChanged(sender: AnyObject) {
         (self.parentViewController?.parentViewController as! TournamentViewController).switchTable(segmentController.selectedSegmentIndex)
@@ -37,12 +39,12 @@ class TeamsViewController: UIViewController , UITableViewDataSource, UITableView
         teamTableView.hidden = true
         activityIndicator.hidden = false
         activityIndicator.startAnimating()
+        self.dropDownView.hidden = true
         segmentController.selectedSegmentIndex = 0
         
         SharingManager.soap.getTeams(nil) { (teams) -> () in
             self.teams = teams
         }
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,54 +53,63 @@ class TeamsViewController: UIViewController , UITableViewDataSource, UITableView
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        print("ANIMATED: \(animated) SEARCHPRESSED: \(searchPressed) INDEXPATH ROW \(indexPath.row)")
-        if indexPath.row == 0 && searchPressed {
-            let cell = tableView.dequeueReusableCellWithIdentifier("searchCell") as UITableViewCell!
+        if(searchActive){
+            let cell = teamTableView.dequeueReusableCellWithIdentifier("teamCell") as UITableViewCell!
+            if filteredTeams.count > 0{
+                cell.textLabel?.text = filteredTeams[indexPath.row].name
+            }
             return cell
-        }
-        if searchPressed{
-            let cell = tableView.dequeueReusableCellWithIdentifier("teamCell") as UITableViewCell!
-            cell.textLabel?.text = teams![indexPath.row-1].name
-            return cell
-        }else{
-            let cell = tableView.dequeueReusableCellWithIdentifier("teamCell") as UITableViewCell!
+        } else {
+            let cell = teamTableView.dequeueReusableCellWithIdentifier("teamCell") as UITableViewCell!
             cell.textLabel?.text = teams![indexPath.row].name
             return cell
         }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if(indexPath.row == 0 && searchPressed){
-            return 169
-        }
         return 44
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return teams != nil ? teams!.count : 0
+        if(searchActive){
+            return filteredTeams.count
+        }else{
+            return teams != nil ? teams!.count : 0
+        }
     }
-    
+
     func changeSegment(){
         self.segmentController.selectedSegmentIndex = 0
     }
     
     @IBAction func searchButtonPressed(sender: AnyObject) {
-        searchPressed = searchPressed ? false : true
-        if(!searchPressed){
-            let cell = self.teamTableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
-            let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, 200, 0)
-            let rotationTransform2 = CATransform3DTranslate(CATransform3DIdentity, 0, 169, 0)
-            cell!.layer.transform = rotationTransform
-            teamTableView.layer.transform = rotationTransform2
+        if !dropDownViewIsDisplayed{
+            dropDownView.hidden = false
+            let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, 169, 0)
+            dropDownView.layer.transform = CATransform3DIdentity
+            teamTableView.layer.transform = CATransform3DIdentity
             
             UIView.animateWithDuration(1.0, animations: { () -> Void in
-                cell!.layer.transform = CATransform3DIdentity
+                self.dropDownView.layer.transform = rotationTransform
+                self.teamTableView.layer.transform = rotationTransform
+                self.dropDownViewIsDisplayed = true
+                }, completion: { (success) -> Void in
+                    self.dropDownView.hidden = false
+            })
+        } else if dropDownViewIsDisplayed{
+            dropDownView.hidden = false
+            let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, 169, 0)
+            dropDownView.layer.transform = rotationTransform
+            teamTableView.layer.transform = rotationTransform
+            
+            UIView.animateWithDuration(1.0, animations: { () -> Void in
+                self.dropDownView.layer.transform = CATransform3DIdentity
                 self.teamTableView.layer.transform = CATransform3DIdentity
-                self.teamTableView.reloadData()
-                self.animated = false
+                self.dropDownViewIsDisplayed = false
+                }, completion: { (success) -> Void in
+                    self.dropDownView.hidden = true
             })
         }
-        self.teamTableView.reloadData()
     }
     
     // UITableViewDelegate Functions
@@ -112,6 +123,7 @@ class TeamsViewController: UIViewController , UITableViewDataSource, UITableView
         // Pass the selected object to the new view controller.
     }
     */
+    
     override func viewWillAppear(animated: Bool) {
         segmentController.setEnabled(true, forSegmentAtIndex: 0)
     }
@@ -120,33 +132,43 @@ class TeamsViewController: UIViewController , UITableViewDataSource, UITableView
         
     }
     
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        if(indexPath.row == 0 && searchPressed){
-            if(!animated){
-                let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, -200, 0)
-                let rotationTransform2 = CATransform3DTranslate(CATransform3DIdentity, 0, -169, 0)
-                cell.layer.transform = rotationTransform
-                teamTableView.layer.transform = rotationTransform2
-
-                UIView.animateWithDuration(1.0, animations: { () -> Void in
-                    cell.layer.transform = CATransform3DIdentity
-                    self.teamTableView.layer.transform = CATransform3DIdentity
-                    self.animated = true
-                })
-            }
-        }
-    }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "listToTeamView") {
             if let indexPath = self.teamTableView.indexPathForSelectedRow{
-                if searchPressed{
-                    let selectedTeam = teams![indexPath.row-1]
-                    (segue.destinationViewController as! TeamViewController).currentTeam = selectedTeam
-                }else{
-                    let selectedTeam = teams![indexPath.row]
-                    (segue.destinationViewController as! TeamViewController).currentTeam = selectedTeam
-                }
+                let selectedTeam = teams![indexPath.row]
+                (segue.destinationViewController as! TeamViewController).currentTeam = selectedTeam
             }
         }
+    }
+    
+    //search bar delegate
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchActive = true;
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredTeams = teams!.filter({ (team) -> Bool in
+            let tmp: NSString = team.name!
+            let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
+            return range.location != NSNotFound
+        })
+        if(filteredTeams.count == 0){
+            searchActive = false;
+        } else {
+            searchActive = true;
+        }
+        self.teamTableView.reloadData()
     }
 }
