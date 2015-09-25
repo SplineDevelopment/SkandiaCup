@@ -35,6 +35,7 @@
 		3CDB8B351B99923200439028 /* SosialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDB8B341B99923200439028 /* SosialViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		3CDB8B371B999B3D00439028 /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDB8B361B999B3D00439028 /* MatchViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		3CEAA9F31BB5706300939BFD /* EndPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEAA9F21BB5706300939BFD /* EndPlayViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		726A96821BB582E700646497 /* MatchClassesMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726A96811BB582E700646497 /* MatchClassesMapper.swift */; settings = {ASSET_TAGS = (); }; };
 		729AAA691BA1BEC300E8B6E9 /* FavoriteTeams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729AAA681BA1BEC300E8B6E9 /* FavoriteTeams.swift */; settings = {ASSET_TAGS = (); }; };
 		D51E4B0C1B94A1E700FF5DDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51E4B0B1B94A1E700FF5DDB /* AppDelegate.swift */; };
 		D51E4B0E1B94A1E700FF5DDB /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51E4B0D1B94A1E700FF5DDB /* FirstViewController.swift */; };
@@ -115,6 +116,7 @@
 		3CDB8B341B99923200439028 /* SosialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SosialViewController.swift; sourceTree = "<group>"; };
 		3CDB8B361B999B3D00439028 /* MatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchViewController.swift; sourceTree = "<group>"; };
 		3CEAA9F21BB5706300939BFD /* EndPlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPlayViewController.swift; sourceTree = "<group>"; };
+		726A96811BB582E700646497 /* MatchClassesMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchClassesMapper.swift; sourceTree = "<group>"; };
 		729AAA681BA1BEC300E8B6E9 /* FavoriteTeams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTeams.swift; sourceTree = "<group>"; };
 		D51E4B081B94A1E700FF5DDB /* Skandiacup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skandiacup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D51E4B0B1B94A1E700FF5DDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 				D5EAE5471B99C55100AA3AF1 /* FieldsMapper.swift */,
 				D5EAE5491B99C82700AA3AF1 /* MatchTablesMapper.swift */,
 				D5EC2E921B9B5CBC00CBA235 /* TournamentTeamMapper.swift */,
+				726A96811BB582E700646497 /* MatchClassesMapper.swift */,
 			);
 			name = Mappers;
 			sourceTree = "<group>";
@@ -532,6 +535,7 @@
 				236B0C3B1B987C6700CDEC89 /* Generator.swift in Sources */,
 				D5EAE54A1B99C82700AA3AF1 /* MatchTablesMapper.swift in Sources */,
 				238C04C11BB2EA9D000492E7 /* InstagramRepo.swift in Sources */,
+				726A96821BB582E700646497 /* MatchClassesMapper.swift in Sources */,
 				3CDB8B351B99923200439028 /* SosialViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

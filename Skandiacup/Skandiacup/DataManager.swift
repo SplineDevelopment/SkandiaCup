@@ -55,9 +55,12 @@ class DataManager {
     func getField(arenaID: Int?, fieldID: Int?, completionHandler: (fields: [Field]) -> ()) {
         
     }
-    func getMatchClass(id: [Int]) -> [MatchClass]? {
-        return [MatchClass()]
+    func getMatchClass(completionHandler: (matchclasses: [MatchClass]) -> ()) {
+        SharingManager.soap.getMatchClass { (matchclasses) -> () in
+            completionHandler(matchclasses: matchclasses)
+        }
     }
+    
     func getMatchGroup(id: [Int]) -> [MatchGroup]? {
         return [MatchGroup()]
     }

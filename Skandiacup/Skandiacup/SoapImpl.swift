@@ -70,8 +70,16 @@ class SoapImpl: Soap {
         }
     }
 
-    func getMatchClass(id: [Int]) -> [MatchClass]?{
-        return nil
+    func getMatchClass(completionHandler: (matchclasses: [MatchClass]) -> ()){
+        let request = Generator.generateGetMatchClassesXML()
+        self.sendReceive(request) { (responseString) -> () in
+            let xml = SWXMLHash.config {
+                config in
+                config.shouldProcessNamespaces = false
+                }.parse(responseString)
+            let matchClasses = MatchClassesMapper.mapMatchClasses(xml)
+            completionHandler(matchclasses: matchClasses)
+        }
     }
     
     func getMatchGroup(id: [Int]) -> [MatchGroup]?{
