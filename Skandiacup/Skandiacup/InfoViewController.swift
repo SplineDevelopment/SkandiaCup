@@ -8,12 +8,10 @@
 
 import UIKit
 
-class InfoViewController: UIViewController {
+class InfoViewController: UIViewController, SegmentChangeProto {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    func viewChangedTo() {
+        print("Changed to info view")
     }
 
     override func didReceiveMemoryWarning() {

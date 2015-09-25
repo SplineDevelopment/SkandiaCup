@@ -22,6 +22,7 @@
 		238C04C31BB2EAB7000492E7 /* InstagramRepoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238C04C21BB2EAB7000492E7 /* InstagramRepoImpl.swift */; settings = {ASSET_TAGS = (); }; };
 		238C04C51BB2EAC3000492E7 /* InstagramRepoMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238C04C41BB2EAC3000492E7 /* InstagramRepoMock.swift */; settings = {ASSET_TAGS = (); }; };
 		238C04C71BB2EB18000492E7 /* InstagramPhotoObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238C04C61BB2EB18000492E7 /* InstagramPhotoObject.swift */; settings = {ASSET_TAGS = (); }; };
+		23D9DD801BB56ED3002B26B6 /* SegmentChangeProto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D9DD7F1BB56ED3002B26B6 /* SegmentChangeProto.swift */; settings = {ASSET_TAGS = (); }; };
 		3C803E501B984D46001A51AA /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C803E4F1B984D46001A51AA /* Functions.swift */; settings = {ASSET_TAGS = (); }; };
 		3C803E541B98528A001A51AA /* Soap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C803E531B98528A001A51AA /* Soap.swift */; settings = {ASSET_TAGS = (); }; };
 		3C803E561B9852EF001A51AA /* SoapMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C803E551B9852EF001A51AA /* SoapMock.swift */; settings = {ASSET_TAGS = (); }; };
@@ -100,6 +101,7 @@
 		238C04C21BB2EAB7000492E7 /* InstagramRepoImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramRepoImpl.swift; sourceTree = "<group>"; };
 		238C04C41BB2EAC3000492E7 /* InstagramRepoMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramRepoMock.swift; sourceTree = "<group>"; };
 		238C04C61BB2EB18000492E7 /* InstagramPhotoObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramPhotoObject.swift; sourceTree = "<group>"; };
+		23D9DD7F1BB56ED3002B26B6 /* SegmentChangeProto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentChangeProto.swift; sourceTree = "<group>"; };
 		3C803E4F1B984D46001A51AA /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		3C803E531B98528A001A51AA /* Soap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Soap.swift; sourceTree = "<group>"; };
 		3C803E551B9852EF001A51AA /* SoapMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoapMock.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				235D71621BB3D56E0091E345 /* InstaPhotoCell.swift */,
 				235D71641BB3D8B70091E345 /* InstaUICollectionViewController.swift */,
 				235D71661BB4381F0091E345 /* InstaPopover.swift */,
+				23D9DD7F1BB56ED3002B26B6 /* SegmentChangeProto.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				3CDB8B311B9991CE00439028 /* NewsViewController.swift in Sources */,
 				D5FD4EE01B94CF70009B53FC /* TournamentTeam.swift in Sources */,
 				3CDB8B331B99922A00439028 /* InfoViewController.swift in Sources */,
+				23D9DD801BB56ED3002B26B6 /* SegmentChangeProto.swift in Sources */,
 				236D8D651B9D8F6F00669E51 /* CacheMock.swift in Sources */,
 				D54FB67A1BB3F2BE007FCCAF /* filterView.swift in Sources */,
 				D52496601B9876F4001D3577 /* GroupsViewController.swift in Sources */,

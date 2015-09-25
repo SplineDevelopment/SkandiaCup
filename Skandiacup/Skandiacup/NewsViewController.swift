@@ -8,12 +8,10 @@
 
 import UIKit
 
-class NewsViewController: UIViewController {
+class NewsViewController: UIViewController, SegmentChangeProto {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    func viewChangedTo() {
+        print("Changed to news view")
     }
 
     override func didReceiveMemoryWarning() {

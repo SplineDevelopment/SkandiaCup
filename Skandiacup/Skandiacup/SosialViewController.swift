@@ -8,39 +8,32 @@
 
 import UIKit
 
-class SosialViewController: UICollectionViewController {
+class SosialViewController: UICollectionViewController, SegmentChangeProto {
     @IBOutlet var viewOutlet: UICollectionView!
-    private let reuseIdentifier = "InstaCell";
+    private let reuseIdentifier = "InstaCell"
     private let sectionInsets = UIEdgeInsets(top: 20.0, left: 20.0, bottom: 20.0, right: 20.0)
     private var insta_photos = [InstagramPhotoObject]()
-
-    override func viewDidLoad() {
+    
+    func viewChangedTo() {
+        print("Changed to sosial view")
+        
+        if self.insta_photos.count > 0 {
+            print("insta photos already initialized")
+            return
+        }
+        
+        print("Loading data from instagram")
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
             SharingManager.data.getAllPhotoObjects() { (photoObjects) -> () in
                 dispatch_async(dispatch_get_main_queue()) {
-                    //print(photoObjects)
                     self.insta_photos.appendContentsOf(photoObjects)
+                    self.viewOutlet.reloadData()
                 }
             }
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
-        /*
-        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-        dispatch_async(dispatch_get_global_queue(priority, 0)) {
-            SharingManager.data.getAllPhotoObjects() { (photoObjects) -> () in
-                dispatch_async(dispatch_get_main_queue()) {
-                    //print(photoObjects)
-                    self.insta_photos.appendContentsOf(photoObjects)
-                }
-            }
-        }
-        */
-        // TODO::: wipe cells first?
-        self.viewOutlet.reloadData()
-    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "cellSegueInstaPopover") {
