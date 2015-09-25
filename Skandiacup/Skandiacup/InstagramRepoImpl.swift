@@ -22,88 +22,36 @@ class InstagramRepoImpl : InstagramRepo {
                 print("error=\(error)")
                 return
             }
-//            let responseString = String(data: data!, encoding: NSUTF8StringEncoding)
-            print("Sending data over network!")
-//            if responseString != nil {
-                //print(responseString)
             completionHandler(responseData: data!)
-            /*
-            } else {
-                print("responseString is nil")
-            }
-            */
         }
         task.resume()
     }
     
     func getAllPhotoObjects(completionHandler: (photoObjects: [InstagramPhotoObject]) -> ()) {
-        /*
-        let url = NSURL(string: "http://images.freeimages.com/images/previews/23c/soccer-ball-and-grass-1550139.jpg")!
-        let urlSmall = NSURL(string: "http://images.freeimages.com/images/previews/23c/soccer-ball-and-grass-1550139.jpg")!
-        let published = Functions.getCurrentTimeInSeconds() - 1000
-        let user = "Test User"
-        let urlProfilePicture = NSURL(string: "http://images.freeimages.com/images/previews/a80/venetian-mask-1516474.jpg")!
-        let obj = InstagramPhotoObject(url: url, urlSmall: urlSmall, published: published, user: user, urlProfilePicture: urlProfilePicture)
-        let n = Int(arc4random_uniform(20))
-        print(n)
-        print("hei")
-        for i in 0...n {
-            arr.append(obj)
-        }
-        //arr.append(obj)
-        //arr.append(obj)
-        */
-        
-        let get_uri = "https://api.instagram.com/v1/tags/sun/media/recent?client_id=7b9d2e2f9ef04d81939c7c61f381184e"
-        
-        //var json = getJSON(get_uri)
-        
+        let tag = Config.tag_name
+        let get_uri = "https://api.instagram.com/v1/tags/" + tag + "/media/recent?client_id=7b9d2e2f9ef04d81939c7c61f381184e"
         let req = NSMutableURLRequest(URL: NSURL(string: get_uri)!)
         
         sendReceive(req) { (responseData) -> Void in
-//            var arr = [InstagramPhotoObject]()
-            //print(responseData)
-            //print(String(data: responseData, encoding: NSUTF8StringEncoding))
-            print("heixxx")
             do {
                 let anyObj: AnyObject? = try NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions(rawValue: 0))
-                //print(anyObj)
-                print("(------------)")
                 // this is not safe!
                 let test_o = anyObj as! NSDictionary
-                //print(test_o["data"])
-                // ANYOBJ then ["data"] before processing on
-                // ALSO:: profile picture and usename is under ["caption"]["from"]
-                // use anyObj
-                print("parsing inc")
                 let arr = self.parseJson(test_o["data"]!)
                 completionHandler(photoObjects: arr)
             } catch let error as NSError {
                 print(error)
             }
         }
-        
-        
-//        completionHandler(photoObjects: arr)
     }
     
     func parseJson(anyObj:AnyObject) -> Array<InstagramPhotoObject>{
-        
         var list:Array<InstagramPhotoObject> = []
-        
-        print("ARRAYYYY")
-        
-       // print
-        
-        //print(anyObj)
-        
         if anyObj is Array<AnyObject> {
-            print("test")
-            //var b:InstagramPhotoObject = InstagramPhotoObject()
-            
             for json in anyObj as! Array<AnyObject>{
+                
                 let b:InstagramPhotoObject = InstagramPhotoObject()
-                print(json)
+                
                 var temp_url: String?
                 if let jsonDict_url_1 = json["images"] as? NSDictionary {
                     if let jsonDict_url_2 = jsonDict_url_1["standard_resolution"] as? NSDictionary {
@@ -112,54 +60,80 @@ class InstagramRepoImpl : InstagramRepo {
                             b.url = NSURL(string: temp_url!)
                         } else {
                             // how to handle this?
-                            print("ERROR")
+                            print("ERROR standard res url")
                             b.url = NSURL()
                         }
                     }
                 }
-                // mock
                 
-                let urlSmall = NSURL(string: "http://images.freeimages.com/images/previews/23c/soccer-ball-and-grass-1550139.jpg")!
-                let published = Functions.getCurrentTimeInSeconds() - 1000
-                let user = "Test User"
-                let urlProfilePicture = NSURL(string: "http://images.freeimages.com/images/previews/a80/venetian-mask-1516474.jpg")!
-                
-                b.urlSmall = urlSmall
-                b.published = published
-                b.user = user
-                b.urlProfilePicture = urlProfilePicture
-                
-                //
-                /*
-                var temp_url_1 = json["images"] as AnyObject!
-                var temp_url_2 = temp_url_1["standard_resolution"] as AnyObject!
-                var temp_url_3 = (temp_url_2["url"] as AnyObject? as? String) ?? ""
-                */
-//                b.url = NSURL(string: temp_url)
-//                var temp_url_small = (json["images"]["thumbnail"]["url"] as AnyObject? as? String) ?? ""
-//                b.urlSmall = NSURL(string: temp_url_small)
-                //b.urlSmall = NSURL()
-                // TODO!!
-                //let tempProfilePic = (json["username"] as AnyObject? as? String) ?? "" // to get rid of null
-                //b.urlProfilePicture = NSURL(string: tempProfilePic)
-                //b.user = (json["username"] as AnyObject? as? String) ?? "" // to get rid of null
-                //b.published = (json["created_time"] as AnyObject? as? Int) ?? 0
-                
-                list.append(b)
-                // Max size on list
-                
-                if list.count == 15 {
-                    break
+                var temp_url_th: String?
+                if let jsonDict_url_th1 = json["images"] as? NSDictionary {
+                    if let jsonDict_url_th2 = jsonDict_url_th1["thumbnail"] as? NSDictionary {
+                        if let jsonDict_url_th3 = jsonDict_url_th2["url"] as? String {
+                            temp_url_th = jsonDict_url_th3
+                            b.urlSmall = NSURL(string: temp_url_th!)
+                        } else {
+                            // how to handle this?
+                            print("ERROR thumbnail")
+                            b.urlSmall = NSURL()
+                        }
+                    }
                 }
                 
-                print(list)
-            }// for
-            
-        } // if
-        
+                var temp_profile_picture_url: String?
+                if let jsonDict_url_p1 = json["caption"] as? NSDictionary {
+                    if let jsonDict_url_p2 = jsonDict_url_p1["from"] as? NSDictionary {
+                        if let jsonDict_url_p3 = jsonDict_url_p2["profile_picture"] as? String {
+                            temp_profile_picture_url = jsonDict_url_p3
+                            b.urlProfilePicture = NSURL(string: temp_profile_picture_url!)
+                        } else {
+                            // how to handle this?
+                            print("ERROR profile pic url")
+                            b.urlProfilePicture = NSURL()
+                        }
+                    }
+                }
+                
+                var temp_username: String?
+                if let jsonDict_url_u1 = json["caption"] as? NSDictionary {
+                    if let jsonDict_url_u2 = jsonDict_url_u1["from"] as? NSDictionary {
+                        if let jsonDict_url_u3 = jsonDict_url_u2["username"] as? String {
+                            temp_username = jsonDict_url_u3
+                            b.user = temp_username
+                        } else {
+                            // how to handle this?
+                            print("ERROR username")
+                            b.user = "Anonymous"
+                        }
+                    }
+                }
+                
+                if let jsonDict_url_t1 = json["caption"] as? NSDictionary {
+                    if let jsonDict_url_t2 = jsonDict_url_t1["created_time"] as? String {
+                        if let temp_int_timestamp = Int(jsonDict_url_t2) {
+                            b.published = temp_int_timestamp
+                        } else {
+                            // how to handle this?
+                            print("ERROR (inner) timestamp")
+                            b.published = 0
+                        }
+                    } else {
+                        // how to handle this?
+                        print("ERROR timestamp")
+                        b.published = 0
+                    }
+                }
+                
+                list.append(b)
+                
+                // Max size on list
+                if list.count == 25 {
+                    break
+                }
+            }
+        }
         return list
-        
-    }//func
+    }
     
     func getPhotoObject(id: Int, completionHandler: (photoObject: InstagramPhotoObject) -> ()) {
         // mock
@@ -173,3 +147,4 @@ class InstagramRepoImpl : InstagramRepo {
     }
 }
 
+//
