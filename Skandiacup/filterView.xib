@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Årsklasse" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KiA-lC-pFS">
-                    <rect key="frame" x="24" y="28" width="98" height="21"/>
+                    <rect key="frame" x="24" y="67" width="98" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="98" id="NjK-b1-blm"/>
                     </constraints>
@@ -31,7 +31,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="15" minValue="10" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="q36-Kw-nZe">
-                    <rect key="frame" x="352" y="24" width="192" height="31"/>
+                    <rect key="frame" x="352" y="63" width="192" height="31"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="188" id="Xx2-dq-W16"/>
                     </constraints>
@@ -40,13 +40,13 @@
                     </connections>
                 </slider>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Land" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5U-Ky-BKE">
-                    <rect key="frame" x="24" y="62" width="98" height="21"/>
+                    <rect key="frame" x="24" y="101" width="98" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kjønn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fcM-cp-uRB">
-                    <rect key="frame" x="24" y="96" width="98" height="21"/>
+                    <rect key="frame" x="24" y="135" width="98" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -59,17 +59,17 @@
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t1C-ww-gw6">
-                    <rect key="frame" x="354" y="92" width="238" height="30"/>
+                    <rect key="frame" x="354" y="131" width="238" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BPJ-5K-ZZa">
-                    <rect key="frame" x="354" y="58" width="238" height="30"/>
+                    <rect key="frame" x="354" y="97" width="238" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ou-PL-6DP">
-                    <rect key="frame" x="550" y="29" width="42" height="21"/>
+                    <rect key="frame" x="550" y="68" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>

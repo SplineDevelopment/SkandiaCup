@@ -29,9 +29,9 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
             })
         }
     }
-    
     var filteredTeams = [TournamentTeam]()
-    
+
+
     @IBAction func indexChanged(sender: AnyObject) {
         (self.parentViewController?.parentViewController as! TournamentViewController).switchTable(segmentController.selectedSegmentIndex)
             viewDidLoad()
@@ -142,9 +142,20 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "listToTeamView") {
-            if let indexPath = self.teamTableView.indexPathForSelectedRow{
-                let selectedTeam = teams![indexPath.row]
-                (segue.destinationViewController as! TeamViewController).currentTeam = selectedTeam
+            if(self.searchController.active){
+                if let indexPath = self.teamTableView.indexPathForSelectedRow{
+                    let selectedTeam = filteredTeams[indexPath.row]
+                    (segue.destinationViewController as! TeamViewController).currentTeam = selectedTeam
+                    self.searchController.active = false
+                    self.searchController.searchBar.endEditing(true)
+                }
+            }else{
+                if let indexPath = self.teamTableView.indexPathForSelectedRow{
+                    let selectedTeam = teams![indexPath.row]
+                    (segue.destinationViewController as! TeamViewController).currentTeam = selectedTeam
+                    self.searchController.active = false
+                    self.searchController.searchBar.endEditing(true)
+                }
             }
         }
     }
@@ -157,10 +168,13 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func searchBarTextDidEndEditing(searchBar: UISearchBar) {
         searchActive = false;
+        filteredTeams = teams!
     }
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchActive = false;
+        filteredTeams = teams!
+        self.teamTableView.reloadData()
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
