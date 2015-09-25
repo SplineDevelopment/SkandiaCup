@@ -25,11 +25,15 @@ class SosialViewController: UICollectionViewController, SegmentChangeProto {
     func viewChangedTo() {
         print("Changed to sosial view")
 
+        // remove -> replace with timer
         if self.insta_photos.count > 0 {
             print("insta photos already initialized")
             return
         }
-
+        
+        // TODO::: remove list and replace? or something else?
+        // need to be able to update based on a timer!
+        
         print("Loading data from instagram")
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
@@ -60,7 +64,7 @@ extension SosialViewController {
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
             cell.instaPhotoObject = self.insta_photos[indexPath.item]
-            NSURLSession.sharedSession().dataTaskWithURL(self.insta_photos[indexPath.item].url!) { (data, response, error) in
+            NSURLSession.sharedSession().dataTaskWithURL(self.insta_photos[indexPath.item].urlSmall!) { (data, response, error) in
                 dispatch_async(dispatch_get_main_queue()) {
                     cell.imageView.image = UIImage(data: data!)
                 }
