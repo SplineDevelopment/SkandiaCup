@@ -8,8 +8,8 @@
 import UIKit
 
 class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UISearchControllerDelegate, UISearchResultsUpdating{
-    @IBOutlet weak var testView: UIView!
-      @IBOutlet weak var teamTableView: UITableView!
+    @IBOutlet weak var filterDropDownView: UIView!
+    @IBOutlet weak var teamTableView: UITableView!
     @IBOutlet weak var segmentController: UISegmentedControl!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
@@ -41,9 +41,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.teamTableView.tableHeaderView = testView
-        testView.hidden = true
-        self.teamTableView.tableHeaderView?.sizeToFit()
+        self.teamTableView.tableHeaderView?.hidden = true
         (self.teamTableView.tableHeaderView as! filterView).setupDelegates(self)
         teamTableView.dataSource = self
         teamTableView.delegate = self
@@ -55,8 +53,6 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
         SharingManager.soap.getTeams(nil) { (teams) -> () in
             self.teams = teams
         }
-        (self.teamTableView.tableHeaderView as! filterView).ageLabel.text = "\(Int((self.teamTableView.tableHeaderView as! filterView).ageSlider.value))"
-        
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.searchBar.sizeToFit()
@@ -64,13 +60,10 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
         searchController.delegate = self
         searchController.dimsBackgroundDuringPresentation = false // default is YES
         searchController.searchBar.delegate = self    // so we can monitor text changes + others
-
+        
         let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, -Config.filterViewHeight, 0)
         teamTableView.layer.transform = rotationTransform
-        teamTableView.sizeToFit()
-        self.teamTableView.tableHeaderView?.hidden = true
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -109,19 +102,21 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
             let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, -Config.filterViewHeight, 0)
             teamTableView.layer.transform = rotationTransform
             
-            UIView.animateWithDuration(1.0, animations: { () -> Void in
+            UIView.animateWithDuration(0.5, animations: { () -> Void in
                 self.teamTableView.layer.transform = CATransform3DIdentity
+                
                 self.dropDownViewIsDisplayed = true
+                self.teamTableView.contentSize.height = self.teamTableView.contentSize.height + Config.filterViewHeight
                 }, completion: { (success) -> Void in
-                    self.teamTableView.tableHeaderView?.hidden = false
             })
         } else if dropDownViewIsDisplayed{
              let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, -Config.filterViewHeight, 0)
             teamTableView.layer.transform = CATransform3DIdentity
             
-            UIView.animateWithDuration(1.0, animations: { () -> Void in
+            UIView.animateWithDuration(0.5, animations: { () -> Void in
                 self.teamTableView.layer.transform = rotationTransform
                 self.dropDownViewIsDisplayed = false
+                self.teamTableView.contentSize.height = self.teamTableView.contentSize.height - Config.filterViewHeight
                 }, completion: { (success) -> Void in
                     self.teamTableView.tableHeaderView?.hidden = true
             })
@@ -237,6 +232,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
             self.teamTableView.reloadData()
             return
         }
+        
         self.filteredTeams.removeAll(keepCapacity: false)
         filteredTeams = teams!.filter({ (team) -> Bool in
             let tmp: NSString = team.name!
