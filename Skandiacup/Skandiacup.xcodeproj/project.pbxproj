@@ -131,8 +131,8 @@
 		D524965F1B9876F4001D3577 /* GroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		D52496611B988364001D3577 /* TeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
 		D52496631B988546001D3577 /* GroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
-		D54FB6791BB3F2BE007FCCAF /* filterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = filterView.swift; sourceTree = "<group>"; };
-		D54FB67B1BB3F2F3007FCCAF /* filterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = filterView.xib; sourceTree = "<group>"; };
+		D54FB6791BB3F2BE007FCCAF /* filterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = filterView.swift; path = ../filterView.swift; sourceTree = "<group>"; };
+		D54FB67B1BB3F2F3007FCCAF /* filterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = filterView.xib; path = ../filterView.xib; sourceTree = "<group>"; };
 		D55D9CF51B99949B00DD01E1 /* SWXMLHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWXMLHash.swift; sourceTree = "<group>"; };
 		D5774F441B999D3B002F9451 /* MatchesMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesMapper.swift; sourceTree = "<group>"; };
 		D5EAE5471B99C55100AA3AF1 /* FieldsMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldsMapper.swift; sourceTree = "<group>"; };
@@ -252,8 +252,6 @@
 		D51E4AFF1B94A1E700FF5DDB = {
 			isa = PBXGroup;
 			children = (
-				D54FB6791BB3F2BE007FCCAF /* filterView.swift */,
-				D54FB67B1BB3F2F3007FCCAF /* filterView.xib */,
 				D51E4B0A1B94A1E700FF5DDB /* Skandiacup */,
 				D51E4B211B94A1E700FF5DDB /* SkandiacupTests */,
 				D51E4B2C1B94A1E700FF5DDB /* SkandiacupUITests */,
@@ -326,6 +324,8 @@
 		D5FD4ECE1B94C781009B53FC /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				D54FB6791BB3F2BE007FCCAF /* filterView.swift */,
+				D54FB67B1BB3F2F3007FCCAF /* filterView.xib */,
 				D5FD4ECF1B94C79B009B53FC /* Arena.swift */,
 				D5FD4ED11B94C8B7009B53FC /* TournamentClub.swift */,
 				D5FD4ED31B94C8FF009B53FC /* Field.swift */,
