@@ -10,7 +10,13 @@ import UIKit
 
 class GroupsViewController: UIViewController , UITableViewDataSource, UITableViewDelegate{
     @IBOutlet weak var groupTableView: UITableView!
-    var groups: [String] = ["Gruppe1", "Gruppe2", "Gruppe3"]
+    var groups: [MatchClass]? {
+        didSet{
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                self.groupTableView.reloadData()
+            }
+        }
+    }
     @IBOutlet weak var segmentController: UISegmentedControl!
     
     override func viewDidLoad() {
@@ -18,6 +24,9 @@ class GroupsViewController: UIViewController , UITableViewDataSource, UITableVie
         groupTableView.dataSource = self
         groupTableView.delegate = self
         segmentController.selectedSegmentIndex = 1
+        SharingManager.data.getMatchClass { (matchclasses) -> () in
+            self.groups = matchclasses
+        }
         
         // Do any additional setup after loading the view.
     }
@@ -34,16 +43,27 @@ class GroupsViewController: UIViewController , UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("groupCell") as UITableViewCell!
-        cell.textLabel?.text = groups[indexPath.row]
+        cell.textLabel?.text = groups![indexPath.row].name
         return cell
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "groupsViewToGroupView") {
+            if let indexPath = self.groupTableView.indexPathForSelectedRow{
+                let selectedGroup = groups![indexPath.row]
+                (segue.destinationViewController as! GroupViewController).currentGroup = selectedGroup
+
+            }
+        }
+    }
+
     
     //    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
     //
     //    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return groups.count
+        return groups != nil ? groups!.count : 0
     }
     
     func changeSegment(){

@@ -335,7 +335,7 @@
                                         </tableViewCellContentView>
                                         <animations/>
                                         <connections>
-                                            <segue destination="L7N-NF-54k" kind="show" id="TAv-e4-tlQ"/>
+                                            <segue destination="L7N-NF-54k" kind="show" identifier="groupsViewToGroupView" id="TAv-e4-tlQ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -389,7 +389,7 @@
                                         <rect key="frame" x="0.0" y="72" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3wQ-Ri-52g" id="tpM-Cq-5wF">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <animations/>
                                         </tableViewCellContentView>
@@ -480,7 +480,7 @@
                             <animations/>
                             <segments>
                                 <segment title="All teams"/>
-                                <segment title="Groups"/>
+                                <segment title="Age classes"/>
                             </segments>
                             <connections>
                                 <action selector="indexChanged:" destination="8rJ-Kc-sve" eventType="valueChanged" id="7hb-qQ-ASp"/>
@@ -751,7 +751,7 @@
                                         <rect key="frame" x="0.0" y="72" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PWF-Bb-s4T" id="ytY-Tu-SJQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <animations/>
                                         </tableViewCellContentView>

@@ -12,6 +12,7 @@ struct MatchClass{
     static let maxCacheTime = 60 * 60 * 24
     var id: Int?
     var code: String?
+    var name: String?
     var gender: String?
     var periodLengthInMinutes: String?
     var numberOfPeriodsInMatch: String?
