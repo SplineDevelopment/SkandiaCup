@@ -399,6 +399,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="531"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mcn-v3-B3Q" customClass="filterView" customModule="Skandiacup" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="-125" width="600" height="169"/>
+                                <subviews>
+                                    <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JbJ-GU-gZ1">
+                                        <rect key="frame" x="0.0" y="63" width="600" height="44"/>
+                                        <animations/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="Fqj-c4-U4g" id="wDb-CJ-qcb"/>
+                                        </connections>
+                                    </searchBar>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="iRQ-5U-fT6">
                                 <rect key="frame" x="290" y="238" width="20" height="20"/>
                                 <animations/>
@@ -407,11 +422,6 @@
                                 <rect key="frame" x="0.0" y="44" width="600" height="487"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <view key="tableFooterView" contentMode="scaleToFill" id="C2q-RR-7Wy" customClass="filterView" customModule="Skandiacup" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="72" width="600" height="169"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="teamCell" id="X65-TL-ShU">
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
@@ -426,18 +436,64 @@
                                             <segue destination="dEn-gx-a0Q" kind="show" identifier="listToTeamView" id="wPc-nx-wgx"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchCell" rowHeight="169" id="w0G-pL-WOb">
+                                        <rect key="frame" x="0.0" y="72" width="600" height="169"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="w0G-pL-WOb" id="huT-ep-IGj">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="168"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O8c-aM-sTr">
+                                                    <rect key="frame" x="8" y="0.0" width="584" height="169"/>
+                                                    <subviews>
+                                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="wqb-Vb-KYZ">
+                                                            <rect key="frame" x="6" y="91" width="580" height="31"/>
+                                                            <animations/>
+                                                        </slider>
+                                                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="QN9-x6-CBa">
+                                                            <rect key="frame" x="0.0" y="0.0" width="584" height="44"/>
+                                                            <animations/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </searchBar>
+                                                    </subviews>
+                                                    <animations/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="QN9-x6-CBa" firstAttribute="leading" secondItem="O8c-aM-sTr" secondAttribute="leading" id="CBm-H1-IsJ"/>
+                                                        <constraint firstItem="QN9-x6-CBa" firstAttribute="top" secondItem="O8c-aM-sTr" secondAttribute="top" id="Db7-1N-5lg"/>
+                                                        <constraint firstItem="QN9-x6-CBa" firstAttribute="trailing" secondItem="wqb-Vb-KYZ" secondAttribute="trailing" id="NAb-SZ-Qno"/>
+                                                        <constraint firstItem="wqb-Vb-KYZ" firstAttribute="top" secondItem="QN9-x6-CBa" secondAttribute="bottom" constant="47" id="Zi2-AH-DEC"/>
+                                                        <constraint firstAttribute="trailing" secondItem="wqb-Vb-KYZ" secondAttribute="trailing" id="wxz-V1-Z85"/>
+                                                        <constraint firstItem="wqb-Vb-KYZ" firstAttribute="leading" secondItem="O8c-aM-sTr" secondAttribute="leadingMargin" id="x5K-OR-jMz"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstItem="O8c-aM-sTr" firstAttribute="centerY" secondItem="huT-ep-IGj" secondAttribute="centerY" id="9rI-d6-oSn"/>
+                                                <constraint firstItem="O8c-aM-sTr" firstAttribute="leading" secondItem="huT-ep-IGj" secondAttribute="leadingMargin" id="DC9-CJ-Ovx"/>
+                                                <constraint firstItem="O8c-aM-sTr" firstAttribute="trailing" secondItem="huT-ep-IGj" secondAttribute="trailingMargin" id="jig-jS-z19"/>
+                                                <constraint firstItem="O8c-aM-sTr" firstAttribute="top" secondItem="huT-ep-IGj" secondAttribute="top" id="vnc-PT-n8z"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="RHe-cH-bFp" firstAttribute="top" secondItem="2wh-b4-GG0" secondAttribute="bottom" id="0Vk-nb-eat"/>
-                            <constraint firstAttribute="trailing" secondItem="RHe-cH-bFp" secondAttribute="trailing" id="3aR-Gc-vnF"/>
-                            <constraint firstItem="RHe-cH-bFp" firstAttribute="leading" secondItem="Hhn-F2-NvB" secondAttribute="leading" id="H3g-dq-Qi9"/>
-                            <constraint firstItem="RHe-cH-bFp" firstAttribute="bottom" secondItem="jq2-cL-TEe" secondAttribute="top" id="Hwy-Rz-ORX"/>
-                            <constraint firstItem="iRQ-5U-fT6" firstAttribute="top" secondItem="2wh-b4-GG0" secondAttribute="bottom" constant="194" id="YkD-b7-luv"/>
-                            <constraint firstItem="iRQ-5U-fT6" firstAttribute="centerX" secondItem="RHe-cH-bFp" secondAttribute="centerX" id="o66-Rj-qZn"/>
+                            <constraint firstItem="mcn-v3-B3Q" firstAttribute="top" secondItem="Hhn-F2-NvB" secondAttribute="top" constant="-125" id="EfH-8a-rIJ"/>
+                            <constraint firstItem="iRQ-5U-fT6" firstAttribute="top" secondItem="2wh-b4-GG0" secondAttribute="bottom" constant="194" id="HU6-ae-Crc"/>
+                            <constraint firstItem="mcn-v3-B3Q" firstAttribute="centerX" secondItem="iRQ-5U-fT6" secondAttribute="centerX" id="LJO-7A-0BW"/>
+                            <constraint firstItem="RHe-cH-bFp" firstAttribute="leading" secondItem="Hhn-F2-NvB" secondAttribute="leading" id="Nr3-lT-FOE"/>
+                            <constraint firstAttribute="trailing" secondItem="RHe-cH-bFp" secondAttribute="trailing" id="Ti3-i4-Ck6"/>
+                            <constraint firstItem="RHe-cH-bFp" firstAttribute="bottom" secondItem="jq2-cL-TEe" secondAttribute="top" id="XKc-oe-oxA"/>
+                            <constraint firstItem="RHe-cH-bFp" firstAttribute="top" secondItem="2wh-b4-GG0" secondAttribute="bottom" id="e0j-SY-Fo1"/>
+                            <constraint firstItem="RHe-cH-bFp" firstAttribute="leading" secondItem="mcn-v3-B3Q" secondAttribute="leading" id="jhJ-9b-sYR"/>
+                            <constraint firstItem="mcn-v3-B3Q" firstAttribute="bottom" secondItem="2wh-b4-GG0" secondAttribute="bottom" id="kPf-4B-HaC"/>
+                            <constraint firstItem="RHe-cH-bFp" firstAttribute="trailing" secondItem="mcn-v3-B3Q" secondAttribute="trailing" id="qRq-rI-IGk"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0Ab-Fe-lDL">
@@ -462,13 +518,22 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="SegmentController" destination="R66-2e-Alh" id="C4l-SA-t6W"/>
                         <outlet property="activityIndicator" destination="iRQ-5U-fT6" id="IEd-Uq-GkM"/>
-                        <outlet property="segmentController" destination="R66-2e-Alh" id="rsB-oK-wGV"/>
+                        <outlet property="dropDownView" destination="mcn-v3-B3Q" id="cH2-nl-VLF"/>
+                        <outlet property="searchDisplayController" destination="Hbt-iw-iR4" id="JLx-bq-313"/>
                         <outlet property="teamTableView" destination="RHe-cH-bFp" id="toy-ax-I2x"/>
-                        <outlet property="testView" destination="C2q-RR-7Wy" id="j2M-bl-v46"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wyp-zy-OYw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="Hbt-iw-iR4">
+                    <connections>
+                        <outlet property="delegate" destination="Fqj-c4-U4g" id="f16-A0-mZr"/>
+                        <outlet property="searchContentsController" destination="Fqj-c4-U4g" id="j60-Qc-pjl"/>
+                        <outlet property="searchResultsDataSource" destination="Fqj-c4-U4g" id="HaH-BO-Nkk"/>
+                        <outlet property="searchResultsDelegate" destination="Fqj-c4-U4g" id="DsI-uX-UJc"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="2282" y="559.5"/>
         </scene>
@@ -557,7 +622,7 @@
                                             <constraint firstAttribute="height" constant="16" id="WXH-f0-USY"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ynB-9S-A3I">
