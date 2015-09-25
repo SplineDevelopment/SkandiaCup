@@ -9,14 +9,22 @@
 import UIKit
 
 class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    var groups: [String] = ["Lag1", "Lag2", "Lag3"]
+    var groups: [MatchGroup]? {
+        didSet{
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                self.groupTableView.reloadData()
+            }
+        }
+    }
+    var currentGroup: MatchClass?
+    
     @IBOutlet weak var groupTableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         groupTableView.delegate = self
         groupTableView.dataSource = self
-
+        groups = currentGroup!.matchGroups
         // Do any additional setup after loading the view.
     }
 
@@ -28,12 +36,12 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("teamCell") as UITableViewCell!
-        cell.textLabel?.text = groups[indexPath.row]
+        cell.textLabel?.text = groups![indexPath.row].name
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return groups.count
+        return groups!.count
     }
     /*
     // MARK: - Navigation

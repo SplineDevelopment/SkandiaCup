@@ -36,6 +36,7 @@ class SoapMock: Soap {
         }
     }
     
+    
     func getField(arenaID: Int?, fieldID: Int?, completionHandler: (fields: [Field]) -> ()) {
         var field = [Field]()
         field.append(Field(fieldID: 1, arenaID: 1, fieldName: "Bane1", fieldDescription: "Bane1Nord", update_timestamp: ""))
@@ -55,13 +56,13 @@ class SoapMock: Soap {
         }))
     }
         
-    func getMatchClass(id: [Int]) -> [MatchClass]?{
+    func getMatchClass(completionHandler: (matchclasses: [MatchClass]) -> ()){
         var matchClass = [MatchClass]()
         
-        matchClass.append(MatchClass(id: 1, code: "19", gender: "male", periodLengthInMinutes: "90", numberOfPeriodsInMatch: "2", matchGroups: getMatchGroup([1])));
-        matchClass.append(MatchClass(id: 2, code: "15", gender: "male", periodLengthInMinutes: "90", numberOfPeriodsInMatch: "2", matchGroups: getMatchGroup([2])));
-        matchClass.append(MatchClass(id: 3, code: "13", gender: "female", periodLengthInMinutes: "90", numberOfPeriodsInMatch: "2", matchGroups: getMatchGroup([3])));
-        return matchClass
+        matchClass.append(MatchClass(id: 1, code: "19", name: "Class 1", gender: "male", periodLengthInMinutes: "90", numberOfPeriodsInMatch: "2", matchGroups: getMatchGroup([1])));
+        matchClass.append(MatchClass(id: 2, code: "15", name: "Class 2", gender: "male", periodLengthInMinutes: "90", numberOfPeriodsInMatch: "2", matchGroups: getMatchGroup([2])));
+        matchClass.append(MatchClass(id: 3, code: "13", name: "Class 3", gender: "female", periodLengthInMinutes: "90", numberOfPeriodsInMatch: "2", matchGroups: getMatchGroup([3])));
+        completionHandler(matchclasses: matchClass)
     }
     
     func getMatchGroup(id: [Int]) -> [MatchGroup]?{

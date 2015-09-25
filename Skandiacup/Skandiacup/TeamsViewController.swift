@@ -30,6 +30,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
                 self.activityIndicator.stopAnimating()
             })
         }
+        
     }
     var filteredTeams = [TournamentTeam]()
 
@@ -48,7 +49,6 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
         teamTableView.hidden = true
         activityIndicator.hidden = false
         activityIndicator.startAnimating()
-        
         segmentController.selectedSegmentIndex = 0
         SharingManager.soap.getTeams(nil) { (teams) -> () in
             self.teams = teams
