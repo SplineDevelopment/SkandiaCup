@@ -11,6 +11,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     var dropDownViewIsDisplayed = false
     var searchActive : Bool = false
     
+    @IBOutlet weak var testView: UIView!
     let sexPickerValues = ["Menn", "Damer"]
     //get this dynamicly from teams
     let countryPickerValues: [String] = ["Norway", "Lol", "SwedenHAHAHAHAH"]
@@ -43,7 +44,9 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.teamTableView.tableHeaderView = filterView()
+        self.teamTableView.tableHeaderView = testView
+        self.teamTableView.tableHeaderView?.sizeToFit()
+//        self.teamTableView.tableHeaderView = filterView()
 //        (dropDownView as! filterView).setupDelegates(self)
         (self.teamTableView.tableHeaderView as! filterView).setupDelegates(self)
         teamTableView.dataSource = self
@@ -61,7 +64,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
         (self.teamTableView.tableHeaderView as! filterView).ageLabel.text = "\(Int((self.teamTableView.tableHeaderView as! filterView).ageSlider.value))"
         
         // test
-        searchController = UISearchController(searchResultsController: self)
+        searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.searchBar.sizeToFit()
 //         (dropDownView as! filterView).searchBar = searchController.searchBar
@@ -73,6 +76,9 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
 
         let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, -Config.filterViewHeight, 0)
         teamTableView.layer.transform = rotationTransform
+        teamTableView.contentSize.height = teamTableView.contentSize.height - Config.filterViewHeight
+        self.teamTableView.tableHeaderView?.hidden = true
+//        self.teamTableView.contentSize.height = self.teamTableView.contentSize.height - Config.filterViewHeight
 
     }
 
@@ -105,6 +111,9 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        if(indexPath.row == 0){
+//            return 169
+//        }
         return Config.teamCellHeight
     }
     
@@ -128,30 +137,31 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBAction func searchButtonPressed(sender: AnyObject) {
         if !dropDownViewIsDisplayed{
 //            dropDownView.hidden = false
-            let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, Config.filterViewHeight, 0)
+            self.teamTableView.tableHeaderView?.hidden = false
+            let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, -Config.filterViewHeight, 0)
 //            dropDownView.layer.transform = CATransform3DIdentity
-            teamTableView.layer.transform = CATransform3DIdentity
+            teamTableView.layer.transform = rotationTransform
             
             UIView.animateWithDuration(1.0, animations: { () -> Void in
 //                self.dropDownView.layer.transform = rotationTransform
-                self.teamTableView.layer.transform = rotationTransform
-//                self.dropDownViewIsDisplayed = true
-                self.teamTableView.contentSize.height = self.teamTableView.contentSize.height + Config.filterViewHeight
+                self.teamTableView.layer.transform = CATransform3DIdentity
+                self.dropDownViewIsDisplayed = true
+//                self.teamTableView.contentSize.height = self.teamTableView.contentSize.height + Config.filterViewHeight
                 }, completion: { (success) -> Void in
 //                    self.dropDownView.hidden = false
             })
         } else if dropDownViewIsDisplayed{
 //            dropDownView.hidden = false
-            let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, Config.filterViewHeight, 0)
+             let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, -Config.filterViewHeight, 0)
 //            dropDownView.layer.transform = rotationTransform
-            teamTableView.layer.transform = rotationTransform
+            teamTableView.layer.transform = CATransform3DIdentity
 //            (dropDownView as! filterView).searchBar.endEditing(true)
             
             UIView.animateWithDuration(1.0, animations: { () -> Void in
 //                self.dropDownView.layer.transform = CATransform3DIdentity
-                self.teamTableView.layer.transform = CATransform3DIdentity
-//                self.dropDownViewIsDisplayed = false
-                self.teamTableView.contentSize.height = self.teamTableView.contentSize.height - Config.filterViewHeight
+                self.teamTableView.layer.transform = rotationTransform
+                self.dropDownViewIsDisplayed = false
+//                self.teamTableView.contentSize.height = self.teamTableView.contentSize.height - Config.filterViewHeight
                 }, completion: { (success) -> Void in
 //                    self.dropDownView.hidden = true
             })
@@ -267,7 +277,12 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-        self.filteredTeams.removeAll(keepCapacity: false)
+
+        if(searchController.searchBar.text! == ""){
+            filteredTeams = teams!
+            return
+        }
+                self.filteredTeams.removeAll(keepCapacity: false)
         filteredTeams = teams!.filter({ (team) -> Bool in
             let tmp: NSString = team.name!
             let range = tmp.rangeOfString(searchController.searchBar.text!, options: NSStringCompareOptions.CaseInsensitiveSearch)

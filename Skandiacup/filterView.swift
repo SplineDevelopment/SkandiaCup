@@ -19,17 +19,22 @@ class filterView: UIView{
     var countryPicker: UIPickerView!
     
     
-    init(_ coder: NSCoder? = nil) {
-        if let coder = coder {
-            super.init(coder: coder)!
-        } else {
-            super.init()
-        }
-    }
-    
-    required convenience init(coder aDecoder: NSCoder) {
-        self.init(aDecoder)
-//        super.init(coder: aDecoder)
+//    init(_ coder: NSCoder? = nil) {
+//        if let coder = coder {
+//            super.init(coder: coder)!
+//        } else {
+//            super.init()
+//        }
+//    }
+//    
+//    required init(coder aDecoder: NSCoder) {
+//        self.init(aDecoder)
+////        super.init(coder: aDecoder)
+//        NSBundle.mainBundle().loadNibNamed("filterView", owner: self, options: nil)
+//        self.addSubview(viewGUI)
+//    }
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
         NSBundle.mainBundle().loadNibNamed("filterView", owner: self, options: nil)
         self.addSubview(viewGUI)
     }

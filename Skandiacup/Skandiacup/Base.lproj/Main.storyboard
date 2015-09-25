@@ -407,6 +407,11 @@
                                 <rect key="frame" x="0.0" y="44" width="600" height="487"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="C2q-RR-7Wy" customClass="filterView" customModule="Skandiacup" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="72" width="600" height="169"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="teamCell" id="X65-TL-ShU">
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
@@ -457,20 +462,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="SegmentController" destination="R66-2e-Alh" id="C4l-SA-t6W"/>
                         <outlet property="activityIndicator" destination="iRQ-5U-fT6" id="IEd-Uq-GkM"/>
+                        <outlet property="segmentController" destination="R66-2e-Alh" id="rsB-oK-wGV"/>
                         <outlet property="teamTableView" destination="RHe-cH-bFp" id="toy-ax-I2x"/>
+                        <outlet property="testView" destination="C2q-RR-7Wy" id="j2M-bl-v46"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wyp-zy-OYw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="Hbt-iw-iR4">
-                    <connections>
-                        <outlet property="delegate" destination="Fqj-c4-U4g" id="f16-A0-mZr"/>
-                        <outlet property="searchContentsController" destination="Fqj-c4-U4g" id="j60-Qc-pjl"/>
-                        <outlet property="searchResultsDataSource" destination="Fqj-c4-U4g" id="HaH-BO-Nkk"/>
-                        <outlet property="searchResultsDelegate" destination="Fqj-c4-U4g" id="DsI-uX-UJc"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="2282" y="559.5"/>
         </scene>
