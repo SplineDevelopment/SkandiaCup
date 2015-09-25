@@ -82,10 +82,6 @@ class SoapImpl: Soap {
         }
     }
     
-    func getMatchGroup(id: [Int]) -> [MatchGroup]?{
-        return nil
-    }
-    
     func getMatches(classID: Int?, groupID: Int?, teamID: Int?, completionHandler: (matches: [TournamentMatch]) -> ()) {
         let request = Generator.generateGetMatchesXML(classID, groupID: groupID)
         self.sendReceive(request) { (responseString) -> () in
