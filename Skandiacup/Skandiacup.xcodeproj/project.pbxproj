@@ -34,6 +34,7 @@
 		3CDB8B331B99922A00439028 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDB8B321B99922A00439028 /* InfoViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		3CDB8B351B99923200439028 /* SosialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDB8B341B99923200439028 /* SosialViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		3CDB8B371B999B3D00439028 /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDB8B361B999B3D00439028 /* MatchViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		3CEAA9F31BB5706300939BFD /* EndPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEAA9F21BB5706300939BFD /* EndPlayViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		729AAA691BA1BEC300E8B6E9 /* FavoriteTeams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729AAA681BA1BEC300E8B6E9 /* FavoriteTeams.swift */; settings = {ASSET_TAGS = (); }; };
 		D51E4B0C1B94A1E700FF5DDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51E4B0B1B94A1E700FF5DDB /* AppDelegate.swift */; };
 		D51E4B0E1B94A1E700FF5DDB /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51E4B0D1B94A1E700FF5DDB /* FirstViewController.swift */; };
@@ -113,6 +114,7 @@
 		3CDB8B321B99922A00439028 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		3CDB8B341B99923200439028 /* SosialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SosialViewController.swift; sourceTree = "<group>"; };
 		3CDB8B361B999B3D00439028 /* MatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchViewController.swift; sourceTree = "<group>"; };
+		3CEAA9F21BB5706300939BFD /* EndPlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPlayViewController.swift; sourceTree = "<group>"; };
 		729AAA681BA1BEC300E8B6E9 /* FavoriteTeams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTeams.swift; sourceTree = "<group>"; };
 		D51E4B081B94A1E700FF5DDB /* Skandiacup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skandiacup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D51E4B0B1B94A1E700FF5DDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				235D71621BB3D56E0091E345 /* InstaPhotoCell.swift */,
 				235D71641BB3D8B70091E345 /* InstaUICollectionViewController.swift */,
 				235D71661BB4381F0091E345 /* InstaPopover.swift */,
+				3CEAA9F21BB5706300939BFD /* EndPlayViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 				236D8D671B9D8FE900669E51 /* CacheImpl.swift in Sources */,
 				236D8D601B9D8DF000669E51 /* DataManager.swift in Sources */,
 				2388C1531B99D5CD00637F6E /* TournamentClubsMapper.swift in Sources */,
+				3CEAA9F31BB5706300939BFD /* EndPlayViewController.swift in Sources */,
 				3CB9B3241B9D8F1400B48037 /* DateExtention.swift in Sources */,
 				D524965E1B9876EC001D3577 /* TeamsViewController.swift in Sources */,
 				D5FD4ED81B94CA23009B53FC /* MatchGroup.swift in Sources */,
@@ -670,6 +674,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Skandiacup/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -682,6 +687,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Skandiacup/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
