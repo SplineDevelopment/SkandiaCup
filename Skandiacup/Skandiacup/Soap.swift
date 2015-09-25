@@ -13,7 +13,6 @@ protocol Soap {
     func getTournamentClub(id: [Int]?, countryCode: String?, completionHandler: (clubs: [TournamentClub]) -> ())
     func getField(arenaID: Int?, fieldID: Int?, completionHandler: (fields: [Field]) -> ())
     func getMatchClass(completionHandler: (matchclasses: [MatchClass]) -> ())
-    func getMatchGroup(id: [Int]) -> [MatchGroup]?
     func getMatches(classID: Int?, groupID: Int?, teamID: Int?, completionHandler: (matches: [TournamentMatch]) -> ())
     func getTeams(id: [Int]?, completionHandler: (teams: [TournamentTeam]) -> ())
 }
