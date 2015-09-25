@@ -25,13 +25,14 @@ class MatchViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var kickoffTimeLabel: UILabel!
     @IBOutlet weak var fieldLabel: UILabel!
+    @IBOutlet weak var backgroundImage: UIImageView!
     
     var imageFullscreen = false;
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureView()
-        
+        backgroundImage.alpha = 0.6
         
         }
 
@@ -45,7 +46,7 @@ class MatchViewController: UIViewController {
         scoreOne.text = selectedMatch?.homegoal
         teamTwo.text = selectedMatch?.awayTeamName
         scoreTwo.text = selectedMatch?.awaygoal
-        fieldLabel.text = String(selectedMatch?.fieldId!)
+        fieldLabel.text = String(selectedMatch!.fieldId!)
         print(selectedMatch?.fieldId)
         //fieldLabel.text = "Bane nummer: \(selectedMatch?.fieldId)"
         
