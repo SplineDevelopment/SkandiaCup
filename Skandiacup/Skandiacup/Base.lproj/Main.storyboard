@@ -394,10 +394,6 @@
                                 <rect key="frame" x="290" y="238" width="20" height="20"/>
                                 <animations/>
                             </activityIndicatorView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eLl-1s-dVq" customClass="filterView" customModule="Skandiacup" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="-125" width="600" height="169"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RHe-cH-bFp">
                                 <rect key="frame" x="0.0" y="44" width="600" height="487"/>
                                 <animations/>
@@ -412,7 +408,7 @@
                                         <rect key="frame" x="0.0" y="197" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="X65-TL-ShU" id="WgH-mE-W57">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <animations/>
                                         </tableViewCellContentView>
@@ -427,16 +423,12 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="RHe-cH-bFp" firstAttribute="trailing" secondItem="eLl-1s-dVq" secondAttribute="trailing" id="NSd-LE-nR9"/>
-                            <constraint firstItem="iRQ-5U-fT6" firstAttribute="top" secondItem="2wh-b4-GG0" secondAttribute="bottom" constant="194" id="atW-29-Kx7"/>
-                            <constraint firstAttribute="trailing" secondItem="RHe-cH-bFp" secondAttribute="trailing" id="iea-zn-snG"/>
-                            <constraint firstItem="eLl-1s-dVq" firstAttribute="top" secondItem="Hhn-F2-NvB" secondAttribute="top" constant="-125" id="oRa-BP-erH"/>
-                            <constraint firstItem="RHe-cH-bFp" firstAttribute="leading" secondItem="Hhn-F2-NvB" secondAttribute="leading" id="obH-pY-YSL"/>
-                            <constraint firstItem="eLl-1s-dVq" firstAttribute="bottom" secondItem="2wh-b4-GG0" secondAttribute="bottom" id="qCv-rn-lyG"/>
-                            <constraint firstItem="RHe-cH-bFp" firstAttribute="top" secondItem="2wh-b4-GG0" secondAttribute="bottom" id="v3d-dp-wFW"/>
-                            <constraint firstItem="iRQ-5U-fT6" firstAttribute="centerX" secondItem="eLl-1s-dVq" secondAttribute="centerX" id="x1K-Om-Aj5"/>
-                            <constraint firstItem="eLl-1s-dVq" firstAttribute="leading" secondItem="RHe-cH-bFp" secondAttribute="leading" id="xJX-1B-j2T"/>
-                            <constraint firstItem="RHe-cH-bFp" firstAttribute="bottom" secondItem="jq2-cL-TEe" secondAttribute="top" id="yUV-iU-KIO"/>
+                            <constraint firstAttribute="trailing" secondItem="RHe-cH-bFp" secondAttribute="trailing" id="DED-Rh-yFd"/>
+                            <constraint firstItem="RHe-cH-bFp" firstAttribute="centerX" secondItem="iRQ-5U-fT6" secondAttribute="centerX" id="FJA-GJ-CFc"/>
+                            <constraint firstItem="RHe-cH-bFp" firstAttribute="top" secondItem="2wh-b4-GG0" secondAttribute="bottom" id="TtA-ac-QYd"/>
+                            <constraint firstItem="iRQ-5U-fT6" firstAttribute="top" secondItem="2wh-b4-GG0" secondAttribute="bottom" constant="194" id="dAe-GQ-fnL"/>
+                            <constraint firstItem="RHe-cH-bFp" firstAttribute="bottom" secondItem="jq2-cL-TEe" secondAttribute="top" id="dpd-ea-4nO"/>
+                            <constraint firstItem="RHe-cH-bFp" firstAttribute="leading" secondItem="Hhn-F2-NvB" secondAttribute="leading" id="xLA-kj-9up"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0Ab-Fe-lDL">
