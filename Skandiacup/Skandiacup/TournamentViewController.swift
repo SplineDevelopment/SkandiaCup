@@ -18,7 +18,7 @@ class TournamentViewController: UIViewController{
         case 0:
             teamsView.hidden = false
             groupsView.hidden = true
-            
+            callViewChangedToChildController(TeamsViewController)
         case 1:
             teamsView.hidden = true
             groupsView.hidden = false
@@ -28,8 +28,30 @@ class TournamentViewController: UIViewController{
         
     }
     
+    func callViewChangedToChildController<T : SegmentChangeProto>(t : T.Type) {
+        self.childViewControllers.forEach({ (child) -> () in
+            child.childViewControllers.forEach({ (child) -> () in
+                if let tempController = child as? T {
+                    tempController.viewChangedTo()
+                }
+            }) 
+        })
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.childViewControllers.forEach({ (child) -> () in
+            child.childViewControllers.forEach({ (child) -> () in
+                if let tempController = child as? SegmentChangeProto {
+                    tempController.viewChangedTo()
+                }
+            })
+        })
+    }
+
+    
    override func viewDidLoad() {
         super.viewDidLoad()
+        print("COUNT \(self.childViewControllers.count)")
         teamsView.hidden = false
         groupsView.hidden = true
         // Do any additional setup after loading the view, typically from a nib.
