@@ -33,12 +33,47 @@ class filterView: UIView{
 //        NSBundle.mainBundle().loadNibNamed("filterView", owner: self, options: nil)
 //        self.addSubview(viewGUI)
 //    }
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        NSBundle.mainBundle().loadNibNamed("filterView", owner: self, options: nil)
-        self.addSubview(viewGUI)
+//    required init?(coder aDecoder: NSCoder) {
+//        super.init(coder: aDecoder)
+//        NSBundle.mainBundle().loadNibNamed("filterView", owner: self, options: nil)
+//        self.addSubview(viewGUI)
+//    }
+//    
+//    override init (frame : CGRect) {
+//        super.init(frame : frame)
+//        NSBundle.mainBundle().loadNibNamed("filterView", owner: self, options: nil)
+//
+////        addBehavior()
+//    }
+//    
+//    convenience init () {
+//        self.init(frame:CGRectZero)
+//        NSBundle.mainBundle().loadNibNamed("filterView", owner: self, options: nil)
+//    }
+//    
+//    required convenience init(coder aDecoder: NSCoder) {
+//        self.init()
+//        NSBundle.mainBundle().loadNibNamed("filterView", owner: self, options: nil)
+////        fatalError("This class does not support NSCoding")
+//    }
+//   
+    
+    override init(frame: CGRect) { // for using CustomView in code
+        super.init(frame: frame)
+        self.commonInit()
     }
     
+    required init(coder aDecoder: NSCoder) { // for using CustomView in IB
+        super.init(coder: aDecoder)!
+        self.commonInit()
+    }
+    
+    private func commonInit() {
+        NSBundle.mainBundle().loadNibNamed("filterView", owner: self, options: nil)
+        viewGUI.frame = self.bounds
+//        viewGUI.autoresizingMask = .FlexibleHeight | .FlexibleWidth
+        self.addSubview(viewGUI)
+    }
     @IBAction func ageSliderValueChanged(sender: UISlider) {
         ageLabel.text = "\(Int(sender.value))"
     }
