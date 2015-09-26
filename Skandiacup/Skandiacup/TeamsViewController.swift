@@ -7,18 +7,20 @@
 
 import UIKit
 
-class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UISearchControllerDelegate, UISearchResultsUpdating{
+class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UISearchControllerDelegate, UISearchResultsUpdating, SegmentChangeProto{
     @IBOutlet weak var filterDropDownView: UIView!
     @IBOutlet weak var teamTableView: UITableView!
     @IBOutlet weak var segmentController: UISegmentedControl!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    var standardPixelHeight: CGFloat?
+    var heighIsSet = false
     
     /// Search controller to help us with filtering.
     var searchController: UISearchController!
     
     //get this dynamicly from teams
     let countryPickerValues: [String] = ["Alle", "SE", "NO", "DE"]
-    let sexPickerValues = ["Menn", "Damer"]
+    let sexPickerValues = ["Alle", "Menn", "Damer"]
     var dropDownViewIsDisplayed = false
     var pickerActive : Bool = false
 
@@ -34,10 +36,8 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     var filteredTeams = [TournamentTeam]()
 
-
     @IBAction func indexChanged(sender: AnyObject) {
         (self.parentViewController?.parentViewController as! TournamentViewController).switchTable(segmentController.selectedSegmentIndex)
-            viewDidLoad()
     }
     
     override func viewDidLoad() {
@@ -61,10 +61,18 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
         searchController.delegate = self
         searchController.dimsBackgroundDuringPresentation = false // default is YES
         searchController.searchBar.delegate = self    // so we can monitor text changes + others
-        
-        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, -Config.filterViewHeight, 0)
-        teamTableView.layer.transform = rotationTransform
+        self.teamTableView.layer.transform = CATransform3DTranslate(CATransform3DIdentity, 0, -Config.filterViewHeight, 0)
+        self.teamTableView.reloadData()
     }
+    
+    func viewChangedTo() {
+        self.segmentController.selectedSegmentIndex = 0
+        if(!heighIsSet){
+            teamTableView.layer.frame.size.height = teamTableView.layer.frame.size.height + Config.filterViewHeight
+            heighIsSet = true
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -73,7 +81,6 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = teamTableView.dequeueReusableCellWithIdentifier("teamCell") as UITableViewCell!
         if self.searchController.active || pickerActive{
-            print("FILTERED LENGTH \(filteredTeams.count) ROW \(indexPath.row)")
             cell!.textLabel?.text = filteredTeams[indexPath.row].name
         }
         else{
@@ -96,29 +103,30 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     func changeSegment(){
         self.segmentController.selectedSegmentIndex = 0
+        teamTableView.layer.frame.size.height = teamTableView.layer.frame.size.height + Config.filterViewHeight
     }
     
     @IBAction func searchButtonPressed(sender: AnyObject) {
+        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, -Config.filterViewHeight, 0)
         if !dropDownViewIsDisplayed{
             self.teamTableView.tableHeaderView?.hidden = false
-            let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, -Config.filterViewHeight, 0)
             teamTableView.layer.transform = rotationTransform
             
             UIView.animateWithDuration(0.5, animations: { () -> Void in
                 self.teamTableView.layer.transform = CATransform3DIdentity
-                
                 self.dropDownViewIsDisplayed = true
-                self.teamTableView.contentSize.height = self.teamTableView.contentSize.height + Config.filterViewHeight
+                self.teamTableView.layer.frame.size.height = self.teamTableView.layer.frame.size.height - Config.filterViewHeight
                 }, completion: { (success) -> Void in
+                    self.teamTableView.reloadData()
             })
         } else if dropDownViewIsDisplayed{
-             let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, -Config.filterViewHeight, 0)
+            self.teamTableView.layer.frame.size.height = self.teamTableView.layer.frame.size.height + Config.filterViewHeight
+            self.teamTableView.reloadData()
             teamTableView.layer.transform = CATransform3DIdentity
             
             UIView.animateWithDuration(0.5, animations: { () -> Void in
                 self.teamTableView.layer.transform = rotationTransform
                 self.dropDownViewIsDisplayed = false
-                self.teamTableView.contentSize.height = self.teamTableView.contentSize.height - Config.filterViewHeight
                 }, completion: { (success) -> Void in
                     self.teamTableView.tableHeaderView?.hidden = true
             })
@@ -127,6 +135,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewWillAppear(animated: Bool) {
         segmentController.setEnabled(true, forSegmentAtIndex: 0)
+        teamTableView.layer.frame.size.height = teamTableView.layer.frame.size.height + Config.filterViewHeight
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -223,9 +232,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         
         if countryPickerValue != "" && countryPickerValue != "Alle"{
-            print("Filter")
             filteredTeams = filteredTeams.filter({ (team) -> Bool in
-                print("TEAM CODE \(team.countryCode)")
                 return team.countryCode == countryPickerValue
             })
         }

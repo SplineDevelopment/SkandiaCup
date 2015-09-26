@@ -408,7 +408,7 @@
                                         <rect key="frame" x="0.0" y="197" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="X65-TL-ShU" id="WgH-mE-W57">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <animations/>
                                         </tableViewCellContentView>
@@ -446,7 +446,7 @@
                                 <action selector="indexChanged:" destination="Fqj-c4-U4g" eventType="valueChanged" id="T37-fX-pmt"/>
                             </connections>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="9i1-JF-jS1">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="9i1-JF-jS1">
                             <connections>
                                 <action selector="searchButtonPressed:" destination="Fqj-c4-U4g" id="3Op-NO-Xu3"/>
                             </connections>
