@@ -9,7 +9,8 @@
 import UIKit
 
 class EndPlayGamesViewController: UITableViewController{
-    var selectedMatchClass = ""
+    var selectedMatchClass: MatchClass?
+    
     @IBOutlet var endPlayGamesTable: UITableView!
     
     var endPlayMatchesInMatchClass = ["Kamp1", "Kamp2"]
@@ -24,7 +25,7 @@ class EndPlayGamesViewController: UITableViewController{
     
     
     func loadMatchClassGames(){
-        print(selectedMatchClass)
+        print("@@@ Selected match class: \(selectedMatchClass)")
     }
     
     
