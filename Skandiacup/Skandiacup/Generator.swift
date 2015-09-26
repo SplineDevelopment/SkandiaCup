@@ -84,4 +84,11 @@ class Generator {
         let getFieldsMessage = generateMessage(messageFor, innerXML: innerXML)
         return generateRequest(getFieldsMessage)
     }
+    
+    static func generateGetTournamentMatchStatusXML(since: String) -> NSMutableURLRequest {
+        let messageFor = "getTournamentMatchStatus"
+        let innerXML = "<since>" + since + "</since>"
+        let getTournamentMatchStatusMessage = generateMessage(messageFor, innerXML: innerXML)
+        return generateRequest(getTournamentMatchStatusMessage)
+    }
 }

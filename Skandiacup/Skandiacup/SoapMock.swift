@@ -92,5 +92,13 @@ class SoapMock: Soap {
         
     }
     
-
+    func getTable(groupID: Int?, playOffId: Int?, teamId: Int?, completionHandler: (tables: [MatchTable]) -> ()) {
+        
+    }
+    
+    func getTournamentMatchStatus(since: String, completionHandler: (status: TournamentMatchStatus) -> ()) {
+        
+    }
 }
+
+

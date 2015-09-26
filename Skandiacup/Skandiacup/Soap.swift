@@ -15,4 +15,6 @@ protocol Soap {
     func getMatchClass(completionHandler: (matchclasses: [MatchClass]) -> ())
     func getMatches(classID: Int?, groupID: Int?, teamID: Int?, completionHandler: (matches: [TournamentMatch]) -> ())
     func getTeams(id: [Int]?, completionHandler: (teams: [TournamentTeam]) -> ())
+    func getTable(groupID: Int?, playOffId: Int?, teamId: Int?, completionHandler: (tables: [MatchTable]) -> ())
+    func getTournamentMatchStatus(since: String, completionHandler: (status: TournamentMatchStatus) -> ())
 }

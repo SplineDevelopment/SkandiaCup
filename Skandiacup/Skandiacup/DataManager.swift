@@ -84,14 +84,14 @@ class DataManager {
         
     }
     
-    // cache with insta?
-    
+    // cache with insta? -> probably just use a timer in the GUI (already saved state in the view cells)
     func getAllPhotoObjects(completionHandler: (photoObjects: [InstagramPhotoObject]) -> ()) {
         SharingManager.insta.getAllPhotoObjects { (photoObjects) -> () in
             completionHandler(photoObjects: photoObjects)
         }
     }
     
+    // not used
     func getPhotoObject(id: Int, completionHandler: (photoObject: InstagramPhotoObject) -> ()) {
         SharingManager.insta.getPhotoObject(id) { (photoObject) -> () in
             completionHandler(photoObject: photoObject)

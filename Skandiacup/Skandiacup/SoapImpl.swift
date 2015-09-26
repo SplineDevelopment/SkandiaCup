@@ -104,4 +104,20 @@ class SoapImpl: Soap {
             completionHandler(teams: id != nil ? teams.filter({id!.contains($0.id!)}) : teams)
         }
     }
+    
+    func getTable(groupID: Int?, playOffId: Int?, teamId: Int?, completionHandler: (tables: [MatchTable]) -> ()) {
+        
+    }
+    
+    func getTournamentMatchStatus(since: String, completionHandler: (status: TournamentMatchStatus) -> ()) {
+        let request = Generator.generateGetTournamentMatchStatusXML(since)
+        self.sendReceive(request) { (responseString) -> () in
+            let xml = SWXMLHash.parse(responseString)
+            let status = TournamentMatchStatusMapper.mapTournamentMatchStatus(xml)
+            completionHandler(status: status)
+        }
+    }
 }
+
+
+

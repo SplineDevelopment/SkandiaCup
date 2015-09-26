@@ -19,6 +19,8 @@ class SosialViewController: UICollectionViewController, SegmentChangeProto {
             let svc = segue.destinationViewController as! InstaPopover
             let cell = sender as! InstaPhotoCell
             svc.toPass = cell.instaPhotoObject
+            svc.instaPhotoTable = insta_photos
+            svc.index = cell.index
         }
     }
     
@@ -67,6 +69,7 @@ extension SosialViewController {
             NSURLSession.sharedSession().dataTaskWithURL(self.insta_photos[indexPath.item].urlSmall!) { (data, response, error) in
                 dispatch_async(dispatch_get_main_queue()) {
                     cell.imageView.image = UIImage(data: data!)
+                    cell.index = indexPath.item
                 }
             }.resume()
         }

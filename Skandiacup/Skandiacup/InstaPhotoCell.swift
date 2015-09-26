@@ -12,4 +12,5 @@ import UIKit
 class InstaPhotoCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     var instaPhotoObject : InstagramPhotoObject?
+    var index : Int?
 }

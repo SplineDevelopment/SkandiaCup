@@ -24,6 +24,49 @@ class InstaPopover : UIViewController, UIPopoverPresentationControllerDelegate {
     }
     
     var toPass : InstagramPhotoObject!
+    var instaPhotoTable : [InstagramPhotoObject]!
+    var index : Int!
+    
+    override func viewDidLoad() {
+        var leftSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipes:"))
+        var rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipes:"))
+        
+        leftSwipe.direction = .Left
+        rightSwipe.direction = .Right
+        
+        view.addGestureRecognizer(leftSwipe)
+        view.addGestureRecognizer(rightSwipe)
+    }
+    
+    func handleSwipes(sender:UISwipeGestureRecognizer) {
+        if (sender.direction == .Left) {
+            print("Swipe Left")
+            var temp_index : Int
+            if index == instaPhotoTable.count-1 {
+                temp_index = 0
+            }
+            else {
+                temp_index = index + 1
+            }
+            self.index = temp_index
+            self.toPass = self.instaPhotoTable[temp_index]
+            self.viewDidAppear(false)
+        }
+        
+        if (sender.direction == .Right) {
+            print("Swipe Right")
+            var temp_index : Int
+            if index == 0 {
+                temp_index = instaPhotoTable.count-1
+            }
+            else {
+                temp_index = index - 1
+            }
+            self.index = temp_index
+            self.toPass = self.instaPhotoTable[temp_index]
+            self.viewDidAppear(false)
+        }
+    }
     
     override func viewDidAppear(animated: Bool) {
         self.userName.text = self.toPass.user

@@ -13,6 +13,9 @@ class CacheImpl : Cache {
     var tournamentMatches : TournamentMatchTableCacheObject
     var tournamentClubs : TournamentClubCacheObject
     
+    // save to disk::
+    // teams
+    
     init() {
 //        let defaults = NSUserDefaults.standardUserDefaults()
         

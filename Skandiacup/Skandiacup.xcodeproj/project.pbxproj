@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23407BF71BB6C957006EED89 /* TournamentMatchStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23407BF61BB6C957006EED89 /* TournamentMatchStatus.swift */; settings = {ASSET_TAGS = (); }; };
+		23407BF91BB6CCC7006EED89 /* TournamentMatchStatusMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23407BF81BB6CCC7006EED89 /* TournamentMatchStatusMapper.swift */; settings = {ASSET_TAGS = (); }; };
 		235D71631BB3D56E0091E345 /* InstaPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235D71621BB3D56E0091E345 /* InstaPhotoCell.swift */; settings = {ASSET_TAGS = (); }; };
 		235D71651BB3D8B70091E345 /* InstaUICollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235D71641BB3D8B70091E345 /* InstaUICollectionViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		235D71671BB4381F0091E345 /* InstaPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235D71661BB4381F0091E345 /* InstaPopover.swift */; settings = {ASSET_TAGS = (); }; };
@@ -89,6 +91,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		23407BF61BB6C957006EED89 /* TournamentMatchStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentMatchStatus.swift; sourceTree = "<group>"; };
+		23407BF81BB6CCC7006EED89 /* TournamentMatchStatusMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentMatchStatusMapper.swift; sourceTree = "<group>"; };
 		235D71621BB3D56E0091E345 /* InstaPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaPhotoCell.swift; sourceTree = "<group>"; };
 		235D71641BB3D8B70091E345 /* InstaUICollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaUICollectionViewController.swift; sourceTree = "<group>"; };
 		235D71661BB4381F0091E345 /* InstaPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaPopover.swift; sourceTree = "<group>"; };
@@ -329,6 +333,7 @@
 				D5EAE5491B99C82700AA3AF1 /* MatchTablesMapper.swift */,
 				D5EC2E921B9B5CBC00CBA235 /* TournamentTeamMapper.swift */,
 				726A96811BB582E700646497 /* MatchClassesMapper.swift */,
+				23407BF81BB6CCC7006EED89 /* TournamentMatchStatusMapper.swift */,
 			);
 			name = Mappers;
 			sourceTree = "<group>";
@@ -350,6 +355,7 @@
 				D5FD4EE11B94CFB7009B53FC /* Tournament.swift */,
 				2362031F1B9ECAF000D7F6A7 /* CacheObjects.swift */,
 				238C04C61BB2EB18000492E7 /* InstagramPhotoObject.swift */,
+				23407BF61BB6C957006EED89 /* TournamentMatchStatus.swift */,
 			);
 			name = Domain;
 			sourceTree = "<group>";
@@ -510,11 +516,13 @@
 				236203201B9ECAF000D7F6A7 /* CacheObjects.swift in Sources */,
 				D51E4B0E1B94A1E700FF5DDB /* FirstViewController.swift in Sources */,
 				3C803E501B984D46001A51AA /* Functions.swift in Sources */,
+				23407BF91BB6CCC7006EED89 /* TournamentMatchStatusMapper.swift in Sources */,
 				236D8D631B9D8F4600669E51 /* Cache.swift in Sources */,
 				238C04C51BB2EAC3000492E7 /* InstagramRepoMock.swift in Sources */,
 				D55D9CF61B99949B00DD01E1 /* SWXMLHash.swift in Sources */,
 				D5FD4EDE1B94CF3E009B53FC /* MatchTable.swift in Sources */,
 				3C9A17C21BB58EA700746773 /* EndPlayGamesViewController.swift in Sources */,
+				23407BF71BB6C957006EED89 /* TournamentMatchStatus.swift in Sources */,
 				238C04C31BB2EAB7000492E7 /* InstagramRepoImpl.swift in Sources */,
 				D5FD4ED01B94C79B009B53FC /* Arena.swift in Sources */,
 				D52496621B988364001D3577 /* TeamViewController.swift in Sources */,
