@@ -14,6 +14,9 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     let defaults = NSUserDefaults.standardUserDefaults()
     var favorites: FavoriteTeams = FavoriteTeams()
     @IBOutlet weak var favButton: UIBarButtonItem!
+    var table = TableMock.generateAMock()
+    var infoSectionIsSet = false
+    var isEven = false
     
     var matches: [TournamentMatch]? {
         didSet{
@@ -127,6 +130,24 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerCell = tableView.dequeueReusableCellWithIdentifier("sectionHeader") as! CustomHeaderCell
+        switch (section) {
+        case 0:
+            headerCell.headerLabel.text = "Tabell";
+            //return sectionHeaderView
+        case 1:
+            headerCell.headerLabel.text = "Kamper spilt";
+            //return sectionHeaderView
+        case 2:
+            headerCell.headerLabel.text = "Kommende kamper";
+            //return sectionHeaderView
+        default:
+            headerCell.headerLabel.text = "Other";
+        }
+        return headerCell
+    }
+    
 
     
     override func didReceiveMemoryWarning() {
@@ -135,15 +156,63 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return matches != nil ? matches!.count : 0
+        if(section == 0){
+            return table.teams.count+1
+        }
+        else if(section == 1){
+            return matches != nil ? matches!.count : 0
+        }
+        else{
+            return 0
+        }
+    }
+    
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 55
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        infoSectionIsSet = false
+        return 3
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as UITableViewCell!
-        cell.textLabel?.text = "\(matches![indexPath.row].homeTeamName!) \(matches![indexPath.row].homegoal!)  - \(matches![indexPath.row].awaygoal!) \(matches![indexPath.row].awayTeamName!) "
-        return cell
+        if(indexPath.section == 0 && indexPath.row == 0){
+            let cell = tableView.dequeueReusableCellWithIdentifier("tableInfoSection") as UITableViewCell!
+            infoSectionIsSet = true
+            return cell
+        }
+        if (indexPath.section == 0){
+                let i = indexPath.row-1
+                print(indexPath.row)
+                let cell = tableView.dequeueReusableCellWithIdentifier("tableSection") as! ResultTableViewCell
+                cell.teamNameLabel.text = String(table.teams[i])
+                cell.positionLabel.text = String(i+1)
+                cell.pointsLabel.text = String(table.points[i])
+                cell.plusMinusLabel.text = String((table.goalsFor[i] - table.goalsAgainst[i]))
+                cell.lossesLabel.text = String(table.losses[i])
+                cell.drawsLabel.text = String(table.draws[i])
+                cell.winsLabel.text = String(table.wins[i])
+                cell.gamesPlayedLabel.text = String(table.gamesPlayed[i])
+                if (isEven){
+                    cell.backgroundColor = UIColor(red:0.87, green:0.89, blue:0.82, alpha:1.0)
+                }
+                isEven = !isEven
+                return cell
+        }
+        else if (indexPath.section == 1){
+            let cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as UITableViewCell!
+            cell.textLabel?.text = "\(matches![indexPath.row].homeTeamName!) \(matches![indexPath.row].homegoal!)  - \(matches![indexPath.row].awaygoal!) \(matches![indexPath.row].awayTeamName!) "
+            return cell
+        } else{
+            return UITableViewCell()
+        }
     }
     
+
+    
+
     func configureView(){
         if let team = self.currentTeam{
             if let label = self.infoLabel {

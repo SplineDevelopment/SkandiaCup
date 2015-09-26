@@ -59,14 +59,17 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ou-PL-6DP">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ou-PL-6DP">
                     <rect key="frame" x="550" y="68" width="42" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="42" id="lM9-Is-zlx"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.91542376893939392" green="0.91542376893939392" blue="0.91542376893939392" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="fcM-cp-uRB" firstAttribute="top" secondItem="T5U-Ky-BKE" secondAttribute="bottom" constant="13" id="115-aP-R0y"/>
                 <constraint firstItem="5Ou-PL-6DP" firstAttribute="leading" secondItem="q36-Kw-nZe" secondAttribute="trailing" constant="8" symbolic="YES" id="2DP-Rl-lIz"/>

@@ -11,7 +11,7 @@ import Foundation
 class MatchClassesMapper {
     static func mapMatchClasses(xml: XMLIndexer) -> [MatchClass] {
         var arr = [MatchClass]()
-        print(xml)
+//        print(xml)
         
         for elem in xml["SOAP-ENV:Envelope"]["SOAP-ENV:Body"]["ns1:getMatchClassesResponse"]["getMatchClassesResult"]["item"] {
             var a = MatchClass()
