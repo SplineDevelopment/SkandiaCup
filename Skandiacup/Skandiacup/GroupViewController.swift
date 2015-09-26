@@ -25,8 +25,9 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         groupTableView.delegate = self
         groupTableView.dataSource = self
         groups = currentGroup!.matchGroups
-        // Do any additional setup after loading the view.
+            // Do any additional setup after loading the view.
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

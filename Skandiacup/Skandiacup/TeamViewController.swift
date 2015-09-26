@@ -38,7 +38,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         matchTableView.dataSource = self
         self.configureView()
         SharingManager.soap.getMatches(nil, groupID: nil, teamID: currentTeam?.id) { (matches) -> () in
-            print("hmm")
             self.matches = matches
         }
         changeButton()
@@ -179,28 +178,28 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if(indexPath.section == 0 && infoSectionIsSet == false){
+        if(indexPath.section == 0 && indexPath.row == 0){
             let cell = tableView.dequeueReusableCellWithIdentifier("tableInfoSection") as UITableViewCell!
             infoSectionIsSet = true
             return cell
         }
         if (indexPath.section == 0){
-            let i = indexPath.row-1
-            print(indexPath.row)
-            let cell = tableView.dequeueReusableCellWithIdentifier("tableSection") as! ResultTableViewCell
-            cell.teamNameLabel.text = String(table.teams[i])
-            cell.positionLabel.text = String(i+1)
-            cell.pointsLabel.text = String(table.points[i])
-            cell.plusMinusLabel.text = String((table.goalsFor[i] - table.goalsAgainst[i]))
-            cell.lossesLabel.text = String(table.losses[i])
-            cell.drawsLabel.text = String(table.draws[i])
-            cell.winsLabel.text = String(table.wins[i])
-            cell.gamesPlayedLabel.text = String(table.gamesPlayed[i])
-            if (isEven){
-                cell.backgroundColor = UIColor(red:0.87, green:0.89, blue:0.82, alpha:1.0)
-            }
-            isEven = !isEven
-            return cell
+                let i = indexPath.row-1
+                print(indexPath.row)
+                let cell = tableView.dequeueReusableCellWithIdentifier("tableSection") as! ResultTableViewCell
+                cell.teamNameLabel.text = String(table.teams[i])
+                cell.positionLabel.text = String(i+1)
+                cell.pointsLabel.text = String(table.points[i])
+                cell.plusMinusLabel.text = String((table.goalsFor[i] - table.goalsAgainst[i]))
+                cell.lossesLabel.text = String(table.losses[i])
+                cell.drawsLabel.text = String(table.draws[i])
+                cell.winsLabel.text = String(table.wins[i])
+                cell.gamesPlayedLabel.text = String(table.gamesPlayed[i])
+                if (isEven){
+                    cell.backgroundColor = UIColor(red:0.87, green:0.89, blue:0.82, alpha:1.0)
+                }
+                isEven = !isEven
+                return cell
         }
         else if (indexPath.section == 1){
             let cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as UITableViewCell!

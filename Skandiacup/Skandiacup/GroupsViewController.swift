@@ -25,6 +25,7 @@ class GroupsViewController: UIViewController , UITableViewDataSource, UITableVie
         groupTableView.delegate = self
         segmentController.selectedSegmentIndex = 1
         SharingManager.data.getMatchClass { (matchclasses) -> () in
+            print(matchclasses)
             self.groups = matchclasses
         }
         

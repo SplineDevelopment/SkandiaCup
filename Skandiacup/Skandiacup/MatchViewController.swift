@@ -33,7 +33,6 @@ class MatchViewController: UIViewController {
         super.viewDidLoad()
         self.configureView()
         backgroundImage.alpha = 0.6
-        
         }
 
     override func didReceiveMemoryWarning() {
