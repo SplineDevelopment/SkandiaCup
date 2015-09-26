@@ -14,7 +14,7 @@ class InstaPopover : UIViewController, UIPopoverPresentationControllerDelegate {
     @IBOutlet weak var userName: UILabel!
     
     @IBOutlet weak var profileImage: UIImageView!
-    
+        
     @IBOutlet weak var timestamp: UILabel!
     
     @IBOutlet weak var BigImage: UIImageView!
@@ -30,7 +30,6 @@ class InstaPopover : UIViewController, UIPopoverPresentationControllerDelegate {
     override func viewDidLoad() {
         var leftSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipes:"))
         var rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipes:"))
-        
         leftSwipe.direction = .Left
         rightSwipe.direction = .Right
         
