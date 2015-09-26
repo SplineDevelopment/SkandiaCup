@@ -17,10 +17,10 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     var searchController: UISearchController!
     
     //get this dynamicly from teams
-    let countryPickerValues: [String] = ["Norway", "Lol", "SwedenHAHAHAHAH"]
+    let countryPickerValues: [String] = ["Alle", "SE", "NO", "DE"]
     let sexPickerValues = ["Menn", "Damer"]
     var dropDownViewIsDisplayed = false
-    var searchActive : Bool = false
+    var pickerActive : Bool = false
 
     var teams: [TournamentTeam]? {
         didSet{
@@ -52,6 +52,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
         segmentController.selectedSegmentIndex = 0
         SharingManager.soap.getTeams(nil) { (teams) -> () in
             self.teams = teams
+            self.filteredTeams = teams
         }
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
@@ -71,7 +72,8 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = teamTableView.dequeueReusableCellWithIdentifier("teamCell") as UITableViewCell!
-        if self.searchController.active{
+        if self.searchController.active || pickerActive{
+            print("FILTERED LENGTH \(filteredTeams.count) ROW \(indexPath.row)")
             cell!.textLabel?.text = filteredTeams[indexPath.row].name
         }
         else{
@@ -85,7 +87,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (self.searchController.active){
+        if (self.searchController.active || self.pickerActive){
             return self.filteredTeams.count
         }else{
             return teams != nil ? teams!.count : 0
@@ -123,18 +125,6 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
-    // UITableViewDelegate Functions
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     override func viewWillAppear(animated: Bool) {
         segmentController.setEnabled(true, forSegmentAtIndex: 0)
     }
@@ -163,26 +153,13 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
-    // UISearchBarDelegate funcitons
-    
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        searchActive = true;
-    }
-    
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
-        searchActive = false;
-        filteredTeams = teams!
-    }
-    
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        searchActive = false;
         filteredTeams = teams!
         self.teamTableView.reloadData()
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchBar.endEditing(true)
-        searchActive = false;
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int{
@@ -214,11 +191,14 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         if(pickerView.accessibilityIdentifier == "sexPicker"){
             (self.teamTableView.tableHeaderView as! filterView).sexTextField.text = self.sexPickerValues[row]
+            pickerActive = true
         }
         
         if(pickerView.accessibilityIdentifier == "countryPicker"){
             (self.teamTableView.tableHeaderView as! filterView).countryTextField.text = self.countryPickerValues[row]
+            pickerActive = true
         }
+        updateFilteredTeams()
         self.view.endEditing(true)
     }
     
@@ -227,18 +207,36 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-        if(searchController.searchBar.text! == ""){
-            filteredTeams = teams!
-            self.teamTableView.reloadData()
-            return
+        updateFilteredTeams()
+    }
+        
+    func updateFilteredTeams(){
+        filteredTeams = teams!
+        let sexPickerValue = sexPickerValues[(self.teamTableView.tableHeaderView as! filterView).sexPicker.selectedRowInComponent(0)]
+        let countryPickerValue = countryPickerValues[(self.teamTableView.tableHeaderView as! filterView).countryPicker.selectedRowInComponent(0)]
+        let searchText = searchController.searchBar.text
+
+        if sexPickerValue != "" && sexPickerValue != "Alle" {
+            filteredTeams = filteredTeams.filter({ (team) -> Bool in
+                return true
+            })
         }
         
-        self.filteredTeams.removeAll(keepCapacity: false)
-        filteredTeams = teams!.filter({ (team) -> Bool in
-            let tmp: NSString = team.name!
-            let range = tmp.rangeOfString(searchController.searchBar.text!, options: NSStringCompareOptions.CaseInsensitiveSearch)
-            return range.location != NSNotFound
-        })
+        if countryPickerValue != "" && countryPickerValue != "Alle"{
+            print("Filter")
+            filteredTeams = filteredTeams.filter({ (team) -> Bool in
+                print("TEAM CODE \(team.countryCode)")
+                return team.countryCode == countryPickerValue
+            })
+        }
+        
+        if searchText != "" {
+            filteredTeams = filteredTeams.filter({ (team) -> Bool in
+                let tmp: NSString = team.name!
+                let range = tmp.rangeOfString(searchController.searchBar.text!, options: NSStringCompareOptions.CaseInsensitiveSearch)
+                return range.location != NSNotFound
+            })
+        }
         self.teamTableView.reloadData()
     }
 }
