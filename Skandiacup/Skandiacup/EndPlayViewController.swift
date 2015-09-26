@@ -11,7 +11,15 @@ import UIKit
 class EndPlayViewController: UITableViewController{
     
     @IBOutlet var endPlayMatchClassTable: UITableView!
-    var endPlayMatchClasses = ["Gutter 12", "Jenter 12"]
+    
+    var endPlayMatchClasses: [MatchClass]? {
+        didSet{
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                self.endPlayMatchClassTable.reloadData()
+            }
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,10 +28,12 @@ class EndPlayViewController: UITableViewController{
 
 
     }
-    
+
     
     func loadMatchClassses(){
-        
+        SharingManager.data.getMatchClass { (matchclasses) -> () in
+            self.endPlayMatchClasses = matchclasses
+        }
     }
     
     
@@ -32,7 +42,7 @@ class EndPlayViewController: UITableViewController{
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return endPlayMatchClasses.count
+        return endPlayMatchClasses != nil ? endPlayMatchClasses!.count : 0
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -45,7 +55,7 @@ class EndPlayViewController: UITableViewController{
         // Fetches the appropriate meal for the data source layout.
         //let meal = meals[indexPath.row]
         
-        let textValue = endPlayMatchClasses[indexPath.row]
+        let textValue = endPlayMatchClasses?[indexPath.row].name
         
         cell.textLabel?.text = textValue
         
@@ -57,7 +67,7 @@ class EndPlayViewController: UITableViewController{
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "fromEndPlayMatchClassToEndPlayMatches") {
             if let indexPath = self.endPlayMatchClassTable.indexPathForSelectedRow{
-                let selectedEndPlayMatchClass = endPlayMatchClasses[indexPath.row]
+                let selectedEndPlayMatchClass = endPlayMatchClasses?[indexPath.row]
                 (segue.destinationViewController as! EndPlayGamesViewController).selectedMatchClass = selectedEndPlayMatchClass
             }
         }
