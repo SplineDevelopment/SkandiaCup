@@ -17,6 +17,10 @@ class NewsViewController: UIViewController, SegmentChangeProto {
     func viewChangedTo() {
         print("Changed to news view")
     }
+    
+    override func viewDidLoad() {
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "lol.jpg")!)
+    }
 
     /*
     // MARK: - Navigation
