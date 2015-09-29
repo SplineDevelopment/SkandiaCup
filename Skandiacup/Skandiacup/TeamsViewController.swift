@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UISearchControllerDelegate, UISearchResultsUpdating, SegmentChangeProto{
+class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UISearchControllerDelegate, UISearchResultsUpdating, SegmentChangeProto, TeamsViewChangeProto{
     @IBOutlet weak var filterDropDownView: UIView!
     @IBOutlet weak var teamTableView: UITableView!
     @IBOutlet weak var segmentController: UISegmentedControl!
@@ -62,14 +62,20 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
         searchController.dimsBackgroundDuringPresentation = false // default is YES
         searchController.searchBar.delegate = self    // so we can monitor text changes + others
         self.teamTableView.layer.transform = CATransform3DTranslate(CATransform3DIdentity, 0, -Config.filterViewHeight, 0)
-        self.teamTableView.reloadData()
     }
     
     func viewChangedTo() {
-        self.segmentController.selectedSegmentIndex = 0
-        if(!heighIsSet){
-            teamTableView.layer.frame.size.height = teamTableView.layer.frame.size.height + Config.filterViewHeight
-            heighIsSet = true
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            if !(self.heighIsSet) {
+                self.standardPixelHeight = self.teamTableView.layer.frame.size.height
+                self.heighIsSet = true
+            }
+            if self.dropDownViewIsDisplayed {
+                self.teamTableView.layer.frame.size.height = self.standardPixelHeight!
+            } else {
+                self.teamTableView.layer.frame.size.height = self.standardPixelHeight! + Config.filterViewHeight
+            }
+            self.segmentController.selectedSegmentIndex = 0
         }
     }
     
@@ -117,11 +123,15 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
                 self.dropDownViewIsDisplayed = true
                 self.teamTableView.layer.frame.size.height = self.teamTableView.layer.frame.size.height - Config.filterViewHeight
                 }, completion: { (success) -> Void in
-                    self.teamTableView.reloadData()
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.teamTableView.reloadData()
+                    })
             })
         } else if dropDownViewIsDisplayed{
             self.teamTableView.layer.frame.size.height = self.teamTableView.layer.frame.size.height + Config.filterViewHeight
-            self.teamTableView.reloadData()
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.teamTableView.reloadData()
+            })
             teamTableView.layer.transform = CATransform3DIdentity
             
             UIView.animateWithDuration(0.5, animations: { () -> Void in
@@ -131,15 +141,6 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
                     self.teamTableView.tableHeaderView?.hidden = true
             })
         }
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        segmentController.setEnabled(true, forSegmentAtIndex: 0)
-        teamTableView.layer.frame.size.height = teamTableView.layer.frame.size.height + Config.filterViewHeight
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -164,7 +165,9 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         filteredTeams = teams!
-        self.teamTableView.reloadData()
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.teamTableView.reloadData()
+        })
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
@@ -244,6 +247,32 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
                 return range.location != NSNotFound
             })
         }
-        self.teamTableView.reloadData()
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.teamTableView.reloadData()
+        })
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.viewChangedTo()
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            self.viewChangedTo()
+            self.teamTableView.reloadData()
+        }
+    }
+    
+    
+    func updateFilterViewHeight (){
+        self.viewChangedTo()
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            if self.dropDownViewIsDisplayed {
+                self.teamTableView.layer.frame.size.height = self.standardPixelHeight!
+            } else {
+                self.teamTableView.layer.frame.size.height = self.standardPixelHeight! + Config.filterViewHeight
+            }
+            self.segmentController.selectedSegmentIndex = 0
+        }
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            self.viewDidAppear(true)
+        }
     }
 }

@@ -18,7 +18,6 @@ class TournamentViewController: UIViewController{
         case 0:
             teamsView.hidden = false
             groupsView.hidden = true
-            callViewChangedToChildController(TeamsViewController)
         case 1:
             teamsView.hidden = true
             groupsView.hidden = false
@@ -27,28 +26,17 @@ class TournamentViewController: UIViewController{
         }
         
     }
-    
-    func callViewChangedToChildController<T : SegmentChangeProto>(t : T.Type) {
+
+    func testingFunc<T : TeamsViewChangeProto>(t : T.Type) {
         self.childViewControllers.forEach({ (child) -> () in
             child.childViewControllers.forEach({ (child) -> () in
-                if let tempController = child as? T {
-                    tempController.viewChangedTo()
-                }
-            }) 
-        })
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        self.childViewControllers.forEach({ (child) -> () in
-            child.childViewControllers.forEach({ (child) -> () in
-                if let tempController = child as? SegmentChangeProto {
-                    tempController.viewChangedTo()
+                if let tempController = child as? TeamsViewChangeProto {
+                    tempController.updateFilterViewHeight()
                 }
             })
         })
     }
 
-    
    override func viewDidLoad() {
         super.viewDidLoad()
         print("COUNT \(self.childViewControllers.count)")
@@ -62,4 +50,3 @@ class TournamentViewController: UIViewController{
         // Dispose of any resources that can be recreated.
     }
 }
-

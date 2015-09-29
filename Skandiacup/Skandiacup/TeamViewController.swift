@@ -210,9 +210,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-
-    
-
     func configureView(){
         if let team = self.currentTeam{
             if let label = self.infoLabel {
@@ -234,24 +231,16 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         //code
-        
         if (segue.identifier == "identifierFromTeamToMatch"){
             if let indexPath = self.matchTableView.indexPathForSelectedRow{
                 let selectedTournamentMatch = matches![indexPath.row]
                 (segue.destinationViewController as! MatchViewController).selectedMatch = selectedTournamentMatch
             }
         }
-        
-        
-        /*
-        if (segue.identifier == "listToTeamView") {
-        if let indexPath = self.teamTableView.indexPathForSelectedRow{
-        let selectedTeam = teams![indexPath.row]
-        (segue.destinationViewController as! TeamViewController).currentTeam = selectedTeam
-        }
-        }
-
-*/
-        
+    }
+    
+    override func willMoveToParentViewController(parent: UIViewController?) {
+        let grandpa = self.parentViewController?.parentViewController
+        (grandpa as! TournamentViewController).testingFunc(TeamsViewController)
     }
 }
