@@ -45,6 +45,8 @@
 		729AAA691BA1BEC300E8B6E9 /* FavoriteTeams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729AAA681BA1BEC300E8B6E9 /* FavoriteTeams.swift */; settings = {ASSET_TAGS = (); }; };
 		72B841C21BB6A39900E37CC1 /* CustomHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B841C11BB6A39900E37CC1 /* CustomHeaderCell.swift */; settings = {ASSET_TAGS = (); }; };
 		72B841C41BB6BB8C00E37CC1 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B841C31BB6BB8C00E37CC1 /* ResultTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		D50391161BBAC49A00681A4A /* newsCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D50391151BBAC49A00681A4A /* newsCellView.xib */; settings = {ASSET_TAGS = (); }; };
+		D50391181BBAC4E000681A4A /* newsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50391171BBAC4E000681A4A /* newsCellView.swift */; settings = {ASSET_TAGS = (); }; };
 		D51E4B0C1B94A1E700FF5DDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51E4B0B1B94A1E700FF5DDB /* AppDelegate.swift */; };
 		D51E4B0E1B94A1E700FF5DDB /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51E4B0D1B94A1E700FF5DDB /* FirstViewController.swift */; };
 		D51E4B101B94A1E700FF5DDB /* TournamentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51E4B0F1B94A1E700FF5DDB /* TournamentViewController.swift */; };
@@ -137,6 +139,8 @@
 		729AAA681BA1BEC300E8B6E9 /* FavoriteTeams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTeams.swift; sourceTree = "<group>"; };
 		72B841C11BB6A39900E37CC1 /* CustomHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomHeaderCell.swift; sourceTree = "<group>"; };
 		72B841C31BB6BB8C00E37CC1 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
+		D50391151BBAC49A00681A4A /* newsCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = newsCellView.xib; sourceTree = "<group>"; };
+		D50391171BBAC4E000681A4A /* newsCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newsCellView.swift; sourceTree = "<group>"; };
 		D51E4B081B94A1E700FF5DDB /* Skandiacup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skandiacup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D51E4B0B1B94A1E700FF5DDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D51E4B0D1B94A1E700FF5DDB /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -323,6 +327,8 @@
 				D51E4B191B94A1E700FF5DDB /* Info.plist */,
 				3C803E591B98550D001A51AA /* Config.swift */,
 				3C803E5B1B98563F001A51AA /* SharingManager.swift */,
+				D50391151BBAC49A00681A4A /* newsCellView.xib */,
+				D50391171BBAC4E000681A4A /* newsCellView.swift */,
 			);
 			path = Skandiacup;
 			sourceTree = "<group>";
@@ -488,6 +494,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D54FB67C1BB3F2F3007FCCAF /* filterView.xib in Resources */,
+				D50391161BBAC49A00681A4A /* newsCellView.xib in Resources */,
 				D51E4B181B94A1E700FF5DDB /* LaunchScreen.storyboard in Resources */,
 				D51E4B151B94A1E700FF5DDB /* Assets.xcassets in Resources */,
 				D51E4B131B94A1E700FF5DDB /* Main.storyboard in Resources */,
@@ -528,6 +535,7 @@
 				726A96841BB6911F00646497 /* TableMock.swift in Sources */,
 				D5FD4EE01B94CF70009B53FC /* TournamentTeam.swift in Sources */,
 				3CDB8B331B99922A00439028 /* InfoViewController.swift in Sources */,
+				D50391181BBAC4E000681A4A /* newsCellView.swift in Sources */,
 				D5D7BA3E1BB5777400687A98 /* SegmentChangeProto.swift in Sources */,
 				236D8D651B9D8F6F00669E51 /* CacheMock.swift in Sources */,
 				D54FB67A1BB3F2BE007FCCAF /* filterView.swift in Sources */,
