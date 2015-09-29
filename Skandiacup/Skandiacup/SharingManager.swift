@@ -13,4 +13,5 @@ class SharingManager{
     static let cache : Cache = (Config.soapMock ? CacheMock() : CacheImpl())
     static let data : DataManager = DataManager()
     static let insta : InstagramRepo = (Config.soapMock ? InstagramRepoMock() : InstagramRepoImpl())
+    static let rssfeed : RSS = RSS()
 }
