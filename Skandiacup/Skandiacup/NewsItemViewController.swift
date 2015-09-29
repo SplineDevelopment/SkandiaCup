@@ -32,10 +32,7 @@ class NewsItemViewController: UIViewController {
     func configureView(){
         if let item = self.currentItem{
             if let view = self.webView{
-                print("Images: \(item.imagesFromContent)")
-                print("Images: \(item.imagesFromItemDescription)")
-                
-                view.loadRequest(NSURLRequest(URL: item.link!))
+                view.loadHTMLString(item.itemDescription!, baseURL: nil)
 //                view.loadHTMLString("\(item.link!)", baseURL: nil)
             }
         }

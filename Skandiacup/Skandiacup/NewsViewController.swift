@@ -18,16 +18,14 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.newTableView.delegate = self
         self.newTableView.dataSource = self
         
+        SharingManager.rssfeed.getRSSfeed { (RSSfeed) -> () in
+            self.feed = RSSfeed
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.newTableView.reloadData()                
+            })
 
-//        let request = NSURLRequest(URL: NSURL(string: "http://skandiacup.no/?feed=rss")!)
-//        
-//        RSSParser.parseFeedForRequest(request, callback: { (feed) -> Void in
-//            if let myFeed = feed{                
-//                self.feed = feed
-//                self.newTableView.reloadData()
-//            }
-//        })
-
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -46,7 +44,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let feed = self.feed
         {
-            return feed.items.count
+            return feed.count
         }
         
         return 0
@@ -61,7 +59,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         if let feed = self.feed
         {
-            let item = feed.items[indexPath.row] as RSSItem
+            let item = feed[indexPath.row] as RSSItem
             print(item.itemDescription)
             
             cell.textLabel!.text = item.title
@@ -73,7 +71,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "newsToNewsItemSegue") {
             if let indexPath = self.newTableView.indexPathForSelectedRow{
-                let item = self.feed?.items[indexPath.row]
+                let item = self.feed?[indexPath.row]
                 (segue.destinationViewController as! NewsItemViewController).currentItem = item
             }
         }
