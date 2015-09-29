@@ -55,14 +55,14 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("newsCell", forIndexPath: indexPath) as! newsCellView
         
         if let feed = self.feed
         {
             let item = feed[indexPath.row] as RSSItem
-            print(item.itemDescription)
-            
-            cell.textLabel!.text = item.title
+            cell.headerLabel.text = item.title
+            cell.bodyText.text = item.itemDescription
+//            cell.textLabel!.text = item.title
         }
         
         return cell

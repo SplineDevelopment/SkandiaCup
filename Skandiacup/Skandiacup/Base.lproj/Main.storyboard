@@ -1174,16 +1174,16 @@
         <scene sceneID="krN-dd-XH8">
             <objects>
                 <tableViewController id="b7s-qM-u13" customClass="NewsViewController" customModule="Skandiacup" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="vKW-qg-jkn">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="109" sectionHeaderHeight="28" sectionFooterHeight="28" id="vKW-qg-jkn">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="MIT-F2-W4S">
-                                <rect key="frame" x="0.0" y="72" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsCell" rowHeight="109" id="MIT-F2-W4S" customClass="newsCellView" customModule="Skandiacup" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="600" height="109"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MIT-F2-W4S" id="HKU-sd-I9L">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="108.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -1217,17 +1217,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hBr-wZ-z3T">
-                                <rect key="frame" x="0.0" y="28" width="600" height="572"/>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hBr-wZ-z3T">
+                                <rect key="frame" x="0.0" y="44" width="600" height="443"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="hBr-wZ-z3T" secondAttribute="trailing" id="0uW-fK-y7t"/>
-                            <constraint firstItem="hBr-wZ-z3T" firstAttribute="leading" secondItem="uWG-eJ-86i" secondAttribute="leading" id="bxI-EJ-cIv"/>
-                            <constraint firstItem="hBr-wZ-z3T" firstAttribute="top" secondItem="863-Rw-VhM" secondAttribute="bottom" constant="8" symbolic="YES" id="i1y-3O-mKp"/>
-                            <constraint firstItem="hBr-wZ-z3T" firstAttribute="bottom" secondItem="EcT-bl-qKh" secondAttribute="top" id="meF-H2-3nk"/>
+                            <constraint firstAttribute="trailing" secondItem="hBr-wZ-z3T" secondAttribute="trailing" id="F53-Bu-j14"/>
+                            <constraint firstItem="hBr-wZ-z3T" firstAttribute="top" secondItem="863-Rw-VhM" secondAttribute="bottom" id="TwS-xN-ihd"/>
+                            <constraint firstItem="hBr-wZ-z3T" firstAttribute="leading" secondItem="uWG-eJ-86i" secondAttribute="leading" id="oXo-sh-U1Y"/>
+                            <constraint firstItem="hBr-wZ-z3T" firstAttribute="bottom" secondItem="EcT-bl-qKh" secondAttribute="top" id="uXv-We-Oz5"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1236,7 +1236,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AWk-f7-yIO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1635" y="1699"/>
+            <point key="canvasLocation" x="-1635" y="1698.5"/>
         </scene>
         <!--Insta Popover-->
         <scene sceneID="H4A-3w-rKL">

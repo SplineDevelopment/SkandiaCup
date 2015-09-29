@@ -32,8 +32,10 @@ class NewsItemViewController: UIViewController {
     func configureView(){
         if let item = self.currentItem{
             if let view = self.webView{
-                view.loadHTMLString(item.itemDescription!, baseURL: nil)
-//                view.loadHTMLString("\(item.link!)", baseURL: nil)
+                var htmlstring = item.itemDescription!
+                let header = "<h1>\(item.title!)</h1>"
+                htmlstring = header + htmlstring
+                view.loadHTMLString(htmlstring, baseURL: nil)
             }
         }
     }
