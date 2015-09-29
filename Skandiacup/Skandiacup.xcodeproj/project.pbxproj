@@ -563,6 +563,7 @@
 				235D71671BB4381F0091E345 /* InstaPopover.swift in Sources */,
 				3C803E541B98528A001A51AA /* Soap.swift in Sources */,
 				D5D62FD11BBAB45E0097CFC7 /* NewsItemViewController.swift in Sources */,
+				2352AE531BBAB04E00244C6B /* RSSItem.swift in Sources */,
 				D5FD4ECB1B94B8CA009B53FC /* FavoritesViewController.swift in Sources */,
 				2388C1511B99A73B00637F6E /* ArenaMapper.swift in Sources */,
 				D5774F451B999D3B002F9451 /* MatchesMapper.swift in Sources */,
