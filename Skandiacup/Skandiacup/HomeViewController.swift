@@ -22,7 +22,7 @@ class HomeViewController: UIViewController {
             newsView.hidden = false
             infoView.hidden = true
             sosialView.hidden = true
-            self.callViewChangedToChildController(NewsViewController)
+//            self.callViewChangedToChildController(NewsViewController)
         case 1:
             newsView.hidden = true
             infoView.hidden = false
@@ -40,8 +40,8 @@ class HomeViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         switch segmentedControl.selectedSegmentIndex{
-        case 0:
-            self.callViewChangedToChildController(NewsViewController)
+//        case 0:
+//            self.callViewChangedToChildController(NewsViewController)
         case 1:
             self.callViewChangedToChildController(InfoViewController)
         case 2:
