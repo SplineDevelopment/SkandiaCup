@@ -174,7 +174,7 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <animations/>
                                 <connections>
-                                    <segue destination="cEe-Vm-il8" kind="embed" id="ao1-Nf-7Hx"/>
+                                    <segue destination="vZW-rq-bEg" kind="embed" id="s4C-1f-xqk"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yqr-t1-GtD">
@@ -239,7 +239,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7o5-ZV-OfA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-888" y="428"/>
+            <point key="canvasLocation" x="-76" y="428"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -262,7 +262,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-146" y="428"/>
+            <point key="canvasLocation" x="666" y="428"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="buW-LW-yxN">
@@ -367,7 +367,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9W7-5R-jR6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1030" y="1135.5"/>
+            <point key="canvasLocation" x="1842" y="1135.5"/>
         </scene>
         <!--GroupView-->
         <scene sceneID="MIt-nz-k7h">
@@ -417,7 +417,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1UP-H2-o3D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1799" y="1361.5"/>
+            <point key="canvasLocation" x="2611" y="1361.5"/>
         </scene>
         <!--TeamsView-->
         <scene sceneID="J59-RF-qIN">
@@ -503,7 +503,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wyp-zy-OYw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2282" y="559.5"/>
+            <point key="canvasLocation" x="3094" y="559.5"/>
         </scene>
         <!--Match result-->
         <scene sceneID="RSJ-5s-64t">
@@ -1102,7 +1102,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lyu-0Z-qst" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="218" y="1135.5"/>
+            <point key="canvasLocation" x="1030" y="1135.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5je-dm-KEw">
@@ -1141,26 +1141,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PFJ-TU-DfO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1006" y="1016.5"/>
-        </scene>
-        <!--News-->
-        <scene sceneID="E5Q-Ho-HTY">
-            <objects>
-                <viewController id="cEe-Vm-il8" userLabel="News" customClass="NewsViewController" customModule="Skandiacup" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="lBD-ZD-dm7"/>
-                        <viewControllerLayoutGuide type="bottom" id="nRY-jZ-gPv"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="c5i-Y2-gch">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" red="0.83845903190000004" green="0.85202087339999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hhc-Mr-lQN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1628" y="1016.5"/>
+            <point key="canvasLocation" x="-194" y="1016.5"/>
         </scene>
         <!--Sosial View Controller-->
         <scene sceneID="PCK-S3-hOe">
@@ -1212,6 +1193,74 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F77-ek-lYn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2324" y="966.5"/>
+        </scene>
+        <!--News View Controller-->
+        <scene sceneID="krN-dd-XH8">
+            <objects>
+                <tableViewController id="b7s-qM-u13" customClass="NewsViewController" customModule="Skandiacup" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="vKW-qg-jkn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="MIT-F2-W4S">
+                                <rect key="frame" x="0.0" y="72" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MIT-F2-W4S" id="HKU-sd-I9L">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="rTN-tq-lez" kind="show" identifier="newsToNewsItemSegue" id="0nL-lB-2sd"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="b7s-qM-u13" id="Dfn-ax-nwG"/>
+                            <outlet property="delegate" destination="b7s-qM-u13" id="7uP-Vt-m77"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="fbS-1z-irp"/>
+                    <connections>
+                        <outlet property="newTableView" destination="vKW-qg-jkn" id="dOo-VT-RBJ"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0il-Ts-ac5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-823" y="1021.5"/>
+        </scene>
+        <!--News Item View Controller-->
+        <scene sceneID="PfL-zK-nWx">
+            <objects>
+                <viewController id="rTN-tq-lez" customClass="NewsItemViewController" customModule="Skandiacup" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="863-Rw-VhM"/>
+                        <viewControllerLayoutGuide type="bottom" id="EcT-bl-qKh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uWG-eJ-86i">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hBr-wZ-z3T">
+                                <rect key="frame" x="0.0" y="28" width="600" height="572"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="hBr-wZ-z3T" secondAttribute="trailing" id="0uW-fK-y7t"/>
+                            <constraint firstItem="hBr-wZ-z3T" firstAttribute="leading" secondItem="uWG-eJ-86i" secondAttribute="leading" id="bxI-EJ-cIv"/>
+                            <constraint firstItem="hBr-wZ-z3T" firstAttribute="top" secondItem="863-Rw-VhM" secondAttribute="bottom" constant="8" symbolic="YES" id="i1y-3O-mKp"/>
+                            <constraint firstItem="hBr-wZ-z3T" firstAttribute="bottom" secondItem="EcT-bl-qKh" secondAttribute="top" id="meF-H2-3nk"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="hBr-wZ-z3T" id="r5o-QT-sKh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AWk-f7-yIO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1635" y="1699"/>
         </scene>
         <!--Insta Popover-->
         <scene sceneID="H4A-3w-rKL">
@@ -1381,6 +1430,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eYJ-3J-lMh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1084" y="-1090"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Yiy-Ad-6o9">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vZW-rq-bEg" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XtD-wg-pGd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="b7s-qM-u13" kind="relationship" relationship="rootViewController" id="QfY-Iv-Oga"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N67-QW-c4N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1635" y="1021.5"/>
         </scene>
     </scenes>
     <resources>
