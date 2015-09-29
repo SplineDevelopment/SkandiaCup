@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		23407BF71BB6C957006EED89 /* TournamentMatchStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23407BF61BB6C957006EED89 /* TournamentMatchStatus.swift */; settings = {ASSET_TAGS = (); }; };
 		23407BF91BB6CCC7006EED89 /* TournamentMatchStatusMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23407BF81BB6CCC7006EED89 /* TournamentMatchStatusMapper.swift */; settings = {ASSET_TAGS = (); }; };
+		2352AE511BBAAFD000244C6B /* RSS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2352AE501BBAAFD000244C6B /* RSS.swift */; settings = {ASSET_TAGS = (); }; };
+		2352AE531BBAB04E00244C6B /* RSSItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2352AE521BBAB04E00244C6B /* RSSItem.swift */; settings = {ASSET_TAGS = (); }; };
+		2352AE551BBAB52C00244C6B /* RSSmapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2352AE541BBAB52C00244C6B /* RSSmapper.swift */; settings = {ASSET_TAGS = (); }; };
 		235D71631BB3D56E0091E345 /* InstaPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235D71621BB3D56E0091E345 /* InstaPhotoCell.swift */; settings = {ASSET_TAGS = (); }; };
 		235D71651BB3D8B70091E345 /* InstaUICollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235D71641BB3D8B70091E345 /* InstaUICollectionViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		235D71671BB4381F0091E345 /* InstaPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235D71661BB4381F0091E345 /* InstaPopover.swift */; settings = {ASSET_TAGS = (); }; };
@@ -98,6 +101,9 @@
 /* Begin PBXFileReference section */
 		23407BF61BB6C957006EED89 /* TournamentMatchStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentMatchStatus.swift; sourceTree = "<group>"; };
 		23407BF81BB6CCC7006EED89 /* TournamentMatchStatusMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentMatchStatusMapper.swift; sourceTree = "<group>"; };
+		2352AE501BBAAFD000244C6B /* RSS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSS.swift; sourceTree = "<group>"; };
+		2352AE521BBAB04E00244C6B /* RSSItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSItem.swift; sourceTree = "<group>"; };
+		2352AE541BBAB52C00244C6B /* RSSmapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSmapper.swift; sourceTree = "<group>"; };
 		235D71621BB3D56E0091E345 /* InstaPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaPhotoCell.swift; sourceTree = "<group>"; };
 		235D71641BB3D8B70091E345 /* InstaUICollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaUICollectionViewController.swift; sourceTree = "<group>"; };
 		235D71661BB4381F0091E345 /* InstaPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaPopover.swift; sourceTree = "<group>"; };
@@ -211,6 +217,7 @@
 				238C04C21BB2EAB7000492E7 /* InstagramRepoImpl.swift */,
 				238C04C41BB2EAC3000492E7 /* InstagramRepoMock.swift */,
 				726A96831BB6911F00646497 /* TableMock.swift */,
+				2352AE501BBAAFD000244C6B /* RSS.swift */,
 			);
 			name = Repository;
 			sourceTree = "<group>";
@@ -349,6 +356,7 @@
 				D5EC2E921B9B5CBC00CBA235 /* TournamentTeamMapper.swift */,
 				726A96811BB582E700646497 /* MatchClassesMapper.swift */,
 				23407BF81BB6CCC7006EED89 /* TournamentMatchStatusMapper.swift */,
+				2352AE541BBAB52C00244C6B /* RSSmapper.swift */,
 			);
 			name = Mappers;
 			sourceTree = "<group>";
@@ -371,6 +379,7 @@
 				2362031F1B9ECAF000D7F6A7 /* CacheObjects.swift */,
 				238C04C61BB2EB18000492E7 /* InstagramPhotoObject.swift */,
 				23407BF61BB6C957006EED89 /* TournamentMatchStatus.swift */,
+				2352AE521BBAB04E00244C6B /* RSSItem.swift */,
 			);
 			name = Domain;
 			sourceTree = "<group>";
@@ -539,6 +548,7 @@
 				238C04C51BB2EAC3000492E7 /* InstagramRepoMock.swift in Sources */,
 				D55D9CF61B99949B00DD01E1 /* SWXMLHash.swift in Sources */,
 				D5FD4EDE1B94CF3E009B53FC /* MatchTable.swift in Sources */,
+				2352AE551BBAB52C00244C6B /* RSSmapper.swift in Sources */,
 				3C9A17C21BB58EA700746773 /* EndPlayGamesViewController.swift in Sources */,
 				23407BF71BB6C957006EED89 /* TournamentMatchStatus.swift in Sources */,
 				238C04C31BB2EAB7000492E7 /* InstagramRepoImpl.swift in Sources */,
@@ -549,6 +559,7 @@
 				235D71631BB3D56E0091E345 /* InstaPhotoCell.swift in Sources */,
 				D52496641B988546001D3577 /* GroupViewController.swift in Sources */,
 				3CC5530D1B98C2CA008FA445 /* HomeViewController.swift in Sources */,
+				2352AE511BBAAFD000244C6B /* RSS.swift in Sources */,
 				235D71671BB4381F0091E345 /* InstaPopover.swift in Sources */,
 				3C803E541B98528A001A51AA /* Soap.swift in Sources */,
 				D5D62FD11BBAB45E0097CFC7 /* NewsItemViewController.swift in Sources */,
