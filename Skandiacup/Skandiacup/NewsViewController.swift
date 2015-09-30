@@ -56,15 +56,20 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("newsCell", forIndexPath: indexPath) as! newsCellView
+        let bodytext: NSAttributedString
         
-        if let feed = self.feed
-        {
+        if let feed = self.feed{
             let item = feed[indexPath.row] as RSSItem
             cell.headerLabel.text = item.title
-            cell.bodyText.text = item.itemDescription
-//            cell.textLabel!.text = item.title
+            
+            do{
+                bodytext =  try NSAttributedString(data: item.itemDescription!.dataUsingEncoding(NSUnicodeStringEncoding, allowLossyConversion: true)!, options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
+                cell.bodyText.attributedText = bodytext
+                cell.bodyText.font = UIFont (name: "Helvetica Neue", size: 12)
+                cell.bodyText.textColor = UIColor.lightGrayColor()
+            } catch _ as NSError{
+            }
         }
-        
         return cell
     }
     
