@@ -12,7 +12,7 @@ class TournamentTeamMapper: NSObject {
     static func mapTeams(xml: XMLIndexer) -> [TournamentTeam]{
         var arr = [TournamentTeam]()
         for elem in xml["SOAP-ENV:Envelope"]["SOAP-ENV:Body"]["ns1:getTeamsResponse"]["getTeamsResult"]["item"] {
-            var team = TournamentTeam()
+            let team = TournamentTeam()
             
             if elem["id"].element?.text != nil{
                 team.id = Int((elem["id"].element?.text)!)
