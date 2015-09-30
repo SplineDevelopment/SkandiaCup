@@ -14,8 +14,9 @@ class NewsItemViewController: UIViewController {
             configureView()
         }
     }
+    @IBOutlet weak var textView: UITextView!
 
-    @IBOutlet weak var webView: UIWebView!
+    @IBOutlet weak var headerLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureView()
@@ -31,11 +32,23 @@ class NewsItemViewController: UIViewController {
     
     func configureView(){
         if let item = self.currentItem{
-            if let view = self.webView{
+            if let bodytextview = self.textView{
                 var htmlstring = item.itemDescription!
-                let header = "<h1>\(item.title!)</h1>"
-                htmlstring = header + htmlstring
-                view.loadHTMLString(htmlstring, baseURL: nil)
+//                let headerstring = item.title!
+                
+//                print(headerstring)
+//                htmlstring = headerstring + htmlstring
+                let bodytext: NSAttributedString
+                
+                do{
+                    bodytext =  try NSAttributedString(data: htmlstring.dataUsingEncoding(NSUnicodeStringEncoding, allowLossyConversion: true)!, options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
+                    
+                    self.headerLabel.text = item.title!
+                    bodytextview.attributedText = bodytext
+                    bodytextview.font = UIFont (name: "Helvetica Neue", size: 12)
+//                    bodytextview.textColor = UIColor.lightGrayColor()
+                } catch _ as NSError{
+                }
             }
         }
     }
