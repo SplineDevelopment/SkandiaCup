@@ -13,8 +13,13 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     @IBOutlet var newTableView: UITableView!
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+
+        //HomeViewController.activityIndicator.stopAnitmation()
         self.newTableView.delegate = self
         self.newTableView.dataSource = self
         
@@ -22,7 +27,8 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.feed = RSSfeed
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.newTableView.reloadData()                
+                self.newTableView.reloadData()
+                 (self.parentViewController?.parentViewController as! HomeViewController).activityIndicator.stopAnimating()
             })
 
         }

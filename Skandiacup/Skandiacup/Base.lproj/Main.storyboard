@@ -206,31 +206,38 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="xSt-pa-wLN">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                                <animations/>
+                            </activityIndicatorView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="OtT-va-nVn" firstAttribute="trailing" secondItem="Q6T-Tt-ud8" secondAttribute="trailing" id="77T-J3-pCJ"/>
-                            <constraint firstItem="Yqr-t1-GtD" firstAttribute="bottom" secondItem="Q6T-Tt-ud8" secondAttribute="bottom" id="800-9O-AQR"/>
-                            <constraint firstItem="Yqr-t1-GtD" firstAttribute="trailing" secondItem="Q6T-Tt-ud8" secondAttribute="trailing" id="8SU-u7-s1e"/>
-                            <constraint firstItem="f8h-Wx-zgN" firstAttribute="top" secondItem="Q6T-Tt-ud8" secondAttribute="top" id="Scj-1P-RNT"/>
-                            <constraint firstItem="f8h-Wx-zgN" firstAttribute="trailing" secondItem="Q6T-Tt-ud8" secondAttribute="trailing" id="TSV-ch-Hik"/>
-                            <constraint firstItem="Yqr-t1-GtD" firstAttribute="top" secondItem="f8h-Wx-zgN" secondAttribute="top" id="X7G-mc-ids"/>
-                            <constraint firstItem="Yqr-t1-GtD" firstAttribute="bottom" secondItem="f8h-Wx-zgN" secondAttribute="bottom" id="bmt-69-mgI"/>
-                            <constraint firstItem="Q6T-Tt-ud8" firstAttribute="leading" secondItem="mQT-Yc-fC5" secondAttribute="leading" id="cVP-uT-TSl"/>
-                            <constraint firstItem="Yqr-t1-GtD" firstAttribute="leading" secondItem="Q6T-Tt-ud8" secondAttribute="leading" id="eZ4-tS-ZtL"/>
-                            <constraint firstItem="Yqr-t1-GtD" firstAttribute="bottom" secondItem="xkd-iy-A95" secondAttribute="top" id="kA4-80-5gK"/>
-                            <constraint firstItem="OtT-va-nVn" firstAttribute="top" secondItem="Y7Z-kq-6Pp" secondAttribute="bottom" id="la3-sk-x6A"/>
-                            <constraint firstAttribute="trailing" secondItem="Q6T-Tt-ud8" secondAttribute="trailing" id="pnG-hq-oF6"/>
-                            <constraint firstItem="OtT-va-nVn" firstAttribute="bottom" secondItem="Yqr-t1-GtD" secondAttribute="top" id="sdg-An-MOO"/>
-                            <constraint firstItem="OtT-va-nVn" firstAttribute="leading" secondItem="Q6T-Tt-ud8" secondAttribute="leading" id="uDd-wn-a8f"/>
-                            <constraint firstItem="f8h-Wx-zgN" firstAttribute="leading" secondItem="Q6T-Tt-ud8" secondAttribute="leading" id="ve4-cI-BfB"/>
+                            <constraint firstItem="f8h-Wx-zgN" firstAttribute="bottom" secondItem="xkd-iy-A95" secondAttribute="top" id="1Px-qU-8tW"/>
+                            <constraint firstItem="Yqr-t1-GtD" firstAttribute="top" secondItem="OtT-va-nVn" secondAttribute="bottom" id="9OC-dC-y9y"/>
+                            <constraint firstItem="Q6T-Tt-ud8" firstAttribute="top" secondItem="f8h-Wx-zgN" secondAttribute="top" id="AWh-4H-zkb"/>
+                            <constraint firstItem="Q6T-Tt-ud8" firstAttribute="top" secondItem="Yqr-t1-GtD" secondAttribute="top" id="L0r-UV-lZG"/>
+                            <constraint firstItem="Yqr-t1-GtD" firstAttribute="bottom" secondItem="xkd-iy-A95" secondAttribute="top" id="Ofm-2z-c0P"/>
+                            <constraint firstItem="f8h-Wx-zgN" firstAttribute="leading" secondItem="Q6T-Tt-ud8" secondAttribute="leading" id="SKL-5O-SRY"/>
+                            <constraint firstItem="f8h-Wx-zgN" firstAttribute="trailing" secondItem="OtT-va-nVn" secondAttribute="trailing" id="U4E-le-yu7"/>
+                            <constraint firstItem="OtT-va-nVn" firstAttribute="centerX" secondItem="xSt-pa-wLN" secondAttribute="centerX" id="Vyc-fy-3nH"/>
+                            <constraint firstItem="f8h-Wx-zgN" firstAttribute="leading" secondItem="OtT-va-nVn" secondAttribute="leading" id="Ylr-Qs-scw"/>
+                            <constraint firstItem="Yqr-t1-GtD" firstAttribute="leading" secondItem="mQT-Yc-fC5" secondAttribute="leading" id="aMK-yv-6aO"/>
+                            <constraint firstAttribute="trailing" secondItem="Yqr-t1-GtD" secondAttribute="trailing" id="bw8-Pn-ibb"/>
+                            <constraint firstItem="Yqr-t1-GtD" firstAttribute="trailing" secondItem="Q6T-Tt-ud8" secondAttribute="trailing" id="mvB-RJ-ihm"/>
+                            <constraint firstItem="OtT-va-nVn" firstAttribute="top" secondItem="Y7Z-kq-6Pp" secondAttribute="bottom" id="u1h-9J-baC"/>
+                            <constraint firstItem="f8h-Wx-zgN" firstAttribute="trailing" secondItem="Q6T-Tt-ud8" secondAttribute="trailing" id="uuE-CS-44W"/>
+                            <constraint firstItem="f8h-Wx-zgN" firstAttribute="leading" secondItem="Yqr-t1-GtD" secondAttribute="leading" id="xTI-2L-VdM"/>
+                            <constraint firstItem="xSt-pa-wLN" firstAttribute="centerY" secondItem="mQT-Yc-fC5" secondAttribute="centerY" id="xej-dF-hpY"/>
+                            <constraint firstItem="Q6T-Tt-ud8" firstAttribute="bottom" secondItem="xkd-iy-A95" secondAttribute="top" id="xpY-9c-x0r"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="News" image="news29" id="ppy-iN-LIH">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="2" vertical="0.0"/>
                     </tabBarItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="xSt-pa-wLN" id="ZFc-X6-4cP"/>
                         <outlet property="infoView" destination="Q6T-Tt-ud8" id="tHf-aP-V5X"/>
                         <outlet property="newsView" destination="f8h-Wx-zgN" id="T8S-gx-APc"/>
                         <outlet property="segmentedControl" destination="LNv-VN-HDd" id="rwz-0T-V8y"/>
