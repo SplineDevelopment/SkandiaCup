@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -18,34 +18,48 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="109"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSA-rN-aZ9">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="33"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="33" id="dyq-mk-FKg"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Velkommen til Skandia cup 2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSA-rN-aZ9">
+                    <rect key="frame" x="66" y="0.0" width="534" height="33"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qy5-Gf-fzy">
-                    <rect key="frame" x="8" y="41" width="592" height="68"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-skandiacup" translatesAutoresizingMaskIntoConstraints="NO" id="DfO-fy-Prg">
+                    <rect key="frame" x="8" y="8" width="50" height="42"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="ffD-WT-NHU"/>
+                    </constraints>
+                </imageView>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qy5-Gf-fzy">
+                    <rect key="frame" x="71" y="33" width="529" height="76"/>
+                    <animations/>
+                    <string key="text">The individual rows in a table view are managed by table view cells (UITableViewCell), which are responsible for drawing their co</string>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
             </subviews>
+            <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="Qy5-Gf-fzy" firstAttribute="top" secondItem="DSA-rN-aZ9" secondAttribute="bottom" constant="8" symbolic="YES" id="43F-DR-aZi"/>
-                <constraint firstItem="DSA-rN-aZ9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="HFL-JL-WpA"/>
-                <constraint firstItem="DSA-rN-aZ9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="V03-mF-sq7"/>
-                <constraint firstAttribute="trailing" secondItem="DSA-rN-aZ9" secondAttribute="trailing" id="s9v-Ae-Sn5"/>
-                <constraint firstItem="DSA-rN-aZ9" firstAttribute="trailing" secondItem="Qy5-Gf-fzy" secondAttribute="trailing" id="uNa-7L-drc"/>
-                <constraint firstAttribute="bottom" secondItem="Qy5-Gf-fzy" secondAttribute="bottom" id="uON-pb-F4W"/>
-                <constraint firstItem="Qy5-Gf-fzy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="uPf-JZ-BCc"/>
+                <constraint firstItem="DfO-fy-Prg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="OkS-qp-EaF"/>
+                <constraint firstItem="DSA-rN-aZ9" firstAttribute="trailing" secondItem="Qy5-Gf-fzy" secondAttribute="trailing" id="Qnx-If-Pkn"/>
+                <constraint firstAttribute="bottom" secondItem="DfO-fy-Prg" secondAttribute="bottom" constant="59" id="aE5-dq-xrV"/>
+                <constraint firstItem="Qy5-Gf-fzy" firstAttribute="top" secondItem="DSA-rN-aZ9" secondAttribute="bottom" id="avl-5f-rcU"/>
+                <constraint firstItem="DfO-fy-Prg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" id="cfs-Qr-8A6"/>
+                <constraint firstItem="DSA-rN-aZ9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="krT-cs-2hv"/>
+                <constraint firstItem="Qy5-Gf-fzy" firstAttribute="leading" secondItem="DfO-fy-Prg" secondAttribute="trailing" constant="13" id="lSZ-1g-KJ3"/>
+                <constraint firstAttribute="bottom" secondItem="Qy5-Gf-fzy" secondAttribute="bottom" id="rfM-WV-qQr"/>
+                <constraint firstAttribute="trailing" secondItem="Qy5-Gf-fzy" secondAttribute="trailing" id="sLC-lh-WuY"/>
+                <constraint firstItem="DSA-rN-aZ9" firstAttribute="leading" secondItem="DfO-fy-Prg" secondAttribute="trailing" constant="8" symbolic="YES" id="ssF-eR-C8w"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="472" y="73.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="logo-skandiacup" width="176" height="132"/>
+    </resources>
 </document>
