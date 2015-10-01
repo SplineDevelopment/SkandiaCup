@@ -18,6 +18,8 @@ class InstaPopover : UIViewController, UIPopoverPresentationControllerDelegate {
     @IBOutlet weak var timestamp: UILabel!
     
     @IBOutlet weak var BigImage: UIImageView!
+    @IBOutlet weak var pageControll: UIPageControl!
+
     
     @IBAction func cancelPopoverTap(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -67,6 +69,9 @@ class InstaPopover : UIViewController, UIPopoverPresentationControllerDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
+        pageControll.hidden = false
+        pageControll.numberOfPages = instaPhotoTable.count
+        pageControll.currentPage = self.index
         self.userName.text = self.toPass.user
         profileImage.layer.cornerRadius = profileImage.frame.size.width/2
         BigImage.contentMode = UIViewContentMode.ScaleAspectFit

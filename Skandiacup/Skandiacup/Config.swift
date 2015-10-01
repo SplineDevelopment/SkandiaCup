@@ -14,6 +14,6 @@ class Config{
     static let appKeyTournamentID = "<application_key>demo2015uefa</application_key><tournamentID>11</tournamentID>"
     static let filterViewHeight:CGFloat = 169
     static let teamCellHeight:CGFloat = 44
-    static let tag_name = "norwaycup2015"
+    static let tag_name = "beachday"
     static let client_id_insta = "7b9d2e2f9ef04d81939c7c61f381184e"
 }

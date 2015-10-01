@@ -10,7 +10,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
-    
+    @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var infoView: UIView!
     @IBOutlet weak var newsView: UIView!
@@ -23,16 +23,21 @@ class HomeViewController: UIViewController {
             newsView.hidden = false
             infoView.hidden = true
             sosialView.hidden = true
+            headerLabel.hidden = true
 //            self.callViewChangedToChildController(NewsViewController)
         case 1:
             newsView.hidden = true
             infoView.hidden = false
             sosialView.hidden = true
+            headerLabel.hidden = true
+
             self.callViewChangedToChildController(InfoViewController)
         case 2:
             newsView.hidden = true
             infoView.hidden = true
             sosialView.hidden = false
+            headerLabel.hidden = false
+
             self.callViewChangedToChildController(SosialViewController)
         default:
             print("erroe")
