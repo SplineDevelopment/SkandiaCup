@@ -39,10 +39,26 @@ class SosialViewController: UICollectionViewController, SegmentChangeProto {
         print("Loading data from instagram")
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
-            SharingManager.data.getAllPhotoObjects() { (photoObjects) -> () in
+            SharingManager.data.getAllPhotoObjects() { (photoObjects, error) -> () in
                 dispatch_async(dispatch_get_main_queue()) {
-                    self.insta_photos.appendContentsOf(photoObjects)
-                    self.viewOutlet.reloadData()
+                    if error {
+                        print("ERROR IN SOSIAL VIEW GETTING INSTA PHOTOS")
+                        /*
+                        let alertController = UIAlertController(title: "Error", message:
+                            "Instagram not available atm", preferredStyle: UIAlertControllerStyle.Alert)
+                        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                        
+                        self.presentViewController(alertController, animated: true, completion: nil)
+                        */
+                        //let vc = self.storyboard?.instantiateViewControllerWithIdentifier("error_view") as! ErrorView
+                        
+                        //self.showViewController(vc as UIViewController, sender: vc)
+                        //vc.error_label.text = "Instagram not available atm"
+                    }
+                    else {
+                        self.insta_photos.appendContentsOf(photoObjects)
+                        self.viewOutlet.reloadData()
+                    }
                 }
             }
         }

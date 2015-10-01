@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		230713C01BBC2ACC00F25D8B /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230713BF1BBC2ACC00F25D8B /* ErrorView.swift */; settings = {ASSET_TAGS = (); }; };
 		23407BF71BB6C957006EED89 /* TournamentMatchStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23407BF61BB6C957006EED89 /* TournamentMatchStatus.swift */; settings = {ASSET_TAGS = (); }; };
 		23407BF91BB6CCC7006EED89 /* TournamentMatchStatusMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23407BF81BB6CCC7006EED89 /* TournamentMatchStatusMapper.swift */; settings = {ASSET_TAGS = (); }; };
 		2352AE511BBAAFD000244C6B /* RSS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2352AE501BBAAFD000244C6B /* RSS.swift */; settings = {ASSET_TAGS = (); }; };
@@ -101,6 +102,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		230713BF1BBC2ACC00F25D8B /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		23407BF61BB6C957006EED89 /* TournamentMatchStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentMatchStatus.swift; sourceTree = "<group>"; };
 		23407BF81BB6CCC7006EED89 /* TournamentMatchStatusMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentMatchStatusMapper.swift; sourceTree = "<group>"; };
 		2352AE501BBAAFD000244C6B /* RSS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSS.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				3C9A17C11BB58EA700746773 /* EndPlayGamesViewController.swift */,
 				72B841C11BB6A39900E37CC1 /* CustomHeaderCell.swift */,
 				72B841C31BB6BB8C00E37CC1 /* ResultTableViewCell.swift */,
+				230713BF1BBC2ACC00F25D8B /* ErrorView.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -577,6 +580,7 @@
 				D5774F451B999D3B002F9451 /* MatchesMapper.swift in Sources */,
 				3C803E5A1B98550D001A51AA /* Config.swift in Sources */,
 				3C803E561B9852EF001A51AA /* SoapMock.swift in Sources */,
+				230713C01BBC2ACC00F25D8B /* ErrorView.swift in Sources */,
 				D5FD4EE21B94CFB7009B53FC /* Tournament.swift in Sources */,
 				3C803E5E1B9856E8001A51AA /* SoapImpl.swift in Sources */,
 				D5EC2E931B9B5CBC00CBA235 /* TournamentTeamMapper.swift in Sources */,
