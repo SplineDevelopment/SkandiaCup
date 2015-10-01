@@ -16,33 +16,40 @@ class InstagramRepoImpl : InstagramRepo {
         print("using InstagramRepoImpl")
     }
     
-    private func sendReceive(request: NSMutableURLRequest, completionHandler: (responseData: NSData) -> Void) -> Void {
+    private func sendReceive(request: NSMutableURLRequest, completionHandler: (responseData: NSData?, error: Bool) -> Void) -> Void {
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
             if error != nil {
                 print("error=\(error)")
+                completionHandler(responseData: nil, error: true)
                 return
             }
-            completionHandler(responseData: data!)
+            completionHandler(responseData: data, error: false)
         }
         task.resume()
     }
     
-    func getAllPhotoObjects(completionHandler: (photoObjects: [InstagramPhotoObject]) -> ()) {
+    func getAllPhotoObjects(completionHandler: (photoObjects: [InstagramPhotoObject], error: Bool) -> ()) {
         let tag = Config.tag_name
-        let get_uri = "https://api.instagram.com/v1/tags/" + tag + "/media/recent?client_id=7b9d2e2f9ef04d81939c7c61f381184e"
+        let get_uri = "https://apix.instagram.com/v1/tags/" + tag + "/media/recent?client_id=7b9d2e2f9ef04d81939c7c61f381184e"
         let req = NSMutableURLRequest(URL: NSURL(string: get_uri)!)
         
-        sendReceive(req) { (responseData) -> Void in
+        sendReceive(req) { (responseData, response_error) -> Void in
             do {
-                let anyObj: AnyObject? = try NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions(rawValue: 0))
+                if response_error {
+                    completionHandler(photoObjects: [InstagramPhotoObject](), error: true)
+                    return
+                }
+                let anyObj: AnyObject? = try NSJSONSerialization.JSONObjectWithData(responseData!, options: NSJSONReadingOptions(rawValue: 0))
                 // this is not safe!
                 let test_o = anyObj as! NSDictionary
                 let arr = self.parseJson(test_o["data"]!)
-                completionHandler(photoObjects: arr)
+                completionHandler(photoObjects: arr, error: false)
             } catch let error as NSError {
                 print(error)
             }
         }
+        
+        
     }
     
     func parseJson(anyObj:AnyObject) -> Array<InstagramPhotoObject>{
@@ -135,7 +142,7 @@ class InstagramRepoImpl : InstagramRepo {
         return list
     }
     
-    func getPhotoObject(id: Int, completionHandler: (photoObject: InstagramPhotoObject) -> ()) {
+    func getPhotoObject(id: Int, completionHandler: (photoObject: InstagramPhotoObject, error: Bool) -> ()) {
         // mock
         let url = NSURL(string: "http://images.freeimages.com/images/previews/23c/soccer-ball-and-grass-1550139.jpg")!
         let urlSmall = NSURL(string: "http://images.freeimages.com/images/previews/23c/soccer-ball-and-grass-1550139.jpg")!
@@ -143,7 +150,7 @@ class InstagramRepoImpl : InstagramRepo {
         let user = "Test User"
         let urlProfilePicture = NSURL(string: "http://images.freeimages.com/images/previews/a80/venetian-mask-1516474.jpg")!
         let obj = InstagramPhotoObject(url: url, urlSmall: urlSmall, published: published, user: user, urlProfilePicture: urlProfilePicture)
-        completionHandler(photoObject: obj)
+        completionHandler(photoObject: obj, error: false)
     }
 }
 

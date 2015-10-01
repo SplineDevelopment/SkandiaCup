@@ -9,6 +9,6 @@
 import Foundation
 
 protocol InstagramRepo {
-    func getAllPhotoObjects(completionHandler: (photoObjects: [InstagramPhotoObject]) -> ())
-    func getPhotoObject(id: Int, completionHandler: (photoObject: InstagramPhotoObject) -> ())
+    func getAllPhotoObjects(completionHandler: (photoObjects: [InstagramPhotoObject], error: Bool) -> ())
+    func getPhotoObject(id: Int, completionHandler: (photoObject: InstagramPhotoObject, error: Bool) -> ())
 }
