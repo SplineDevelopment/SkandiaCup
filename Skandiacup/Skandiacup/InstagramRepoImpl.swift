@@ -30,7 +30,8 @@ class InstagramRepoImpl : InstagramRepo {
     
     func getAllPhotoObjects(completionHandler: (photoObjects: [InstagramPhotoObject], error: Bool) -> ()) {
         let tag = Config.tag_name
-        let get_uri = "https://api.instagram.com/v1/tags/" + tag + "/media/recent?client_id=7b9d2e2f9ef04d81939c7c61f381184e"
+        let id = Config.client_id_insta
+        let get_uri = "https://api.instagram.com/v1/tags/" + tag + "/media/recent?client_id=" + id
         let req = NSMutableURLRequest(URL: NSURL(string: get_uri)!)
         
         sendReceive(req) { (responseData, response_error) -> Void in
