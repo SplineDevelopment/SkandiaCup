@@ -524,16 +524,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="531"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52h-ys-0I0">
-                                <rect key="frame" x="267" y="377" width="67" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Field Map"/>
-                                <connections>
-                                    <segue destination="IW0-4h-JrU" kind="popoverPresentation" popoverAnchorView="52h-ys-0I0" id="Iv4-7X-8mn">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fresh-grass-background-presentations-1" translatesAutoresizingMaskIntoConstraints="NO" id="Sed-QG-6bN">
                                 <rect key="frame" x="0.0" y="7" width="600" height="480"/>
                                 <animations/>
@@ -653,31 +643,23 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="1uD-W6-KVd" firstAttribute="top" secondItem="nee-15-9cJ" secondAttribute="bottom" id="Cvy-WU-sa2"/>
-                            <constraint firstItem="52h-ys-0I0" firstAttribute="top" secondItem="1uD-W6-KVd" secondAttribute="bottom" constant="70" id="F6O-dh-ln4"/>
                             <constraint firstItem="1uD-W6-KVd" firstAttribute="leading" secondItem="FQ9-CF-mcY" secondAttribute="leading" id="GHO-91-wIg"/>
                             <constraint firstItem="fMz-c3-dMw" firstAttribute="top" secondItem="FQ9-CF-mcY" secondAttribute="top" constant="328" id="IXa-wY-6Fe"/>
                             <constraint firstItem="zhO-p6-vDd" firstAttribute="top" secondItem="1uD-W6-KVd" secondAttribute="bottom" constant="236" id="KcF-q9-eNc"/>
-                            <constraint firstItem="1uD-W6-KVd" firstAttribute="centerX" secondItem="52h-ys-0I0" secondAttribute="centerX" id="MBg-ls-8Eh"/>
                             <constraint firstItem="Sed-QG-6bN" firstAttribute="top" secondItem="FQ9-CF-mcY" secondAttribute="topMargin" constant="7" id="MxF-3l-j8s"/>
                             <constraint firstItem="Sed-QG-6bN" firstAttribute="bottom" secondItem="zhO-p6-vDd" secondAttribute="top" id="Nd1-l9-46v"/>
-                            <constraint firstItem="52h-ys-0I0" firstAttribute="top" secondItem="1uD-W6-KVd" secondAttribute="bottom" constant="70" id="Oln-MR-TMK"/>
-                            <constraint firstItem="zhO-p6-vDd" firstAttribute="top" secondItem="52h-ys-0I0" secondAttribute="bottom" constant="80" id="Q6A-7X-CwF"/>
-                            <constraint firstItem="1uD-W6-KVd" firstAttribute="centerX" secondItem="52h-ys-0I0" secondAttribute="centerX" id="QzB-29-zui"/>
+                            <constraint firstItem="zhO-p6-vDd" firstAttribute="top" secondItem="fMz-c3-dMw" secondAttribute="bottom" constant="120" id="SrZ-Hh-ZBs"/>
                             <constraint firstItem="fMz-c3-dMw" firstAttribute="leading" secondItem="FQ9-CF-mcY" secondAttribute="leading" constant="276" id="eua-gz-fyD"/>
+                            <constraint firstItem="fMz-c3-dMw" firstAttribute="centerX" secondItem="1uD-W6-KVd" secondAttribute="centerX" id="grd-zP-EeX"/>
                             <constraint firstItem="Sed-QG-6bN" firstAttribute="trailing" secondItem="1uD-W6-KVd" secondAttribute="trailing" id="jsD-J8-Z81"/>
                             <constraint firstAttribute="trailing" secondItem="1uD-W6-KVd" secondAttribute="trailing" id="kDt-QF-im1"/>
-                            <constraint firstItem="52h-ys-0I0" firstAttribute="top" secondItem="fMz-c3-dMw" secondAttribute="bottom" constant="10" id="nAg-lo-zB6"/>
-                            <constraint firstItem="fMz-c3-dMw" firstAttribute="centerX" secondItem="52h-ys-0I0" secondAttribute="centerX" id="nkB-Pj-ea1"/>
                             <constraint firstItem="Sed-QG-6bN" firstAttribute="leading" secondItem="1uD-W6-KVd" secondAttribute="leading" id="o4Y-c7-aLp"/>
                             <constraint firstItem="fMz-c3-dMw" firstAttribute="top" secondItem="nee-15-9cJ" secondAttribute="bottom" constant="264" id="pzY-gO-7kb"/>
                             <constraint firstItem="fMz-c3-dMw" firstAttribute="top" secondItem="1uD-W6-KVd" secondAttribute="bottom" constant="8" symbolic="YES" id="uPs-ZY-cc2"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="QzB-29-zui"/>
                                 <exclude reference="pzY-gO-7kb"/>
-                                <exclude reference="F6O-dh-ln4"/>
-                                <exclude reference="Oln-MR-TMK"/>
                                 <exclude reference="KcF-q9-eNc"/>
                             </mask>
                         </variation>
