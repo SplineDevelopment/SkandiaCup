@@ -66,6 +66,8 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             print(name.favorites[index].name!)
         }
         changeButton()
+        // error handling?
+        self.view.makeToast(message: "Added \(currentTeam!.name!) to favorites", duration: 1, position: "center", title: "Favorites", image: UIImage(named: "ball")!)
     }
     
     
@@ -117,6 +119,8 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
             }
             changeButton()
+            // error handling?
+            self.view.makeToast(message: "Removed \(currentTeam!.name!) from favorites", duration: 1, position: "center", title: "Favorites", image: UIImage(named: "ball")!)
         }
     }
     

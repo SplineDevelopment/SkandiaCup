@@ -12,6 +12,7 @@ class InfoViewController: UIViewController, SegmentChangeProto {
     func viewChangedTo() {
         print("Changed to info view")
         let since = "2015-09-3 09:00:00"
+        /*
         SharingManager.soap.getTournamentMatchStatus(since) { (status) -> () in
             print("testing -- after xml --")
             print("\nneedTotalRefresh: \(status.needTotalRefresh)")
@@ -22,6 +23,8 @@ class InfoViewController: UIViewController, SegmentChangeProto {
                 }
             })
         }
+        */
+        
     }
     
     override func didReceiveMemoryWarning() {
