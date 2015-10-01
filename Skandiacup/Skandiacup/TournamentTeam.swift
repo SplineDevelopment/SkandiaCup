@@ -19,6 +19,22 @@ class TournamentTeam : NSObject, NSCoding {
     var shirtColor: String?
     var countryCode: String?
     
+    override init() {
+        super.init()
+    }
+    
+    init(id: Int, name: String, clubId: Int, matchGroupId: Int, matchClassId: Int, tournamentTeamRegistrationId: Int, updateTimestamp: String, shirtColor: String, countryCode: String) {
+        self.id = id
+        self.name = name
+        self.clubId = clubId
+        self.matchGroupId = matchGroupId
+        self.matchClassId = matchClassId
+        self.tournamentTeamRegistrationId = tournamentTeamRegistrationId
+        self.updateTimestamp = updateTimestamp
+        self.shirtColor = shirtColor
+        self.countryCode = countryCode
+    }
+    
     required convenience init?(coder decoder: NSCoder) {
         self.init()
         self.id = decoder.decodeObjectForKey("TournamentTeamId") as? Int
