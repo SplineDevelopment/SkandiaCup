@@ -15,6 +15,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var infoView: UIView!
     @IBOutlet weak var newsView: UIView!
     @IBOutlet weak var sosialView: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     @IBAction func indexChanged(sender: UISegmentedControl) {
         switch segmentedControl.selectedSegmentIndex{
@@ -39,6 +40,7 @@ class HomeViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
+        activityIndicator.startAnimating()
         switch segmentedControl.selectedSegmentIndex{
 //        case 0:
 //            self.callViewChangedToChildController(NewsViewController)

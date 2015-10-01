@@ -241,6 +241,9 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func willMoveToParentViewController(parent: UIViewController?) {
         let grandpa = self.parentViewController?.parentViewController
-        (grandpa as! TournamentViewController).testingFunc(TeamsViewController)
+        if ((grandpa!.isKindOfClass(TournamentViewController))){
+            (grandpa as! TournamentViewController).testingFunc(TeamsViewController)
+        }
+        
     }
 }
