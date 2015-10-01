@@ -29,6 +29,8 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.newTableView.reloadData()
                  (self.parentViewController?.parentViewController as! HomeViewController).activityIndicator.stopAnimating()
+                (self.parentViewController?.parentViewController as! HomeViewController).newsView.hidden = false
+                
             })
 
         }

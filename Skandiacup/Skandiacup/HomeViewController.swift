@@ -40,7 +40,6 @@ class HomeViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        activityIndicator.startAnimating()
         switch segmentedControl.selectedSegmentIndex{
 //        case 0:
 //            self.callViewChangedToChildController(NewsViewController)
@@ -70,6 +69,9 @@ class HomeViewController: UIViewController {
         self.tabBarController?.tabBar.barTintColor = UIColor(red: 41.0/255.0, green: 40.0/255.0, blue: 39.0/255.0, alpha: 1.0)
         self.tabBarController?.tabBar.tintColor = UIColor(red:0.02, green:0.54, blue:0.02, alpha:1.0)
         // Do any additional setup after loading the view.
+        activityIndicator.startAnimating()
+        newsView.hidden = true
+
     }
 
     override func didReceiveMemoryWarning() {
