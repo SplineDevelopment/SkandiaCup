@@ -115,6 +115,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBAction func searchButtonPressed(sender: AnyObject) {
         let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, -Config.filterViewHeight, 0)
         if !dropDownViewIsDisplayed{
+            teamTableView.setContentOffset(CGPointZero, animated:true)
             self.teamTableView.tableHeaderView?.hidden = false
             teamTableView.layer.transform = rotationTransform
             
