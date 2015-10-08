@@ -14,9 +14,22 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     let defaults = NSUserDefaults.standardUserDefaults()
     var favorites: FavoriteTeams = FavoriteTeams()
     @IBOutlet weak var favButton: UIBarButtonItem!
-    var table = TableMock.generateAMock()
     var infoSectionIsSet = false
     var isEven = false
+    var matchTable: MatchTable?
+    var matchTables: [MatchTable]?{
+        didSet{
+            self.matchTables?.forEach({ (table) -> () in
+                if Int(table.header!.matchGroupId!)! == self.currentTeam!.matchGroupId{
+                    self.matchTable = table
+                }
+            })
+            self.matchTable?.rows?.sortInPlace({$0.position < $1.position})
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.matchTableView.reloadData()
+            })
+        }
+    }
     
     var matches: [TournamentMatch]? {
         didSet{
@@ -42,6 +55,10 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         changeButton()
         // Do any additional setup after loading the view.
+        
+        SharingManager.soap.getTable(nil, playOffId: nil, teamId: nil, completionHandler: { (tables) -> () in
+            self.matchTables = tables
+        })
     }
     
     func favorite() {
@@ -152,8 +169,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         return headerCell
     }
     
-
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -161,7 +176,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(section == 0){
-            return table.teams.count+1
+            return self.matchTable != nil ? (self.matchTable?.rows?.count)! + 1 : 0
         }
         else if(section == 1){
             return matches != nil ? matches!.count : 0
@@ -187,23 +202,24 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             infoSectionIsSet = true
             return cell
         }
+        
         if (indexPath.section == 0){
-                let i = indexPath.row-1
-                print(indexPath.row)
-                let cell = tableView.dequeueReusableCellWithIdentifier("tableSection") as! ResultTableViewCell
-                cell.teamNameLabel.text = String(table.teams[i])
-                cell.positionLabel.text = String(i+1)
-                cell.pointsLabel.text = String(table.points[i])
-                cell.plusMinusLabel.text = String((table.goalsFor[i] - table.goalsAgainst[i]))
-                cell.lossesLabel.text = String(table.losses[i])
-                cell.drawsLabel.text = String(table.draws[i])
-                cell.winsLabel.text = String(table.wins[i])
-                cell.gamesPlayedLabel.text = String(table.gamesPlayed[i])
-                if (isEven){
-                    cell.backgroundColor = UIColor(red:0.87, green:0.89, blue:0.82, alpha:1.0)
-                }
-                isEven = !isEven
-                return cell
+            print(indexPath.row)
+            let cell = tableView.dequeueReusableCellWithIdentifier("tableSection") as! ResultTableViewCell
+            cell.teamNameLabel.text = self.matchTable?.rows![indexPath.row-1].a
+            cell.positionLabel.text = self.matchTable?.rows![indexPath.row-1].position
+            cell.pointsLabel.text = self.matchTable?.rows![indexPath.row-1].g
+            cell.plusMinusLabel.text = self.matchTable?.rows![indexPath.row-1].f
+            cell.lossesLabel.text = self.matchTable?.rows![indexPath.row-1].e
+            cell.drawsLabel.text = self.matchTable?.rows![indexPath.row-1].d
+            cell.winsLabel.text = self.matchTable?.rows![indexPath.row-1].c
+//            Add losses + draws + wins for this
+//            cell.gamesPlayedLabel.text = String(table.gamesPlayed[i])
+            if (isEven){
+                cell.backgroundColor = UIColor(red:0.87, green:0.89, blue:0.82, alpha:1.0)
+            }
+            isEven = !isEven
+            return cell
         }
         else if (indexPath.section == 1){
             let cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as UITableViewCell!

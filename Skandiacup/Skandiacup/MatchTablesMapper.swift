@@ -52,6 +52,14 @@ class MatchTablesMapper: NSObject {
             row.position = elem["Position"].element?.text
         }
         
+        if elem["PlayOffId"].element?.text != nil{
+            row.playoffId = Int((elem["PlayOffId"].element?.text)!)
+        }
+        
+        if elem["PlayoffLevel"].element?.text != nil{
+            row.playOffLevel = Int((elem["PlayoffLevel"].element?.text)!)
+        }
+        
         if elem["a"].element?.text != nil{
             row.a = elem["a"].element?.text
         }
@@ -74,6 +82,10 @@ class MatchTablesMapper: NSObject {
         
         if elem["f"].element?.text != nil{
             row.f = elem["f"].element?.text
+        }
+        
+        if elem["g"].element?.text != nil{
+            row.g = elem["g"].element?.text
         }
         return row
     }

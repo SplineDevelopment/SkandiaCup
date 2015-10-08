@@ -15,6 +15,8 @@ struct MatchTableRow{
     var matchGroupId: String?
     var displayOrder: String?
     var position: String?
+    var playoffId: Int?
+    var playOffLevel: Int?
     var a: String?
     var b: String?
     var c: String?
