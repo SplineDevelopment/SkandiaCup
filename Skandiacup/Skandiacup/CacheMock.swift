@@ -27,8 +27,8 @@ class CacheMock : Cache {
     func getMatches(classID: Int?, groupID: Int?, teamID: Int?) -> [TournamentMatch] {
         return [TournamentMatch]()
     }
-    func getTeams(id: [Int]?) -> [TournamentTeam] {
-        return [TournamentTeam]()
+    func getTeams(completionHandler: (teams : [TournamentTeam]) -> ()) {
+        completionHandler(teams: [TournamentTeam]())
     }
     
     func setArena(arenas : [Arena]) {

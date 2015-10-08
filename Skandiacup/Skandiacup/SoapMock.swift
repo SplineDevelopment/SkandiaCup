@@ -81,7 +81,7 @@ class SoapMock: Soap {
         
     }
     
-    func getTeams(id: [Int]?, completionHandler: (teams: [TournamentTeam]) -> ()){
+    func getTeams(completionHandler: (teams: [TournamentTeam]) -> ()){
         var tournamentTeams = [TournamentTeam]()
         /*
         tournamentTeams.append(TournamentTeam(id: 1, name: "Flint", clubId: 1, matchGroupId: 3, matchClassId: 3, tournamentTeamRegistrationId: 3, updateTimestamp: "nein", shirtColor: "Blå", countryCode: "NO"))
@@ -92,7 +92,7 @@ class SoapMock: Soap {
         for x in 1...900 {
             tournamentTeams.append(TournamentTeam(id: x, name: "Flint\(x)", clubId: x, matchGroupId: 3, matchClassId: 3, tournamentTeamRegistrationId: x, updateTimestamp: "nein", shirtColor: "Blå", countryCode: "NO"))
         }
-        completionHandler(teams: id != nil ? tournamentTeams.filter({id!.contains($0.id!)}) : tournamentTeams)
+        completionHandler(teams: tournamentTeams)
         
     }
     

@@ -130,7 +130,40 @@ class TournamentMatchTableCacheObject : GenericTableCacheObject<TournamentMatch>
     }
 }
 
-
+class TeamsTableCacheObject : NSObject, NSCoding {
+    var cacheSetTime : Int?
+    var teams : [TournamentTeam]?
+    
+    init (cacheSetTime : Int, teams: [TournamentTeam]) {
+        self.cacheSetTime = cacheSetTime
+        self.teams = teams
+    }
+    
+    override init() {
+        super.init()
+    }
+    
+    func getTeamsCache() -> [TournamentTeam] {
+        return self.teams!
+    }
+    
+    func setTeamsCache(teams : [TournamentTeam]) {
+        let currentTime = Functions.getCurrentTimeInSeconds()
+        self.cacheSetTime = currentTime
+        self.teams = teams
+    }
+    
+    required convenience init?(coder decoder: NSCoder) {
+        self.init()
+        self.cacheSetTime = decoder.decodeObjectForKey("TeamsCacheSetTime") as? Int
+        self.teams = decoder.decodeObjectForKey("TeamsCacheTeamTable") as? [TournamentTeam]
+    }
+    
+    func encodeWithCoder(coder: NSCoder) {
+        coder.encodeObject(self.cacheSetTime, forKey: "TeamsCacheSetTime")
+        coder.encodeObject(self.teams, forKey: "TeamsCacheTeamTable")
+    }
+}
 
 
 

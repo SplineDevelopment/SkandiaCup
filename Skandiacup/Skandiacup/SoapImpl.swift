@@ -96,12 +96,12 @@ class SoapImpl: Soap {
         }
     }
     
-    func getTeams(id: [Int]?, completionHandler: (teams: [TournamentTeam])-> ()){
+    func getTeams(completionHandler: (teams: [TournamentTeam])-> ()) {
         let request = Generator.generateGetTeamsXML()
         self.sendReceive(request) { (responseString) -> Void in
             let xml = SWXMLHash.parse(responseString)
             let teams = TournamentTeamMapper.mapTeams(xml)
-            completionHandler(teams: id != nil ? teams.filter({id!.contains($0.id!)}) : teams)
+            completionHandler(teams: teams)
         }
     }
     
