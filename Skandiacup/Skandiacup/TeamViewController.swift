@@ -204,7 +204,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         if (indexPath.section == 0){
-            print(indexPath.row)
             let cell = tableView.dequeueReusableCellWithIdentifier("tableSection") as! ResultTableViewCell
             cell.teamNameLabel.text = self.matchTable?.rows![indexPath.row-1].a
             cell.positionLabel.text = self.matchTable?.rows![indexPath.row-1].position
