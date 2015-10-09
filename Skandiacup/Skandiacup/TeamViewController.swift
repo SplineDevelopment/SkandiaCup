@@ -56,7 +56,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         changeButton()
         // Do any additional setup after loading the view.
         
-        SharingManager.soap.getTable(nil, playOffId: nil, teamId: nil, completionHandler: { (tables) -> () in
+        SharingManager.soap.getTable(nil, playOffId: nil, teamId: self.currentTeam?.id, completionHandler: { (tables) -> () in
             self.matchTables = tables
         })
     }
@@ -203,6 +203,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             return cell
         }
         
+        //Matchtable
         if (indexPath.section == 0){
             let cell = tableView.dequeueReusableCellWithIdentifier("tableSection") as! ResultTableViewCell
             cell.teamNameLabel.text = self.matchTable?.rows![indexPath.row-1].a
@@ -212,8 +213,13 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.lossesLabel.text = self.matchTable?.rows![indexPath.row-1].e
             cell.drawsLabel.text = self.matchTable?.rows![indexPath.row-1].d
             cell.winsLabel.text = self.matchTable?.rows![indexPath.row-1].c
-//            Add losses + draws + wins for this
-//            cell.gamesPlayedLabel.text = String(table.gamesPlayed[i])
+            
+            var gamesPlayed = 0
+            gamesPlayed += Int((self.matchTable?.rows![indexPath.row-1].e)!)!
+            gamesPlayed += Int((self.matchTable?.rows![indexPath.row-1].d)!)!
+            gamesPlayed += Int((self.matchTable?.rows![indexPath.row-1].c)!)!
+            cell.gamesPlayedLabel.text = String(gamesPlayed)
+            
             if (isEven){
                 cell.backgroundColor = UIColor(red:0.87, green:0.89, blue:0.82, alpha:1.0)
             }
