@@ -80,8 +80,33 @@ class DataManager {
         completionHandler(matches: cachedMatches)
     }
     
+    // need to check if filter works as intended
     func getTeams(id: [Int]?, completionHandler: (teams: [TournamentTeam]) -> ()) {
-        
+        SharingManager.cache.getTeams { (teamsFromCache) -> () in
+            // teams is empty if refresh is needed
+            if teamsFromCache.isEmpty {
+                print("Getting teams from soap")
+                SharingManager.soap.getTeams({ (teams) -> () in
+                    SharingManager.cache.setTeams(teams)
+                    if id == nil {
+                        completionHandler(teams: teams)
+                    } else {
+                        completionHandler(teams: teams.filter {
+                            $0.id != nil ? id!.contains($0.id!) : false
+                        })
+                    }
+                })
+            } else {
+                print("Getting teams from cache")
+                if id == nil {
+                    completionHandler(teams: teamsFromCache)
+                } else {
+                    completionHandler(teams: teamsFromCache.filter {
+                        $0.id != nil ? id!.contains($0.id!) : false
+                    })
+                }
+            }
+        }
     }
     
     // cache with insta? -> probably just use a timer in the GUI (already saved state in the view cells)

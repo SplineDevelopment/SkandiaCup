@@ -50,7 +50,13 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
         activityIndicator.hidden = false
         activityIndicator.startAnimating()
         segmentController.selectedSegmentIndex = 0
+        /*
         SharingManager.soap.getTeams(nil) { (teams) -> () in
+            self.teams = teams
+            self.filteredTeams = teams
+        }
+        */
+        SharingManager.data.getTeams(nil) { (teams) -> () in
             self.teams = teams
             self.filteredTeams = teams
         }

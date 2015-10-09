@@ -12,12 +12,13 @@ class CacheImpl : Cache {
     var arenas : ArenaTableCacheObject
     var tournamentMatches : TournamentMatchTableCacheObject
     var tournamentClubs : TournamentClubCacheObject
+    var tournamentTeams : TeamsTableCacheObject
     
     // save to disk::
     // teams
     
     init() {
-//        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = NSUserDefaults.standardUserDefaults()
         
         let a = [Int : CacheObject<Arena>]()
         self.arenas = ArenaTableCacheObject(objects: a)
@@ -25,12 +26,13 @@ class CacheImpl : Cache {
         let tc = [Int: CacheObject<TournamentClub>]()
         self.tournamentClubs = TournamentClubCacheObject(objects: tc)
         
-//        test load matches from disk
-//        if let tournamentMatchesFromDisk = defaults.dataForKey("tournamentMatches") {
-//            self.tournamentMatches = NSKeyedUnarchiver.unarchiveObjectWithData(tournamentMatchesFromDisk) as! TournamentMatchTableCacheObject
-//        } else {
-//            self.tournamentMatches = TournamentMatchTableCacheObject(objects: [Int : CacheObject<TournamentMatch>]())
-//        }
+        if let tournamentTeamsFromDisk = defaults.dataForKey("tournamentTeams") {
+            self.tournamentTeams = NSKeyedUnarchiver.unarchiveObjectWithData(tournamentTeamsFromDisk) as! TeamsTableCacheObject
+        } else {
+            // replace 0 with something? 
+            // does it have to be a real date? need to be able to use with getTournamentMatchStatus??
+            self.tournamentTeams = TeamsTableCacheObject(cacheSetTime: 0, teams: [TournamentTeam]())
+        }
         
         self.tournamentMatches = TournamentMatchTableCacheObject(objects: [Int : CacheObject<TournamentMatch>]())
     }
@@ -78,8 +80,18 @@ class CacheImpl : Cache {
         return matchesUpToDate
     }
     
-    func getTeams(id: [Int]?) -> [TournamentTeam] {
-        return [TournamentTeam]()
+    func getTeams(completionHandler: (teams : [TournamentTeam]) -> ()) {
+        let lastSaved = self.tournamentTeams.cacheSetTime
+        let since = Date.getTimeInSoapFormat(lastSaved!)
+        print(since)
+        SharingManager.soap.getTournamentMatchStatus(since) { (status) -> () in
+            if status.needTotalRefresh {
+                print("Need total refresh!!! (teams)")
+                completionHandler(teams: [TournamentTeam]())
+            }
+            // safe unwrapping here?
+            completionHandler(teams: self.tournamentTeams.teams!)
+        }
     }
     
     func setArena(arenas : [Arena]) {
@@ -101,12 +113,16 @@ class CacheImpl : Cache {
     
     func setMatches(matches : [TournamentMatch]) {
         self.tournamentMatches.setMatches(matches)
-//        let defaults = NSUserDefaults.standardUserDefaults()
-//        let archiveData = NSKeyedArchiver.archivedDataWithRootObject(Wrap(dict: self.tournamentMatches))
-//        defaults.setObject(archiveData, forKey: "tournamentMatches")
     }
     
     func setTeams(teams : [TournamentTeam]) {
-        
+        self.tournamentTeams.setTeamsCache(teams)
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let archiveData = NSKeyedArchiver.archivedDataWithRootObject(self.tournamentTeams)
+        defaults.setObject(archiveData, forKey: "tournamentTeams")
     }
 }
+
+
+
+

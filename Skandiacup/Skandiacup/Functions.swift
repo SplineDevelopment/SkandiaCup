@@ -17,6 +17,14 @@ struct Date{
         return stringValue
     }
     
+    static func getTimeInSoapFormat(time : Int) -> String {
+        let date = NSDate(timeIntervalSince1970: NSTimeInterval(time))
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
+        let stringValue = formatter.stringFromDate(date)
+        return stringValue
+    }
+    
     static func getDateMatchView(stringDateFromProfixio:String) -> String {
         let newString = stringDateFromProfixio.stringByReplacingOccurrencesOfString("T", withString: "")
         

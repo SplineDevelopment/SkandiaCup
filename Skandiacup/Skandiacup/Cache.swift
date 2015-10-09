@@ -15,7 +15,7 @@ protocol Cache {
     func getMatchClass(id: [Int]) -> [MatchClass]
     func getMatchGroup(id: [Int]) -> [MatchGroup]
     func getMatches(classID: Int?, groupID: Int?, teamID: Int?) -> [TournamentMatch]
-    func getTeams(id: [Int]?) -> [TournamentTeam]
+    func getTeams(completionHandler: (teams : [TournamentTeam]) -> ())
     
     func setArena(arenas : [Arena])
     func setTournamentClub(clubs : [TournamentClub])

@@ -19,7 +19,7 @@ class SoapImpl: Soap {
             let responseString = String(data: data!, encoding: NSUTF8StringEncoding)
             print("Sending data over network!")
             if responseString != nil {
-                //print(responseString)
+//                print(responseString)
                 completionHandler(responseData: responseString!)
             } else {
                 print("responseString is nil")
@@ -96,17 +96,22 @@ class SoapImpl: Soap {
         }
     }
     
-    func getTeams(id: [Int]?, completionHandler: (teams: [TournamentTeam])-> ()){
+    func getTeams(completionHandler: (teams: [TournamentTeam])-> ()) {
         let request = Generator.generateGetTeamsXML()
         self.sendReceive(request) { (responseString) -> Void in
             let xml = SWXMLHash.parse(responseString)
             let teams = TournamentTeamMapper.mapTeams(xml)
-            completionHandler(teams: id != nil ? teams.filter({id!.contains($0.id!)}) : teams)
+            completionHandler(teams: teams)
         }
     }
     
     func getTable(groupID: Int?, playOffId: Int?, teamId: Int?, completionHandler: (tables: [MatchTable]) -> ()) {
-        
+        let request = Generator.generateGetTableXML()
+        self.sendReceive(request) { (responseString) -> () in
+            let xml = SWXMLHash.parse(responseString)
+            let tables = MatchTablesMapper.mapMatchTables(xml)
+            completionHandler(tables: tables)
+        }
     }
     
     func getTournamentMatchStatus(since: String, completionHandler: (status: TournamentMatchStatus) -> ()) {

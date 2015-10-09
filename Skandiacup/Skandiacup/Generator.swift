@@ -91,4 +91,11 @@ class Generator {
         let getTournamentMatchStatusMessage = generateMessage(messageFor, innerXML: innerXML)
         return generateRequest(getTournamentMatchStatusMessage)
     }
+    
+    static func generateGetTableXML() -> NSMutableURLRequest{
+        let messageFor = "getTable"
+        let innerXML = ""
+        let getTableMessage = generateMessage(messageFor, innerXML: innerXML)
+        return generateRequest(getTableMessage)
+    }
 }
