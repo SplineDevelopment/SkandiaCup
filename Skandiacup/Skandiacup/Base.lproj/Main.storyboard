@@ -1322,7 +1322,6 @@
                     </view>
                     <connections>
                         <outlet property="headerLabel" destination="LrJ-au-SUj" id="EwU-bm-a9l"/>
-                        <outlet property="skandiacupHeader" destination="bkB-m4-Lnj" id="gwf-3x-dWW"/>
                         <outlet property="textView" destination="3YP-ly-W81" id="Msr-M1-bNS"/>
                     </connections>
                 </viewController>
