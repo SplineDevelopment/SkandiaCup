@@ -92,9 +92,21 @@ class Generator {
         return generateRequest(getTournamentMatchStatusMessage)
     }
     
-    static func generateGetTableXML() -> NSMutableURLRequest{
+    static func generateGetTableXML(groupID: Int?, playoffID: Int?, teamID: Int?) -> NSMutableURLRequest{
         let messageFor = "getTable"
-        let innerXML = ""
+        var innerXML = ""
+        if groupID != nil{
+            innerXML += "<groupID>\(groupID!)</groupID>"
+        }
+        
+        if playoffID != nil{
+            innerXML += "<playoffID>\(playoffID!)</playoffID>"
+        }
+        
+        if teamID != nil{
+            innerXML += "<teamID>\(teamID!)</teamID>"
+        }
+        
         let getTableMessage = generateMessage(messageFor, innerXML: innerXML)
         return generateRequest(getTableMessage)
     }
