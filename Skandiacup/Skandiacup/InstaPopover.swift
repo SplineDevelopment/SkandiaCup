@@ -25,6 +25,10 @@ class InstaPopover : UIViewController, UIPopoverPresentationControllerDelegate {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    @IBAction func cancelPopoverSwipe(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     var toPass : InstagramPhotoObject!
     var instaPhotoTable : [InstagramPhotoObject]!
     var index : Int!
