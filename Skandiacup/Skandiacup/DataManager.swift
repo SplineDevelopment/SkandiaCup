@@ -34,6 +34,17 @@ class DataManager {
         }
     }
     
+    func getField(arenaID: Int?, fieldID: Int?, completionHandler: (fields: [Field]) -> ()) {
+        if arenaID == nil && fieldID == nil {
+            SharingManager.soap.getField(nil, fieldID: nil, completionHandler: { (fields) -> () in
+                SharingManager.cache.setField(fields)
+                completionHandler(fields: fields)
+            })
+        }
+        let cachedFields = SharingManager.cache.getField(arenaID, fieldID: fieldID)
+        completionHandler(fields: cachedFields)
+    }
+    
     func getTournamentClub(id: [Int]?, countryCode: String?, completionHandler: (clubs: [TournamentClub]) -> ()) {
         if id == nil && countryCode == nil{
             //What to do here
@@ -52,9 +63,7 @@ class DataManager {
         print("Getting clubs from cache")
         completionHandler(clubs: cachedTournamentClubs)
     }
-    func getField(arenaID: Int?, fieldID: Int?, completionHandler: (fields: [Field]) -> ()) {
-        
-    }
+
     func getMatchClass(completionHandler: (matchclasses: [MatchClass]) -> ()) {
         SharingManager.soap.getMatchClass { (matchclasses) -> () in
             completionHandler(matchclasses: matchclasses)

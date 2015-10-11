@@ -12,6 +12,8 @@ class TournamentMatchStatusMapper {
     static func mapTournamentMatchStatus(xml: XMLIndexer) -> TournamentMatchStatus {
         let status = TournamentMatchStatus()
         
+//        print(xml)
+        
         if let needTotalRefresh_status = xml["SOAP-ENV:Envelope"]["SOAP-ENV:Body"]["ns1:getTournamentMatchStatusResponse"]["getTournamentMatchStatusResult"]["needTotalRefresh"].element?.text {
             if needTotalRefresh_status == "true" {
                 status.needTotalRefresh = true
@@ -23,6 +25,11 @@ class TournamentMatchStatusMapper {
                 status.existsNewOrUpdatedMatches = true
             }
         }
+        
+        if let teamCount_number = xml["SOAP-ENV:Envelope"]["SOAP-ENV:Body"]["ns1:getTournamentMatchStatusResponse"]["getTournamentMatchStatusResult"]["teamCount"].element?.text {
+            status.teamCount = Int(teamCount_number)!
+        }
+        
         return status
     }
 }

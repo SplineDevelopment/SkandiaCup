@@ -11,10 +11,12 @@ import Foundation
 class TournamentMatchStatus {
     var needTotalRefresh : Bool
     var existsNewOrUpdatedMatches : Bool
+    var teamCount : Int
     
     init() {
         self.needTotalRefresh = false
         self.existsNewOrUpdatedMatches = false
+        self.teamCount = 0
     }
     
     /*

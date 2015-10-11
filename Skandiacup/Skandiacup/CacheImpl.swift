@@ -13,28 +13,22 @@ class CacheImpl : Cache {
     var tournamentMatches : TournamentMatchTableCacheObject
     var tournamentClubs : TournamentClubCacheObject
     var tournamentTeams : TeamsTableCacheObject
-    
-    // save to disk::
-    // teams
+    var fields : FieldTableCacheObject
     
     init() {
         let defaults = NSUserDefaults.standardUserDefaults()
         
-        let a = [Int : CacheObject<Arena>]()
-        self.arenas = ArenaTableCacheObject(objects: a)
-        
-        let tc = [Int: CacheObject<TournamentClub>]()
-        self.tournamentClubs = TournamentClubCacheObject(objects: tc)
-        
         if let tournamentTeamsFromDisk = defaults.dataForKey("tournamentTeams") {
             self.tournamentTeams = NSKeyedUnarchiver.unarchiveObjectWithData(tournamentTeamsFromDisk) as! TeamsTableCacheObject
+//            self.tournamentTeams = TeamsTableCacheObject(cacheSetTime: 0, teams: [TournamentTeam]())
         } else {
-            // replace 0 with something? 
-            // does it have to be a real date? need to be able to use with getTournamentMatchStatus??
             self.tournamentTeams = TeamsTableCacheObject(cacheSetTime: 0, teams: [TournamentTeam]())
         }
         
+        self.arenas = ArenaTableCacheObject(objects: [Int : CacheObject<Arena>]())
+        self.tournamentClubs = TournamentClubCacheObject(objects: [Int: CacheObject<TournamentClub>]())
         self.tournamentMatches = TournamentMatchTableCacheObject(objects: [Int : CacheObject<TournamentMatch>]())
+        self.fields = FieldTableCacheObject(objects: [Int : CacheObject<Field>]())
     }
     
     func getArena(id: [Int]?) -> [Arena] {
@@ -59,12 +53,22 @@ class CacheImpl : Cache {
         }
         return clubsUpToDate
     }
+    
     func getField(arenaID: Int?, fieldID: Int?) -> [Field] {
-        return [Field]()
+        let f = self.fields.getFields(fieldID, arenaID: arenaID)
+        var fieldsUpToDate = [Field]()
+        for elem in f {
+            if elem.cacheSetTime + Field.maxCacheTime > Functions.getCurrentTimeInSeconds() {
+                fieldsUpToDate.append(elem.value)
+            }
+        }
+        return fieldsUpToDate
     }
+    
     func getMatchClass(id: [Int]) -> [MatchClass] {
         return [MatchClass]()
     }
+    
     func getMatchGroup(id: [Int]) -> [MatchGroup] {
         return [MatchGroup]()
     }
@@ -88,9 +92,13 @@ class CacheImpl : Cache {
             if status.needTotalRefresh {
                 print("Need total refresh!!! (teams)")
                 completionHandler(teams: [TournamentTeam]())
+            } else if status.teamCount != self.tournamentTeams.teams!.count {
+                print("teamCount != cached teams!!! - refreshing (teams)")
+                completionHandler(teams: [TournamentTeam]())
+            } else {
+                // safe unwrapping here?
+                completionHandler(teams: self.tournamentTeams.teams!)
             }
-            // safe unwrapping here?
-            completionHandler(teams: self.tournamentTeams.teams!)
         }
     }
     
@@ -101,12 +109,15 @@ class CacheImpl : Cache {
     func setTournamentClub(clubs : [TournamentClub]) {
         self.tournamentClubs.setTournamentClubs(clubs)
     }
+    
     func setField(fields: [Field]) {
-        
+        self.fields.setFields(fields)
     }
+    
     func setMatchClass(matchClasses : [MatchClass]) {
         
     }
+    
     func setMatchGroup(matchGroups : [MatchGroup]) {
         
     }

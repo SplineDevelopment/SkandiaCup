@@ -106,7 +106,7 @@ class SoapImpl: Soap {
     }
     
     func getTable(groupID: Int?, playOffId: Int?, teamId: Int?, completionHandler: (tables: [MatchTable]) -> ()) {
-        let request = Generator.generateGetTableXML()
+        let request = Generator.generateGetTableXML(groupID, playoffID: playOffId, teamID: teamId)
         self.sendReceive(request) { (responseString) -> () in
             let xml = SWXMLHash.parse(responseString)
             let tables = MatchTablesMapper.mapMatchTables(xml)

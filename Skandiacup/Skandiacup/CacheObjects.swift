@@ -43,6 +43,34 @@ class ArenaTableCacheObject : GenericTableCacheObject<Arena> {
     }
 }
 
+class FieldTableCacheObject : GenericTableCacheObject<Field> {
+    init (objects: [Int : CacheObject<Field>]) {
+        super.init(objects: objects)
+    }
+    
+    func getFields(fieldID : Int?, arenaID : Int?) -> [CacheObject<Field>] {
+        if fieldID != nil {
+            return self.objects.values.filter({
+                $0.value.fieldID != nil ? $0.value.fieldID! == fieldID : false
+            })
+        }
+        if arenaID != nil {
+            return self.objects.values.filter({
+                $0.value.arenaID != nil ? $0.value.arenaID! == arenaID : false
+            })
+        }
+        return Array(self.objects.values)
+    }
+    
+    func setFields(fields : [Field]) {
+        let currentTime = Functions.getCurrentTimeInSeconds()
+        fields.forEach { (element) -> () in
+            // what to do here if fieldID is nil ??
+            self.objects[element.fieldID!] = CacheObject<Field>(cacheSetTime: currentTime, value: element)
+        }
+    }
+}
+
 class TournamentClubCacheObject: GenericTableCacheObject<TournamentClub>{
     init(objects: [Int: CacheObject<TournamentClub>]){
         super.init(objects: objects)
