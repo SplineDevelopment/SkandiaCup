@@ -209,7 +209,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.teamNameLabel.text = self.matchTable?.rows![indexPath.row-1].a
             cell.positionLabel.text = self.matchTable?.rows![indexPath.row-1].position
             cell.pointsLabel.text = self.matchTable?.rows![indexPath.row-1].g
-            cell.plusMinusLabel.text = self.matchTable?.rows![indexPath.row-1].f
+            cell.plusMinusLabel.text = convertPlusMinus((self.matchTable?.rows![indexPath.row-1].f)!)
             cell.lossesLabel.text = self.matchTable?.rows![indexPath.row-1].e
             cell.drawsLabel.text = self.matchTable?.rows![indexPath.row-1].d
             cell.winsLabel.text = self.matchTable?.rows![indexPath.row-1].c
@@ -219,11 +219,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             gamesPlayed += Int((self.matchTable?.rows![indexPath.row-1].d)!)!
             gamesPlayed += Int((self.matchTable?.rows![indexPath.row-1].c)!)!
             cell.gamesPlayedLabel.text = String(gamesPlayed)
-            
-            if (isEven){
-                cell.backgroundColor = UIColor(red:0.87, green:0.89, blue:0.82, alpha:1.0)
-            }
-            isEven = !isEven
             return cell
         }
         else if (indexPath.section == 1){
@@ -242,6 +237,14 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             self.title = team.name
         }
+    }
+    
+    func convertPlusMinus(input: String) -> String{
+            var resString = input.componentsSeparatedByString(" ")
+            let goalFor = Int(resString[0])
+            let goalAgainst = Int(resString[2])
+            let res = goalFor! - goalAgainst!
+            return String(res)
     }
     
     /*
