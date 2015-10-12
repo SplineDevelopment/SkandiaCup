@@ -32,7 +32,6 @@ class MatchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureView()
-        backgroundImage.alpha = 0.6
         }
 
     override func didReceiveMemoryWarning() {

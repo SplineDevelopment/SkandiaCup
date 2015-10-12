@@ -13,7 +13,11 @@ class newsCellView: UITableViewCell {
     
     @IBOutlet weak var bodyText: UITextView!
 
+    @IBOutlet weak var addedBackgroundView: UIView!
     @IBOutlet weak var headerLabel: UILabel!
+    
+    
+    
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -30,12 +34,18 @@ class newsCellView: UITableViewCell {
     required init(coder aDecoder: NSCoder) { // for using CustomView in IB
         super.init(coder: aDecoder)!
         self.commonInit()
+        
+        
+        
     }
     
     private func commonInit() {
         NSBundle.mainBundle().loadNibNamed("newsCellView", owner: self, options: nil)
         cellView.frame = self.bounds
         self.addSubview(cellView)
+        
+        self.addedBackgroundView.layer.cornerRadius = 5;
+
     }
 
 }
