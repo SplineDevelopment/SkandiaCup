@@ -12,16 +12,39 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var favoriteTableView: UITableView!
     let defaults = NSUserDefaults.standardUserDefaults()
     var favorites: [TournamentTeam]? = []
+    var matchesDict: [String:[TournamentMatch]] = [String:[TournamentMatch]]()
+    @IBOutlet weak var favoriteMatchCell: UILabel!
     
+    @IBOutlet weak var favoriteHeaderCell: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         favoriteTableView.delegate = self
         favoriteTableView.dataSource = self
         favorites = getFavoritedTeams()
+        
+        favorites?.forEach({ (team) -> () in
+            SharingManager.data.getMatches(nil, groupID: nil, teamID: team.id, completionHandler: { (matches) -> () in
+                self.matchesDict[team.name!] = matches
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.favoriteTableView.reloadData()
+                })
+            })
+        })
     }
     
     override func viewDidAppear(animated: Bool) {
         favorites = getFavoritedTeams()
+        
+        favorites?.forEach({ (team) -> () in
+            SharingManager.data.getMatches(nil, groupID: nil, teamID: team.id, completionHandler: { (matches) -> () in
+                self.matchesDict[team.name!] = matches
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.favoriteTableView.reloadData()
+                })
+            })
+        })
+        
+        
         favoriteTableView.reloadData()
     }
 
@@ -31,13 +54,45 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("favoriteCell") as UITableViewCell!
-            cell.textLabel?.text = favorites?[indexPath.row].name! ?? "Ingen lag er lagt til som favoritter enda"
+        if indexPath.row == 0{
+            //header in each section 
+            let cell = tableView.dequeueReusableCellWithIdentifier("favoriteHeaderCell") as UITableViewCell!
+            cell.textLabel?.text = ("\(favorites![indexPath.section].name!)")
+            cell.textLabel?.font = UIFont(name: (cell.textLabel?.font.fontName)!, size: 25)
+//            cell.textLabel?.textAlignment = .Center
+            return cell
+        }
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("favoriteMatchCell") as UITableViewCell!
+        
+        cell.textLabel?.text = "\(matchesDict[favorites![indexPath.section].name!]![indexPath.row].homeTeamName!) \(matchesDict[favorites![indexPath.section].name!]![indexPath.row].homegoal!)  - \(matchesDict[favorites![indexPath.section].name!]![indexPath.row].awaygoal!) \(matchesDict[favorites![indexPath.section].name!]![indexPath.row].awayTeamName!) "
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return favorites?.count ?? 1
+        if favorites != nil{
+            print("SECTION IS \(section) LENGTH IS f\(favorites?.count)")
+            
+            let currentTeam = favorites![section]
+            print("CURRENT TEAM IS \(currentTeam.name)")
+            
+            if matchesDict[currentTeam.name!] != nil{
+                return matchesDict[currentTeam.name!]!.count
+            }
+        }
+        print("Returning 0 ")
+        
+        return 0
+//        return favorites?.count ?? 1
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        if favorites != nil{
+            print("numberofsect \(favorites?.count)")
+            return (favorites?.count)!
+        }
+        print("returning 0 sections")
+        return 0
     }
     
     func getFavoritedTeams() -> [TournamentTeam]?{
@@ -60,15 +115,20 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "favoritesToTeamView") {
+        if (segue.identifier == "favoriteToMatchSegue") {
             if let indexPath = self.favoriteTableView.indexPathForSelectedRow{
-                    let selectedTeam = favorites![indexPath.row]
-                    (segue.destinationViewController as! TeamViewController).currentTeam = selectedTeam
-                }
+                    let selectedMatch = matchesDict[favorites![indexPath.section].name!]![indexPath.row]
+                    (segue.destinationViewController as! MatchViewController).selectedMatch = selectedMatch
+            }
+        }
+        
+        if (segue.identifier == "favoriteToTeamSegue") {
+            if let indexPath = self.favoriteTableView.indexPathForSelectedRow{
+                let selectedTeam = favorites![indexPath.section]
+                (segue.destinationViewController as! TeamViewController).currentTeam = selectedTeam
             }
         }
     }
-
 
     /*
     // MARK: - Navigation
@@ -80,3 +140,4 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     }
     */
 
+}
