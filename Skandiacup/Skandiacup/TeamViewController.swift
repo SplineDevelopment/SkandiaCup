@@ -175,14 +175,30 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(section == 0){
+        if(section == 0){           //Table rows in grouptable
             return self.matchTable != nil ? (self.matchTable?.rows?.count)! + 1 : 0
         }
-        else if(section == 1){
-            return matches != nil ? matches!.count : 0
+        else if(section == 1){              //matches played
+            var numberOfRows = 0
+            if(matches != nil){
+                for index in 0...matches!.count-1{
+                    if(matches![index].homegoal != nil){
+                        numberOfRows++
+                    }
+                }
+            }
+            return numberOfRows++
         }
-        else{
-            return 0
+        else{                               // Matches not yet played
+            var numberOfRows = 0
+            if(matches != nil){
+                for index in 0...matches!.count-1{
+                    if(matches![index].homegoal == nil){
+                        numberOfRows++
+                    }
+                }
+            }
+            return numberOfRows++
         }
     }
     
@@ -197,6 +213,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        //Table header
         if(indexPath.section == 0 && indexPath.row == 0){
             let cell = tableView.dequeueReusableCellWithIdentifier("tableInfoSection") as UITableViewCell!
             infoSectionIsSet = true
@@ -239,6 +256,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    //Func to convert +/- goals
     func convertPlusMinus(input: String) -> String{
             var resString = input.componentsSeparatedByString(" ")
             let goalFor = Int(resString[0])
