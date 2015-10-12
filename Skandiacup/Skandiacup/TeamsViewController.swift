@@ -42,6 +42,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     override func viewDidLoad() {
+        self.teamTableView.backgroundColor = UIColor.clearColor()
         segmentController.selectedSegmentIndex = 0
         super.viewDidLoad()
         self.teamTableView.tableHeaderView?.hidden = true
