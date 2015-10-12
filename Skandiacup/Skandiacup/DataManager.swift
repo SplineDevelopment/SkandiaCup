@@ -79,7 +79,7 @@ class DataManager {
         // TODO: how to figure out what needs to be loaded from soap??
         if cachedMatches.isEmpty {
             print("getting matches from SOAP")
-            SharingManager.soap.getMatches(classID, groupID: groupID, teamID: teamID, completionHandler: { (matches) -> () in
+            SharingManager.soap.getMatches(classID, groupID: groupID, teamID: teamID, endplay: nil, completionHandler: { (matches) -> () in
                 SharingManager.cache.setMatches(matches)
                 completionHandler(matches: matches)
             })

@@ -13,46 +13,60 @@ class EndPlayGamesViewController: UITableViewController{
     
     @IBOutlet var endPlayGamesTable: UITableView!
     
-    var endPlayMatchesInMatchClass = ["Kamp1", "Kamp2"]
+    var endPlayMatchesInMatchClass: [String: [TournamentMatch]] = [String: [TournamentMatch]]()
+    var sortedKeys: [String] = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("EndPlayGamesViewControllerstart")
-
         loadMatchClassGames()
-        
     }
     
     
     func loadMatchClassGames(){
-        print("@@@ Selected match class: \(selectedMatchClass)")
+        SharingManager.soap.getMatches(self.selectedMatchClass!.id, groupID: nil, teamID: nil, endplay: 1) { (matches) -> () in
+            var counter = 0
+            matches.forEach({ (match) -> () in
+                if self.endPlayMatchesInMatchClass[match.sortOrder!] != nil{
+                    self.endPlayMatchesInMatchClass[match.sortOrder!]!.append(match)
+                    counter = counter + 1
+                } else{
+                    self.endPlayMatchesInMatchClass[match.sortOrder!] = [TournamentMatch]()
+                    self.endPlayMatchesInMatchClass[match.sortOrder!]!.append(match)
+                }
+            })
+            self.sortedKeys = Array(self.endPlayMatchesInMatchClass.keys).sort({$0 < $1})
+            self.endPlayGamesTable.reloadData()
+        }
     }
     
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 4
+        return self.sortedKeys.count
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return endPlayMatchesInMatchClass.count
+        if endPlayMatchesInMatchClass[sortedKeys[section]] != nil{
+            return endPlayMatchesInMatchClass[sortedKeys[section]]!.count + 1
+        }
+        return 0
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "endPlayMatchesInMatchClass"
+
+        if indexPath.row == 0{
+            // header row
+            let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UITableViewCell!
+            cell.textLabel?.text = "THIS IS A HEADER FOR MATCH \(sortedKeys[indexPath.section])"
+            return cell
+        }
         
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UITableViewCell!
-        
-        let textValue = endPlayMatchesInMatchClass[indexPath.row]
-        
-        cell.textLabel?.text = textValue
-        
+        if endPlayMatchesInMatchClass[sortedKeys[indexPath.section]] != nil{
+            cell.textLabel?.text = "\(endPlayMatchesInMatchClass[sortedKeys[indexPath.section]]![indexPath.row-1].homeTeamName!) \(endPlayMatchesInMatchClass[sortedKeys[indexPath.section]]![indexPath.row-1].homegoal!)  - \(endPlayMatchesInMatchClass[sortedKeys[indexPath.section]]![indexPath.row-1].awaygoal!) \(endPlayMatchesInMatchClass[sortedKeys[indexPath.section]]![indexPath.row-1].awayTeamName!) "
+        }
         return cell
     }
-    
-    
-
-
-
 }
 

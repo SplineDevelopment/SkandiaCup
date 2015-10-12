@@ -50,7 +50,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         matchTableView.delegate = self
         matchTableView.dataSource = self
         self.configureView()
-        SharingManager.soap.getMatches(nil, groupID: nil, teamID: currentTeam?.id) { (matches) -> () in
+        SharingManager.soap.getMatches(nil, groupID: nil, teamID: currentTeam?.id, endplay: nil) { (matches) -> () in
             self.matches = matches
         }
         changeButton()

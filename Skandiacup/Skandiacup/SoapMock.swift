@@ -77,7 +77,7 @@ class SoapMock: Soap {
         //completionHandler(matches: nil)
     }
     
-    func getMatches(classID: Int?, groupID: Int?, teamID: Int?, completionHandler: (matches: [TournamentMatch]) -> ()) {
+    func getMatches(classID: Int?, groupID: Int?, teamID: Int?, endplay: Int?, completionHandler: (matches: [TournamentMatch]) -> ()) {
         
     }
     

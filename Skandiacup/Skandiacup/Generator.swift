@@ -38,7 +38,7 @@ class Generator {
         return generateRequest(getArenaMessage)
     }
     
-    static func generateGetMatchesXML(classID: Int?, groupID: Int?) -> NSMutableURLRequest {
+    static func generateGetMatchesXML(classID: Int?, groupID: Int?, endplay: Int?) -> NSMutableURLRequest {
         let messageFor = "getMatches"
         var innerXML = ""
         if classID != nil {
@@ -46,6 +46,9 @@ class Generator {
         }
         if groupID != nil {
             innerXML += "<groupID>" + String(groupID!) + "</groupID>"
+        }
+        if endplay != nil{
+            innerXML += "<endplay>\(endplay!)</endplay>"
         }
         let since = "<since>2014-09-03 09:00:00</since>"
         innerXML += since

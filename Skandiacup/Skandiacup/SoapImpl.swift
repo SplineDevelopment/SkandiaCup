@@ -82,8 +82,8 @@ class SoapImpl: Soap {
         }
     }
     
-    func getMatches(classID: Int?, groupID: Int?, teamID: Int?, completionHandler: (matches: [TournamentMatch]) -> ()) {
-        let request = Generator.generateGetMatchesXML(classID, groupID: groupID)
+    func getMatches(classID: Int?, groupID: Int?, teamID: Int?, endplay: Int?, completionHandler: (matches: [TournamentMatch]) -> ()) {
+        let request = Generator.generateGetMatchesXML(classID, groupID: groupID, endplay: endplay)
         self.sendReceive(request) { (responseString) -> () in
             let xml = SWXMLHash.config {
                 config in
