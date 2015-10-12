@@ -38,9 +38,11 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     @IBAction func indexChanged(sender: AnyObject) {
         (self.parentViewController?.parentViewController as! TournamentViewController).switchTable(segmentController.selectedSegmentIndex)
+        self.segmentController.selectedSegmentIndex = 0
     }
     
     override func viewDidLoad() {
+        segmentController.selectedSegmentIndex = 0
         super.viewDidLoad()
         self.teamTableView.tableHeaderView?.hidden = true
         (self.teamTableView.tableHeaderView as! filterView).setupDelegates(self)
@@ -49,7 +51,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
         teamTableView.hidden = true
         activityIndicator.hidden = false
         activityIndicator.startAnimating()
-        segmentController.selectedSegmentIndex = 0
+//        segmentController.selectedSegmentIndex = 0
         /*
         SharingManager.soap.getTeams(nil) { (teams) -> () in
             self.teams = teams
@@ -71,6 +73,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func viewChangedTo() {
+//        self.segmentController.selectedSegmentIndex = 0
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
             if !(self.heighIsSet) {
                 self.standardPixelHeight = self.teamTableView.layer.frame.size.height
@@ -81,7 +84,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
             } else {
                 self.teamTableView.layer.frame.size.height = self.standardPixelHeight! + Config.filterViewHeight
             }
-            self.segmentController.selectedSegmentIndex = 0
+//            self.segmentController.selectedSegmentIndex = 0
         }
     }
     
@@ -114,7 +117,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
 
     func changeSegment(){
-        self.segmentController.selectedSegmentIndex = 0
+//        self.segmentController.selectedSegmentIndex = 0
         teamTableView.layer.frame.size.height = teamTableView.layer.frame.size.height + Config.filterViewHeight
     }
     
@@ -276,7 +279,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
             } else {
                 self.teamTableView.layer.frame.size.height = self.standardPixelHeight! + Config.filterViewHeight
             }
-            self.segmentController.selectedSegmentIndex = 0
+//            self.segmentController.selectedSegmentIndex = 0
         }
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
             self.viewDidAppear(true)
