@@ -16,7 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         let navigationBarAppearace = UINavigationBar.appearance()
-        navigationBarAppearace.tintColor = UIColor(red:0.02, green:0.54, blue:0.02, alpha:1.0)
+        navigationBarAppearace.tintColor = UIColor.darkGrayColor()
+        
+        
+        navigationBarAppearace.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        navigationBarAppearace.shadowImage = UIImage()
+        navigationBarAppearace.translucent = true
+        
+        UITabBar.appearance().barTintColor = UIColor.clearColor()
+        UITabBar.appearance().backgroundImage = UIImage()
+        UITabBar.appearance().shadowImage = UIImage()
+        
         return true
     }
 

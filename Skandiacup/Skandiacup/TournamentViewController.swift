@@ -43,6 +43,8 @@ class TournamentViewController: UIViewController{
         teamsView.hidden = false
         groupsView.hidden = true
         // Do any additional setup after loading the view, typically from a nib.
+    
+
     }
 
     override func didReceiveMemoryWarning() {

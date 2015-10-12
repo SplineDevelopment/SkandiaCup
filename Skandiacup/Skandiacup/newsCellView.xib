@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="newsCellView" customModule="Skandiacup" customModuleProvider="target">
             <connections>
+                <outlet property="addedBackgroundView" destination="trN-lr-Sbm" id="Onn-7e-Mln"/>
                 <outlet property="bodyText" destination="Qy5-Gf-fzy" id="PP7-yL-iTD"/>
                 <outlet property="cellView" destination="iN0-l3-epB" id="Fd1-1Y-ltQ"/>
                 <outlet property="headerLabel" destination="DSA-rN-aZ9" id="rgk-L4-eEz"/>
@@ -18,11 +19,16 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="109"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="trN-lr-Sbm">
+                    <rect key="frame" x="8" y="8" width="584" height="93"/>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="0.78391702586206902" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-skandiacup" translatesAutoresizingMaskIntoConstraints="NO" id="DfO-fy-Prg">
                     <rect key="frame" x="8" y="8" width="50" height="42"/>
                     <animations/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="50" id="9qL-uw-Evk"/>
+                        <constraint firstAttribute="width" constant="50" id="nfE-NK-QUV"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Velkommen til Skandia cup 2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSA-rN-aZ9">
@@ -36,25 +42,30 @@
                     <rect key="frame" x="71" y="29" width="529" height="88"/>
                     <animations/>
                     <string key="text">The individual rows in a table view are managed by table view cells (UITableViewCell), which are responsible for drawing their co</string>
-                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
             </subviews>
             <animations/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="Qy5-Gf-fzy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="29" id="28X-kC-syK"/>
-                <constraint firstItem="DSA-rN-aZ9" firstAttribute="top" secondItem="DfO-fy-Prg" secondAttribute="top" id="42E-4K-TKs"/>
-                <constraint firstAttribute="bottom" secondItem="Qy5-Gf-fzy" secondAttribute="bottom" constant="-8" id="8zP-JD-vTE"/>
-                <constraint firstAttribute="bottom" secondItem="DSA-rN-aZ9" secondAttribute="bottom" constant="79" id="BbE-T4-bJM"/>
-                <constraint firstItem="Qy5-Gf-fzy" firstAttribute="leading" secondItem="DfO-fy-Prg" secondAttribute="trailing" constant="13" id="Rs5-PR-0rc"/>
-                <constraint firstAttribute="trailing" secondItem="DSA-rN-aZ9" secondAttribute="trailing" id="Tci-He-9EC"/>
-                <constraint firstAttribute="bottom" secondItem="DfO-fy-Prg" secondAttribute="bottom" constant="59" id="XIG-Vj-xij"/>
-                <constraint firstItem="DSA-rN-aZ9" firstAttribute="leading" secondItem="DfO-fy-Prg" secondAttribute="trailing" constant="8" symbolic="YES" id="ewi-zn-uYp"/>
-                <constraint firstItem="DfO-fy-Prg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" id="le4-Ij-p1U"/>
-                <constraint firstItem="DfO-fy-Prg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="tJR-ra-cYa"/>
-                <constraint firstItem="Qy5-Gf-fzy" firstAttribute="trailing" secondItem="DSA-rN-aZ9" secondAttribute="trailing" id="txa-oS-c7n"/>
+                <constraint firstItem="DfO-fy-Prg" firstAttribute="top" secondItem="DSA-rN-aZ9" secondAttribute="top" id="Kki-o7-uK4"/>
+                <constraint firstAttribute="bottom" secondItem="DfO-fy-Prg" secondAttribute="bottom" constant="59" id="LjP-Kx-Bg9"/>
+                <constraint firstItem="Qy5-Gf-fzy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="29" id="Ohv-QG-e3X"/>
+                <constraint firstItem="DSA-rN-aZ9" firstAttribute="trailing" secondItem="Qy5-Gf-fzy" secondAttribute="trailing" id="Sgl-pl-pN4"/>
+                <constraint firstItem="trN-lr-Sbm" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottomMargin" id="YoY-vy-SPs"/>
+                <constraint firstItem="trN-lr-Sbm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="e20-rf-WhI"/>
+                <constraint firstItem="DfO-fy-Prg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" id="lyq-hA-nWV"/>
+                <constraint firstItem="DSA-rN-aZ9" firstAttribute="leading" secondItem="DfO-fy-Prg" secondAttribute="trailing" constant="8" symbolic="YES" id="m4a-QJ-P4e"/>
+                <constraint firstItem="DfO-fy-Prg" firstAttribute="top" secondItem="trN-lr-Sbm" secondAttribute="top" id="mcy-FQ-uzr"/>
+                <constraint firstAttribute="bottom" secondItem="DSA-rN-aZ9" secondAttribute="bottom" constant="79" id="p0c-rp-URI"/>
+                <constraint firstItem="DfO-fy-Prg" firstAttribute="leading" secondItem="trN-lr-Sbm" secondAttribute="leading" id="pNs-19-SQY"/>
+                <constraint firstItem="Qy5-Gf-fzy" firstAttribute="leading" secondItem="DfO-fy-Prg" secondAttribute="trailing" constant="13" id="prD-fw-pq4"/>
+                <constraint firstAttribute="trailing" secondItem="DSA-rN-aZ9" secondAttribute="trailing" id="suh-Dq-tne"/>
+                <constraint firstAttribute="bottom" secondItem="Qy5-Gf-fzy" secondAttribute="bottom" constant="-8" id="w0R-Yb-tgP"/>
+                <constraint firstItem="trN-lr-Sbm" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailingMargin" id="xig-Hm-QQt"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="472" y="73.5"/>

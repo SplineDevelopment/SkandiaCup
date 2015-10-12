@@ -14,10 +14,10 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet var newTableView: UITableView!
 
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        newTableView.backgroundColor = UIColor.clearColor()
 
         //HomeViewController.activityIndicator.stopAnitmation()
         self.newTableView.delegate = self
@@ -39,6 +39,10 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -78,6 +82,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
             } catch _ as NSError{
             }
         }
+        
         return cell
     }
     
@@ -146,5 +151,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Pass the selected object to the new view controller.
     }
     */
+    
+
     
 }

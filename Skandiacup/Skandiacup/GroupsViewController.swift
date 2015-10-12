@@ -27,8 +27,8 @@ class GroupsViewController: UIViewController , UITableViewDataSource, UITableVie
         SharingManager.data.getMatchClass { (matchclasses) -> () in
             self.groups = matchclasses
         }
-        
         // Do any additional setup after loading the view.
+        
     }
     
     @IBAction func indexChanged(sender: AnyObject) {
