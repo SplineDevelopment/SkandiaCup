@@ -20,10 +20,12 @@ class GroupsViewController: UIViewController , UITableViewDataSource, UITableVie
     @IBOutlet weak var segmentController: UISegmentedControl!
     
     override func viewDidLoad() {
+        self.segmentController.selectedSegmentIndex = 1
+        print("VIEWDIDLOADDDDD")
         super.viewDidLoad()
         groupTableView.dataSource = self
         groupTableView.delegate = self
-        segmentController.selectedSegmentIndex = 1
+//        segmentController.selectedSegmentIndex = 1
         SharingManager.data.getMatchClass { (matchclasses) -> () in
             self.groups = matchclasses
         }
@@ -33,7 +35,8 @@ class GroupsViewController: UIViewController , UITableViewDataSource, UITableVie
     
     @IBAction func indexChanged(sender: AnyObject) {
                 (self.parentViewController?.parentViewController as! TournamentViewController).switchTable(segmentController.selectedSegmentIndex)
-                    viewDidLoad()
+//        self.viewDidLoad()
+        segmentController.selectedSegmentIndex = 1
     }
     
     override func didReceiveMemoryWarning() {
@@ -67,7 +70,7 @@ class GroupsViewController: UIViewController , UITableViewDataSource, UITableVie
     }
     
     func changeSegment(){
-        self.segmentController.selectedSegmentIndex = 1
+//        self.segmentController.selectedSegmentIndex = 1
     }
     
     // UITableViewDelegate Functions
