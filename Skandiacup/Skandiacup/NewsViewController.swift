@@ -78,7 +78,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 bodytext =  try NSAttributedString(data: item.itemDescription!.dataUsingEncoding(NSUnicodeStringEncoding, allowLossyConversion: true)!, options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
                 cell.bodyText.attributedText = bodytext
                 cell.bodyText.font = UIFont (name: "Helvetica Neue", size: 12)
-                cell.bodyText.textColor = UIColor.lightGrayColor()
+                cell.bodyText.textColor = UIColor.darkGrayColor()
             } catch _ as NSError{
             }
         }

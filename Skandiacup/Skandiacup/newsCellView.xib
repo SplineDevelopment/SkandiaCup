@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="trN-lr-Sbm">
-                    <rect key="frame" x="8" y="8" width="584" height="93"/>
+                    <rect key="frame" x="8" y="0.0" width="584" height="104"/>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="0.78391702586206902" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
@@ -28,7 +28,7 @@
                     <rect key="frame" x="8" y="8" width="50" height="42"/>
                     <animations/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="50" id="nfE-NK-QUV"/>
+                        <constraint firstAttribute="width" constant="50" id="Cwj-c2-A3i"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Velkommen til Skandia cup 2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSA-rN-aZ9">
@@ -51,21 +51,21 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="DfO-fy-Prg" firstAttribute="top" secondItem="DSA-rN-aZ9" secondAttribute="top" id="Kki-o7-uK4"/>
-                <constraint firstAttribute="bottom" secondItem="DfO-fy-Prg" secondAttribute="bottom" constant="59" id="LjP-Kx-Bg9"/>
-                <constraint firstItem="Qy5-Gf-fzy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="29" id="Ohv-QG-e3X"/>
-                <constraint firstItem="DSA-rN-aZ9" firstAttribute="trailing" secondItem="Qy5-Gf-fzy" secondAttribute="trailing" id="Sgl-pl-pN4"/>
-                <constraint firstItem="trN-lr-Sbm" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottomMargin" id="YoY-vy-SPs"/>
-                <constraint firstItem="trN-lr-Sbm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="e20-rf-WhI"/>
-                <constraint firstItem="DfO-fy-Prg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" id="lyq-hA-nWV"/>
-                <constraint firstItem="DSA-rN-aZ9" firstAttribute="leading" secondItem="DfO-fy-Prg" secondAttribute="trailing" constant="8" symbolic="YES" id="m4a-QJ-P4e"/>
-                <constraint firstItem="DfO-fy-Prg" firstAttribute="top" secondItem="trN-lr-Sbm" secondAttribute="top" id="mcy-FQ-uzr"/>
-                <constraint firstAttribute="bottom" secondItem="DSA-rN-aZ9" secondAttribute="bottom" constant="79" id="p0c-rp-URI"/>
-                <constraint firstItem="DfO-fy-Prg" firstAttribute="leading" secondItem="trN-lr-Sbm" secondAttribute="leading" id="pNs-19-SQY"/>
-                <constraint firstItem="Qy5-Gf-fzy" firstAttribute="leading" secondItem="DfO-fy-Prg" secondAttribute="trailing" constant="13" id="prD-fw-pq4"/>
-                <constraint firstAttribute="trailing" secondItem="DSA-rN-aZ9" secondAttribute="trailing" id="suh-Dq-tne"/>
-                <constraint firstAttribute="bottom" secondItem="Qy5-Gf-fzy" secondAttribute="bottom" constant="-8" id="w0R-Yb-tgP"/>
-                <constraint firstItem="trN-lr-Sbm" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailingMargin" id="xig-Hm-QQt"/>
+                <constraint firstItem="Qy5-Gf-fzy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="29" id="1cd-Ya-bJY"/>
+                <constraint firstAttribute="trailing" secondItem="DSA-rN-aZ9" secondAttribute="trailing" id="2i4-60-71K"/>
+                <constraint firstAttribute="bottom" secondItem="DSA-rN-aZ9" secondAttribute="bottom" constant="79" id="6yl-yQ-96F"/>
+                <constraint firstItem="trN-lr-Sbm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="7kX-rU-muH"/>
+                <constraint firstAttribute="bottom" secondItem="DfO-fy-Prg" secondAttribute="bottom" constant="59" id="8r6-UZ-8Qo"/>
+                <constraint firstItem="Qy5-Gf-fzy" firstAttribute="trailing" secondItem="DSA-rN-aZ9" secondAttribute="trailing" id="F59-WH-kIt"/>
+                <constraint firstItem="DfO-fy-Prg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" id="HaE-E6-3dh"/>
+                <constraint firstAttribute="bottom" secondItem="trN-lr-Sbm" secondAttribute="bottom" constant="5" id="JHW-E2-iK3"/>
+                <constraint firstItem="DSA-rN-aZ9" firstAttribute="leading" secondItem="DfO-fy-Prg" secondAttribute="trailing" constant="8" symbolic="YES" id="Pf5-dc-ehe"/>
+                <constraint firstItem="trN-lr-Sbm" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailingMargin" id="TQ0-hS-s0V"/>
+                <constraint firstItem="DfO-fy-Prg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="ltD-Iu-6wk"/>
+                <constraint firstItem="DfO-fy-Prg" firstAttribute="leading" secondItem="trN-lr-Sbm" secondAttribute="leading" id="mVe-iD-6nj"/>
+                <constraint firstAttribute="bottom" secondItem="Qy5-Gf-fzy" secondAttribute="bottom" constant="-8" id="nCp-RM-SKs"/>
+                <constraint firstItem="DSA-rN-aZ9" firstAttribute="top" secondItem="DfO-fy-Prg" secondAttribute="top" id="nrn-2E-3fq"/>
+                <constraint firstItem="Qy5-Gf-fzy" firstAttribute="leading" secondItem="DfO-fy-Prg" secondAttribute="trailing" constant="13" id="u4y-fh-sFT"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="472" y="73.5"/>
