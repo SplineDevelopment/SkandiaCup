@@ -80,7 +80,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         let dataRecieved2 = defaults.objectForKey("favorites") as? NSData
         let name = NSKeyedUnarchiver.unarchiveObjectWithData(dataRecieved2!) as! FavoriteTeams
         for index in 0...name.favorites.count-1{
-            print(name.favorites[index].name!)
+//            print(name.favorites[index].name!)
         }
         changeButton()
         // error handling?
@@ -130,11 +130,11 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             defaults.setObject(data2, forKey: "favorites")
             let dataRecieved2 = defaults.objectForKey("favorites") as? NSData
             let name = NSKeyedUnarchiver.unarchiveObjectWithData(dataRecieved2!) as! FavoriteTeams
-            if(name.favorites.count > 0){
-                for index in 0...name.favorites.count-1{
-                    print(name.favorites[index].name!)
-                }
-            }
+//            if(name.favorites.count > 0){
+//                for index in 0...name.favorites.count-1{
+//                    print(name.favorites[index].name!)
+//                }
+//            }
             changeButton()
             // error handling?
             self.view.makeToast(message: "Removed \(currentTeam!.name!) from favorites", duration: 1, position: "center", title: "Favorites", image: UIImage(named: "ball")!)

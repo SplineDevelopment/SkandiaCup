@@ -45,7 +45,7 @@ class MatchViewController: UIViewController {
         teamTwo.text = selectedMatch?.awayTeamName
         scoreTwo.text = selectedMatch?.awaygoal
         fieldLabel.text = String(selectedMatch!.fieldId!)
-        print(selectedMatch?.fieldId)
+//        print(selectedMatch?.fieldId)
         //fieldLabel.text = "Bane nummer: \(selectedMatch?.fieldId)"
         
         dateLabel.text = Date.getDateMatchView((selectedMatch?.matchDate)!)

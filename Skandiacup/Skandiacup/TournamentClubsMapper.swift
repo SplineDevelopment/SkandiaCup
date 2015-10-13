@@ -11,7 +11,7 @@ import Foundation
 class TournamentClubsMapper {
     static func mapClubs(xml: XMLIndexer) -> [TournamentClub] {
         var arr = [TournamentClub]()
-        print(xml)
+//        print(xml)
         for elem in xml["SOAP-ENV:Envelope"]["SOAP-ENV:Body"]["ns1:getClubsResponse"]["getClubsResult"]["item"] {
             var c = TournamentClub()
             if elem["id"].element?.text != nil {

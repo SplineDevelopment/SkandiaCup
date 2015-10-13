@@ -50,7 +50,6 @@
 		D50391161BBAC49A00681A4A /* newsCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D50391151BBAC49A00681A4A /* newsCellView.xib */; settings = {ASSET_TAGS = (); }; };
 		D50391181BBAC4E000681A4A /* newsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50391171BBAC4E000681A4A /* newsCellView.swift */; settings = {ASSET_TAGS = (); }; };
 		D51E4B0C1B94A1E700FF5DDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51E4B0B1B94A1E700FF5DDB /* AppDelegate.swift */; };
-		D51E4B0E1B94A1E700FF5DDB /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51E4B0D1B94A1E700FF5DDB /* FirstViewController.swift */; };
 		D51E4B101B94A1E700FF5DDB /* TournamentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51E4B0F1B94A1E700FF5DDB /* TournamentViewController.swift */; };
 		D51E4B131B94A1E700FF5DDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D51E4B111B94A1E700FF5DDB /* Main.storyboard */; };
 		D51E4B151B94A1E700FF5DDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D51E4B141B94A1E700FF5DDB /* Assets.xcassets */; };
@@ -147,7 +146,6 @@
 		D50391171BBAC4E000681A4A /* newsCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newsCellView.swift; sourceTree = "<group>"; };
 		D51E4B081B94A1E700FF5DDB /* Skandiacup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skandiacup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D51E4B0B1B94A1E700FF5DDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D51E4B0D1B94A1E700FF5DDB /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		D51E4B0F1B94A1E700FF5DDB /* TournamentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentViewController.swift; sourceTree = "<group>"; };
 		D51E4B121B94A1E700FF5DDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D51E4B141B94A1E700FF5DDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -248,7 +246,6 @@
 			isa = PBXGroup;
 			children = (
 				3C3B9E141B9891310070A1FF /* HomeViewContainers */,
-				D51E4B0D1B94A1E700FF5DDB /* FirstViewController.swift */,
 				3CEAA9F21BB5706300939BFD /* EndPlayViewController.swift */,
 				3C9A17C11BB58EA700746773 /* EndPlayGamesViewController.swift */,
 				230713BF1BBC2ACC00F25D8B /* ErrorView.swift */,
@@ -595,7 +592,6 @@
 				D51E4B101B94A1E700FF5DDB /* TournamentViewController.swift in Sources */,
 				D51E4B0C1B94A1E700FF5DDB /* AppDelegate.swift in Sources */,
 				236203201B9ECAF000D7F6A7 /* CacheObjects.swift in Sources */,
-				D51E4B0E1B94A1E700FF5DDB /* FirstViewController.swift in Sources */,
 				239EA7FF1BBD807000EEB2BC /* ToastView.swift in Sources */,
 				3C803E501B984D46001A51AA /* Functions.swift in Sources */,
 				23407BF91BB6CCC7006EED89 /* TournamentMatchStatusMapper.swift in Sources */,

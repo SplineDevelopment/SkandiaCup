@@ -17,7 +17,7 @@ class SoapImpl: Soap {
                 return
             }
             let responseString = String(data: data!, encoding: NSUTF8StringEncoding)
-            print("Sending data over network!")
+//            print("Sending data over network!")
             if responseString != nil {
 //                print(responseString)
                 completionHandler(responseData: responseString!)

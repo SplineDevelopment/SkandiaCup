@@ -39,8 +39,8 @@ class HomeViewController: UIViewController {
             headerLabel.hidden = false
 
             self.callViewChangedToChildController(SosialViewController)
-        default:
-            print("erroe")
+        default: break
+//            print("erroe")
         }
     }
     
@@ -52,8 +52,8 @@ class HomeViewController: UIViewController {
             self.callViewChangedToChildController(InfoViewController)
         case 2:
             self.callViewChangedToChildController(SosialViewController)
-        default:
-            print("erroe")
+        default: break
+//            print("erroe")
         }
     }
     

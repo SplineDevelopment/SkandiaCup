@@ -79,26 +79,26 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if favorites != nil{
-            print("SECTION IS \(section) LENGTH IS f\(favorites?.count)")
+//            print("SECTION IS \(section) LENGTH IS f\(favorites?.count)")
             
             let currentTeam = favorites![section]
-            print("CURRENT TEAM IS \(currentTeam.name)")
+//            print("CURRENT TEAM IS \(currentTeam.name)")
             
             if matchesDict[currentTeam.name!] != nil{
                 return matchesDict[currentTeam.name!]!.count + 1
             }
         }
-        print("Returning 0 ")
+//        print("Returning 0 ")
         return 0
 //        return favorites?.count ?? 1
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if favorites != nil{
-            print("numberofsect \(favorites?.count)")
+//            print("numberofsect \(favorites?.count)")
             return (favorites?.count)!
         }
-        print("returning 0 sections")
+//        print("returning 0 sections")
         return 0
     }
     

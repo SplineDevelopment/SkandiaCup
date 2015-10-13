@@ -21,7 +21,7 @@ class GroupsViewController: UIViewController , UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         self.segmentController.selectedSegmentIndex = 1
-        print("VIEWDIDLOADDDDD")
+//        print("VIEWDIDLOADDDDD")
         super.viewDidLoad()
         groupTableView.dataSource = self
         groupTableView.delegate = self
