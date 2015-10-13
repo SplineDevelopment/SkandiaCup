@@ -45,6 +45,16 @@ class DataManager {
         }
         // what if cache is empty and arenaID & fieldID is nil?
         let cachedFields = SharingManager.cache.getField(arenaID, fieldID: fieldID)
+//        print("cached fields:::")
+//        print(cachedFields.count)
+        if cachedFields.isEmpty {
+            SharingManager.soap.getField(nil, fieldID: nil, completionHandler: { (fields) -> () in
+                SharingManager.cache.setField(fields)
+                completionHandler(fields: fields)
+            })
+            return
+        }
+//        print(cachedFields)
         completionHandler(fields: cachedFields)
     }
     
