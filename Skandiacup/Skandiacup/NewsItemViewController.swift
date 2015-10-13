@@ -44,8 +44,11 @@ class NewsItemViewController: UIViewController {
                     bodytext =  try NSAttributedString(data: htmlstring.dataUsingEncoding(NSUnicodeStringEncoding, allowLossyConversion: true)!, options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
                     
                     self.headerLabel.text = item.title!
+                    self.headerLabel.font = UIFont(name: "Adelle sans", size: 30)
                     bodytextview.attributedText = bodytext
-                    bodytextview.font = UIFont (name: "Helvetica Neue", size: 12)
+                    //bodytextview.font = UIFont (name: "Helvetica Neue", size: 12)
+                    bodytextview.font = UIFont (name: "Adelle sans", size: 20)
+
 //                    bodytextview.textColor = UIColor.lightGrayColor()
                 } catch _ as NSError{
                 }

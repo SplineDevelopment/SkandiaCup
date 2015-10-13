@@ -73,12 +73,14 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if let feed = self.feed{
             let item = feed[indexPath.row] as RSSItem
             cell.headerLabel.text = item.title
+            //cell.headerLabel.font = UIFont(
             
             do{
                 bodytext =  try NSAttributedString(data: item.itemDescription!.dataUsingEncoding(NSUnicodeStringEncoding, allowLossyConversion: true)!, options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
                 cell.bodyText.attributedText = bodytext
-                cell.bodyText.font = UIFont (name: "Helvetica Neue", size: 12)
-                cell.bodyText.textColor = UIColor.darkGrayColor()
+                cell.bodyText.font = UIFont (name: "Helvetica Neue", size: 14)
+                //cell.bodyText.font = UIFont (name: "Adelle sans", size: 12)
+                cell.bodyText.textColor = UIColor.blackColor()
             } catch _ as NSError{
             }
         }

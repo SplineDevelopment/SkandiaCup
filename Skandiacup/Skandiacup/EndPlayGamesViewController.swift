@@ -72,6 +72,7 @@ class EndPlayGamesViewController: UITableViewController{
         if endPlayMatchesInMatchClass[sortedKeys[indexPath.section]] != nil{
             cell.textLabel?.text = "\(endPlayMatchesInMatchClass[sortedKeys[indexPath.section]]![indexPath.row].homeTeamName!) \(endPlayMatchesInMatchClass[sortedKeys[indexPath.section]]![indexPath.row].homegoal!)  - \(endPlayMatchesInMatchClass[sortedKeys[indexPath.section]]![indexPath.row].awaygoal!) \(endPlayMatchesInMatchClass[sortedKeys[indexPath.section]]![indexPath.row].awayTeamName!) "
         }
+        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell
     }
 }
