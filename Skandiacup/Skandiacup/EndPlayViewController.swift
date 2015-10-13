@@ -58,7 +58,7 @@ class EndPlayViewController: UITableViewController{
         let textValue = endPlayMatchClasses?[indexPath.row].name
         
         cell.textLabel?.text = textValue
-        
+        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell
     }
 

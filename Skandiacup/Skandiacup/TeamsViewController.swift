@@ -102,6 +102,9 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
         else{
             cell!.textLabel?.text = teams![indexPath.row].name
         }
+        
+        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+        
         return cell
     }
     

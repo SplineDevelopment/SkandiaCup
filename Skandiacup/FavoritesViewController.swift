@@ -66,12 +66,14 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
             cell.headerLabel?.text = ("\(favorites![indexPath.section].name!)")
 //            cell.textLabel?.font = UIFont(name: (cell.textLabel?.font.fontName)!, size: 25)
 //            cell.textLabel?.textAlignment = .Center
+            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             return cell
         }
         
         let cell = tableView.dequeueReusableCellWithIdentifier("favoriteMatchCell") as UITableViewCell!
         
         cell.textLabel?.text = "\(matchesDict[favorites![indexPath.section].name!]![indexPath.row-1].homeTeamName!) \(matchesDict[favorites![indexPath.section].name!]![indexPath.row-1].homegoal!)  - \(matchesDict[favorites![indexPath.section].name!]![indexPath.row-1].awaygoal!) \(matchesDict[favorites![indexPath.section].name!]![indexPath.row-1].awayTeamName!) "
+        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell
     }
     
@@ -87,7 +89,6 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
             }
         }
         print("Returning 0 ")
-        
         return 0
 //        return favorites?.count ?? 1
     }
