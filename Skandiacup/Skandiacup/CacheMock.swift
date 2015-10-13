@@ -21,9 +21,6 @@ class CacheMock : Cache {
     func getMatchClass(id: [Int]) -> [MatchClass] {
         return [MatchClass]()
     }
-    func getMatchGroup(id: [Int]) -> [MatchGroup] {
-        return [MatchGroup]()
-    }
     func getMatches(classID: Int?, groupID: Int?, teamID: Int?) -> [TournamentMatch] {
         return [TournamentMatch]()
     }
@@ -41,9 +38,6 @@ class CacheMock : Cache {
         
     }
     func setMatchClass(matchClasses : [MatchClass]) {
-        
-    }
-    func setMatchGroup(matchGroups : [MatchGroup]) {
         
     }
     func setMatches(matches : [TournamentMatch]) {

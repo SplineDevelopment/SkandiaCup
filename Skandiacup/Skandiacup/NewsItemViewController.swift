@@ -18,6 +18,7 @@ class NewsItemViewController: UIViewController {
 
     @IBOutlet weak var headerLabel: UILabel!
     override func viewDidLoad() {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         super.viewDidLoad()
         self.configureView()
 

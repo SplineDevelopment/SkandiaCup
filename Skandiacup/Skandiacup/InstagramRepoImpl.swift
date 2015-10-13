@@ -13,7 +13,7 @@ import Foundation
 
 class InstagramRepoImpl : InstagramRepo {
     init() {
-        print("using InstagramRepoImpl")
+//        print("using InstagramRepoImpl")
     }
     
     private func sendReceive(request: NSMutableURLRequest, completionHandler: (responseData: NSData?, error: Bool) -> Void) -> Void {
@@ -43,7 +43,7 @@ class InstagramRepoImpl : InstagramRepo {
                 let anyObj: AnyObject? = try NSJSONSerialization.JSONObjectWithData(responseData!, options: NSJSONReadingOptions(rawValue: 0))
                 // this is not safe!
                 let test_o = anyObj as! NSDictionary
-                print(test_o)
+//                print(test_o)
                 let arr = self.parseJson(test_o["data"]!)
                 completionHandler(photoObjects: arr, error: false)
             } catch let error as NSError {

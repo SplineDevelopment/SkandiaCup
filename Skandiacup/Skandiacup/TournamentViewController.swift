@@ -39,7 +39,7 @@ class TournamentViewController: UIViewController{
 
    override func viewDidLoad() {
         super.viewDidLoad()
-        print("COUNT \(self.childViewControllers.count)")
+//        print("COUNT \(self.childViewControllers.count)")
         teamsView.hidden = false
         groupsView.hidden = true
         // Do any additional setup after loading the view, typically from a nib.

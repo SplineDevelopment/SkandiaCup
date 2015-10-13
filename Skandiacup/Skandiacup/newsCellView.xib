@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -39,7 +39,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qy5-Gf-fzy">
-                    <rect key="frame" x="71" y="29" width="490" height="88"/>
+                    <rect key="frame" x="71" y="29" width="490" height="75"/>
                     <animations/>
                     <string key="text">The individual rows in a table view are managed by table view cells (UITableViewCell), which are responsible for drawing their co</string>
                     <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -51,21 +51,21 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="Qy5-Gf-fzy" firstAttribute="leading" secondItem="DfO-fy-Prg" secondAttribute="trailing" constant="13" id="2Fo-yb-js6"/>
-                <constraint firstAttribute="trailing" secondItem="Qy5-Gf-fzy" secondAttribute="trailing" constant="39" id="3M3-LZ-lBv"/>
                 <constraint firstItem="DSA-rN-aZ9" firstAttribute="leading" secondItem="DfO-fy-Prg" secondAttribute="trailing" constant="8" symbolic="YES" id="7ty-6F-Z63"/>
                 <constraint firstItem="trN-lr-Sbm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="AJ2-Z2-zM3"/>
                 <constraint firstItem="DfO-fy-Prg" firstAttribute="leading" secondItem="trN-lr-Sbm" secondAttribute="leading" id="FSJ-L0-kte"/>
                 <constraint firstItem="DfO-fy-Prg" firstAttribute="top" secondItem="DSA-rN-aZ9" secondAttribute="top" id="GUs-q6-xx7"/>
                 <constraint firstItem="DfO-fy-Prg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" id="Hy8-tb-a0E"/>
-                <constraint firstAttribute="bottom" secondItem="Qy5-Gf-fzy" secondAttribute="bottom" constant="-8" id="KUf-RU-zdL"/>
+                <constraint firstItem="Qy5-Gf-fzy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="29" id="Ln5-Pi-5q2"/>
+                <constraint firstItem="Qy5-Gf-fzy" firstAttribute="leading" secondItem="DfO-fy-Prg" secondAttribute="trailing" constant="13" id="R4Y-E2-iN1"/>
                 <constraint firstAttribute="bottom" secondItem="DSA-rN-aZ9" secondAttribute="bottom" constant="79" id="YaC-iv-f5Y"/>
                 <constraint firstAttribute="bottom" secondItem="trN-lr-Sbm" secondAttribute="bottom" constant="5" id="Zn2-97-evg"/>
                 <constraint firstItem="trN-lr-Sbm" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailingMargin" id="ag6-1F-T3S"/>
                 <constraint firstAttribute="bottom" secondItem="DfO-fy-Prg" secondAttribute="bottom" constant="59" id="d0n-b3-wqq"/>
                 <constraint firstItem="DfO-fy-Prg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="mfV-Kr-fwc"/>
                 <constraint firstAttribute="trailing" secondItem="DSA-rN-aZ9" secondAttribute="trailing" id="oXI-gZ-l2G"/>
-                <constraint firstItem="Qy5-Gf-fzy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="29" id="usY-dZ-ZF4"/>
+                <constraint firstItem="Qy5-Gf-fzy" firstAttribute="bottom" secondItem="trN-lr-Sbm" secondAttribute="bottom" id="pn0-SW-txj"/>
+                <constraint firstAttribute="trailing" secondItem="Qy5-Gf-fzy" secondAttribute="trailing" constant="39" id="vL1-2j-9Pp"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="472" y="73.5"/>
