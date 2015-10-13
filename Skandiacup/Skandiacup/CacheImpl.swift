@@ -69,10 +69,6 @@ class CacheImpl : Cache {
         return [MatchClass]()
     }
     
-    func getMatchGroup(id: [Int]) -> [MatchGroup] {
-        return [MatchGroup]()
-    }
-    
     func getMatches(classID: Int?, groupID: Int?, teamID: Int?) -> [TournamentMatch] {
         let m = self.tournamentMatches.getMatches(classID, groupID: groupID, teamID: teamID)
         var matchesUpToDate = [TournamentMatch]()
@@ -115,10 +111,6 @@ class CacheImpl : Cache {
     }
     
     func setMatchClass(matchClasses : [MatchClass]) {
-        
-    }
-    
-    func setMatchGroup(matchGroups : [MatchGroup]) {
         
     }
     

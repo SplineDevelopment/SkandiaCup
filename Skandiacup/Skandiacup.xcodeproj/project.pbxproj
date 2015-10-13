@@ -14,7 +14,6 @@
 		2352AE531BBAB04E00244C6B /* RSSItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2352AE521BBAB04E00244C6B /* RSSItem.swift */; settings = {ASSET_TAGS = (); }; };
 		2352AE551BBAB52C00244C6B /* RSSmapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2352AE541BBAB52C00244C6B /* RSSmapper.swift */; settings = {ASSET_TAGS = (); }; };
 		235D71631BB3D56E0091E345 /* InstaPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235D71621BB3D56E0091E345 /* InstaPhotoCell.swift */; settings = {ASSET_TAGS = (); }; };
-		235D71651BB3D8B70091E345 /* InstaUICollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235D71641BB3D8B70091E345 /* InstaUICollectionViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		235D71671BB4381F0091E345 /* InstaPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235D71661BB4381F0091E345 /* InstaPopover.swift */; settings = {ASSET_TAGS = (); }; };
 		236203201B9ECAF000D7F6A7 /* CacheObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2362031F1B9ECAF000D7F6A7 /* CacheObjects.swift */; settings = {ASSET_TAGS = (); }; };
 		236B0C3B1B987C6700CDEC89 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236B0C3A1B987C6700CDEC89 /* Generator.swift */; settings = {ASSET_TAGS = (); }; };
@@ -111,7 +110,6 @@
 		2352AE521BBAB04E00244C6B /* RSSItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSItem.swift; sourceTree = "<group>"; };
 		2352AE541BBAB52C00244C6B /* RSSmapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSmapper.swift; sourceTree = "<group>"; };
 		235D71621BB3D56E0091E345 /* InstaPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaPhotoCell.swift; sourceTree = "<group>"; };
-		235D71641BB3D8B70091E345 /* InstaUICollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaUICollectionViewController.swift; sourceTree = "<group>"; };
 		235D71661BB4381F0091E345 /* InstaPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaPopover.swift; sourceTree = "<group>"; };
 		2362031F1B9ECAF000D7F6A7 /* CacheObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheObjects.swift; sourceTree = "<group>"; };
 		236B0C3A1B987C6700CDEC89 /* Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
@@ -169,10 +167,10 @@
 		D54FB67B1BB3F2F3007FCCAF /* filterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = filterView.xib; path = ../filterView.xib; sourceTree = "<group>"; };
 		D55D9CF51B99949B00DD01E1 /* SWXMLHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWXMLHash.swift; sourceTree = "<group>"; };
 		D5774F441B999D3B002F9451 /* MatchesMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesMapper.swift; sourceTree = "<group>"; };
-		D5D62FC11BBA87300097CFC7 /* TeamsViewChangeProto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamsViewChangeProto.swift; sourceTree = "<group>"; };
+		D5D62FC11BBA87300097CFC7 /* TeamsViewChangeProto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeamsViewChangeProto.swift; path = ../TeamsViewChangeProto.swift; sourceTree = "<group>"; };
 		D5D62FCE1BBAB0330097CFC7 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		D5D62FD01BBAB45E0097CFC7 /* NewsItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsItemViewController.swift; sourceTree = "<group>"; };
-		D5D7BA3D1BB5777400687A98 /* SegmentChangeProto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentChangeProto.swift; sourceTree = "<group>"; };
+		D5D7BA3D1BB5777400687A98 /* SegmentChangeProto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegmentChangeProto.swift; path = ../SegmentChangeProto.swift; sourceTree = "<group>"; };
 		D5EAE5471B99C55100AA3AF1 /* FieldsMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldsMapper.swift; sourceTree = "<group>"; };
 		D5EAE5491B99C82700AA3AF1 /* MatchTablesMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchTablesMapper.swift; sourceTree = "<group>"; };
 		D5EC2E921B9B5CBC00CBA235 /* TournamentTeamMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentTeamMapper.swift; sourceTree = "<group>"; };
@@ -232,6 +230,67 @@
 			name = Repository;
 			sourceTree = "<group>";
 		};
+		23E8105D1BCD5A080011249F /* GUIElements */ = {
+			isa = PBXGroup;
+			children = (
+				D50391171BBAC4E000681A4A /* newsCellView.swift */,
+				239EA7FE1BBD807000EEB2BC /* ToastView.swift */,
+				D54FB6791BB3F2BE007FCCAF /* filterView.swift */,
+				235D71661BB4381F0091E345 /* InstaPopover.swift */,
+				72B841C31BB6BB8C00E37CC1 /* ResultTableViewCell.swift */,
+				235D71621BB3D56E0091E345 /* InstaPhotoCell.swift */,
+				72B841C11BB6A39900E37CC1 /* CustomHeaderCell.swift */,
+			);
+			name = GUIElements;
+			sourceTree = "<group>";
+		};
+		23E8105E1BCD5A7E0011249F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3C3B9E141B9891310070A1FF /* HomeViewContainers */,
+				D51E4B0D1B94A1E700FF5DDB /* FirstViewController.swift */,
+				3CEAA9F21BB5706300939BFD /* EndPlayViewController.swift */,
+				3C9A17C11BB58EA700746773 /* EndPlayGamesViewController.swift */,
+				230713BF1BBC2ACC00F25D8B /* ErrorView.swift */,
+				3CCF4EE61BC6B9990068AF03 /* FieldMapViewController.swift */,
+				D5FD4ECA1B94B8CA009B53FC /* FavoritesViewController.swift */,
+				3CC5530C1B98C2CA008FA445 /* HomeViewController.swift */,
+				D51E4B0F1B94A1E700FF5DDB /* TournamentViewController.swift */,
+				D524965D1B9876EC001D3577 /* TeamsViewController.swift */,
+				D524965F1B9876F4001D3577 /* GroupsViewController.swift */,
+				D52496611B988364001D3577 /* TeamViewController.swift */,
+				D52496631B988546001D3577 /* GroupViewController.swift */,
+				3CDB8B361B999B3D00439028 /* MatchViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		23E8105F1BCD5AC20011249F /* xibfiles */ = {
+			isa = PBXGroup;
+			children = (
+				D50391151BBAC49A00681A4A /* newsCellView.xib */,
+				D54FB67B1BB3F2F3007FCCAF /* filterView.xib */,
+			);
+			name = xibfiles;
+			sourceTree = "<group>";
+		};
+		23E810601BCD5AF40011249F /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				3C803E591B98550D001A51AA /* Config.swift */,
+			);
+			name = Config;
+			sourceTree = "<group>";
+		};
+		23E810611BCD5B3C0011249F /* GUIprototypes */ = {
+			isa = PBXGroup;
+			children = (
+				D5D62FC11BBA87300097CFC7 /* TeamsViewChangeProto.swift */,
+				D5D7BA3D1BB5777400687A98 /* SegmentChangeProto.swift */,
+			);
+			name = GUIprototypes;
+			sourceTree = "<group>";
+		};
 		3C3B9E141B9891310070A1FF /* HomeViewContainers */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,40 +309,25 @@
 				3C803E4F1B984D46001A51AA /* Functions.swift */,
 				236B0C3A1B987C6700CDEC89 /* Generator.swift */,
 				729AAA681BA1BEC300E8B6E9 /* FavoriteTeams.swift */,
-				239EA7FE1BBD807000EEB2BC /* ToastView.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
 		};
-		3C803E511B984F75001A51AA /* ViewController */ = {
+		3C803E511B984F75001A51AA /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3C3B9E141B9891310070A1FF /* HomeViewContainers */,
-				D51E4B0D1B94A1E700FF5DDB /* FirstViewController.swift */,
-				D5FD4ECA1B94B8CA009B53FC /* FavoritesViewController.swift */,
-				3CC5530C1B98C2CA008FA445 /* HomeViewController.swift */,
-				D51E4B0F1B94A1E700FF5DDB /* TournamentViewController.swift */,
-				D524965D1B9876EC001D3577 /* TeamsViewController.swift */,
-				D524965F1B9876F4001D3577 /* GroupsViewController.swift */,
-				D52496611B988364001D3577 /* TeamViewController.swift */,
-				D52496631B988546001D3577 /* GroupViewController.swift */,
-				3CDB8B361B999B3D00439028 /* MatchViewController.swift */,
-				235D71621BB3D56E0091E345 /* InstaPhotoCell.swift */,
-				235D71641BB3D8B70091E345 /* InstaUICollectionViewController.swift */,
-				235D71661BB4381F0091E345 /* InstaPopover.swift */,
-				3CEAA9F21BB5706300939BFD /* EndPlayViewController.swift */,
-				3C9A17C11BB58EA700746773 /* EndPlayGamesViewController.swift */,
-				72B841C11BB6A39900E37CC1 /* CustomHeaderCell.swift */,
-				72B841C31BB6BB8C00E37CC1 /* ResultTableViewCell.swift */,
-				230713BF1BBC2ACC00F25D8B /* ErrorView.swift */,
-				3CCF4EE61BC6B9990068AF03 /* FieldMapViewController.swift */,
+				23E810611BCD5B3C0011249F /* GUIprototypes */,
+				23E8105F1BCD5AC20011249F /* xibfiles */,
+				23E8105E1BCD5A7E0011249F /* Controllers */,
+				23E8105D1BCD5A080011249F /* GUIElements */,
 			);
-			name = ViewController;
+			name = View;
 			sourceTree = "<group>";
 		};
 		3C803E521B985270001A51AA /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				3C803E5B1B98563F001A51AA /* SharingManager.swift */,
 				236D8D5F1B9D8DF000669E51 /* DataManager.swift */,
 			);
 			name = Service;
@@ -300,8 +344,6 @@
 		D51E4AFF1B94A1E700FF5DDB = {
 			isa = PBXGroup;
 			children = (
-				D5D62FC11BBA87300097CFC7 /* TeamsViewChangeProto.swift */,
-				D5D7BA3D1BB5777400687A98 /* SegmentChangeProto.swift */,
 				D51E4B0A1B94A1E700FF5DDB /* Skandiacup */,
 				D51E4B211B94A1E700FF5DDB /* SkandiacupTests */,
 				D51E4B2C1B94A1E700FF5DDB /* SkandiacupUITests */,
@@ -322,11 +364,12 @@
 		D51E4B0A1B94A1E700FF5DDB /* Skandiacup */ = {
 			isa = PBXGroup;
 			children = (
+				23E810601BCD5AF40011249F /* Config */,
 				236D8D611B9D8ED500669E51 /* Repository */,
 				3CB9B3221B9D8EF200B48037 /* Extensions */,
 				D5774F431B999CDC002F9451 /* Mappers */,
 				3C803E521B985270001A51AA /* Service */,
-				3C803E511B984F75001A51AA /* ViewController */,
+				3C803E511B984F75001A51AA /* View */,
 				3C803E4E1B984CAE001A51AA /* Utils */,
 				D5FD4ECE1B94C781009B53FC /* Domain */,
 				D51E4B0B1B94A1E700FF5DDB /* AppDelegate.swift */,
@@ -334,10 +377,6 @@
 				D51E4B141B94A1E700FF5DDB /* Assets.xcassets */,
 				D51E4B161B94A1E700FF5DDB /* LaunchScreen.storyboard */,
 				D51E4B191B94A1E700FF5DDB /* Info.plist */,
-				3C803E591B98550D001A51AA /* Config.swift */,
-				3C803E5B1B98563F001A51AA /* SharingManager.swift */,
-				D50391151BBAC49A00681A4A /* newsCellView.xib */,
-				D50391171BBAC4E000681A4A /* newsCellView.swift */,
 			);
 			path = Skandiacup;
 			sourceTree = "<group>";
@@ -379,8 +418,6 @@
 		D5FD4ECE1B94C781009B53FC /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				D54FB6791BB3F2BE007FCCAF /* filterView.swift */,
-				D54FB67B1BB3F2F3007FCCAF /* filterView.xib */,
 				D5FD4ECF1B94C79B009B53FC /* Arena.swift */,
 				D5FD4ED11B94C8B7009B53FC /* TournamentClub.swift */,
 				D5FD4ED31B94C8FF009B53FC /* Field.swift */,
@@ -593,7 +630,6 @@
 				3C803E5E1B9856E8001A51AA /* SoapImpl.swift in Sources */,
 				D5EC2E931B9B5CBC00CBA235 /* TournamentTeamMapper.swift in Sources */,
 				729AAA691BA1BEC300E8B6E9 /* FavoriteTeams.swift in Sources */,
-				235D71651BB3D8B70091E345 /* InstaUICollectionViewController.swift in Sources */,
 				D5EAE5481B99C55100AA3AF1 /* FieldsMapper.swift in Sources */,
 				236B0C3B1B987C6700CDEC89 /* Generator.swift in Sources */,
 				D5EAE54A1B99C82700AA3AF1 /* MatchTablesMapper.swift in Sources */,
