@@ -46,7 +46,12 @@ class MatchViewController: UIViewController {
         scoreTwo.text = selectedMatch?.awaygoal
         //fieldLabel.text = String(selectedMatch!.fieldId)
         SharingManager.data.getField(nil, fieldID: selectedMatch!.fieldId) { (fields) -> () in
+            if (fields.count>0){
             self.fieldLabel.text = fields[0].fieldName
+            }
+            else {
+                self.fieldLabel.text = "Unknown field"
+            }
         }
         print(selectedMatch?.fieldId)
         //fieldLabel.text = "Bane nummer: \(selectedMatch?.fieldId)"
