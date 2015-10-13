@@ -53,19 +53,25 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         // Dispose of any resources that can be recreated.
     }
     
+//    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let cell = tableView.dequeueReusableCellWithIdentifier("favoriteHeaderCell") as! CustomHeaderCell!
+//        cell.headerLabel.text = ("\(favorites![section].name!)")
+//        return cell
+//    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.row == 0{
             //header in each section 
-            let cell = tableView.dequeueReusableCellWithIdentifier("favoriteHeaderCell") as UITableViewCell!
-            cell.textLabel?.text = ("\(favorites![indexPath.section].name!)")
-            cell.textLabel?.font = UIFont(name: (cell.textLabel?.font.fontName)!, size: 25)
+            let cell = tableView.dequeueReusableCellWithIdentifier("favoriteHeaderCell") as! CustomHeaderCell!
+            cell.headerLabel?.text = ("\(favorites![indexPath.section].name!)")
+//            cell.textLabel?.font = UIFont(name: (cell.textLabel?.font.fontName)!, size: 25)
 //            cell.textLabel?.textAlignment = .Center
             return cell
         }
         
         let cell = tableView.dequeueReusableCellWithIdentifier("favoriteMatchCell") as UITableViewCell!
         
-        cell.textLabel?.text = "\(matchesDict[favorites![indexPath.section].name!]![indexPath.row].homeTeamName!) \(matchesDict[favorites![indexPath.section].name!]![indexPath.row].homegoal!)  - \(matchesDict[favorites![indexPath.section].name!]![indexPath.row].awaygoal!) \(matchesDict[favorites![indexPath.section].name!]![indexPath.row].awayTeamName!) "
+        cell.textLabel?.text = "\(matchesDict[favorites![indexPath.section].name!]![indexPath.row-1].homeTeamName!) \(matchesDict[favorites![indexPath.section].name!]![indexPath.row-1].homegoal!)  - \(matchesDict[favorites![indexPath.section].name!]![indexPath.row-1].awaygoal!) \(matchesDict[favorites![indexPath.section].name!]![indexPath.row-1].awayTeamName!) "
         return cell
     }
     
@@ -77,7 +83,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
             print("CURRENT TEAM IS \(currentTeam.name)")
             
             if matchesDict[currentTeam.name!] != nil{
-                return matchesDict[currentTeam.name!]!.count
+                return matchesDict[currentTeam.name!]!.count + 1
             }
         }
         print("Returning 0 ")
@@ -117,7 +123,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "favoriteToMatchSegue") {
             if let indexPath = self.favoriteTableView.indexPathForSelectedRow{
-                    let selectedMatch = matchesDict[favorites![indexPath.section].name!]![indexPath.row]
+                    let selectedMatch = matchesDict[favorites![indexPath.section].name!]![indexPath.row-1]
                     (segue.destinationViewController as! MatchViewController).selectedMatch = selectedMatch
             }
         }
