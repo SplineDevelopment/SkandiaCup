@@ -34,17 +34,21 @@ class DataManager {
         }
     }
     
+    // is this OK ?
     func getField(arenaID: Int?, fieldID: Int?, completionHandler: (fields: [Field]) -> ()) {
         if arenaID == nil && fieldID == nil {
             SharingManager.soap.getField(nil, fieldID: nil, completionHandler: { (fields) -> () in
                 SharingManager.cache.setField(fields)
                 completionHandler(fields: fields)
             })
+            return
         }
+        // what if cache is empty and arenaID & fieldID is nil?
         let cachedFields = SharingManager.cache.getField(arenaID, fieldID: fieldID)
         completionHandler(fields: cachedFields)
     }
     
+    // missing some logic
     func getTournamentClub(id: [Int]?, countryCode: String?, completionHandler: (clubs: [TournamentClub]) -> ()) {
         if id == nil && countryCode == nil{
             //What to do here
@@ -63,15 +67,13 @@ class DataManager {
         print("Getting clubs from cache")
         completionHandler(clubs: cachedTournamentClubs)
     }
-
+    
+    
+    // implement RAM cache
     func getMatchClass(completionHandler: (matchclasses: [MatchClass]) -> ()) {
         SharingManager.soap.getMatchClass { (matchclasses) -> () in
             completionHandler(matchclasses: matchclasses)
         }
-    }
-    
-    func getMatchGroup(id: [Int]) -> [MatchGroup]? {
-        return [MatchGroup()]
     }
     
     func getMatches(classID: Int?, groupID: Int?, teamID: Int?, completionHandler: (matches: [TournamentMatch]) -> ()) {
@@ -115,6 +117,13 @@ class DataManager {
                     })
                 }
             }
+        }
+    }
+    
+    // implement RAM cache
+    func getTable(groupID: Int?, playOffId: Int?, teamId: Int?, completionHandler: (tables: [MatchTable]) -> ()) {
+        SharingManager.soap.getTable(groupID, playOffId: playOffId, teamId: teamId) { (tables) -> () in
+            completionHandler(tables: tables)
         }
     }
     
