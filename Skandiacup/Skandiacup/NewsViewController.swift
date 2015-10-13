@@ -15,14 +15,12 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-       
         newTableView.backgroundColor = UIColor.clearColor()
-
         //HomeViewController.activityIndicator.stopAnitmation()
         self.newTableView.delegate = self
         self.newTableView.dataSource = self
-        
         SharingManager.rssfeed.getRSSfeed { (RSSfeed) -> () in
             self.feed = RSSfeed
             
@@ -79,6 +77,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 cell.bodyText.attributedText = bodytext
                 cell.bodyText.font = UIFont (name: "Helvetica Neue", size: 12)
                 cell.bodyText.textColor = UIColor.darkGrayColor()
+                cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             } catch _ as NSError{
             }
         }
@@ -86,6 +85,9 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
     }
     
+    override func viewWillAppear(animated: Bool) {
+                self.navigationController?.navigationBarHidden = true
+    }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "newsToNewsItemSegue") {
             if let indexPath = self.newTableView.indexPathForSelectedRow{
@@ -95,7 +97,6 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
     }
-
 
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
