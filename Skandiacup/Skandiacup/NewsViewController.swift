@@ -71,6 +71,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if let feed = self.feed{
             let item = feed[indexPath.row] as RSSItem
             cell.headerLabel.text = item.title
+            //cell.headerLabel.font = UIFont(
             
             do{
                 bodytext =  try NSAttributedString(data: item.itemDescription!.dataUsingEncoding(NSUnicodeStringEncoding, allowLossyConversion: true)!, options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)

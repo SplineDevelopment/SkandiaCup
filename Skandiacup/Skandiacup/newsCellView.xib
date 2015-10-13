@@ -28,7 +28,7 @@
                     <rect key="frame" x="8" y="8" width="50" height="42"/>
                     <animations/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="50" id="Cwj-c2-A3i"/>
+                        <constraint firstAttribute="width" constant="50" id="jC0-m5-0eX"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Velkommen til Skandia cup 2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSA-rN-aZ9">

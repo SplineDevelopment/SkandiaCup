@@ -241,9 +241,12 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         else if (indexPath.section == 1){
             let cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as UITableViewCell!
             cell.textLabel?.text = "\(matches![indexPath.row].homeTeamName!) \(matches![indexPath.row].homegoal!)  - \(matches![indexPath.row].awaygoal!) \(matches![indexPath.row].awayTeamName!) "
+           //legg denne inn også på kommendekamper, smiletegn
+            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             return cell
         } else{
             return UITableViewCell()
+            
         }
     }
     
