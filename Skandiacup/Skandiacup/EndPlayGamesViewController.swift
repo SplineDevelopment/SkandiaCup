@@ -46,25 +46,31 @@ class EndPlayGamesViewController: UITableViewController{
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if endPlayMatchesInMatchClass[sortedKeys[section]] != nil{
-            return endPlayMatchesInMatchClass[sortedKeys[section]]!.count + 1
+            return endPlayMatchesInMatchClass[sortedKeys[section]]!.count
         }
         return 0
+    }
+    
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cell = tableView.dequeueReusableCellWithIdentifier("headerCell") as! CustomHeaderCell!
+        cell.headerLabel.text = sortedKeys[section]
+        return cell
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "endPlayMatchesInMatchClass"
 
-        if indexPath.row == 0{
-            // header row
-            let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UITableViewCell!
-            cell.textLabel?.text = "THIS IS A HEADER FOR MATCH \(sortedKeys[indexPath.section])"
-            return cell
-        }
+//        if indexPath.row == 0{
+//            // header row
+//            let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UITableViewCell!
+//            cell.textLabel?.text = "THIS IS A HEADER FOR MATCH \(sortedKeys[indexPath.section])"
+//            return cell
+//        }
         
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UITableViewCell!
         if endPlayMatchesInMatchClass[sortedKeys[indexPath.section]] != nil{
-            cell.textLabel?.text = "\(endPlayMatchesInMatchClass[sortedKeys[indexPath.section]]![indexPath.row-1].homeTeamName!) \(endPlayMatchesInMatchClass[sortedKeys[indexPath.section]]![indexPath.row-1].homegoal!)  - \(endPlayMatchesInMatchClass[sortedKeys[indexPath.section]]![indexPath.row-1].awaygoal!) \(endPlayMatchesInMatchClass[sortedKeys[indexPath.section]]![indexPath.row-1].awayTeamName!) "
+            cell.textLabel?.text = "\(endPlayMatchesInMatchClass[sortedKeys[indexPath.section]]![indexPath.row].homeTeamName!) \(endPlayMatchesInMatchClass[sortedKeys[indexPath.section]]![indexPath.row].homegoal!)  - \(endPlayMatchesInMatchClass[sortedKeys[indexPath.section]]![indexPath.row].awaygoal!) \(endPlayMatchesInMatchClass[sortedKeys[indexPath.section]]![indexPath.row].awayTeamName!) "
         }
         return cell
     }
