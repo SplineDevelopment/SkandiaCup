@@ -1,11 +1,3 @@
-//
-//  SecondViewController.swift
-//  Skandiacup
-//
-//  Created by Jørgen Wilhelmsen on 31/08/15.
-//  Copyright © 2015 Spline Development. All rights reserved.
-//
-
 import UIKit
 
 class TournamentViewController: UIViewController{
@@ -24,7 +16,6 @@ class TournamentViewController: UIViewController{
         default:
             break;
         }
-        
     }
 
     func testingFunc<T : TeamsViewChangeProto>(t : T.Type) {
@@ -43,8 +34,6 @@ class TournamentViewController: UIViewController{
         teamsView.hidden = false
         groupsView.hidden = true
         // Do any additional setup after loading the view, typically from a nib.
-    
-
     }
 
     override func didReceiveMemoryWarning() {

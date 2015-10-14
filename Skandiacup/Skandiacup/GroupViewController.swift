@@ -1,11 +1,3 @@
-//
-//  GroupViewController.swift
-//  Skandiacup
-//
-//  Created by Jørgen Wilhelmsen on 03/09/15.
-//  Copyright © 2015 Spline Development. All rights reserved.
-//
-
 import UIKit
 
 class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
