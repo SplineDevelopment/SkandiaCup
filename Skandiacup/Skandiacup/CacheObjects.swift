@@ -118,7 +118,7 @@ class TournamentMatchTableCacheObject : GenericTableCacheObject<TournamentMatch>
         super.init(objects: objects)
     }
     
-    func getMatches(classID: Int?, groupID: Int?, teamID: Int?) -> [CacheObject<TournamentMatch>] {
+    func getMatches(classID: Int?, groupID: Int?, teamID: Int?, endplay: Int?) -> [CacheObject<TournamentMatch>] {
         var modifiedArray = Array(self.objects.values)
         if classID != nil {
             modifiedArray = modifiedArray.filter({
@@ -133,6 +133,11 @@ class TournamentMatchTableCacheObject : GenericTableCacheObject<TournamentMatch>
         if teamID != nil {
             modifiedArray = modifiedArray.filter({
                 $0.value.homeTeamId! == teamID! || teamID! == $0.value.awayTeamId!
+            })
+        }
+        if endplay != nil {
+            modifiedArray = modifiedArray.filter({
+                $0.value.endGameLevel! == endplay!
             })
         }
         return modifiedArray

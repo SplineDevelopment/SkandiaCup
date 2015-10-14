@@ -59,9 +59,14 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
             self.filteredTeams = teams
         }
         */
-        SharingManager.data.getTeams(nil) { (teams) -> () in
-            self.teams = teams
-            self.filteredTeams = teams
+        SharingManager.data.getTeams(nil) { (teams, error) -> () in
+            if error {
+                print("error getting teams")
+                // needs to be handled properly
+            } else {
+                self.teams = teams
+                self.filteredTeams = teams
+            }
         }
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self

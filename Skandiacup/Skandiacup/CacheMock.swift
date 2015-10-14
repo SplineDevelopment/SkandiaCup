@@ -21,11 +21,11 @@ class CacheMock : Cache {
     func getMatchClass(id: [Int]) -> [MatchClass] {
         return [MatchClass]()
     }
-    func getMatches(classID: Int?, groupID: Int?, teamID: Int?) -> [TournamentMatch] {
+    func getMatches(classID: Int?, groupID: Int?, teamID: Int?, endplay: Int?) -> [TournamentMatch] {
         return [TournamentMatch]()
     }
-    func getTeams(completionHandler: (teams : [TournamentTeam]) -> ()) {
-        completionHandler(teams: [TournamentTeam]())
+    func getTeams(completionHandler: (teams : [TournamentTeam], error: Bool) -> ()) {
+        completionHandler(teams: [TournamentTeam](), error: true)
     }
     
     func setArena(arenas : [Arena]) {

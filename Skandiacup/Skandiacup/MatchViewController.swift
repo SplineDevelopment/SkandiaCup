@@ -45,8 +45,19 @@ class MatchViewController: UIViewController {
         teamTwo.text = selectedMatch?.awayTeamName
         scoreTwo.text = selectedMatch?.awaygoal
         //fieldLabel.text = String(selectedMatch!.fieldId)
-        SharingManager.data.getField(nil, fieldID: selectedMatch!.fieldId) { (fields) -> () in
-            self.fieldLabel.text = fields[0].fieldName
+        SharingManager.data.getField(nil, fieldID: selectedMatch!.fieldId) { (fields, error) -> () in
+            if error {
+                print("error getting fields")
+                // needs to be handled properly
+            } else {
+                // check for count here? fields can be empty with no error
+                // testing needed?
+                if fields.count > 0 {
+                    self.fieldLabel.text = fields[0].fieldName
+                } else {
+                    self.fieldLabel.text = "Unknown field"
+                }
+            }
         }
         print(selectedMatch?.fieldId)
         //fieldLabel.text = "Bane nummer: \(selectedMatch?.fieldId)"

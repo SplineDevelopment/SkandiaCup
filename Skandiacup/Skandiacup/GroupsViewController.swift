@@ -26,8 +26,13 @@ class GroupsViewController: UIViewController , UITableViewDataSource, UITableVie
         groupTableView.dataSource = self
         groupTableView.delegate = self
 //        segmentController.selectedSegmentIndex = 1
-        SharingManager.data.getMatchClass { (matchclasses) -> () in
-            self.groups = matchclasses
+        SharingManager.data.getMatchClass { (matchclasses, error) -> () in
+            if error {
+                print("error getting matchclasses")
+                // needs to be handled properly
+            } else {
+                self.groups = matchclasses
+            }
         }
         // Do any additional setup after loading the view.
         

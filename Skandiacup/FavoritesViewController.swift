@@ -14,7 +14,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     var favorites: [TournamentTeam]? = []
     var matchesDict: [String:[TournamentMatch]] = [String:[TournamentMatch]]()
     @IBOutlet weak var favoriteMatchCell: UILabel!
-    
+    @IBOutlet weak var notYetFavView: UIView!
     @IBOutlet weak var favoriteHeaderCell: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +23,16 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         favorites = getFavoritedTeams()
         
         favorites?.forEach({ (team) -> () in
-            SharingManager.data.getMatches(nil, groupID: nil, teamID: team.id, completionHandler: { (matches) -> () in
-                self.matchesDict[team.name!] = matches
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.favoriteTableView.reloadData()
-                })
+            SharingManager.data.getMatches(nil, groupID: nil, teamID: team.id, endplay: nil, completionHandler: { (matches, error) -> () in
+                if error {
+                    print("Error getting matches")
+                    // needs to be handled properly
+                } else {
+                    self.matchesDict[team.name!] = matches
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.favoriteTableView.reloadData()
+                    })
+                }
             })
         })
     }
@@ -36,11 +41,16 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidAppear(animated: Bool) {
         favorites = getFavoritedTeams()
         favorites?.forEach({ (team) -> () in
-            SharingManager.data.getMatches(nil, groupID: nil, teamID: team.id, completionHandler: { (matches) -> () in
-                self.matchesDict[team.name!] = matches
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.favoriteTableView.reloadData()
-                })
+            SharingManager.data.getMatches(nil, groupID: nil, teamID: team.id, endplay: nil, completionHandler: { (matches, error) -> () in
+                if error {
+                    print("Error getting matches")
+                    // needs to be handled properly
+                } else {
+                    self.matchesDict[team.name!] = matches
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.favoriteTableView.reloadData()
+                    })
+                }
             })
         })
         
@@ -48,8 +58,10 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         favoriteTableView.reloadData()
         if (favorites == nil){
             self.favoriteTableView.hidden = true
+            self.notYetFavView.hidden=false
         } else {
             self.favoriteTableView.hidden = false
+            self.notYetFavView.hidden=true
         }
     }
 

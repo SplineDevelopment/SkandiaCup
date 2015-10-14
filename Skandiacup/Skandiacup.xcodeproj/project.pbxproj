@@ -251,7 +251,6 @@
 				230713BF1BBC2ACC00F25D8B /* ErrorView.swift */,
 				3CCF4EE61BC6B9990068AF03 /* FieldMapViewController.swift */,
 				D5FD4ECA1B94B8CA009B53FC /* FavoritesViewController.swift */,
-				3CC5530C1B98C2CA008FA445 /* HomeViewController.swift */,
 				D51E4B0F1B94A1E700FF5DDB /* TournamentViewController.swift */,
 				D524965D1B9876EC001D3577 /* TeamsViewController.swift */,
 				D524965F1B9876F4001D3577 /* GroupsViewController.swift */,
@@ -291,6 +290,7 @@
 		3C3B9E141B9891310070A1FF /* HomeViewContainers */ = {
 			isa = PBXGroup;
 			children = (
+				3CC5530C1B98C2CA008FA445 /* HomeViewController.swift */,
 				3CDB8B321B99922A00439028 /* InfoViewController.swift */,
 				3CDB8B341B99923200439028 /* SosialViewController.swift */,
 				D5D62FCE1BBAB0330097CFC7 /* NewsViewController.swift */,
