@@ -44,12 +44,10 @@ class MatchViewController: UIViewController {
         scoreOne.text = selectedMatch?.homegoal
         teamTwo.text = selectedMatch?.awayTeamName
         scoreTwo.text = selectedMatch?.awaygoal
-        //fieldLabel.text = String(selectedMatch!.fieldId)
         SharingManager.data.getField(nil, fieldID: selectedMatch!.fieldId) { (fields) -> () in
             if (fields.count>0){
             self.fieldLabel.text = fields[0].fieldName
-            }
-            else {
+            } else {
                 self.fieldLabel.text = "Unknown field"
             }
         }
