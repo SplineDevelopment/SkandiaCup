@@ -15,7 +15,8 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     var favorites: FavoriteTeams = FavoriteTeams()
     @IBOutlet weak var favButton: UIBarButtonItem!
     var infoSectionIsSet = false
-    var isEven = false
+    var noUpcomming: Bool = false
+    var teams = [String]()
     var matchTable: MatchTable?
     var matchTables: [MatchTable]?{
         didSet{
@@ -191,10 +192,10 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             headerCell.headerLabel.text = "Tabell";
             //return sectionHeaderView
         case 1:
-            headerCell.headerLabel.text = "Kamper spilt";
+            headerCell.headerLabel.text = "Kommende kamper";
             //return sectionHeaderView
         case 2:
-            headerCell.headerLabel.text = "Kommende kamper";
+            headerCell.headerLabel.text = "Kamper spilt";
             //return sectionHeaderView
         default:
             headerCell.headerLabel.text = "Other";
@@ -209,20 +210,15 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(section == 0){           //Table rows in grouptable
-            return self.matchTable != nil ? (self.matchTable?.rows?.count)! + 1 : 0
-        }
-        else if(section == 1){              //matches played
-            var numberOfRows = 0
-            if(matches != nil){
-                for index in 0...matches!.count-1{
-                    if(matches![index].homegoal != nil){
-                        numberOfRows++
-                    }
-                }
+           // return self.matchTable != nil ? (self.matchTable?.rows?.count)! + 1 : 0
+            if(self.matchTable == nil){
+                findTeams()
+                return teams.count+1
+            } else{
+                return (self.matchTable?.rows?.count)! + 1
             }
-            return numberOfRows++
         }
-        else{                               // Matches not yet played
+        else if(section == 1){                            // Matches not yet played
             var numberOfRows = 0
             if(matches != nil){
                 for index in 0...matches!.count-1{
@@ -231,7 +227,25 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                     }
                 }
             }
-            return numberOfRows++
+            if (numberOfRows == 0){
+                noUpcomming = true
+                return 1
+            } else{
+                noUpcomming = false
+                return numberOfRows
+            }
+
+        }
+        else{              //matches played
+            var numberOfRows = 0
+            if(matches != nil){
+                for index in 0...matches!.count-1{
+                    if(matches![index].homegoal != nil){
+                        numberOfRows++
+                    }
+                }
+            }
+            return numberOfRows
         }
     }
     
@@ -256,33 +270,48 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         //Matchtable
         if (indexPath.section == 0){
             let cell = tableView.dequeueReusableCellWithIdentifier("tableSection") as! ResultTableViewCell
-            cell.teamNameLabel.text = self.matchTable?.rows![indexPath.row-1].a
-            cell.positionLabel.text = self.matchTable?.rows![indexPath.row-1].position
-            cell.pointsLabel.text = self.matchTable?.rows![indexPath.row-1].g
-            cell.plusMinusLabel.text = convertPlusMinus((self.matchTable?.rows![indexPath.row-1].f)!)
-            cell.lossesLabel.text = self.matchTable?.rows![indexPath.row-1].e
-            cell.drawsLabel.text = self.matchTable?.rows![indexPath.row-1].d
-            cell.winsLabel.text = self.matchTable?.rows![indexPath.row-1].c
-            
-            var gamesPlayed = 0
-            gamesPlayed += Int((self.matchTable?.rows![indexPath.row-1].e)!)!
-            gamesPlayed += Int((self.matchTable?.rows![indexPath.row-1].d)!)!
-            gamesPlayed += Int((self.matchTable?.rows![indexPath.row-1].c)!)!
-            cell.gamesPlayedLabel.text = String(gamesPlayed)
-            return cell
+            if (matchTable == nil){
+                zeroTable(cell, nameTable: teams, index: indexPath.row-1)
+                return cell
+            } else{
+                cell.teamNameLabel.text = self.matchTable?.rows![indexPath.row-1].a
+                cell.positionLabel.text = self.matchTable?.rows![indexPath.row-1].position
+                cell.pointsLabel.text = self.matchTable?.rows![indexPath.row-1].g
+                cell.plusMinusLabel.text = convertPlusMinus((self.matchTable?.rows![indexPath.row-1].f)!)
+                cell.lossesLabel.text = self.matchTable?.rows![indexPath.row-1].e
+                cell.drawsLabel.text = self.matchTable?.rows![indexPath.row-1].d
+                cell.winsLabel.text = self.matchTable?.rows![indexPath.row-1].c
+                var gamesPlayed = 0
+                gamesPlayed += Int((self.matchTable?.rows![indexPath.row-1].e)!)!
+                gamesPlayed += Int((self.matchTable?.rows![indexPath.row-1].d)!)!
+                gamesPlayed += Int((self.matchTable?.rows![indexPath.row-1].c)!)!
+                cell.gamesPlayedLabel.text = String(gamesPlayed)
+                return cell
+            }
         }
         else if (indexPath.section == 1){
-            
             let cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as UITableViewCell!
+            if (noUpcomming == true){
+                cell.textLabel?.text = "Ingen kommende kamper"
+                cell.userInteractionEnabled = false
+                return cell
+            }
             if let match = matches?[indexPath.row]{
-                cell.textLabel?.text = "\(match.homeTeamName!) \(match.homegoal!)  - \(match.awaygoal!) \(match.awayTeamName!) "
-                //legg denne inn også på kommendekamper, smiletegn
+                cell.textLabel?.text = "\(match.homeTeamName!)  -  \(match.awayTeamName!) "
                 cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
                 return cell
+                }
+            } else{
+                let cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as UITableViewCell!
+                if let match = matches?[indexPath.row]{
+                cell.textLabel?.text = "\(match.homeTeamName!) \(match.homegoal!)  - \(match.awaygoal!) \(match.awayTeamName!) "
+                    cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+                    return cell
             }
         }
         return UITableViewCell()
     }
+
     
     func configureView(){
         if let team = self.currentTeam{
@@ -302,6 +331,8 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             return String(res)
     }
     
+
+    
     /*
     // MARK: - Navigation
     
@@ -311,6 +342,36 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     // Pass the selected object to the new view controller.
     }
     */
+    
+    func zeroTable(cell: ResultTableViewCell, nameTable: [String], index: Int){
+        cell.teamNameLabel.text = nameTable[index]
+        cell.positionLabel.text = String(index+1)
+        cell.pointsLabel.text = String(0)
+        cell.plusMinusLabel.text = String(0)
+        cell.lossesLabel.text = String(0)
+        cell.drawsLabel.text = String(0)
+        cell.winsLabel.text = String(0)
+        cell.gamesPlayedLabel.text = String(0)
+    }
+    
+    func findTeams(){
+        var tm = [String]()
+        let groupId = currentTeam?.matchGroupId
+        SharingManager.data.getTeams(nil) { (teams, error) -> () in
+            if error {
+                print("error...")
+                // todo
+            } else {
+                let t = teams.filter({ (element) -> Bool in
+                    element.matchGroupId != nil ? element.matchGroupId == groupId : false
+                })
+                t.forEach({ (team) -> () in
+                    tm.append(team.name!)
+                })
+            }
+            self.teams = tm
+        }
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         //code

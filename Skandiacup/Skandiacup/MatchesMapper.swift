@@ -15,7 +15,6 @@ class MatchesMapper: NSObject{
         
         for elem in xml["SOAP-ENV:Envelope"]["SOAP-ENV:Body"]["ns1:getMatchesResponse"]["getMatchesResult"]["item"]{
             var tm: TournamentMatch = TournamentMatch()
-            
             if elem["id"].element?.text != nil{
                 tm.id = Int((elem["id"].element?.text)!)
             }
@@ -79,9 +78,9 @@ class MatchesMapper: NSObject{
             if elem["awayteamnext"].element?.text != nil{
                 tm.awayTeamText = elem["awayteamnext"].element?.text
             }
-            
             if elem["homegoal"].element?.text != nil{
                 tm.homegoal = elem["homegoal"].element?.text
+                
             }
             
             if elem["awaygoal"].element?.text != nil{
