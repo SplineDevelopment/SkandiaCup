@@ -32,9 +32,9 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         })
     }
     
+    
     override func viewDidAppear(animated: Bool) {
         favorites = getFavoritedTeams()
-        
         favorites?.forEach({ (team) -> () in
             SharingManager.data.getMatches(nil, groupID: nil, teamID: team.id, completionHandler: { (matches) -> () in
                 self.matchesDict[team.name!] = matches
@@ -46,6 +46,11 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         
         
         favoriteTableView.reloadData()
+        if (favorites == nil){
+            self.favoriteTableView.hidden = true
+        } else {
+            self.favoriteTableView.hidden = false
+        }
     }
 
     override func didReceiveMemoryWarning() {
