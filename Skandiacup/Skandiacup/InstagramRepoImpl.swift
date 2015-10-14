@@ -48,6 +48,7 @@ class InstagramRepoImpl : InstagramRepo {
                 completionHandler(photoObjects: arr, error: false)
             } catch let error as NSError {
                 print(error)
+                completionHandler(photoObjects: [InstagramPhotoObject](), error: true)
             }
         }
         

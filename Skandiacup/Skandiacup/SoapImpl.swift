@@ -9,117 +9,130 @@
 import Foundation
 
 class SoapImpl: Soap {
-    
-    private func sendReceive(request: NSMutableURLRequest, completionHandler: (responseData: String) -> Void) -> Void {
+    private func sendReceive(request: NSMutableURLRequest, completionHandler: (responseData: String?, error: Bool) -> Void) -> Void {
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
             if error != nil {
                 print("error=\(error)")
+                completionHandler(responseData: nil, error: true)
                 return
             }
             let responseString = String(data: data!, encoding: NSUTF8StringEncoding)
-//            print("Sending data over network!")
             if responseString != nil {
-//                print(responseString)
-                completionHandler(responseData: responseString!)
+                completionHandler(responseData: responseString!, error: false)
             } else {
-                print("responseString is nil")
+                completionHandler(responseData: nil, error: true)
             }
         }
         task.resume()
     }
     
-    func getArena(id: [Int]?, completionHandler: (arenas: [Arena]) -> ()) {
+    func getArena(completionHandler: (arenas: [Arena], error: Bool) -> ()) {
         let request = Generator.generateGetArenasXML()
-        self.sendReceive(request) { (responseData) -> Void in
-            let xml = SWXMLHash.parse(responseData)
+        self.sendReceive(request) { (responseData, responseError) -> Void in
+            if responseError || responseData == nil {
+                completionHandler(arenas: [Arena](), error: true)
+                return
+            }
+            let xml = SWXMLHash.parse(responseData!)
             let arenaTab = ArenaMapper.mapArenas(xml)
-            completionHandler(arenas: id != nil ? arenaTab.filter({id!.contains($0.arenaID!)}) : arenaTab)
+            completionHandler(arenas: arenaTab, error: false)
         }
     }
     
-    func getTournamentClub(id: [Int]?, countryCode: String?, completionHandler: (clubs: [TournamentClub]) -> ()) {
+    func getTournamentClub(completionHandler: (clubs: [TournamentClub], error: Bool) -> ()) {
         let request = Generator.generateGetClubsXML()
-        self.sendReceive(request) { (responseData) -> Void in
-            let xml = SWXMLHash.parse(responseData)
+        self.sendReceive(request) { (responseData, responseError) -> Void in
+            if responseError || responseData == nil {
+                completionHandler(clubs: [TournamentClub](), error: true)
+                return
+            }
+            let xml = SWXMLHash.parse(responseData!)
             let clubTab = TournamentClubsMapper.mapClubs(xml)
-            if id != nil {
-                completionHandler(clubs: clubTab.filter({
-                    $0.id != nil ? id!.contains($0.id!) : false
-                }))
-            }
-            else if countryCode != nil {
-                completionHandler(clubs: clubTab.filter({$0.countryCode == countryCode}))
-            }
-            else {
-                completionHandler(clubs: clubTab)
-            }
+            completionHandler(clubs: clubTab, error: false)
         }
     }
     
-    func getField(arenaID: Int?, fieldID: Int?, completionHandler: (fields: [Field]) -> ()) {
+    func getField(arenaID: Int?, completionHandler: (fields: [Field], error: Bool) -> ()) {
         let request = Generator.generateGetFieldsXML(arenaID)
-        self.sendReceive(request) { (responseData) -> Void in
-            let xml = SWXMLHash.parse(responseData)
+        self.sendReceive(request) { (responseData, responseError) -> Void in
+            if responseError || responseData == nil {
+                completionHandler(fields: [Field](), error: true)
+                return
+            }
+            let xml = SWXMLHash.parse(responseData!)
             let fieldTab = FieldsMapper.mapFields(xml)
-            if fieldID != nil {
-                completionHandler(fields: fieldTab.filter({$0.fieldID == fieldID}))
-            }
-            else {
-                completionHandler(fields: fieldTab)
-            }
+            completionHandler(fields: fieldTab, error: false)
         }
     }
 
-    func getMatchClass(completionHandler: (matchclasses: [MatchClass]) -> ()){
+    func getMatchClass(completionHandler: (matchclasses: [MatchClass], error: Bool) -> ()){
         let request = Generator.generateGetMatchClassesXML()
-        self.sendReceive(request) { (responseString) -> () in
+        self.sendReceive(request) { (responseData, responseError) -> () in
+            if responseError || responseData == nil {
+                completionHandler(matchclasses: [MatchClass](), error: true)
+                return
+            }
             let xml = SWXMLHash.config {
                 config in
                 config.shouldProcessNamespaces = false
-                }.parse(responseString)
+                }.parse(responseData!)
             let matchClasses = MatchClassesMapper.mapMatchClasses(xml)
-            completionHandler(matchclasses: matchClasses)
+            completionHandler(matchclasses: matchClasses, error: false)
         }
     }
     
-    func getMatches(classID: Int?, groupID: Int?, teamID: Int?, endplay: Int?, completionHandler: (matches: [TournamentMatch]) -> ()) {
+    func getMatches(classID: Int?, groupID: Int?, endplay: Int?, completionHandler: (matches: [TournamentMatch], error: Bool) -> ()) {
         let request = Generator.generateGetMatchesXML(classID, groupID: groupID, endplay: endplay)
-        self.sendReceive(request) { (responseString) -> () in
+        self.sendReceive(request) { (responseData, responseError) -> () in
+            if responseError || responseData == nil {
+                completionHandler(matches: [TournamentMatch](), error: true)
+                return
+            }
             let xml = SWXMLHash.config {
                 config in
                 config.shouldProcessNamespaces = false
-                }.parse(responseString)
+                }.parse(responseData!)
             let matches = MatchesMapper.mapMatches(xml)
-            completionHandler(matches: teamID != nil ? matches.filter({
-                $0.homeTeamId! == teamID! || teamID! == $0.awayTeamId!
-            }) : matches)
+            completionHandler(matches: matches, error: false)
         }
     }
     
-    func getTeams(completionHandler: (teams: [TournamentTeam])-> ()) {
+    func getTeams(completionHandler: (teams: [TournamentTeam], error: Bool)-> ()) {
         let request = Generator.generateGetTeamsXML()
-        self.sendReceive(request) { (responseString) -> Void in
-            let xml = SWXMLHash.parse(responseString)
+        self.sendReceive(request) { (responseData, responseError) -> Void in
+            if responseError || responseData == nil {
+                completionHandler(teams: [TournamentTeam](), error: true)
+                return
+            }
+            let xml = SWXMLHash.parse(responseData!)
             let teams = TournamentTeamMapper.mapTeams(xml)
-            completionHandler(teams: teams)
+            completionHandler(teams: teams, error: false)
         }
     }
     
-    func getTable(groupID: Int?, playOffId: Int?, teamId: Int?, completionHandler: (tables: [MatchTable]) -> ()) {
+    func getTable(groupID: Int?, playOffId: Int?, teamId: Int?, completionHandler: (tables: [MatchTable], error: Bool) -> ()) {
         let request = Generator.generateGetTableXML(groupID, playoffID: playOffId, teamID: teamId)
-        self.sendReceive(request) { (responseString) -> () in
-            let xml = SWXMLHash.parse(responseString)
+        self.sendReceive(request) { (responseData, responseError) -> () in
+            if responseError || responseData == nil {
+                completionHandler(tables: [MatchTable](), error: true)
+                return
+            }
+            let xml = SWXMLHash.parse(responseData!)
             let tables = MatchTablesMapper.mapMatchTables(xml)
-            completionHandler(tables: tables)
+            completionHandler(tables: tables, error: false)
         }
     }
     
-    func getTournamentMatchStatus(since: String, completionHandler: (status: TournamentMatchStatus) -> ()) {
+    func getTournamentMatchStatus(since: String, completionHandler: (status: TournamentMatchStatus, error: Bool) -> ()) {
         let request = Generator.generateGetTournamentMatchStatusXML(since)
-        self.sendReceive(request) { (responseString) -> () in
-            let xml = SWXMLHash.parse(responseString)
+        self.sendReceive(request) { (responseData, responseError) -> () in
+            if responseError || responseData == nil {
+                completionHandler(status: TournamentMatchStatus(), error: true)
+                return
+            }
+            let xml = SWXMLHash.parse(responseData!)
             let status = TournamentMatchStatusMapper.mapTournamentMatchStatus(xml)
-            completionHandler(status: status)
+            completionHandler(status: status, error: false)
         }
     }
 }

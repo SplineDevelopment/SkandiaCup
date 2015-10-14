@@ -9,14 +9,16 @@
 import Foundation
 
 class DataManager {
-    
-    func getArena(id: [Int]?, completionHandler: (arenas: [Arena]) -> ()) {
+    func getArena(id: [Int]?, completionHandler: (arenas: [Arena], error: Bool) -> ()) {
         if id == nil {
-            // check cache.. somehow
-            // timer for get everything
-            SharingManager.soap.getArena(nil, completionHandler: { (arenas) -> () in
-                SharingManager.cache.setArena(arenas)
-                completionHandler(arenas: arenas)
+            // can not know if arena is in cache, if no ID is given. need to get all!
+            SharingManager.soap.getArena({ (arenas, soapError) -> () in
+                if soapError {
+                    completionHandler(arenas: arenas, error: true)
+                } else {
+                    SharingManager.cache.setArena(arenas)
+                    completionHandler(arenas: arenas, error: false)
+                }
             })
             return
         }
@@ -24,116 +26,145 @@ class DataManager {
         let notInCache = cachedArenas.filter {
             $0.arenaID != nil ? !id!.contains($0.arenaID!) : false
         }
-        var notInCacheIds = [Int]()
-        notInCache.forEach { (element) -> () in
-            notInCacheIds.append(element.arenaID!)
-        }
-        SharingManager.soap.getArena(notInCacheIds) { (arenas) -> () in
-            SharingManager.cache.setArena(arenas)
-            completionHandler(arenas: cachedArenas+arenas)
+        if notInCache.count > 0 {
+            SharingManager.soap.getArena({ (arenas, soapError) -> () in
+                if soapError {
+                    completionHandler(arenas: arenas, error: true)
+                } else {
+                    SharingManager.cache.setArena(arenas)
+                    completionHandler(arenas: arenas, error: false)
+                }
+            })
+        } else {
+            completionHandler(arenas: cachedArenas, error: false)
         }
     }
     
-    // is this OK ?
-    func getField(arenaID: Int?, fieldID: Int?, completionHandler: (fields: [Field]) -> ()) {
+    func getField(arenaID: Int?, fieldID: Int?, completionHandler: (fields: [Field], error: Bool) -> ()) {
         if arenaID == nil && fieldID == nil {
-            SharingManager.soap.getField(nil, fieldID: nil, completionHandler: { (fields) -> () in
-                SharingManager.cache.setField(fields)
-                completionHandler(fields: fields)
+            SharingManager.soap.getField(nil, completionHandler: { (fields, soapError) -> () in
+                if soapError {
+                    completionHandler(fields: fields, error: true)
+                } else {
+                    SharingManager.cache.setField(fields)
+                    completionHandler(fields: fields, error: false)
+                }
             })
             return
         }
         // what if cache is empty and arenaID & fieldID is nil?
         let cachedFields = SharingManager.cache.getField(arenaID, fieldID: fieldID)
-//        print("cached fields:::")
-//        print(cachedFields.count)
         if cachedFields.isEmpty {
-            SharingManager.soap.getField(nil, fieldID: nil, completionHandler: { (fields) -> () in
-                SharingManager.cache.setField(fields)
-                completionHandler(fields: fields)
+            SharingManager.soap.getField(arenaID, completionHandler: { (fields, soapError) -> () in
+                if soapError {
+                    completionHandler(fields: fields, error: true)
+                } else {
+                    SharingManager.cache.setField(fields)
+                    // filtering after getting new, NEEDS TESTING
+                    let cachedFieldsNew = SharingManager.cache.getField(arenaID, fieldID: fieldID)
+                    completionHandler(fields: cachedFieldsNew, error: false)
+                }
             })
             return
         }
-//        print(cachedFields)
-        completionHandler(fields: cachedFields)
+        completionHandler(fields: cachedFields, error: false)
     }
     
-    // missing some logic
-    func getTournamentClub(id: [Int]?, countryCode: String?, completionHandler: (clubs: [TournamentClub]) -> ()) {
+    func getTournamentClub(id: [Int]?, countryCode: String?, completionHandler: (clubs: [TournamentClub], error: Bool) -> ()) {
         if id == nil && countryCode == nil{
-            //What to do here
+            // can not know if it is in cache, need to fetch all
+            SharingManager.soap.getTournamentClub({ (clubs, soapError) -> () in
+                if soapError {
+                    completionHandler(clubs: clubs, error: true)
+                } else {
+                    SharingManager.cache.setTournamentClub(clubs)
+                    completionHandler(clubs: clubs, error: false)
+                }
+            })
         }
-        
         let cachedTournamentClubs = SharingManager.cache.getTournamentClub(id, countryCode: countryCode)
         if cachedTournamentClubs.isEmpty{
-            print("Getting clubs from soap")
-            SharingManager.soap.getTournamentClub(id, countryCode: countryCode, completionHandler: { (clubs) -> () in
-                SharingManager.cache.setTournamentClub(clubs)
-                completionHandler(clubs: clubs)
+            SharingManager.soap.getTournamentClub({ (clubs, soapError) -> () in
+                if soapError {
+                    completionHandler(clubs: clubs, error: true)
+                } else {
+                    SharingManager.cache.setTournamentClub(clubs)
+                    completionHandler(clubs: clubs, error: false)
+                }
             })
             return
         }
-        
-        print("Getting clubs from cache")
-        completionHandler(clubs: cachedTournamentClubs)
+        completionHandler(clubs: cachedTournamentClubs, error: false)
     }
     
     
     // implement RAM cache
-    func getMatchClass(completionHandler: (matchclasses: [MatchClass]) -> ()) {
-        SharingManager.soap.getMatchClass { (matchclasses) -> () in
-            completionHandler(matchclasses: matchclasses)
+    func getMatchClass(completionHandler: (matchclasses: [MatchClass], error: Bool) -> ()) {
+        SharingManager.soap.getMatchClass { (matchclasses, soapError) -> () in
+            if soapError {
+                completionHandler(matchclasses: matchclasses, error: true)
+            } else {
+                completionHandler(matchclasses: matchclasses, error: false)
+            }
         }
     }
     
-    func getMatches(classID: Int?, groupID: Int?, teamID: Int?, completionHandler: (matches: [TournamentMatch]) -> ()) {
-        let cachedMatches = SharingManager.cache.getMatches(classID, groupID: groupID, teamID: teamID)
+    func getMatches(classID: Int?, groupID: Int?, teamID: Int?, endplay: Int?, completionHandler: (matches: [TournamentMatch], error: Bool) -> ()) {
+        let cachedMatches = SharingManager.cache.getMatches(classID, groupID: groupID, teamID: teamID, endplay: endplay)
         // TODO: how to figure out what needs to be loaded from soap??
         if cachedMatches.isEmpty {
-            print("getting matches from SOAP")
-            SharingManager.soap.getMatches(classID, groupID: groupID, teamID: teamID, endplay: nil, completionHandler: { (matches) -> () in
+            SharingManager.soap.getMatches(classID, groupID: groupID, endplay: endplay, completionHandler: { (matches, soapError) -> () in
+                if soapError {
+                    completionHandler(matches: matches, error: true)
+                }
                 SharingManager.cache.setMatches(matches)
-                completionHandler(matches: matches)
+                let cachedMatchesNew = SharingManager.cache.getMatches(classID, groupID: groupID, teamID: teamID, endplay: endplay)
+                completionHandler(matches: cachedMatchesNew, error: false)
             })
             return
         }
-        print("Getting matches from cache")
-        completionHandler(matches: cachedMatches)
+        completionHandler(matches: cachedMatches, error: false)
     }
     
     // need to check if filter works as intended
-    func getTeams(id: [Int]?, completionHandler: (teams: [TournamentTeam]) -> ()) {
-        SharingManager.cache.getTeams { (teamsFromCache) -> () in
+    func getTeams(id: [Int]?, completionHandler: (teams: [TournamentTeam], error: Bool) -> ()) {
+        SharingManager.cache.getTeams { (teamsFromCache, cacheError) -> () in
             // teams is empty if refresh is needed
-            if teamsFromCache.isEmpty {
-                print("Getting teams from soap")
-                SharingManager.soap.getTeams({ (teams) -> () in
+            if teamsFromCache.isEmpty || cacheError {
+                SharingManager.soap.getTeams({ (teams, soapError) -> () in
+                    if soapError {
+                        completionHandler(teams: teams, error: true)
+                        return
+                    }
                     SharingManager.cache.setTeams(teams)
                     if id == nil {
-                        completionHandler(teams: teams)
+                        completionHandler(teams: teams, error: false)
                     } else {
                         completionHandler(teams: teams.filter {
                             $0.id != nil ? id!.contains($0.id!) : false
-                        })
+                            }, error: false)
                     }
                 })
             } else {
-                print("Getting teams from cache")
                 if id == nil {
-                    completionHandler(teams: teamsFromCache)
+                    completionHandler(teams: teamsFromCache, error: false)
                 } else {
                     completionHandler(teams: teamsFromCache.filter {
                         $0.id != nil ? id!.contains($0.id!) : false
-                    })
+                        }, error: false)
                 }
             }
         }
     }
     
     // implement RAM cache
-    func getTable(groupID: Int?, playOffId: Int?, teamId: Int?, completionHandler: (tables: [MatchTable]) -> ()) {
-        SharingManager.soap.getTable(groupID, playOffId: playOffId, teamId: teamId) { (tables) -> () in
-            completionHandler(tables: tables)
+    func getTable(groupID: Int?, playOffId: Int?, teamId: Int?, completionHandler: (tables: [MatchTable], error: Bool) -> ()) {
+        SharingManager.soap.getTable(groupID, playOffId: playOffId, teamId: teamId) { (tables, soapError) -> () in
+            if soapError {
+                completionHandler(tables: tables, error: true)
+            } else {
+                completionHandler(tables: tables, error: false)
+            }
         }
     }
     

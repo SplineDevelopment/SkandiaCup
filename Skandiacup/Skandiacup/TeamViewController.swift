@@ -50,14 +50,24 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         matchTableView.delegate = self
         matchTableView.dataSource = self
         self.configureView()
-        SharingManager.soap.getMatches(nil, groupID: nil, teamID: currentTeam?.id, endplay: nil) { (matches) -> () in
-            self.matches = matches
+        SharingManager.data.getMatches(nil, groupID: nil, teamID: currentTeam?.id, endplay: nil) { (matches, error) -> () in
+            if error {
+                print("error getting matches")
+                // needs to be handled properly
+            } else {
+                self.matches = matches
+            }
         }
         changeButton()
         // Do any additional setup after loading the view.
         
-        SharingManager.soap.getTable(nil, playOffId: nil, teamId: self.currentTeam?.id, completionHandler: { (tables) -> () in
-            self.matchTables = tables
+        SharingManager.data.getTable(nil, playOffId: nil, teamId: self.currentTeam?.id, completionHandler: { (tables, error) -> () in
+            if error {
+                print("error getting matches")
+                // needs to be handled properly
+            } else {
+                self.matchTables = tables
+            }
         })
     }
     

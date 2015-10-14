@@ -22,26 +22,24 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         //HomeViewController.activityIndicator.stopAnitmation()
         self.newTableView.delegate = self
         self.newTableView.dataSource = self
-        SharingManager.rssfeed.getRSSfeed { (RSSfeed) -> () in
-            self.feed = RSSfeed
-            
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.newTableView.reloadData()
-                 (self.parentViewController?.parentViewController as! HomeViewController).activityIndicator.stopAnimating()
-                (self.parentViewController?.parentViewController as! HomeViewController).newsView.hidden = false
-                
-            })
-
+        SharingManager.rssfeed.getRSSfeed { (RSSfeed, error) -> () in
+            if error {
+                print("Error loading RSS")
+                // needs to be handled properly
+            } else {
+                self.feed = RSSfeed
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.newTableView.reloadData()
+                    (self.parentViewController?.parentViewController as! HomeViewController).activityIndicator.stopAnimating()
+                    (self.parentViewController?.parentViewController as! HomeViewController).newsView.hidden = false
+                })
+            }
         }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
