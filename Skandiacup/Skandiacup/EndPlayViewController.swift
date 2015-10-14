@@ -23,10 +23,7 @@ class EndPlayViewController: UITableViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadMatchClassses()
-
-
     }
 
     

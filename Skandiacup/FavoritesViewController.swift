@@ -14,7 +14,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     var favorites: [TournamentTeam]? = []
     var matchesDict: [String:[TournamentMatch]] = [String:[TournamentMatch]]()
     @IBOutlet weak var favoriteMatchCell: UILabel!
-    
+    @IBOutlet weak var notYetFavView: UIView!
     @IBOutlet weak var favoriteHeaderCell: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,8 +48,10 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         favoriteTableView.reloadData()
         if (favorites == nil){
             self.favoriteTableView.hidden = true
+            self.notYetFavView.hidden=false
         } else {
             self.favoriteTableView.hidden = false
+            self.notYetFavView.hidden=true
         }
     }
 
