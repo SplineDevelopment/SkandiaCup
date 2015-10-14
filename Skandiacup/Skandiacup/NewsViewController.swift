@@ -17,6 +17,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        self.tabBarController?.tabBar.translucent = true
         newTableView.backgroundColor = UIColor.clearColor()
         //HomeViewController.activityIndicator.stopAnitmation()
         self.newTableView.delegate = self
