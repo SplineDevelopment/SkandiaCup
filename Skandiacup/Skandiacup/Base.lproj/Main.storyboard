@@ -1480,7 +1480,7 @@
                             </imageView>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="0.89908405172413797" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="LrJ-au-SUj" firstAttribute="leading" secondItem="bkB-m4-Lnj" secondAttribute="leading" id="0Tu-8R-bsq"/>
                             <constraint firstItem="LrJ-au-SUj" firstAttribute="trailing" secondItem="bkB-m4-Lnj" secondAttribute="trailing" id="Gea-XU-Woc"/>
