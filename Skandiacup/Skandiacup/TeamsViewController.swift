@@ -32,8 +32,9 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
                 self.activityIndicator.stopAnimating()
             })
         }
-        
     }
+    
+    var matchClasses: [MatchClass]?
     var filteredTeams = [TournamentTeam]()
 
     @IBAction func indexChanged(sender: AnyObject) {
@@ -52,22 +53,6 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
         teamTableView.hidden = true
         activityIndicator.hidden = false
         activityIndicator.startAnimating()
-//        segmentController.selectedSegmentIndex = 0
-        /*
-        SharingManager.soap.getTeams(nil) { (teams) -> () in
-            self.teams = teams
-            self.filteredTeams = teams
-        }
-        */
-        SharingManager.data.getTeams(nil) { (teams, error) -> () in
-            if error {
-                print("error getting teams")
-                // needs to be handled properly
-            } else {
-                self.teams = teams
-                self.filteredTeams = teams
-            }
-        }
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.searchBar.sizeToFit()
@@ -79,7 +64,6 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func viewChangedTo() {
-//        self.segmentController.selectedSegmentIndex = 0
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
             if !(self.heighIsSet) {
                 self.standardPixelHeight = self.teamTableView.layer.frame.size.height
@@ -90,7 +74,6 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
             } else {
                 self.teamTableView.layer.frame.size.height = self.standardPixelHeight! + Config.filterViewHeight
             }
-//            self.segmentController.selectedSegmentIndex = 0
         }
     }
     
@@ -109,8 +92,27 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-        
         return cell
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        SharingManager.data.getMatchClass { (matchclasses, error) -> () in
+            if error{
+                print("Error in TeamsViewController.viewWillAppear")
+            }else{
+                self.matchClasses = matchclasses
+            }
+        }
+        
+        SharingManager.data.getTeams(nil) { (teams, error) -> () in
+            if error {
+                print("error getting teams")
+                // needs to be handled properly
+            } else {
+                self.teams = teams
+                self.filteredTeams = teams
+            }
+        }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -249,7 +251,20 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
 
         if sexPickerValue != "" && sexPickerValue != "Alle" {
             filteredTeams = filteredTeams.filter({ (team) -> Bool in
-                return true
+                if(sexPickerValue == "Menn"){
+                    for matchclass in self.matchClasses!{
+                        if team.matchClassId == matchclass.id{
+                            return matchclass.gender == "M"
+                        }
+                    }
+                }else if sexPickerValue == "Damer"{
+                    for matchclass in self.matchClasses!{
+                        if team.matchClassId == matchclass.id{
+                            return matchclass.gender == "F"
+                        }
+                    }
+                }
+                return false
             })
         }
         
@@ -288,7 +303,6 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
             } else {
                 self.teamTableView.layer.frame.size.height = self.standardPixelHeight! + Config.filterViewHeight
             }
-//            self.segmentController.selectedSegmentIndex = 0
         }
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
             self.viewDidAppear(true)

@@ -54,7 +54,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                     teams.forEach({ (team) -> () in
                         if team.matchGroupId == self.currentGroup?.id{
                             self.currentTeam = team
-    //                        self.navigationController?.title = String(self.currentGroup?.id)
                             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                 self.matchTableView.reloadData()
                             })
@@ -70,25 +69,14 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         matchTableView.delegate = self
         matchTableView.dataSource = self
         self.configureView()
-//        SharingManager.soap.getMatches(nil, groupID: nil, teamID: currentTeam?.id, endplay: nil) { (matches) -> () in
-//            self.matches = matches
-//        }
-        changeButton()
-        // Do any additional setup after loading the view.
-        
-        SharingManager.data.getTable(nil, playOffId: nil, teamId: self.currentTeam?.id, completionHandler: { (tables, error) -> () in
-            if error {
-                print("error getting matches")
-                // needs to be handled properly
-            } else {
-                self.matchTables = tables
-            }
-        })
     }
-    
     
     override func viewDidAppear(animated: Bool) {
         self.setUpMatches()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        changeButton()
     }
     
     func favorite() {
@@ -171,7 +159,16 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    func noAction(){
+        
+    }
+    
     func changeButton(){
+        if currentGroup != nil {
+            let button = UIBarButtonItem(image: UIImage(), style: UIBarButtonItemStyle(rawValue: 1)!, target: self, action: "noAction")
+            self.navigationItem.rightBarButtonItem = button
+            return
+        }
         if let currentTeam = self.currentTeam{
             if (checkIfFaved(currentTeam) == true){
                 let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Stop, target: self, action: "unFavorite")
@@ -295,11 +292,11 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //Func to convert +/- goals
     func convertPlusMinus(input: String) -> String{
-            var resString = input.componentsSeparatedByString(" ")
-            let goalFor = Int(resString[0])
-            let goalAgainst = Int(resString[2])
-            let res = goalFor! - goalAgainst!
-            return String(res)
+        var resString = input.componentsSeparatedByString(" ")
+        let goalFor = Int(resString[0])
+        let goalAgainst = Int(resString[2])
+        let res = goalFor! - goalAgainst!
+        return String(res)
     }
     
     /*
@@ -336,6 +333,14 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                     print("Error in Teamviewcontroller.setupMatches")
                 }else{
                     self.matches = matches
+                    SharingManager.data.getTable(nil, playOffId: nil, teamId: self.currentTeam?.id, completionHandler: { (tables, error) -> () in
+                        if error{
+                            print("Error in Teamviewcontroller.setupMatches")
+                        }
+                        else{
+                            self.matchTables = tables
+                        }
+                    })
                 }
             })
         }
@@ -345,16 +350,17 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                     print("Error in Teamviewcontroller.setupMatches")
                 }else{
                     self.matches = matches
+                    SharingManager.data.getTable(nil, playOffId: nil, teamId: self.currentTeam?.id, completionHandler: { (tables, error) -> () in
+                        if error{
+                            print("Error in Teamviewcontroller.setupMatches")
+                        }
+                        else{
+                            self.matchTables = tables
+                        }
+                    })
                 }
+                
             })
         }
-        SharingManager.data.getTable(nil, playOffId: nil, teamId: self.currentTeam?.id, completionHandler: { (tables, error) -> () in
-            if error{
-                print("Error in Teamviewcontroller.setupMatches")
-            }
-            else{
-                self.matchTables = tables
-            }
-        })
     }
 }
