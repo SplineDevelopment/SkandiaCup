@@ -84,13 +84,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = teamTableView.dequeueReusableCellWithIdentifier("teamCell") as UITableViewCell!
-        if self.searchController.active || pickerActive{
-            cell!.textLabel?.text = filteredTeams[indexPath.row].name
-        }
-        else{
-            cell!.textLabel?.text = teams![indexPath.row].name
-        }
-        
+        cell!.textLabel?.text = filteredTeams[indexPath.row].name
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell
     }
@@ -111,6 +105,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
             } else {
                 self.teams = teams
                 self.filteredTeams = teams
+                self.updateFilteredTeams()
             }
         }
     }
@@ -128,7 +123,6 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
 
     func changeSegment(){
-//        self.segmentController.selectedSegmentIndex = 0
         teamTableView.layer.frame.size.height = teamTableView.layer.frame.size.height + Config.filterViewHeight
     }
     
@@ -143,18 +137,18 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
                 self.teamTableView.layer.transform = CATransform3DIdentity
                 self.dropDownViewIsDisplayed = true
                 self.teamTableView.layer.frame.size.height = self.teamTableView.layer.frame.size.height - Config.filterViewHeight
-                }, completion: { (success) -> Void in
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.teamTableView.reloadData()
-                    })
+            }, completion: { (success) -> Void in
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.teamTableView.reloadData()
+                })
             })
         } else if dropDownViewIsDisplayed{
             self.teamTableView.layer.frame.size.height = self.teamTableView.layer.frame.size.height + Config.filterViewHeight
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.teamTableView.reloadData()
             })
-            teamTableView.layer.transform = CATransform3DIdentity
             
+            teamTableView.layer.transform = CATransform3DIdentity
             UIView.animateWithDuration(0.5, animations: { () -> Void in
                 self.teamTableView.layer.transform = rotationTransform
                 self.dropDownViewIsDisplayed = false
@@ -166,20 +160,11 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "listToTeamView") {
-            if(self.searchController.active){
-                if let indexPath = self.teamTableView.indexPathForSelectedRow{
-                    let selectedTeam = filteredTeams[indexPath.row]
-                    (segue.destinationViewController as! TeamViewController).currentTeam = selectedTeam
-                    self.searchController.active = false
-                    self.searchController.searchBar.endEditing(true)
-                }
-            }else{
-                if let indexPath = self.teamTableView.indexPathForSelectedRow{
-                    let selectedTeam = teams![indexPath.row]
-                    (segue.destinationViewController as! TeamViewController).currentTeam = selectedTeam
-                    self.searchController.active = false
-                    self.searchController.searchBar.endEditing(true)
-                }
+            if let indexPath = self.teamTableView.indexPathForSelectedRow{
+                let selectedTeam = filteredTeams[indexPath.row]
+                (segue.destinationViewController as! TeamViewController).currentTeam = selectedTeam
+                self.searchController.active = false
+                self.searchController.searchBar.endEditing(true)
             }
         }
     }

@@ -66,16 +66,13 @@ class EndPlayGamesViewController: UITableViewController{
         let cellIdentifier = "endPlayMatchesInMatchClass"
         
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UITableViewCell!
-//        if endPlayMatchesInMatchClass[sortedKeys[indexPath.section]] != nil{
         if let match = endPlayMatchesInMatchClass[sortedKeys[indexPath.section]]?[indexPath.row]{
             if match.homegoal != nil{
                 cell.textLabel?.text = "\(match.homeTeamName!) \(match.homegoal!)  - \(match.awaygoal!) \(match.awayTeamName!) "
             }else{
                 cell.textLabel?.text = "\(match.homeTeamName!) - \(match.awayTeamName!) "
             }
-
         }
-        
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell
     }
