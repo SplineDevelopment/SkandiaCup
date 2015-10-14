@@ -45,20 +45,38 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    var currentGroup: MatchGroup? {
+        didSet{
+            SharingManager.data.getTeams(nil) { (teams) -> () in
+                teams.forEach({ (team) -> () in
+                    if team.matchGroupId == self.currentGroup?.id{
+                        self.currentTeam = team
+//                        self.navigationController?.title = String(self.currentGroup?.id)
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.matchTableView.reloadData()
+                        })
+                    }
+                })
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         matchTableView.delegate = self
         matchTableView.dataSource = self
         self.configureView()
-        SharingManager.soap.getMatches(nil, groupID: nil, teamID: currentTeam?.id, endplay: nil) { (matches) -> () in
-            self.matches = matches
-        }
+//        SharingManager.soap.getMatches(nil, groupID: nil, teamID: currentTeam?.id, endplay: nil) { (matches) -> () in
+//            self.matches = matches
+//        }
         changeButton()
         // Do any additional setup after loading the view.
         
-        SharingManager.soap.getTable(nil, playOffId: nil, teamId: self.currentTeam?.id, completionHandler: { (tables) -> () in
-            self.matchTables = tables
-        })
+    }
+    
+    
+    override func viewDidAppear(animated: Bool) {
+        self.setUpMatches()
     }
     
     func favorite() {
@@ -142,13 +160,16 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func changeButton(){
-        if (checkIfFaved(currentTeam!) == true){
-            let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Stop, target: self, action: "unFavorite")
-            self.navigationItem.rightBarButtonItem = button
-        } else{
-            let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "favorite")
-            self.navigationItem.rightBarButtonItem = button
+        if let currentTeam = self.currentTeam{
+            if (checkIfFaved(currentTeam) == true){
+                let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Stop, target: self, action: "unFavorite")
+                self.navigationItem.rightBarButtonItem = button
+            } else{
+                let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "favorite")
+                self.navigationItem.rightBarButtonItem = button
+            }
         }
+       
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -239,15 +260,16 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             return cell
         }
         else if (indexPath.section == 1){
-            let cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as UITableViewCell!
-            cell.textLabel?.text = "\(matches![indexPath.row].homeTeamName!) \(matches![indexPath.row].homegoal!)  - \(matches![indexPath.row].awaygoal!) \(matches![indexPath.row].awayTeamName!) "
-           //legg denne inn også på kommendekamper, smiletegn
-            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-            return cell
-        } else{
-            return UITableViewCell()
             
+            let cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as UITableViewCell!
+            if let match = matches?[indexPath.row]{
+                cell.textLabel?.text = "\(match.homeTeamName!) \(match.homegoal!)  - \(match.awaygoal!) \(match.awayTeamName!) "
+                //legg denne inn også på kommendekamper, smiletegn
+                cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+                return cell
+            }
         }
+        return UITableViewCell()
     }
     
     func configureView(){
@@ -255,7 +277,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             if let label = self.infoLabel {
                 label.text = label.text! + team.name!
             }
-            self.title = team.name
+            self.title = self.currentGroup != nil ? String(self.currentGroup!.name!) : self.currentTeam?.name
         }
     }
     
@@ -293,6 +315,21 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         if ((grandpa!.isKindOfClass(TournamentViewController))){
             (grandpa as! TournamentViewController).testingFunc(TeamsViewController)
         }
-        
+    }
+    
+    func setUpMatches(){
+        if self.currentTeam != nil && self.currentGroup != nil {
+            SharingManager.data.getMatches(nil, groupID: self.currentGroup!.id, teamID: nil, completionHandler: { (matches) -> () in
+                self.matches = matches
+            })
+        }
+        else if currentTeam != nil {
+            SharingManager.data.getMatches(nil, groupID: nil, teamID: self.currentTeam?.id, completionHandler: { (matches) -> () in
+                self.matches = matches
+            })
+        }
+        SharingManager.soap.getTable(nil, playOffId: nil, teamId: self.currentTeam?.id, completionHandler: { (tables) -> () in
+            self.matchTables = tables
+        })
     }
 }
