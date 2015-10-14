@@ -254,7 +254,7 @@
                                     <segue destination="vZW-rq-bEg" kind="embed" id="s4C-1f-xqk"/>
                                 </connections>
                             </containerView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#Skandiacup2015" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xr-H8-hFL">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#Skandiacup2016" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xr-H8-hFL">
                                 <rect key="frame" x="20" y="64" width="560" height="48"/>
                                 <animations/>
                                 <constraints>
@@ -1697,7 +1697,7 @@
         <image name="trophy5" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="i89-pu-2S1"/>
-        <segue reference="wPc-nx-wgx"/>
+        <segue reference="SHZ-1m-rNu"/>
+        <segue reference="s2g-qn-pE1"/>
     </inferredMetricsTieBreakers>
 </document>
