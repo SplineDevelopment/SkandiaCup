@@ -47,16 +47,20 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var currentGroup: MatchGroup? {
         didSet{
-            SharingManager.data.getTeams(nil) { (teams) -> () in
-                teams.forEach({ (team) -> () in
-                    if team.matchGroupId == self.currentGroup?.id{
-                        self.currentTeam = team
-//                        self.navigationController?.title = String(self.currentGroup?.id)
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            self.matchTableView.reloadData()
-                        })
-                    }
-                })
+            SharingManager.data.getTeams(nil) { (teams, error) -> () in
+                if error{
+                    print("error in TeamViewController.CurrentGroup.didSet")
+                } else {
+                    teams.forEach({ (team) -> () in
+                        if team.matchGroupId == self.currentGroup?.id{
+                            self.currentTeam = team
+    //                        self.navigationController?.title = String(self.currentGroup?.id)
+                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                self.matchTableView.reloadData()
+                            })
+                        }
+                    })
+                }
             }
         }
     }
@@ -72,6 +76,14 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         changeButton()
         // Do any additional setup after loading the view.
         
+        SharingManager.data.getTable(nil, playOffId: nil, teamId: self.currentTeam?.id, completionHandler: { (tables, error) -> () in
+            if error {
+                print("error getting matches")
+                // needs to be handled properly
+            } else {
+                self.matchTables = tables
+            }
+        })
     }
     
     
@@ -319,17 +331,30 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func setUpMatches(){
         if self.currentTeam != nil && self.currentGroup != nil {
-            SharingManager.data.getMatches(nil, groupID: self.currentGroup!.id, teamID: nil, completionHandler: { (matches) -> () in
-                self.matches = matches
+            SharingManager.data.getMatches(nil, groupID: self.currentGroup!.id, teamID: nil, endplay: nil, completionHandler: { (matches, error) -> () in
+                if error{
+                    print("Error in Teamviewcontroller.setupMatches")
+                }else{
+                    self.matches = matches
+                }
             })
         }
         else if currentTeam != nil {
-            SharingManager.data.getMatches(nil, groupID: nil, teamID: self.currentTeam?.id, completionHandler: { (matches) -> () in
-                self.matches = matches
+            SharingManager.data.getMatches(nil, groupID: nil, teamID: self.currentTeam?.id, endplay: nil, completionHandler: { (matches, error) -> () in
+                if error{
+                    print("Error in Teamviewcontroller.setupMatches")
+                }else{
+                    self.matches = matches
+                }
             })
         }
-        SharingManager.soap.getTable(nil, playOffId: nil, teamId: self.currentTeam?.id, completionHandler: { (tables) -> () in
-            self.matchTables = tables
+        SharingManager.data.getTable(nil, playOffId: nil, teamId: self.currentTeam?.id, completionHandler: { (tables, error) -> () in
+            if error{
+                print("Error in Teamviewcontroller.setupMatches")
+            }
+            else{
+                self.matchTables = tables
+            }
         })
     }
 }
