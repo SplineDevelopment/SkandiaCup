@@ -9,24 +9,28 @@
 import Foundation
 
 class RSS {
-    private func sendReceive(request: NSMutableURLRequest, completionHandler: (responseData: NSData) -> Void) -> Void {
+    private func sendReceive(request: NSMutableURLRequest, completionHandler: (responseData: NSData?, error: Bool) -> Void) -> Void {
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
             if error != nil {
                 print("error=\(error)")
+                completionHandler(responseData: nil, error: true)
                 return
             }
-            completionHandler(responseData: data!)
+            completionHandler(responseData: data!, error: false)
         }
         task.resume()
     }
     
-    func getRSSfeed(completionHandler: (RSSfeed: [RSSItem]) -> ()) {
+    func getRSSfeed(completionHandler: (RSSfeed: [RSSItem], error: Bool) -> ()) {
         let uri = "http://skandiacup.no/?feed=rss"
         let req = NSMutableURLRequest(URL: NSURL(string: uri)!)
-        self.sendReceive(req) { (responseData) -> Void in
-            let xml = SWXMLHash.parse(responseData)
+        self.sendReceive(req) { (responseData, responseError) -> Void in
+            if responseError || responseData == nil {
+                completionHandler(RSSfeed: [RSSItem](), error: true)
+            }
+            let xml = SWXMLHash.parse(responseData!)
             let feed = RSSmapper.mapRSS(xml)
-            completionHandler(RSSfeed: feed)
+            completionHandler(RSSfeed: feed, error: false)
         }
     }
 }

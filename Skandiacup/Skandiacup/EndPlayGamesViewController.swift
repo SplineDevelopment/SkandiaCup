@@ -21,21 +21,26 @@ class EndPlayGamesViewController: UITableViewController{
         loadMatchClassGames()
     }
     
-    
     func loadMatchClassGames(){
-        SharingManager.soap.getMatches(self.selectedMatchClass!.id, groupID: nil, teamID: nil, endplay: 1) { (matches) -> () in
-            var counter = 0
-            matches.forEach({ (match) -> () in
-                if self.endPlayMatchesInMatchClass[match.sortOrder!] != nil{
-                    self.endPlayMatchesInMatchClass[match.sortOrder!]!.append(match)
-                    counter = counter + 1
-                } else{
-                    self.endPlayMatchesInMatchClass[match.sortOrder!] = [TournamentMatch]()
-                    self.endPlayMatchesInMatchClass[match.sortOrder!]!.append(match)
-                }
-            })
-            self.sortedKeys = Array(self.endPlayMatchesInMatchClass.keys).sort({$0 < $1})
-            self.endPlayGamesTable.reloadData()
+        SharingManager.data.getMatches(self.selectedMatchClass!.id, groupID: nil, teamID: nil, endplay: 1) { (matches, error) -> () in
+            if error {
+                print("error getting matches (endplay)")
+                // needs to be handled properly
+            }
+            else {
+                var counter = 0
+                matches.forEach({ (match) -> () in
+                    if self.endPlayMatchesInMatchClass[match.sortOrder!] != nil{
+                        self.endPlayMatchesInMatchClass[match.sortOrder!]!.append(match)
+                        counter = counter + 1
+                    } else{
+                        self.endPlayMatchesInMatchClass[match.sortOrder!] = [TournamentMatch]()
+                        self.endPlayMatchesInMatchClass[match.sortOrder!]!.append(match)
+                    }
+                })
+                self.sortedKeys = Array(self.endPlayMatchesInMatchClass.keys).sort({$0 < $1})
+                self.endPlayGamesTable.reloadData()
+            }
         }
     }
     

@@ -69,8 +69,8 @@ class CacheImpl : Cache {
         return [MatchClass]()
     }
     
-    func getMatches(classID: Int?, groupID: Int?, teamID: Int?) -> [TournamentMatch] {
-        let m = self.tournamentMatches.getMatches(classID, groupID: groupID, teamID: teamID)
+    func getMatches(classID: Int?, groupID: Int?, teamID: Int?, endplay: Int?) -> [TournamentMatch] {
+        let m = self.tournamentMatches.getMatches(classID, groupID: groupID, teamID: teamID, endplay: endplay)
         var matchesUpToDate = [TournamentMatch]()
         for elem in m {
             if elem.cacheSetTime + TournamentMatch.maxCacheTime > Functions.getCurrentTimeInSeconds() {
@@ -80,20 +80,26 @@ class CacheImpl : Cache {
         return matchesUpToDate
     }
     
-    func getTeams(completionHandler: (teams : [TournamentTeam]) -> ()) {
+    func getTeams(completionHandler: (teams : [TournamentTeam], error: Bool) -> ()) {
         let lastSaved = self.tournamentTeams.cacheSetTime
         let since = Date.getTimeInSoapFormat(lastSaved!)
-        print(since)
-        SharingManager.soap.getTournamentMatchStatus(since) { (status) -> () in
+        SharingManager.soap.getTournamentMatchStatus(since) { (status, responseError) -> () in
+            if responseError {
+                completionHandler(teams: [TournamentTeam](), error: true)
+            }
             if status.needTotalRefresh {
                 print("Need total refresh!!! (teams)")
-                completionHandler(teams: [TournamentTeam]())
+                completionHandler(teams: [TournamentTeam](), error: false)
             } else if status.teamCount != self.tournamentTeams.teams!.count {
                 print("teamCount != cached teams!!! - refreshing (teams)")
-                completionHandler(teams: [TournamentTeam]())
+                completionHandler(teams: [TournamentTeam](), error: false)
             } else {
                 // safe unwrapping here?
-                completionHandler(teams: self.tournamentTeams.teams!)
+                if self.tournamentTeams.teams != nil {
+                    completionHandler(teams: self.tournamentTeams.teams!, error: false)
+                } else {
+                    completionHandler(teams: [TournamentTeam](), error: false)
+                }
             }
         }
     }

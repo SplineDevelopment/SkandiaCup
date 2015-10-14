@@ -31,8 +31,13 @@ class EndPlayViewController: UITableViewController{
 
     
     func loadMatchClassses(){
-        SharingManager.data.getMatchClass { (matchclasses) -> () in
-            self.endPlayMatchClasses = matchclasses
+        SharingManager.data.getMatchClass { (matchclasses, error) -> () in
+            if error {
+                print("error getting match classes")
+                // needs to be handled properly
+            } else {
+                self.endPlayMatchClasses = matchclasses
+            }
         }
     }
     

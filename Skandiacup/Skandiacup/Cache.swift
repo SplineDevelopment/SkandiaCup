@@ -13,8 +13,8 @@ protocol Cache {
     func getTournamentClub(id: [Int]?, countryCode: String?) -> [TournamentClub]
     func getField(arenaID: Int?, fieldID: Int?) -> [Field]
     func getMatchClass(id: [Int]) -> [MatchClass]
-    func getMatches(classID: Int?, groupID: Int?, teamID: Int?) -> [TournamentMatch]
-    func getTeams(completionHandler: (teams : [TournamentTeam]) -> ())
+    func getMatches(classID: Int?, groupID: Int?, teamID: Int?, endplay: Int?) -> [TournamentMatch]
+    func getTeams(completionHandler: (teams : [TournamentTeam], error: Bool) -> ())
     
     func setArena(arenas : [Arena])
     func setTournamentClub(clubs : [TournamentClub])
