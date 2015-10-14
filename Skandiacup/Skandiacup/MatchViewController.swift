@@ -54,6 +54,8 @@ class MatchViewController: UIViewController {
                 // testing needed?
                 if fields.count > 0 {
                     self.fieldLabel.text = fields[0].fieldName
+                } else {
+                    self.fieldLabel.text = "Unknown field"
                 }
             }
         }
