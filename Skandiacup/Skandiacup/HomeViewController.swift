@@ -81,7 +81,6 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         infoView.hidden = true
-        newsView.hidden = false
         sosialView.hidden = true
         // Do any additional setup after loading the view.
         activityIndicator.startAnimating()
