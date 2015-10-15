@@ -77,13 +77,13 @@
             <objects>
                 <tableViewController id="bfX-dn-A9s" userLabel="Endplay matchClasses View Controller" customClass="EndPlayViewController" customModule="Skandiacup" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="rbQ-UE-O7P">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MatchClassTable" id="JUZ-Wo-5uH">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JUZ-Wo-5uH" id="Qb9-FQ-0Lq">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -110,20 +110,20 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="32J-5l-TTn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1798" y="-1153"/>
+            <point key="canvasLocation" x="2454" y="-1161"/>
         </scene>
         <!--Endplay games for matchClass View Controller-->
         <scene sceneID="Noz-ug-FHA">
             <objects>
                 <tableViewController id="8hV-6z-Loq" userLabel="Endplay games for matchClass View Controller" customClass="EndPlayGamesViewController" customModule="Skandiacup" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Nve-ca-hK6">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="endPlayMatchesInMatchClass" id="VmF-zU-NNn">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VmF-zU-NNn" id="C49-b1-dEg">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -133,7 +133,7 @@
                                 <animations/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="headerCell" id="9dI-CZ-LKs" customClass="CustomHeaderCell" customModule="Skandiacup" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="136" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="72" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9dI-CZ-LKs" id="mMy-Uc-lyS">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -175,7 +175,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2J2-nM-hUb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2679" y="-1090"/>
+            <point key="canvasLocation" x="3335" y="-1098"/>
         </scene>
         <!--Tournament-->
         <scene sceneID="wg7-f3-ORb">
@@ -364,13 +364,12 @@
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <animations/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="yV0-gc-hZs" kind="relationship" relationship="viewControllers" id="QXH-f2-4fZ"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
-                        <segue destination="caO-l4-mHs" kind="relationship" relationship="viewControllers" id="uo4-wk-vm2"/>
+                        <segue destination="SUY-3Y-Cup" kind="relationship" relationship="viewControllers" id="fz6-2b-Ui6"/>
                         <segue destination="E4l-bT-3KC" kind="relationship" relationship="viewControllers" id="m4r-rh-lXV"/>
                     </connections>
                 </tabBarController>
@@ -1625,10 +1624,11 @@
         <!--End play-->
         <scene sceneID="dVw-yb-RoS">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eYJ-3J-lMh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="caO-l4-mHs" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="End play" image="trophy5" id="gPl-0n-OON"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jzz-0l-JFi">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Jzz-0l-JFi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
@@ -1638,9 +1638,43 @@
                         <segue destination="bfX-dn-A9s" kind="relationship" relationship="rootViewController" id="4fe-MS-lQS"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eYJ-3J-lMh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1084" y="-1090"/>
+            <point key="canvasLocation" x="1740" y="-1098"/>
+        </scene>
+        <!--End play-->
+        <scene sceneID="i0G-5V-bCV">
+            <objects>
+                <viewController id="SUY-3Y-Cup" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="loR-FG-SaS"/>
+                        <viewControllerLayoutGuide type="bottom" id="laO-ae-QqJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="duF-fU-8BE">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7V-tI-7zt">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                                <connections>
+                                    <segue destination="caO-l4-mHs" kind="embed" id="Yl8-XZ-DST"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="F7V-tI-7zt" secondAttribute="trailing" id="3bW-Sn-IRr"/>
+                            <constraint firstItem="F7V-tI-7zt" firstAttribute="leading" secondItem="duF-fU-8BE" secondAttribute="leading" id="67W-Ct-Mr3"/>
+                            <constraint firstAttribute="bottom" secondItem="F7V-tI-7zt" secondAttribute="bottom" id="ANq-L2-Fqe"/>
+                            <constraint firstItem="F7V-tI-7zt" firstAttribute="top" secondItem="duF-fU-8BE" secondAttribute="top" id="GeT-38-7oa"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="End play" image="trophy5" selectedImage="trophy5" id="jcu-Wa-dYT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JyZ-0j-vYq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="982" y="-1105"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Yiy-Ad-6o9">
@@ -1709,15 +1743,15 @@
             </objects>
             <point key="canvasLocation" x="-930" y="-1654.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Field Diaries View Controller-->
         <scene sceneID="7Bh-BB-Qd8">
             <objects>
-                <viewController id="iCE-bg-K0k" sceneMemberID="viewController">
+                <viewController id="iCE-bg-K0k" customClass="FieldDiariesViewController" customModule="Skandiacup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tRg-Sj-JHb">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="64a-Vj-P5d" userLabel="First Responder" sceneMemberID="firstResponder"/>
