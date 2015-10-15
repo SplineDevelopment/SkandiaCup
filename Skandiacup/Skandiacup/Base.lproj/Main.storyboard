@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -1720,38 +1720,52 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l3e-wD-dEj">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="449"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LadeAnlegget 2016" translatesAutoresizingMaskIntoConstraints="NO" id="hVh-W6-boo">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                                         <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="487" id="QEE-Cv-6C6"/>
+                                        </constraints>
                                     </imageView>
                                 </subviews>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstItem="hVh-W6-boo" firstAttribute="centerX" secondItem="l3e-wD-dEj" secondAttribute="centerX" id="29r-gA-AUi"/>
-                                    <constraint firstItem="hVh-W6-boo" firstAttribute="top" secondItem="l3e-wD-dEj" secondAttribute="top" id="4GT-iU-WRr"/>
-                                    <constraint firstAttribute="trailing" secondItem="hVh-W6-boo" secondAttribute="trailing" id="DzU-b4-VGG"/>
-                                    <constraint firstAttribute="bottom" secondItem="hVh-W6-boo" secondAttribute="bottom" id="LsH-Mh-9kk"/>
-                                    <constraint firstItem="hVh-W6-boo" firstAttribute="leading" secondItem="l3e-wD-dEj" secondAttribute="leading" id="Ova-KF-sAd"/>
-                                    <constraint firstItem="hVh-W6-boo" firstAttribute="centerY" secondItem="l3e-wD-dEj" secondAttribute="centerY" id="Ykz-6j-k0D"/>
+                                    <constraint firstItem="hVh-W6-boo" firstAttribute="top" secondItem="l3e-wD-dEj" secondAttribute="top" id="3FZ-f0-qkm"/>
+                                    <constraint firstItem="hVh-W6-boo" firstAttribute="centerX" secondItem="l3e-wD-dEj" secondAttribute="centerX" id="BqX-pl-y8K"/>
+                                    <constraint firstItem="hVh-W6-boo" firstAttribute="leading" secondItem="l3e-wD-dEj" secondAttribute="leading" id="JRh-dz-o5G"/>
+                                    <constraint firstAttribute="trailing" secondItem="hVh-W6-boo" secondAttribute="trailing" id="avd-Ba-gAZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="hVh-W6-boo" secondAttribute="bottom" constant="-38" id="xTg-A1-bAc"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="bhJ-WT-Num" id="lQH-On-QY9"/>
                                 </connections>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nc6-4o-lM2">
+                                <rect key="frame" x="0.0" y="457" width="600" height="30"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="rotateButtonPress:" destination="bhJ-WT-Num" eventType="touchUpInside" id="bmv-oi-XJt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="l3e-wD-dEj" secondAttribute="bottom" id="mcZ-wc-VAH"/>
-                            <constraint firstAttribute="trailing" secondItem="l3e-wD-dEj" secondAttribute="trailing" id="pMI-Vw-BpI"/>
-                            <constraint firstItem="l3e-wD-dEj" firstAttribute="leading" secondItem="Z50-6d-sSm" secondAttribute="leading" id="vrM-QM-FLk"/>
-                            <constraint firstItem="l3e-wD-dEj" firstAttribute="top" secondItem="Z50-6d-sSm" secondAttribute="top" id="yFr-h3-TMe"/>
+                            <constraint firstItem="l3e-wD-dEj" firstAttribute="top" secondItem="x08-Bu-pRc" secondAttribute="bottom" id="6Zi-hN-0u8"/>
+                            <constraint firstItem="l3e-wD-dEj" firstAttribute="leading" secondItem="Nc6-4o-lM2" secondAttribute="leading" id="Aif-bg-Llk"/>
+                            <constraint firstItem="Nc6-4o-lM2" firstAttribute="bottom" secondItem="t3U-v1-eku" secondAttribute="top" id="BfW-dK-9Uc"/>
+                            <constraint firstItem="Nc6-4o-lM2" firstAttribute="top" secondItem="l3e-wD-dEj" secondAttribute="bottom" constant="8" symbolic="YES" id="IXq-E5-mkv"/>
+                            <constraint firstItem="l3e-wD-dEj" firstAttribute="trailing" secondItem="Nc6-4o-lM2" secondAttribute="trailing" id="bI2-b3-BtJ"/>
+                            <constraint firstAttribute="trailing" secondItem="Nc6-4o-lM2" secondAttribute="trailing" id="jAl-WI-GBj"/>
+                            <constraint firstItem="Nc6-4o-lM2" firstAttribute="leading" secondItem="Z50-6d-sSm" secondAttribute="leading" id="zBK-az-dg8"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="hVh-W6-boo" id="ZI4-bo-rGr"/>
+                        <outlet property="rotateButton" destination="Nc6-4o-lM2" id="Tbj-tx-YQx"/>
                         <outlet property="scrollView" destination="l3e-wD-dEj" id="0Kj-oh-R2h"/>
                     </connections>
                 </viewController>
