@@ -70,7 +70,7 @@ class EndPlayGamesViewController: UITableViewController{
             if match.homegoal != nil{
                 cell.textLabel?.text = "\(match.homeTeamName!) \(match.homegoal!)  - \(match.awaygoal!) \(match.awayTeamName!) "
             }else{
-                cell.textLabel?.text = "\(match.homeTeamName!) - \(match.awayTeamName!) "
+                cell.textLabel?.text = "Kamp \(match.matchno!): \(match.homeTeamText!) - \(match.awayTeamText!) "
             }
         }
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator

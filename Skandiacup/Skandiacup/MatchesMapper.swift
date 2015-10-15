@@ -71,12 +71,12 @@ class MatchesMapper: NSObject{
                 tm.matchComment = elem["matchcomment"].element?.text
             }
             
-            if elem["hometeamnext"].element?.text != nil{
-                tm.homeTeamText = elem["hometeamnext"].element?.text
+            if elem["hometeamtext"].element?.text != nil{
+                tm.homeTeamText = elem["hometeamtext"].element?.text
             }
             
-            if elem["awayteamnext"].element?.text != nil{
-                tm.awayTeamText = elem["awayteamnext"].element?.text
+            if elem["awayteamtext"].element?.text != nil{
+                tm.awayTeamText = elem["awayteamtext"].element?.text
             }
             if elem["homegoal"].element?.text != nil{
                 tm.homegoal = elem["homegoal"].element?.text
