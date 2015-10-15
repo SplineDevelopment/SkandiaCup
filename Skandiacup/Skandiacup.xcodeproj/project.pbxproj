@@ -38,6 +38,7 @@
 		3CB9B3241B9D8F1400B48037 /* DateExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB9B3231B9D8F1400B48037 /* DateExtention.swift */; settings = {ASSET_TAGS = (); }; };
 		3CC5530D1B98C2CA008FA445 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC5530C1B98C2CA008FA445 /* HomeViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		3CCE5A201BCF9A970068A25D /* FieldOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCE5A1F1BCF9A970068A25D /* FieldOverviewViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		3CCE5A231BCFA84F0068A25D /* FieldDiariesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCE5A221BCFA84F0068A25D /* FieldDiariesViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		3CCF4EE71BC6B9990068AF03 /* FieldMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF4EE61BC6B9990068AF03 /* FieldMapViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		3CDB8B331B99922A00439028 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDB8B321B99922A00439028 /* InfoViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		3CDB8B351B99923200439028 /* SosialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDB8B341B99923200439028 /* SosialViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -134,6 +135,7 @@
 		3CB9B3231B9D8F1400B48037 /* DateExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtention.swift; sourceTree = "<group>"; };
 		3CC5530C1B98C2CA008FA445 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3CCE5A1F1BCF9A970068A25D /* FieldOverviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldOverviewViewController.swift; sourceTree = "<group>"; };
+		3CCE5A221BCFA84F0068A25D /* FieldDiariesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldDiariesViewController.swift; sourceTree = "<group>"; };
 		3CCF4EE61BC6B9990068AF03 /* FieldMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldMapViewController.swift; sourceTree = "<group>"; };
 		3CDB8B321B99922A00439028 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		3CDB8B341B99923200439028 /* SosialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SosialViewController.swift; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 			children = (
 				3CCE5A1F1BCF9A970068A25D /* FieldOverviewViewController.swift */,
 				3CCF4EE61BC6B9990068AF03 /* FieldMapViewController.swift */,
+				3CCE5A221BCFA84F0068A25D /* FieldDiariesViewController.swift */,
 			);
 			name = FieldOverViewContainer;
 			sourceTree = "<group>";
@@ -638,6 +641,7 @@
 				3C803E5E1B9856E8001A51AA /* SoapImpl.swift in Sources */,
 				D5EC2E931B9B5CBC00CBA235 /* TournamentTeamMapper.swift in Sources */,
 				729AAA691BA1BEC300E8B6E9 /* FavoriteTeams.swift in Sources */,
+				3CCE5A231BCFA84F0068A25D /* FieldDiariesViewController.swift in Sources */,
 				D5EAE5481B99C55100AA3AF1 /* FieldsMapper.swift in Sources */,
 				236B0C3B1B987C6700CDEC89 /* Generator.swift in Sources */,
 				D5EAE54A1B99C82700AA3AF1 /* MatchTablesMapper.swift in Sources */,
