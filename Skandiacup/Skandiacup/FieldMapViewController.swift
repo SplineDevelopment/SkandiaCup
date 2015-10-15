@@ -9,8 +9,25 @@
 import UIKit
 
 class FieldMapViewController: UIViewController, UIScrollViewDelegate {
+    var isZoomedIn = false
     
     @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBOutlet weak var rotateButton: UIButton!
+    
+    var lastrotation = 0
+    
+    @IBAction func rotateButtonPress(sender: AnyObject) {
+        UIView.animateWithDuration(0.5, animations: {
+            if self.lastrotation == 0 {
+                self.lastrotation = 90
+                self.imageView.transform = CGAffineTransformMakeRotation((270 * CGFloat(M_PI)) / 180.0)
+            } else {
+                self.lastrotation = 0
+                self.imageView.transform = CGAffineTransformMakeRotation(0)
+            }
+        })
+    }
     
     @IBOutlet weak var imageView: UIImageView!
     
@@ -19,7 +36,7 @@ class FieldMapViewController: UIViewController, UIScrollViewDelegate {
     
         self.scrollView.maximumZoomScale = 6.0
         
-        var doubleTapRecognizer = UITapGestureRecognizer(target: self, action: "scrollViewDoubleTapped:")
+        let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: "scrollViewDoubleTapped:")
         doubleTapRecognizer.numberOfTapsRequired = 2
         doubleTapRecognizer.numberOfTouchesRequired = 1
         scrollView.addGestureRecognizer(doubleTapRecognizer)
@@ -34,7 +51,17 @@ class FieldMapViewController: UIViewController, UIScrollViewDelegate {
         let pointInView = recognizer.locationInView(imageView)
         
         // 2
-        var newZoomScale = scrollView.zoomScale * 2
+        
+        var newZoomScale = scrollView.zoomScale
+        
+        if (!isZoomedIn){
+            newZoomScale = scrollView.zoomScale * 2
+            isZoomedIn = true
+        } else {
+            newZoomScale = scrollView.zoomScale / 2
+            isZoomedIn = false
+        }
+        
         newZoomScale = min(newZoomScale, scrollView.maximumZoomScale)
         
         // 3
