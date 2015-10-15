@@ -15,6 +15,7 @@ class EndPlayGamesViewController: UITableViewController{
     
     var endPlayMatchesInMatchClass: [String: [TournamentMatch]] = [String: [TournamentMatch]]()
     var sortedKeys: [String] = [String]()
+    var matchHeaders: [String: String] = ["1.0000": "Finale", "2.0000": "Semifinaler", "4.0000": "Kvartfinaler", "8.0000": "Åttendedelsfinaler", "16.0000": "Sekstensdelsfinaler", "32.0000": "32-delsfinale", "64.0000": "64-delsfinale"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +58,7 @@ class EndPlayGamesViewController: UITableViewController{
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = tableView.dequeueReusableCellWithIdentifier("headerCell") as! CustomHeaderCell!
-        cell.headerLabel.text = sortedKeys[section]
+        cell.headerLabel.text = matchHeaders[sortedKeys[section]]
         return cell
     }
     
