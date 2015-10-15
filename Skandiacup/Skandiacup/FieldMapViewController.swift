@@ -8,6 +8,50 @@
 
 import UIKit
 
+extension UIImage {
+    public func imageRotatedByDegrees(degrees: CGFloat, flip: Bool) -> UIImage {
+        let radiansToDegrees: (CGFloat) -> CGFloat = {
+            return $0 * (180.0 / CGFloat(M_PI))
+        }
+        let degreesToRadians: (CGFloat) -> CGFloat = {
+            return $0 / 180.0 * CGFloat(M_PI)
+        }
+        
+        // calculate the size of the rotated view's containing box for our drawing space
+        let rotatedViewBox = UIView(frame: CGRect(origin: CGPointZero, size: size))
+        let t = CGAffineTransformMakeRotation(degreesToRadians(degrees));
+        rotatedViewBox.transform = t
+        let rotatedSize = rotatedViewBox.frame.size
+        
+        // Create the bitmap context
+        UIGraphicsBeginImageContext(rotatedSize)
+        let bitmap = UIGraphicsGetCurrentContext()
+        
+        // Move the origin to the middle of the image so we will rotate and scale around the center.
+        CGContextTranslateCTM(bitmap, rotatedSize.width / 2.0, rotatedSize.height / 2.0);
+        
+        //   // Rotate the image context
+        CGContextRotateCTM(bitmap, degreesToRadians(degrees));
+        
+        // Now, draw the rotated/scaled image into the context
+        var yFlip: CGFloat
+        
+        if(flip){
+            yFlip = CGFloat(-1.0)
+        } else {
+            yFlip = CGFloat(1.0)
+        }
+        
+        CGContextScaleCTM(bitmap, yFlip, -1.0)
+        CGContextDrawImage(bitmap, CGRectMake(-size.width / 2, -size.height / 2, size.width, size.height), CGImage)
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
+}
+
 class FieldMapViewController: UIViewController, UIScrollViewDelegate {
     var isZoomedIn = false
     
@@ -15,27 +59,32 @@ class FieldMapViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var rotateButton: UIButton!
     
-    var lastrotation = 0
+    var rotated = false
     
     @IBAction func rotateButtonPress(sender: AnyObject) {
-        UIView.animateWithDuration(0.5, animations: {
-            if self.lastrotation == 0 {
-                self.lastrotation = 90
-                self.imageView.transform = CGAffineTransformMakeRotation((270 * CGFloat(M_PI)) / 180.0)
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            if !self.rotated {
+                self.scrollView.transform = CGAffineTransformMakeRotation((270 * CGFloat(M_PI)) / 180.0)
             } else {
-                self.lastrotation = 0
-                self.imageView.transform = CGAffineTransformMakeRotation(0)
+                self.scrollView.transform = CGAffineTransformMakeRotation((-270 * CGFloat(M_PI)) / 180.0)
             }
-        })
+            }) { (Bool) -> Void in
+                if !self.rotated {
+                    self.scrollView.transform = CGAffineTransformMakeRotation((0 * CGFloat(M_PI)) / 180.0)
+                    self.imageView.image = self.imageView.image?.imageRotatedByDegrees(270, flip: false)
+                } else {
+                    self.scrollView.transform = CGAffineTransformMakeRotation((0 * CGFloat(M_PI)) / 180.0)
+                    self.imageView.image = self.imageView.image?.imageRotatedByDegrees(-270, flip: false)
+                }
+                self.rotated = !self.rotated
+        }
     }
     
     @IBOutlet weak var imageView: UIImageView!
     
     override func viewDidLoad() {
         self.scrollView.minimumZoomScale = 1.0
-    
         self.scrollView.maximumZoomScale = 6.0
-        
         let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: "scrollViewDoubleTapped:")
         doubleTapRecognizer.numberOfTapsRequired = 2
         doubleTapRecognizer.numberOfTouchesRequired = 1
@@ -47,11 +96,7 @@ class FieldMapViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func scrollViewDoubleTapped(recognizer: UITapGestureRecognizer) {
-        // 1
         let pointInView = recognizer.locationInView(imageView)
-        
-        // 2
-        
         var newZoomScale = scrollView.zoomScale
         
         if (!isZoomedIn){
@@ -63,17 +108,13 @@ class FieldMapViewController: UIViewController, UIScrollViewDelegate {
         }
         
         newZoomScale = min(newZoomScale, scrollView.maximumZoomScale)
-        
-        // 3
         let scrollViewSize = scrollView.bounds.size
         let w = scrollViewSize.width / newZoomScale
         let h = scrollViewSize.height / newZoomScale
         let x = pointInView.x - (w / 2.0)
         let y = pointInView.y - (h / 2.0)
-        
+
         let rectToZoomTo = CGRectMake(x, y, w, h);
-        
-        // 4
         scrollView.zoomToRect(rectToZoomTo, animated: true)
     }
 }
