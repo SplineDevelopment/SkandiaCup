@@ -17,6 +17,13 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     var infoSectionIsSet = false
     var noUpcomming: Bool = false
     var teams = [String]()
+    
+    //Loaded OK?
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    var matchesLoadedOK = false
+    var tableSortedOK = false
+    var findTeamsLoadedOK = false
+    
     var matchTable: MatchTable?
     var matchTables: [MatchTable]?{
         didSet{
@@ -28,6 +35,9 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.matchTable?.rows?.sortInPlace({$0.position < $1.position})
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.matchTableView.reloadData()
+                self.tableSortedOK = true
+                self.isItOkToShowMatches()
+
             })
         }
     }
@@ -77,6 +87,8 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     override func viewWillAppear(animated: Bool) {
+        self.matchTableView.hidden = true
+        self.activityIndicator.startAnimating()
         changeButton()
     }
     
@@ -371,6 +383,9 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 })
             }
             self.teams = tm
+            
+            self.findTeamsLoadedOK = true
+            self.isItOkToShowMatches()
         }
     }
     
@@ -407,6 +422,8 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                         }
                     })
                 }
+                self.matchesLoadedOK = true
+                self.isItOkToShowMatches()
             })
         }
         else if currentTeam != nil {
@@ -423,9 +440,31 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                             self.matchTables = tables
                         }
                     })
-                }
-                
+                    
+             }
+                self.matchesLoadedOK = true
+                self.isItOkToShowMatches()
             })
         }
     }
+    
+    func isItOkToShowMatches(){
+        if (findTeamsLoadedOK && matchesLoadedOK && tableSortedOK){
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                //self.matchTableView.reloadData()
+                self.matchTableView.hidden = false
+                self.activityIndicator.stopAnimating()
+                print("jepp")
+            })
+            
+            
+
+        }else {
+            print("matchesLoadedOK = \(matchesLoadedOK) ")
+            print("tableSortedOK = \(tableSortedOK) ")
+            print("findTeamsLoadedOK = \(findTeamsLoadedOK) ")
+            print("nop")
+        }
+    }
+    
 }
