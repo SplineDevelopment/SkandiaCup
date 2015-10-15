@@ -9,6 +9,7 @@
 import UIKit
 
 class FieldMapViewController: UIViewController, UIScrollViewDelegate {
+    var isZoomedIn = false
     
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -34,7 +35,17 @@ class FieldMapViewController: UIViewController, UIScrollViewDelegate {
         let pointInView = recognizer.locationInView(imageView)
         
         // 2
-        var newZoomScale = scrollView.zoomScale * 2
+        
+        var newZoomScale = scrollView.zoomScale
+        
+        if (!isZoomedIn){
+            newZoomScale = scrollView.zoomScale * 2
+            isZoomedIn = true
+        } else {
+            newZoomScale = scrollView.zoomScale / 2
+            isZoomedIn = false
+        }
+        
         newZoomScale = min(newZoomScale, scrollView.maximumZoomScale)
         
         // 3
