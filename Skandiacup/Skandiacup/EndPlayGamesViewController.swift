@@ -69,7 +69,12 @@ class EndPlayGamesViewController: UITableViewController{
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UITableViewCell!
         if let match = endPlayMatchesInMatchClass[sortedKeys[indexPath.section]]?[indexPath.row]{
             if match.homegoal != nil{
-                cell.textLabel?.text = "\(match.homeTeamName!) \(match.homegoal!)  - \(match.awaygoal!) \(match.awayTeamName!) "
+                if match.sortOrder != sortedKeys.last{
+                    let playedMatch = getMatchTeamNames(match)
+                    cell.textLabel?.text = "\(playedMatch.homeTeamName!) \(match.homegoal!)  - \(match.awaygoal!) \(playedMatch.awayTeamName!)"
+                } else {
+                    cell.textLabel?.text = "\(match.homeTeamName!) \(match.homegoal!)  - \(match.awaygoal!)"
+                }
             }else{
                 cell.textLabel?.text = "Kamp \(match.matchno!): \(match.homeTeamText!) - \(match.awayTeamText!) "
             }
@@ -77,5 +82,47 @@ class EndPlayGamesViewController: UITableViewController{
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell
     }
+    
+    func getWinnerFromMatch(match: TournamentMatch) -> String{
+        let team1 = match.homeTeamName
+        let team2 = match.awayTeamName
+        
+        if team1 == "Unknown" && team2 == "Unknown"{
+            let id1 = match.homeTeamText!.characters.split{$0 == " "}.map(String.init)[1]
+            let id2 = match.awayTeamText!.characters.split{$0 == " "}.map(String.init)[1]
+            let winnerFromMatch = match.winner == "H" ? id1 : id2
+            
+            for endplaymatch in endPlayMatchesInMatchClass[sortedKeys[sortedKeys.indexOf(match.sortOrder!)!+1]]!{
+                if endplaymatch.matchno == winnerFromMatch {
+                    return getWinnerFromMatch(endplaymatch)
+                }
+            }
+        } else {
+            return (match.winner == "H" ? match.homeTeamName : match.awayTeamName)!
+        }
+        return ""
+    }
+    
+    func getMatchTeamNames(match: TournamentMatch) -> TournamentMatch {
+        var returnMatch = TournamentMatch()
+        let matchWinner = getWinnerFromMatch(match)
+        var matchLoser = ""
+        
+        var losermatch = TournamentMatch()
+        
+        let id1 = match.homeTeamText!.characters.split{$0 == " "}.map(String.init)[1]
+        let id2 = match.awayTeamText!.characters.split{$0 == " "}.map(String.init)[1]
+        
+        let losermatchid = match.winner != "H" ? id1 : id2
+        
+        for endplaymatch in endPlayMatchesInMatchClass[sortedKeys[sortedKeys.indexOf(match.sortOrder!)!+1]]!{
+            if losermatchid == String(endplaymatch.matchno!) {
+                losermatch = endplaymatch
+            }
+        }
+        matchLoser = getWinnerFromMatch(losermatch)
+        returnMatch.homeTeamName = match.winner == "H" ? matchWinner : matchLoser
+        returnMatch.awayTeamName = match.winner != "H" ? matchWinner : matchLoser
+        return returnMatch
+    }
 }
-
