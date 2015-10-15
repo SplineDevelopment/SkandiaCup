@@ -62,6 +62,7 @@
 		D52496601B9876F4001D3577 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D524965F1B9876F4001D3577 /* GroupsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D52496621B988364001D3577 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52496611B988364001D3577 /* TeamViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D52496641B988546001D3577 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52496631B988546001D3577 /* GroupViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		D53941B91BCFF89D0048854E /* FieldItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53941B81BCFF89D0048854E /* FieldItemViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D54FB67A1BB3F2BE007FCCAF /* filterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FB6791BB3F2BE007FCCAF /* filterView.swift */; settings = {ASSET_TAGS = (); }; };
 		D54FB67C1BB3F2F3007FCCAF /* filterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D54FB67B1BB3F2F3007FCCAF /* filterView.xib */; settings = {ASSET_TAGS = (); }; };
 		D55D9CF61B99949B00DD01E1 /* SWXMLHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55D9CF51B99949B00DD01E1 /* SWXMLHash.swift */; settings = {ASSET_TAGS = (); }; };
@@ -165,6 +166,7 @@
 		D524965F1B9876F4001D3577 /* GroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		D52496611B988364001D3577 /* TeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
 		D52496631B988546001D3577 /* GroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
+		D53941B81BCFF89D0048854E /* FieldItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldItemViewController.swift; sourceTree = "<group>"; };
 		D54FB6791BB3F2BE007FCCAF /* filterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = filterView.swift; path = ../filterView.swift; sourceTree = "<group>"; };
 		D54FB67B1BB3F2F3007FCCAF /* filterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = filterView.xib; path = ../filterView.xib; sourceTree = "<group>"; };
 		D55D9CF51B99949B00DD01E1 /* SWXMLHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWXMLHash.swift; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 				3CCE5A1F1BCF9A970068A25D /* FieldOverviewViewController.swift */,
 				3CCF4EE61BC6B9990068AF03 /* FieldMapViewController.swift */,
 				3CCE5A221BCFA84F0068A25D /* FieldDiariesViewController.swift */,
+				D53941B81BCFF89D0048854E /* FieldItemViewController.swift */,
 			);
 			name = FieldOverViewContainer;
 			sourceTree = "<group>";
@@ -633,6 +636,7 @@
 				2352AE531BBAB04E00244C6B /* RSSItem.swift in Sources */,
 				D5FD4ECB1B94B8CA009B53FC /* FavoritesViewController.swift in Sources */,
 				2388C1511B99A73B00637F6E /* ArenaMapper.swift in Sources */,
+				D53941B91BCFF89D0048854E /* FieldItemViewController.swift in Sources */,
 				D5774F451B999D3B002F9451 /* MatchesMapper.swift in Sources */,
 				3C803E5A1B98550D001A51AA /* Config.swift in Sources */,
 				3C803E561B9852EF001A51AA /* SoapMock.swift in Sources */,
