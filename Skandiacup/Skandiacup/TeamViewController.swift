@@ -172,10 +172,14 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         if let currentTeam = self.currentTeam{
             if (checkIfFaved(currentTeam) == true){
-                let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Stop, target: self, action: "unFavorite")
+             //   let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Stop, target: self, action: "unFavorite")
+                let button = UIBarButtonItem(image: UIImage(named: "Star Filled-32-2"), style: .Plain, target: self, action: "unFavorite")
+                button.tintColor = UIColor(red:0.95, green:0.77, blue:0.06, alpha:1.0)
                 self.navigationItem.rightBarButtonItem = button
             } else{
-                let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "favorite")
+                //let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "favorite")
+                let button = UIBarButtonItem(image: UIImage(named: "Star-32-2"), style: .Plain , target: self, action: "favorite")
+                button.tintColor = UIColor(red:0.95, green:0.77, blue:0.06, alpha:1.0)
                 self.navigationItem.rightBarButtonItem = button
             }
         }
