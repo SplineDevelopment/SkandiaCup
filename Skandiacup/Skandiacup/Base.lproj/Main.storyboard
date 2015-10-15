@@ -1807,7 +1807,7 @@
         <image name="LadeAnlegget 2016" width="1753" height="1240"/>
         <image name="TestMatchView" width="640" height="920"/>
         <image name="football28" width="64" height="64"/>
-        <image name="footballField69" width="64" height="64"/>
+        <image name="footballField69" width="176" height="132"/>
         <image name="gray" width="640" height="920"/>
         <image name="news29" width="64" height="64"/>
         <image name="newsheader" width="830" height="204"/>
