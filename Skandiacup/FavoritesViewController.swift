@@ -15,13 +15,17 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     var matchesDict: [String:[TournamentMatch]] = [String:[TournamentMatch]]()
     @IBOutlet weak var favoriteMatchCell: UILabel!
     @IBOutlet weak var notYetFavView: UIView!
+    var isLoaded: Bool = false
+    @IBOutlet weak var actInd: UIActivityIndicatorView!
     @IBOutlet weak var favoriteHeaderCell: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         favoriteTableView.delegate = self
         favoriteTableView.dataSource = self
         favorites = getFavoritedTeams()
-        
+        favoriteTableView.hidden = true
         favorites?.forEach({ (team) -> () in
             SharingManager.data.getMatches(nil, groupID: nil, teamID: team.id, endplay: nil, completionHandler: { (matches, error) -> () in
                 if error {
@@ -37,6 +41,10 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         })
     }
     
+    override func viewWillAppear(animated: Bool) {
+        self.notYetFavView.hidden=true
+    }
+    
     
     override func viewDidAppear(animated: Bool) {
         favorites = getFavoritedTeams()
@@ -48,20 +56,22 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
                 } else {
                     self.matchesDict[team.name!] = matches
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.actInd.stopAnimating()
+                        self.isLoaded = true
+                        self.favoriteTableView.hidden = false
                         self.favoriteTableView.reloadData()
                     })
                 }
             })
         })
-        
-        
-        favoriteTableView.reloadData()
         if (favorites == nil){
             self.favoriteTableView.hidden = true
             self.notYetFavView.hidden=false
         } else {
-            self.favoriteTableView.hidden = false
-            self.notYetFavView.hidden=true
+            if(!isLoaded){
+                favoriteTableView.hidden = true
+                actInd.startAnimating()
+            }
         }
     }
 
