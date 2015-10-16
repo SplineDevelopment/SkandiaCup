@@ -124,8 +124,22 @@
                         <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="M7f-LG-gr0" userLabel="Segment Control">
+                                <rect key="frame" x="240" y="8" width="121" height="29"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="121" id="bHg-j4-uwd"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="A"/>
+                                    <segment title="B"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentChanged:" destination="VfK-PH-BKv" eventType="valueChanged" id="eXe-eG-5IF"/>
+                                </connections>
+                            </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8RB-HQ-wF8">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="578"/>
+                                <rect key="frame" x="0.0" y="46" width="600" height="510"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -138,6 +152,9 @@
                                             <animations/>
                                         </tableViewCellContentView>
                                         <animations/>
+                                        <connections>
+                                            <segue destination="idp-YS-O2B" kind="show" identifier="endplayMatchToMatchView" id="AOd-Ai-r1V"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="headerCell" id="l6M-Yz-KP6" customClass="CustomHeaderCell" customModule="Skandiacup" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="600" height="44"/>
@@ -169,30 +186,16 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="M7f-LG-gr0" userLabel="Segment Control">
-                                <rect key="frame" x="240" y="8" width="121" height="29"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="121" id="Psc-65-vTA"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="A"/>
-                                    <segment title="B"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segmentChanged:" destination="VfK-PH-BKv" eventType="valueChanged" id="eXe-eG-5IF"/>
-                                </connections>
-                            </segmentedControl>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="M7f-LG-gr0" firstAttribute="top" secondItem="81s-0Z-As8" secondAttribute="bottom" constant="8" symbolic="YES" id="1wB-yk-wXC"/>
-                            <constraint firstAttribute="trailing" secondItem="8RB-HQ-wF8" secondAttribute="trailing" id="46z-Df-I27"/>
-                            <constraint firstItem="8RB-HQ-wF8" firstAttribute="leading" secondItem="IAm-dY-AWD" secondAttribute="leading" id="BJ6-VG-b3B"/>
-                            <constraint firstItem="8RB-HQ-wF8" firstAttribute="top" secondItem="81s-0Z-As8" secondAttribute="bottom" id="Jvj-vD-xb0"/>
-                            <constraint firstItem="8RB-HQ-wF8" firstAttribute="centerX" secondItem="M7f-LG-gr0" secondAttribute="centerX" id="ciY-wm-q46"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="8RB-HQ-wF8" secondAttribute="bottom" constant="-22" id="suS-fn-MfT"/>
+                            <constraint firstItem="8RB-HQ-wF8" firstAttribute="top" secondItem="M7f-LG-gr0" secondAttribute="bottom" constant="10" id="42V-Xt-bLc"/>
+                            <constraint firstItem="M7f-LG-gr0" firstAttribute="centerX" secondItem="8RB-HQ-wF8" secondAttribute="centerX" id="5nh-kP-51t"/>
+                            <constraint firstItem="8RB-HQ-wF8" firstAttribute="bottom" secondItem="z6S-93-h3Z" secondAttribute="top" id="Nuh-6B-8MX"/>
+                            <constraint firstAttribute="trailing" secondItem="8RB-HQ-wF8" secondAttribute="trailing" id="Xqe-At-ga2"/>
+                            <constraint firstItem="8RB-HQ-wF8" firstAttribute="leading" secondItem="IAm-dY-AWD" secondAttribute="leading" id="oKl-40-bdN"/>
+                            <constraint firstItem="M7f-LG-gr0" firstAttribute="top" secondItem="81s-0Z-As8" secondAttribute="bottom" constant="8" symbolic="YES" id="zXr-f1-leT"/>
                         </constraints>
                     </view>
                     <connections>
@@ -787,11 +790,11 @@
                         <viewControllerLayoutGuide type="bottom" id="zhO-p6-vDd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="FQ9-CF-mcY">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                        <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TestMatchView" translatesAutoresizingMaskIntoConstraints="NO" id="Sed-QG-6bN">
-                                <rect key="frame" x="0.0" y="7" width="600" height="480"/>
+                                <rect key="frame" x="0.0" y="7" width="600" height="549"/>
                                 <animations/>
                                 <color key="tintColor" white="0.0" alpha="0.42999999999999999" colorSpace="calibratedWhite"/>
                             </imageView>
@@ -841,7 +844,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iCq-22-wJQ">
-                                        <rect key="frame" x="20" y="73" width="560" height="18"/>
+                                        <rect key="frame" x="20" y="73" width="560" height="17.5"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                         <color key="textColor" red="0.9882352941176471" green="0.9882352941176471" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
@@ -868,7 +871,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ynB-9S-A3I">
-                                        <rect key="frame" x="20" y="98" width="560" height="18"/>
+                                        <rect key="frame" x="20" y="98" width="560" height="17.5"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                         <color key="textColor" red="0.9882352941176471" green="0.9882352941176471" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
@@ -944,7 +947,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Olf-rK-hXZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1356" y="2582.5"/>
+            <point key="canvasLocation" x="1312" y="2594"/>
         </scene>
         <!--teamView-->
         <scene sceneID="l84-4Y-fBT">
@@ -1948,7 +1951,7 @@
         <image name="trophy5" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="AOd-Ai-r1V"/>
         <segue reference="TGL-NV-dxn"/>
-        <segue reference="OJv-TB-YQj"/>
     </inferredMetricsTieBreakers>
 </document>

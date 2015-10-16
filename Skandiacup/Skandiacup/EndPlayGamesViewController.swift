@@ -23,6 +23,7 @@ class EndPlayGamesViewController: UIViewController, UITableViewDataSource, UITab
         super.viewDidLoad()
         self.endPlayGamesTable.delegate = self
         self.endPlayGamesTable.dataSource = self
+//        self.endPlayGamesTable.tableHeaderView?.layer.frame.size.height = 0
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -32,6 +33,7 @@ class EndPlayGamesViewController: UIViewController, UITableViewDataSource, UITab
         if segmentControl.selectedSegmentIndex == 1 {
             self.loadMatchClassGames(2)
         }
+        self.endPlayGamesTable.tableHeaderView = UIView()
     }
     
     
@@ -102,12 +104,14 @@ class EndPlayGamesViewController: UIViewController, UITableViewDataSource, UITab
                 
                 if match.sortOrder != sortedKeys.last{
                     let playedMatch = getMatchTeamNames(match)
+                    endPlayMatchesInMatchClass[sortedKeys[indexPath.section]]![indexPath.row].homeTeamName = playedMatch.homeTeamName
+                    endPlayMatchesInMatchClass[sortedKeys[indexPath.section]]![indexPath.row].awayTeamName = playedMatch.awayTeamName
                     cell.textLabel?.text = "\(playedMatch.homeTeamName!) \(match.homegoal!)  - \(match.awaygoal!) \(playedMatch.awayTeamName!)"
                 } else {
                     cell.textLabel?.text = "\(match.homeTeamName!) \(match.homegoal!)  - \(match.awaygoal!) \(match.awayTeamName!)"
                 }
                 
-
+                
                 /*
                  * This line is for when the endplaymatches ARE properly populated with teamnames. 
                  * Comment this line, and uncomment the above snippet if they are not.
@@ -164,5 +168,15 @@ class EndPlayGamesViewController: UIViewController, UITableViewDataSource, UITab
         returnMatch.homeTeamName = match.winner == "H" ? matchWinner : matchLoser
         returnMatch.awayTeamName = match.winner != "H" ? matchWinner : matchLoser
         return returnMatch
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "endplayMatchToMatchView" {
+            if let indexPath = self.endPlayGamesTable.indexPathForSelectedRow {
+                if let match = endPlayMatchesInMatchClass[sortedKeys[indexPath.section]]?[indexPath.row] {
+                    (segue.destinationViewController as! MatchViewController).selectedMatch = match
+                }
+            }
+        }
     }
 }
