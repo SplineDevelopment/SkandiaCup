@@ -53,6 +53,7 @@ extension UIImage {
 }
 
 class FieldMapViewController: UIViewController, UIScrollViewDelegate {
+    
     var isZoomedIn = false
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -61,7 +62,7 @@ class FieldMapViewController: UIViewController, UIScrollViewDelegate {
     
     var rotated = false
     
-    @IBAction func rotateButtonPress(sender: AnyObject) {
+    func animate() {
         UIView.animateWithDuration(0.5, animations: { () -> Void in
             if !self.rotated {
                 self.scrollView.transform = CGAffineTransformMakeRotation((270 * CGFloat(M_PI)) / 180.0)
@@ -78,6 +79,10 @@ class FieldMapViewController: UIViewController, UIScrollViewDelegate {
                 }
                 self.rotated = !self.rotated
         }
+    }
+    
+    @IBAction func rotateButtonPress(sender: AnyObject) {
+        animate()
     }
     
     @IBOutlet weak var imageView: UIImageView!
