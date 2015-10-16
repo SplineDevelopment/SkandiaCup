@@ -18,6 +18,8 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     var noUpcomming: Bool = false
     var teams = [String]()
     
+    var start_time : Double?
+    
     //Loaded OK?
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var matchesLoadedOK = false
@@ -25,34 +27,28 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     var findTeamsLoadedOK = false
     
     var matchTable: MatchTable?
+    
     var matchTables: [MatchTable]?{
         didSet{
             self.matchTables?.forEach({ (table) -> () in
                 if Int(table.header!.matchGroupId!)! == self.currentTeam!.matchGroupId{
                     self.matchTable = table
+                    return
                 }
             })
             self.matchTable?.rows?.sortInPlace({$0.position < $1.position})
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.matchTableView.reloadData()
-                self.tableSortedOK = true
-                self.isItOkToShowMatches()
-
-            })
+            self.tableSortedOK = true
+            self.isItOkToShowMatches()
         }
     }
     
-    var matches: [TournamentMatch]? {
-        didSet{
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.matchTableView.reloadData()
-            })
-        }
-    }
+    var matches: [TournamentMatch]?
     
     var currentTeam: TournamentTeam? {
         didSet {
             configureView()
+            findTeams()
+            self.isItOkToShowMatches()
         }
     }
     
@@ -65,9 +61,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                     teams.forEach({ (team) -> () in
                         if team.matchGroupId == self.currentGroup?.id{
                             self.currentTeam = team
-                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                self.matchTableView.reloadData()
-                            })
+                            return
                         }
                     })
                 }
@@ -87,6 +81,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     override func viewWillAppear(animated: Bool) {
+        self.start_time = CACurrentMediaTime()
         self.matchTableView.hidden = true
         self.activityIndicator.startAnimating()
         changeButton()
@@ -110,9 +105,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         defaults.setObject(data2, forKey: "favorites")
         let dataRecieved2 = defaults.objectForKey("favorites") as? NSData
         let name = NSKeyedUnarchiver.unarchiveObjectWithData(dataRecieved2!) as! FavoriteTeams
-        for index in 0...name.favorites.count-1{
-//            print(name.favorites[index].name!)
-        }
         changeButton()
         // error handling?
         self.view.makeToast(message: "Added \(currentTeam!.name!) to favorites", duration: 1, position: "center", title: "Favorites", image: UIImage(named: "ball")!)
@@ -161,11 +153,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             defaults.setObject(data2, forKey: "favorites")
             let dataRecieved2 = defaults.objectForKey("favorites") as? NSData
             let name = NSKeyedUnarchiver.unarchiveObjectWithData(dataRecieved2!) as! FavoriteTeams
-//            if(name.favorites.count > 0){
-//                for index in 0...name.favorites.count-1{
-//                    print(name.favorites[index].name!)
-//                }
-//            }
             changeButton()
             // error handling?
             self.view.makeToast(message: "Removed \(currentTeam!.name!) from favorites", duration: 1, position: "center", title: "Favorites", image: UIImage(named: "ball")!)
@@ -225,7 +212,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         if(section == 0){           //Table rows in grouptable
            // return self.matchTable != nil ? (self.matchTable?.rows?.count)! + 1 : 0
             if(self.matchTable == nil){
-                findTeams()
                 return teams.count+1
             } else{
                 return (self.matchTable?.rows?.count)! + 1
@@ -310,6 +296,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 return cell
             }
             if let match = matches?[indexPath.row]{
+                // error here???? nil
                 cell.textLabel?.text = "\(match.homeTeamName!)  -  \(match.awayTeamName!) "
                 cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
                 return cell
@@ -373,7 +360,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         SharingManager.data.getTeams(nil) { (teams, error) -> () in
             if error {
                 print("error...")
-                // todo
+                // TODO
             } else {
                 let t = teams.filter({ (element) -> Bool in
                     element.matchGroupId != nil ? element.matchGroupId == groupId : false
@@ -383,9 +370,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 })
             }
             self.teams = tm
-            
             self.findTeamsLoadedOK = true
-            self.isItOkToShowMatches()
         }
     }
     
@@ -423,11 +408,10 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                     })
                 }
                 self.matchesLoadedOK = true
-                self.isItOkToShowMatches()
             })
         }
         else if currentTeam != nil {
-            SharingManager.data.getMatches(nil, groupID: nil, teamID: self.currentTeam?.id, endplay: nil, completionHandler: { (matches, error) -> () in
+            SharingManager.data.getMatches(nil, groupID: self.currentTeam?.matchGroupId, teamID: self.currentTeam?.id, endplay: nil, completionHandler: { (matches, error) -> () in
                 if error{
                     print("Error in Teamviewcontroller.setupMatches")
                 }else{
@@ -443,7 +427,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                     
              }
                 self.matchesLoadedOK = true
-                self.isItOkToShowMatches()
             })
         }
     }
@@ -451,18 +434,12 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     func isItOkToShowMatches(){
         if (findTeamsLoadedOK && matchesLoadedOK && tableSortedOK){
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                //self.matchTableView.reloadData()
+                self.matchTableView.reloadData()
                 self.matchTableView.hidden = false
                 self.activityIndicator.stopAnimating()
-                print("jepp")
+                print("Time: \(CACurrentMediaTime()-self.start_time!)")
             })
-            
-            
-
-        }else {
-            print("matchesLoadedOK = \(matchesLoadedOK) ")
-            print("tableSortedOK = \(tableSortedOK) ")
-            print("findTeamsLoadedOK = \(findTeamsLoadedOK) ")
+        } else {
             print("nop")
         }
     }
