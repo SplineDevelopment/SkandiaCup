@@ -60,18 +60,6 @@ class FieldMapViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var rotateButton: UIButton!
     
-    var rotationRecognizer: UIRotationGestureRecognizer!
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        self.rotationRecognizer = UIRotationGestureRecognizer(target: self,
-            action: "handleRotations:")
-    }
-    
-    func handleRotations(sender: UIRotationGestureRecognizer){
-        animate()
-    }
-    
     var rotated = false
     
     func animate() {
@@ -106,7 +94,6 @@ class FieldMapViewController: UIViewController, UIScrollViewDelegate {
         doubleTapRecognizer.numberOfTapsRequired = 2
         doubleTapRecognizer.numberOfTouchesRequired = 1
         scrollView.addGestureRecognizer(doubleTapRecognizer)
-        view.addGestureRecognizer(rotationRecognizer)
     }
     
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
