@@ -89,7 +89,7 @@ class MatchViewController: UIViewController {
             reasonForWinLabel.text = "\(winner) vant på walkover"
             
         } else {
-            reasonForWinLabel.text = ""           
+            reasonForWinLabel.text = ""        
         }
     }
 }

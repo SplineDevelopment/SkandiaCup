@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -877,6 +877,13 @@
                                         <color key="textColor" red="0.9882352941176471" green="0.9882352941176471" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Winner is .. due to.." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7kD-Pn-qS9">
+                                        <rect key="frame" x="8" y="264" width="572" height="60"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.19186972128378377" colorSpace="calibratedWhite"/>
@@ -890,7 +897,9 @@
                                     <constraint firstItem="hpI-cv-SSn" firstAttribute="top" secondItem="1uD-W6-KVd" secondAttribute="topMargin" constant="24" id="6lz-Aw-PCA"/>
                                     <constraint firstItem="ynB-9S-A3I" firstAttribute="leading" secondItem="iCq-22-wJQ" secondAttribute="leading" id="829-Wy-goe"/>
                                     <constraint firstItem="iCq-22-wJQ" firstAttribute="top" secondItem="hpI-cv-SSn" secondAttribute="bottom" constant="8" symbolic="YES" id="8yb-Db-Oed"/>
+                                    <constraint firstAttribute="bottom" secondItem="7kD-Pn-qS9" secondAttribute="bottom" constant="168" id="BBc-xC-WBC"/>
                                     <constraint firstItem="gEq-jL-wFC" firstAttribute="trailing" secondItem="Yff-qG-7Ll" secondAttribute="trailing" id="InL-bC-2EF"/>
+                                    <constraint firstAttribute="trailing" secondItem="7kD-Pn-qS9" secondAttribute="trailing" constant="20" id="KQo-ie-OAf"/>
                                     <constraint firstItem="Yff-qG-7Ll" firstAttribute="top" secondItem="bfo-Rn-gtR" secondAttribute="bottom" constant="15" id="KT3-LD-U9P"/>
                                     <constraint firstItem="Hb2-c4-EjR" firstAttribute="centerX" secondItem="iyp-pk-y4o" secondAttribute="centerX" id="KnZ-TW-72l"/>
                                     <constraint firstItem="bfo-Rn-gtR" firstAttribute="firstBaseline" secondItem="gEq-jL-wFC" secondAttribute="firstBaseline" id="Mnl-uD-80t"/>
@@ -903,6 +912,7 @@
                                     <constraint firstItem="gEq-jL-wFC" firstAttribute="leading" secondItem="XrD-WQ-1Wc" secondAttribute="leading" id="Y0B-KL-Wt9"/>
                                     <constraint firstItem="bfo-Rn-gtR" firstAttribute="leading" secondItem="Yff-qG-7Ll" secondAttribute="leading" id="Z68-yA-JRr"/>
                                     <constraint firstItem="iCq-22-wJQ" firstAttribute="trailing" secondItem="ynB-9S-A3I" secondAttribute="trailing" id="aEL-aN-f30"/>
+                                    <constraint firstItem="7kD-Pn-qS9" firstAttribute="leading" secondItem="1uD-W6-KVd" secondAttribute="leading" constant="8" id="ifl-RA-Lzo"/>
                                     <constraint firstItem="Yff-qG-7Ll" firstAttribute="centerX" secondItem="ynB-9S-A3I" secondAttribute="centerX" id="iwq-n3-0dz"/>
                                     <constraint firstItem="XrD-WQ-1Wc" firstAttribute="leading" secondItem="hpI-cv-SSn" secondAttribute="trailing" constant="84" id="jQF-p3-Ygh"/>
                                     <constraint firstItem="hpI-cv-SSn" firstAttribute="baseline" secondItem="XrD-WQ-1Wc" secondAttribute="baseline" id="mjS-yo-rSe"/>
@@ -935,14 +945,15 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="awayScore" destination="gEq-jL-wFC" id="axz-sR-wKq"/>
+                        <outlet property="awayTeam" destination="XrD-WQ-1Wc" id="jME-Dn-9Pg"/>
                         <outlet property="backgroundImage" destination="Sed-QG-6bN" id="67J-0X-9DE"/>
                         <outlet property="dateLabel" destination="iCq-22-wJQ" id="A5P-9N-Ovb"/>
                         <outlet property="fieldLabel" destination="Yff-qG-7Ll" id="nMq-RJ-DqL"/>
+                        <outlet property="homeScore" destination="bfo-Rn-gtR" id="4Ec-TW-RHm"/>
+                        <outlet property="homeTeam" destination="hpI-cv-SSn" id="Qxb-t9-hTJ"/>
                         <outlet property="kickoffTimeLabel" destination="ynB-9S-A3I" id="PrO-BD-FWT"/>
-                        <outlet property="scoreOne" destination="gEq-jL-wFC" id="Utc-fP-qDr"/>
-                        <outlet property="scoreTwo" destination="bfo-Rn-gtR" id="Lgs-0E-2qH"/>
-                        <outlet property="teamOne" destination="hpI-cv-SSn" id="lc8-SB-buw"/>
-                        <outlet property="teamTwo" destination="XrD-WQ-1Wc" id="9Gl-RK-kKn"/>
+                        <outlet property="reasonForWinLabel" destination="7kD-Pn-qS9" id="7Oa-TU-coF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Olf-rK-hXZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
