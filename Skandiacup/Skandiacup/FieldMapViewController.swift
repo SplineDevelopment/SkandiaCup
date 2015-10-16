@@ -53,15 +53,28 @@ extension UIImage {
 }
 
 class FieldMapViewController: UIViewController, UIScrollViewDelegate {
+    
     var isZoomedIn = false
     
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var rotateButton: UIButton!
     
+    var rotationRecognizer: UIRotationGestureRecognizer!
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.rotationRecognizer = UIRotationGestureRecognizer(target: self,
+            action: "handleRotations:")
+    }
+    
+    func handleRotations(sender: UIRotationGestureRecognizer){
+        animate()
+    }
+    
     var rotated = false
     
-    @IBAction func rotateButtonPress(sender: AnyObject) {
+    func animate() {
         UIView.animateWithDuration(0.5, animations: { () -> Void in
             if !self.rotated {
                 self.scrollView.transform = CGAffineTransformMakeRotation((270 * CGFloat(M_PI)) / 180.0)
@@ -80,6 +93,10 @@ class FieldMapViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
+    @IBAction func rotateButtonPress(sender: AnyObject) {
+        animate()
+    }
+    
     @IBOutlet weak var imageView: UIImageView!
     
     override func viewDidLoad() {
@@ -89,6 +106,7 @@ class FieldMapViewController: UIViewController, UIScrollViewDelegate {
         doubleTapRecognizer.numberOfTapsRequired = 2
         doubleTapRecognizer.numberOfTouchesRequired = 1
         scrollView.addGestureRecognizer(doubleTapRecognizer)
+        view.addGestureRecognizer(rotationRecognizer)
     }
     
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
