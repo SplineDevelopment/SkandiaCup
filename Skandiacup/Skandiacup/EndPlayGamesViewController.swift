@@ -69,12 +69,23 @@ class EndPlayGamesViewController: UITableViewController{
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UITableViewCell!
         if let match = endPlayMatchesInMatchClass[sortedKeys[indexPath.section]]?[indexPath.row]{
             if match.homegoal != nil{
+                
+               /*
+                * Use the following lines of code if the endplaymatches are NOT properly populated with teamnames. getMatchTeamNames
+                * calculates which team ID won/lost each game.
+                */
                 if match.sortOrder != sortedKeys.last{
                     let playedMatch = getMatchTeamNames(match)
                     cell.textLabel?.text = "\(playedMatch.homeTeamName!) \(match.homegoal!)  - \(match.awaygoal!) \(playedMatch.awayTeamName!)"
                 } else {
-                    cell.textLabel?.text = "\(match.homeTeamName!) \(match.homegoal!)  - \(match.awaygoal!)"
+                    cell.textLabel?.text = "\(match.homeTeamName!) \(match.homegoal!)  - \(match.awaygoal!) \(match.awayTeamName!)"
                 }
+
+                /*
+                 * This line is for when the endplaymatches ARE properly populated with teamnames. 
+                 * Comment this line, and uncomment the above snippet if they are not.
+                 */
+                //cell.textLabel?.text = "\(match.homeTeamName!) \(match.homegoal!)  - \(match.awaygoal!) \(match.awayTeamName!)"
             }else{
                 cell.textLabel?.text = "Kamp \(match.matchno!): \(match.homeTeamText!) - \(match.awayTeamText!) "
             }
@@ -120,7 +131,9 @@ class EndPlayGamesViewController: UITableViewController{
                 losermatch = endplaymatch
             }
         }
-        matchLoser = getWinnerFromMatch(losermatch)
+        
+        matchLoser = losermatch.homeTeamName != nil ? getWinnerFromMatch(losermatch) : ""
+        
         returnMatch.homeTeamName = match.winner == "H" ? matchWinner : matchLoser
         returnMatch.awayTeamName = match.winner != "H" ? matchWinner : matchLoser
         return returnMatch
