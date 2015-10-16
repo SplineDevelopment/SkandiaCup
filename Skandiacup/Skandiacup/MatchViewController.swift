@@ -18,10 +18,11 @@ class MatchViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var scoreOne: UILabel!
-    @IBOutlet weak var teamOne: UILabel!
-    @IBOutlet weak var teamTwo: UILabel!
-    @IBOutlet weak var scoreTwo: UILabel!
+    @IBOutlet weak var reasonForWinLabel: UILabel!
+    @IBOutlet weak var homeScore: UILabel!
+    @IBOutlet weak var homeTeam: UILabel!
+    @IBOutlet weak var awayTeam: UILabel!
+    @IBOutlet weak var awayScore: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var kickoffTimeLabel: UILabel!
     @IBOutlet weak var fieldLabel: UILabel!
@@ -40,10 +41,10 @@ class MatchViewController: UIViewController {
     }
     
     func configureView(){
-        teamOne.text = selectedMatch?.homeTeamName
-        scoreOne.text = selectedMatch?.homegoal
-        teamTwo.text = selectedMatch?.awayTeamName
-        scoreTwo.text = selectedMatch?.awaygoal
+        homeTeam.text = selectedMatch?.homeTeamName
+        homeScore.text = selectedMatch?.homegoal
+        awayTeam.text = selectedMatch?.awayTeamName
+        awayScore.text = selectedMatch?.awaygoal
         //fieldLabel.text = String(selectedMatch!.fieldId)
         SharingManager.data.getField(nil, fieldID: selectedMatch!.fieldId) { (fields, error) -> () in
             if error {
@@ -64,6 +65,31 @@ class MatchViewController: UIViewController {
         
         dateLabel.text = Date.getDateMatchView((selectedMatch?.matchDate)!)
         kickoffTimeLabel.text = Date.getKickoffTimeMatchView((selectedMatch?.matchDate)!)
+        
+        
+        //Straff
+        if (selectedMatch?.reason=="ST"){
+            var winner = ""
+            if (selectedMatch?.winner=="H"){
+                winner = (selectedMatch?.homeTeamName)!
+            } else {
+                winner = (selectedMatch?.awayTeamName)!
+            }
+            
+            reasonForWinLabel.text = "\(winner) vant etter straffesparkkonkurranse"
+
+        //walkover
+        } else if (selectedMatch?.reason=="WO"){
+            var winner = ""
+            if (selectedMatch?.winner=="H"){
+               winner = (selectedMatch?.homeTeamName)!
+            } else {
+                winner = (selectedMatch?.awayTeamName)!
+            }
+            reasonForWinLabel.text = "\(winner) vant på walkover"
+            
+        } else {
+            reasonForWinLabel.text = ""           
+        }
     }
-    
 }
