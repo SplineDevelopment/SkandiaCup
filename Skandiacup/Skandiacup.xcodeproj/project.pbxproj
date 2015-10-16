@@ -66,6 +66,8 @@
 		D54FB67A1BB3F2BE007FCCAF /* filterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FB6791BB3F2BE007FCCAF /* filterView.swift */; settings = {ASSET_TAGS = (); }; };
 		D54FB67C1BB3F2F3007FCCAF /* filterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D54FB67B1BB3F2F3007FCCAF /* filterView.xib */; settings = {ASSET_TAGS = (); }; };
 		D55D9CF61B99949B00DD01E1 /* SWXMLHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55D9CF51B99949B00DD01E1 /* SWXMLHash.swift */; settings = {ASSET_TAGS = (); }; };
+		D567802F1BD13F35003E2FF2 /* matchCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D567802E1BD13F35003E2FF2 /* matchCellView.swift */; settings = {ASSET_TAGS = (); }; };
+		D56780311BD13F5C003E2FF2 /* matchCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D56780301BD13F5C003E2FF2 /* matchCellView.xib */; settings = {ASSET_TAGS = (); }; };
 		D5774F451B999D3B002F9451 /* MatchesMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5774F441B999D3B002F9451 /* MatchesMapper.swift */; settings = {ASSET_TAGS = (); }; };
 		D5D62FC21BBA87300097CFC7 /* TeamsViewChangeProto.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D62FC11BBA87300097CFC7 /* TeamsViewChangeProto.swift */; settings = {ASSET_TAGS = (); }; };
 		D5D62FCF1BBAB0330097CFC7 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D62FCE1BBAB0330097CFC7 /* NewsViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -170,6 +172,8 @@
 		D54FB6791BB3F2BE007FCCAF /* filterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = filterView.swift; path = ../filterView.swift; sourceTree = "<group>"; };
 		D54FB67B1BB3F2F3007FCCAF /* filterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = filterView.xib; path = ../filterView.xib; sourceTree = "<group>"; };
 		D55D9CF51B99949B00DD01E1 /* SWXMLHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWXMLHash.swift; sourceTree = "<group>"; };
+		D567802E1BD13F35003E2FF2 /* matchCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = matchCellView.swift; sourceTree = "<group>"; };
+		D56780301BD13F5C003E2FF2 /* matchCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = matchCellView.xib; sourceTree = "<group>"; };
 		D5774F441B999D3B002F9451 /* MatchesMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesMapper.swift; sourceTree = "<group>"; };
 		D5D62FC11BBA87300097CFC7 /* TeamsViewChangeProto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeamsViewChangeProto.swift; path = ../TeamsViewChangeProto.swift; sourceTree = "<group>"; };
 		D5D62FCE1BBAB0330097CFC7 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
@@ -238,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				D50391171BBAC4E000681A4A /* newsCellView.swift */,
+				D567802E1BD13F35003E2FF2 /* matchCellView.swift */,
 				239EA7FE1BBD807000EEB2BC /* ToastView.swift */,
 				D54FB6791BB3F2BE007FCCAF /* filterView.swift */,
 				235D71661BB4381F0091E345 /* InstaPopover.swift */,
@@ -272,6 +277,7 @@
 			children = (
 				D50391151BBAC49A00681A4A /* newsCellView.xib */,
 				D54FB67B1BB3F2F3007FCCAF /* filterView.xib */,
+				D56780301BD13F5C003E2FF2 /* matchCellView.xib */,
 			);
 			name = xibfiles;
 			sourceTree = "<group>";
@@ -553,6 +559,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D56780311BD13F5C003E2FF2 /* matchCellView.xib in Resources */,
 				D54FB67C1BB3F2F3007FCCAF /* filterView.xib in Resources */,
 				D50391161BBAC49A00681A4A /* newsCellView.xib in Resources */,
 				D51E4B181B94A1E700FF5DDB /* LaunchScreen.storyboard in Resources */,
@@ -612,6 +619,7 @@
 				3CCE5A201BCF9A970068A25D /* FieldOverviewViewController.swift in Sources */,
 				239EA7FF1BBD807000EEB2BC /* ToastView.swift in Sources */,
 				3C803E501B984D46001A51AA /* Functions.swift in Sources */,
+				D567802F1BD13F35003E2FF2 /* matchCellView.swift in Sources */,
 				23407BF91BB6CCC7006EED89 /* TournamentMatchStatusMapper.swift in Sources */,
 				236D8D631B9D8F4600669E51 /* Cache.swift in Sources */,
 				238C04C51BB2EAC3000492E7 /* InstagramRepoMock.swift in Sources */,

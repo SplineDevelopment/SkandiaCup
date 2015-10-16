@@ -93,7 +93,7 @@ class EndPlayGamesViewController: UIViewController, UITableViewDataSource, UITab
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "endPlayMatchesInMatchClass"
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UITableViewCell!
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! matchCellView
         if let match = endPlayMatchesInMatchClass[sortedKeys[indexPath.section]]?[indexPath.row]{
             if match.homegoal != nil{
                 
@@ -106,7 +106,14 @@ class EndPlayGamesViewController: UIViewController, UITableViewDataSource, UITab
                     let playedMatch = getMatchTeamNames(match)
                     endPlayMatchesInMatchClass[sortedKeys[indexPath.section]]![indexPath.row].homeTeamName = playedMatch.homeTeamName
                     endPlayMatchesInMatchClass[sortedKeys[indexPath.section]]![indexPath.row].awayTeamName = playedMatch.awayTeamName
-                    cell.textLabel?.text = "\(playedMatch.homeTeamName!) \(match.homegoal!)  - \(match.awaygoal!) \(playedMatch.awayTeamName!)"
+//                    cell.textLabel?.text = "\(playedMatch.homeTeamName!) \(match.homegoal!)  - \(match.awaygoal!) \(playedMatch.awayTeamName!)"
+                    cell.homeTeamNameLabel.text = playedMatch.homeTeamName!
+                    cell.homeTeamGoalLabel.text = match.homegoal!
+                    cell.awayTeamNameLabel.text = playedMatch.awayTeamName!
+                    cell.awayTeamGoalLabel.text = match.awaygoal!
+                    cell.fieldNameLabel.text = String(match.fieldId!)
+                    cell.classNameLabel.text = String(match.classId!)
+                    cell.dateLabel.text = "\(Date.getDateMatchView(match.matchDate!)) \(Date.getKickoffTimeMatchView(match.matchDate!)) "
                 } else {
                     cell.textLabel?.text = "\(match.homeTeamName!) \(match.homegoal!)  - \(match.awaygoal!) \(match.awayTeamName!)"
                 }
@@ -178,5 +185,9 @@ class EndPlayGamesViewController: UIViewController, UITableViewDataSource, UITab
                 }
             }
         }
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return Config.matchCellViewHeight
     }
 }
