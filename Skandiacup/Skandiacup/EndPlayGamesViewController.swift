@@ -102,28 +102,46 @@ class EndPlayGamesViewController: UIViewController, UITableViewDataSource, UITab
                 * calculates which team ID won/lost each game.
                 */
                 
+                
                 if match.sortOrder != sortedKeys.last{
+                    //We need to calculate match winners
                     let playedMatch = getMatchTeamNames(match)
                     endPlayMatchesInMatchClass[sortedKeys[indexPath.section]]![indexPath.row].homeTeamName = playedMatch.homeTeamName
                     endPlayMatchesInMatchClass[sortedKeys[indexPath.section]]![indexPath.row].awayTeamName = playedMatch.awayTeamName
-//                    cell.textLabel?.text = "\(playedMatch.homeTeamName!) \(match.homegoal!)  - \(match.awaygoal!) \(playedMatch.awayTeamName!)"
                     cell.homeTeamNameLabel.text = playedMatch.homeTeamName!
-                    cell.homeTeamGoalLabel.text = match.homegoal!
                     cell.awayTeamNameLabel.text = playedMatch.awayTeamName!
-                    cell.awayTeamGoalLabel.text = match.awaygoal!
-                    cell.fieldNameLabel.text = String(match.fieldId!)
-                    cell.classNameLabel.text = String(match.classId!)
-                    cell.dateLabel.text = "\(Date.getDateMatchView(match.matchDate!)) \(Date.getKickoffTimeMatchView(match.matchDate!)) "
                 } else {
-                    cell.textLabel?.text = "\(match.homeTeamName!) \(match.homegoal!)  - \(match.awaygoal!) \(match.awayTeamName!)"
+                    //MatchWinners are already in the match
+                    cell.homeTeamNameLabel.text = match.homeTeamName!
+                    cell.awayTeamNameLabel.text = match.awayTeamName!
                 }
-                
+                cell.homeTeamGoalLabel.text = match.homegoal!
+                cell.awayTeamGoalLabel.text = match.awaygoal!
+                cell.fieldNameLabel.text = String(match.fieldId!)
+                cell.classNameLabel.text = String(match.classId!)
+                cell.dateLabel.text = "\(Date.getDateMatchView(match.matchDate!)) \(Date.getKickoffTimeMatchView(match.matchDate!)) "
+
                 
                 /*
-                 * This line is for when the endplaymatches ARE properly populated with teamnames. 
-                 * Comment this line, and uncomment the above snippet if they are not.
+                 * The following lines are for when the endplaymatches ARE properly populated with teamnames.
+                 * Comment these lines, and uncomment the above snippet if they are not.
                  */
-                //cell.textLabel?.text = "\(match.homeTeamName!) \(match.homegoal!)  - \(match.awaygoal!) \(match.awayTeamName!)"
+                /*
+                cell.homeTeamNameLabel.text = match.homeTeamName!
+                cell.awayTeamNameLabel.text = match.awayTeamName!
+                cell.homeTeamGoalLabel.text = match.homegoal!
+                cell.awayTeamGoalLabel.text = match.awaygoal!
+                cell.fieldNameLabel.text = String(match.fieldId!)
+                cell.classNameLabel.text = String(match.classId!)
+                cell.dateLabel.text = "\(Date.getDateMatchView(match.matchDate!)) \(Date.getKickoffTimeMatchView(match.matchDate!)) "
+                
+                */
+                //Bold text for the match winner 
+                if match.winner == "H" {
+                    cell.homeTeamNameLabel.font = UIFont.boldSystemFontOfSize(17.0)
+                } else if match.winner == "B" {
+                    cell.awayTeamNameLabel.font = UIFont.boldSystemFontOfSize(17.0)
+                }
             }else{
                 cell.textLabel?.text = "Kamp \(match.matchno!): \(match.homeTeamText!) - \(match.awayTeamText!) "
             }

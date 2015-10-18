@@ -12,20 +12,15 @@ class EndPlayViewController: UITableViewController{
     
     @IBOutlet var endPlayMatchClassTable: UITableView!
     
-    var endPlayMatchClasses: [MatchClass]? {
-        didSet{
-            dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                self.endPlayMatchClassTable.reloadData()
-            }
-        }
-    }
-    
+    var endPlayMatchClasses: [MatchClass]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         loadMatchClassses()
     }
-
     
     func loadMatchClassses(){
         SharingManager.data.getMatchClass { (matchclasses, error) -> () in
@@ -34,10 +29,12 @@ class EndPlayViewController: UITableViewController{
                 // needs to be handled properly
             } else {
                 self.endPlayMatchClasses = matchclasses
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.endPlayMatchClassTable.reloadData()
+                })
             }
         }
     }
-    
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
