@@ -101,8 +101,6 @@ class EndPlayGamesViewController: UIViewController, UITableViewDataSource, UITab
                 * Use the following lines of code if the endplaymatches are NOT properly populated with teamnames. getMatchTeamNames
                 * calculates which team ID won/lost each game.
                 */
-                
-                
                 if match.sortOrder != sortedKeys.last{
                     //We need to calculate match winners
                     let playedMatch = getMatchTeamNames(match)
@@ -117,10 +115,6 @@ class EndPlayGamesViewController: UIViewController, UITableViewDataSource, UITab
                 }
                 cell.homeTeamGoalLabel.text = match.homegoal!
                 cell.awayTeamGoalLabel.text = match.awaygoal!
-                cell.fieldNameLabel.text = String(match.fieldId!)
-                cell.classNameLabel.text = String(match.classId!)
-                cell.dateLabel.text = "\(Date.getDateMatchView(match.matchDate!)) \(Date.getKickoffTimeMatchView(match.matchDate!)) "
-
                 
                 /*
                  * The following lines are for when the endplaymatches ARE properly populated with teamnames.
@@ -131,11 +125,8 @@ class EndPlayGamesViewController: UIViewController, UITableViewDataSource, UITab
                 cell.awayTeamNameLabel.text = match.awayTeamName!
                 cell.homeTeamGoalLabel.text = match.homegoal!
                 cell.awayTeamGoalLabel.text = match.awaygoal!
-                cell.fieldNameLabel.text = String(match.fieldId!)
-                cell.classNameLabel.text = String(match.classId!)
-                cell.dateLabel.text = "\(Date.getDateMatchView(match.matchDate!)) \(Date.getKickoffTimeMatchView(match.matchDate!)) "
-                
                 */
+                
                 //Bold text for the match winner 
                 if match.winner == "H" {
                     cell.homeTeamNameLabel.font = UIFont.boldSystemFontOfSize(17.0)
@@ -143,8 +134,15 @@ class EndPlayGamesViewController: UIViewController, UITableViewDataSource, UITab
                     cell.awayTeamNameLabel.font = UIFont.boldSystemFontOfSize(17.0)
                 }
             }else{
-                cell.textLabel?.text = "Kamp \(match.matchno!): \(match.homeTeamText!) - \(match.awayTeamText!) "
+                cell.homeTeamNameLabel.text = match.homeTeamText!
+                cell.awayTeamNameLabel.text = match.awayTeamText!
+                cell.homeTeamGoalLabel.text = "NA"
+                cell.awayTeamGoalLabel.text = "NA"
             }
+            cell.fieldNameLabel.text = String(match.matchno!)
+            cell.classNameLabel.text = String(match.fieldId!)
+            cell.dateLabel.text = "\(Date.getDateMatchView(match.matchDate!)) \(Date.getKickoffTimeMatchView(match.matchDate!))"
+
         }
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell
