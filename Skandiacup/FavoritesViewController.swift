@@ -18,6 +18,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     var isLoaded: Bool = false
     @IBOutlet weak var actInd: UIActivityIndicatorView!
     @IBOutlet weak var favoriteHeaderCell: UILabel!
+    var matchesLoaded: [String: Bool] = [String: Bool]()
     
     
     override func viewDidLoad() {
@@ -26,19 +27,6 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         favoriteTableView.dataSource = self
         favorites = getFavoritedTeams()
         favoriteTableView.hidden = true
-        favorites?.forEach({ (team) -> () in
-            SharingManager.data.getMatches(nil, groupID: nil, teamID: team.id, endplay: nil, completionHandler: { (matches, error) -> () in
-                if error {
-                    print("Error getting matches")
-                    // needs to be handled properly
-                } else {
-                    self.matchesDict[team.name!] = matches
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.favoriteTableView.reloadData()
-                    })
-                }
-            })
-        })
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -49,21 +37,19 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidAppear(animated: Bool) {
         favorites = getFavoritedTeams()
         favorites?.forEach({ (team) -> () in
-            SharingManager.data.getMatches(nil, groupID: nil, teamID: team.id, endplay: nil, completionHandler: { (matches, error) -> () in
+            matchesLoaded[team.name!] = false
+            SharingManager.data.getMatches(nil, groupID: team.matchGroupId, teamID: team.id, endplay: nil, completionHandler: { (matches, error) -> () in
                 if error {
                     print("Error getting matches")
                     // needs to be handled properly
                 } else {
                     self.matchesDict[team.name!] = matches
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.actInd.stopAnimating()
-                        self.isLoaded = true
-                        self.favoriteTableView.hidden = false
-                        self.favoriteTableView.reloadData()
-                    })
+                    self.matchesLoaded[team.name!] = true
+                    self.reloadTableIfAllMatchesAreLoaded()
                 }
             })
         })
+        
         if (favorites == nil){
             self.favoriteTableView.hidden = true
             self.notYetFavView.hidden=false
@@ -73,6 +59,29 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
                 actInd.startAnimating()
             }
         }
+    }
+    
+    func reloadTableIfAllMatchesAreLoaded(){
+        if allMatchesAreLoaded(){
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.actInd.stopAnimating()
+                self.isLoaded = true
+                self.favoriteTableView.hidden = false
+                self.favoriteTableView.reloadData()
+            })
+        }
+    }
+    
+    func allMatchesAreLoaded() -> Bool {
+        if favorites != nil {
+            for team in self.favorites!{
+                if !matchesLoaded[team.name!]! {
+                    return false
+                }
+            }
+            return true
+        }
+        return false
     }
 
     override func didReceiveMemoryWarning() {
