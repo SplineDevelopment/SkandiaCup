@@ -13,9 +13,7 @@ class FieldDiariesViewController: UIViewController, UITableViewDelegate, UITable
     
     var fields: [Field]? {
         didSet {
-                  (self.parentViewController?.parentViewController as! FieldOverviewViewController).activityIndicator.startAnimating()
             dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                (self.parentViewController?.parentViewController as! FieldOverviewViewController).activityIndicator.stopAnimating()
                 self.fieldTableview.reloadData()
             }
         }
