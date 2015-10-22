@@ -9,8 +9,7 @@
 import Foundation
 
 struct TournamentMatch{
-    // TODO: change,, test with 10 seconds
-    static let maxCacheTime = 10
+    static let maxCacheTime = 60
     var id: Int?
     var matchTXID: Int?
     var matchno: String?

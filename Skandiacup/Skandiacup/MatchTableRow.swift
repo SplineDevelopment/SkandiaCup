@@ -9,7 +9,7 @@
 import Foundation
 
 struct MatchTableRow{
-    static let maxCacheTime = 60 * 60 * 4
+    static let maxCacheTime = 60 * 5
     var id: Int?
     var matchClassId: String?
     var matchGroupId: String?

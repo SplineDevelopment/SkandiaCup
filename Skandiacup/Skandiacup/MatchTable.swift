@@ -9,7 +9,7 @@
 import Foundation
 
 struct MatchTable{
-    static let maxCacheTime = 60 * 60 * 4
+    static let maxCacheTime = 60 * 5
     var header: MatchTableRow?
     var rows: [MatchTableRow]?
 }
