@@ -48,6 +48,11 @@ class EndPlayGamesViewController: UIViewController, UITableViewDataSource, UITab
         SharingManager.data.getMatches(self.selectedMatchClass!.id, groupID: nil, teamID: nil, endplay: endplay) { (matches, error) -> () in
             if error {
                 print("error getting matches (endplay)")
+                let alertController = UIAlertController(title: "Error", message:
+                    "End play results not available atm", preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                
+                self.presentViewController(alertController, animated: true, completion: nil)
                 // needs to be handled properly
             }
             else {

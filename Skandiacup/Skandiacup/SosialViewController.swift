@@ -40,13 +40,13 @@ class SosialViewController: UICollectionViewController, SegmentChangeProto {
                 dispatch_async(dispatch_get_main_queue()) {
                     if error {
                         print("ERROR IN SOSIAL VIEW GETTING INSTA PHOTOS")
-                        /*
+                        
                         let alertController = UIAlertController(title: "Error", message:
                             "Instagram not available atm", preferredStyle: UIAlertControllerStyle.Alert)
                         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
                         
                         self.presentViewController(alertController, animated: true, completion: nil)
-                        */
+
                         //let vc = self.storyboard?.instantiateViewControllerWithIdentifier("error_view") as! ErrorView
                         
                         //self.showViewController(vc as UIViewController, sender: vc)

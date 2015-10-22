@@ -22,6 +22,11 @@ class FieldItemViewController: UIViewController, UITableViewDataSource, UITableV
         SharingManager.data.getMatches(nil, groupID: nil, teamID: nil, endplay: nil) { (matches, error) -> () in
             if error{
                 print("Error in FieldItemViewController.field.didSet")
+                let alertController = UIAlertController(title: "Error", message:
+                    "Match data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                
+                self.presentViewController(alertController, animated: true, completion: nil)
             } else{
                 self.matches = matches
                 self.matches = self.matches!.filter({ (match) -> Bool in

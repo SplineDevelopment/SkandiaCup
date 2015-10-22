@@ -49,6 +49,10 @@ class MatchViewController: UIViewController {
         SharingManager.data.getField(nil, fieldID: selectedMatch!.fieldId) { (fields, error) -> () in
             if error {
                 print("error getting fields")
+                let alertController = UIAlertController(title: "Error", message:
+                    "Field data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                self.presentViewController(alertController, animated: true, completion: nil)
                 // needs to be handled properly
             } else {
                 // check for count here? fields can be empty with no error
