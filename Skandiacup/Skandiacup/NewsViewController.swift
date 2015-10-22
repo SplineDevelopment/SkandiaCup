@@ -21,6 +21,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
             SharingManager.rssfeed.getRSSfeed { (RSSfeed, error) -> () in
                 if error {
                     print("Error loading RSS")
+                    (self.parentViewController?.parentViewController as! HomeViewController).activityIndicator.stopAnimating()
                     let alertController = UIAlertController(title: "Error", message:
                         "RSS feed not available atm", preferredStyle: UIAlertControllerStyle.Alert)
                     alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
