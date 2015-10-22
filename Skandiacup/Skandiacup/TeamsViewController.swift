@@ -23,6 +23,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     let sexPickerValues = ["Alle", "Menn", "Damer"]
     var dropDownViewIsDisplayed = false
     var pickerActive : Bool = false
+    var error_message_is_set = false
 
     var teams: [TournamentTeam]? {
         didSet{
@@ -102,22 +103,41 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     override func viewWillAppear(animated: Bool) {
+        self.error_message_is_set = false
         SharingManager.data.getMatchClass { (matchclasses, error) -> () in
             if error{
                 print("Error in TeamsViewController.viewWillAppear")
+                if !self.error_message_is_set {
+                    self.error_message_is_set = true
+                    let alertController = UIAlertController(title: "Error", message:
+                        "Team data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
+                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                }
             }else{
-                self.matchClasses = matchclasses
+                if !self.error_message_is_set {
+                    self.matchClasses = matchclasses
+                }
             }
         }
         
         SharingManager.data.getTeams(nil) { (teams, error) -> () in
             if error {
                 print("error getting teams")
+                if !self.error_message_is_set {
+                    self.error_message_is_set = true
+                    let alertController = UIAlertController(title: "Error", message:
+                        "Team data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
+                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                }
                 // needs to be handled properly
             } else {
-                self.teams = teams
-                self.filteredTeams = teams
-                self.updateFilteredTeams()
+                if !self.error_message_is_set {
+                    self.teams = teams
+                    self.filteredTeams = teams
+                    self.updateFilteredTeams()
+                }
             }
         }
     }

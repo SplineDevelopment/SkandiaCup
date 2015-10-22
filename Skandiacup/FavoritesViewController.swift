@@ -41,6 +41,11 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
             SharingManager.data.getMatches(nil, groupID: team.matchGroupId, teamID: team.id, endplay: nil, completionHandler: { (matches, error) -> () in
                 if error {
                     print("Error getting matches")
+                    let alertController = UIAlertController(title: "Error", message:
+                        "Match data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
+                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                    
+                    self.presentViewController(alertController, animated: true, completion: nil)
                     // needs to be handled properly
                 } else {
                     self.matchesDict[team.name!] = matches
