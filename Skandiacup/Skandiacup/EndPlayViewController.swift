@@ -9,9 +9,7 @@
 import UIKit
 
 class EndPlayViewController: UITableViewController{
-    
     @IBOutlet var endPlayMatchClassTable: UITableView!
-    
     var endPlayMatchClasses: [MatchClass]?
     
     override func viewDidLoad() {
@@ -29,6 +27,16 @@ class EndPlayViewController: UITableViewController{
                 // needs to be handled properly
             } else {
                 self.endPlayMatchClasses = matchclasses
+                var isEndplay = false
+                self.endPlayMatchClasses = self.endPlayMatchClasses?.filter({ (matchclass) -> Bool in
+                    matchclass.matchGroups!.forEach({ (matchgroup) -> () in
+                        isEndplay = false
+                        if Int(matchgroup.matchClassId!)! == matchclass.id && matchgroup.isPlayoff == true{
+                            isEndplay = true
+                        }
+                    })
+                    return isEndplay
+                })
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.endPlayMatchClassTable.reloadData()
                 })
@@ -45,15 +53,8 @@ class EndPlayViewController: UITableViewController{
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "MatchClassTable"
-        //let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! MealTableViewCell
-        
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UITableViewCell!
-        
-        // Fetches the appropriate meal for the data source layout.
-        //let meal = meals[indexPath.row]
-        
         let textValue = endPlayMatchClasses?[indexPath.row].name
         
         cell.textLabel?.text = textValue
@@ -61,8 +62,6 @@ class EndPlayViewController: UITableViewController{
         return cell
     }
 
-    
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "fromEndPlayMatchClassToEndPlayMatches") {
             if let indexPath = self.endPlayMatchClassTable.indexPathForSelectedRow{
@@ -71,10 +70,5 @@ class EndPlayViewController: UITableViewController{
             }
         }
     }
-
-
-
-
-
 }
 
