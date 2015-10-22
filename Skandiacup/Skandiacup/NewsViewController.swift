@@ -16,6 +16,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet var newTableView: UITableView!
     
     override func viewDidAppear(animated: Bool) {
+        (self.parentViewController?.parentViewController as! HomeViewController).activityIndicator.startAnimating()
         if CACurrentMediaTime() > self.RSS_timer + 60 {
             SharingManager.rssfeed.getRSSfeed { (RSSfeed, error) -> () in
                 if error {
@@ -39,10 +40,6 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
-                                            (self.parentViewController?.parentViewController as! HomeViewController).activityIndicator.startAnimating()
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.tabBar.translucent = true
