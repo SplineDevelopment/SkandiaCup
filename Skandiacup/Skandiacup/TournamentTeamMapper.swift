@@ -46,8 +46,8 @@ class TournamentTeamMapper: NSObject {
                 team.shirtColor = elem["ShirtColor"].element?.text
             }
             
-            if elem["couuntryCode"].element?.text != nil{
-                team.countryCode = elem["couuntryCode"].element?.text
+            if elem["countryCode"].element?.text != nil{
+                team.countryCode = elem["countryCode"].element?.text
             }
             arr.append(team)
         }

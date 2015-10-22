@@ -31,6 +31,11 @@ class FieldDiariesViewController: UIViewController, UITableViewDelegate, UITable
         SharingManager.data.getField(nil, fieldID: nil) { (fields, error) -> () in
             if error{
                 print("Error in FieldDiariesViewController.viewWillAppear")
+                let alertController = UIAlertController(title: "Error", message:
+                    "Field data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                
+                self.presentViewController(alertController, animated: true, completion: nil)
             } else{
                 self.fields = fields
             }

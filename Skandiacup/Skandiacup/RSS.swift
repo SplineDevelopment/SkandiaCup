@@ -27,6 +27,7 @@ class RSS {
         self.sendReceive(req) { (responseData, responseError) -> Void in
             if responseError || responseData == nil {
                 completionHandler(RSSfeed: [RSSItem](), error: true)
+                return
             }
             let xml = SWXMLHash.parse(responseData!)
             let feed = RSSmapper.mapRSS(xml)

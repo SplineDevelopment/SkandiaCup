@@ -18,6 +18,9 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     var infoSectionIsSet = false
     var noUpcomming: Bool = false
     var teams = [String]()
+    
+    var error_message_is_set = false
+    
     var start_time : Double?
     //Loaded OK?
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -54,6 +57,13 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             SharingManager.data.getTeams(nil) { (teams, error) -> () in
                 if error{
                     print("error in TeamViewController.CurrentGroup.didSet")
+                    if !self.error_message_is_set {
+                        self.error_message_is_set = true
+                        let alertController = UIAlertController(title: "Error", message:
+                            "Team data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
+                        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                        self.presentViewController(alertController, animated: true, completion: nil)
+                    }
                 } else {
                     teams.forEach({ (team) -> () in
                         if team.matchGroupId == self.currentGroup?.id{
@@ -78,6 +88,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     override func viewWillAppear(animated: Bool) {
+        self.error_message_is_set = false
         self.start_time = CACurrentMediaTime()
         self.matchTableView.hidden = true
         self.activityIndicator.startAnimating()
@@ -395,7 +406,13 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         SharingManager.data.getTeams(nil) { (teams, error) -> () in
             if error {
                 print("error...")
-                // TODO
+                if !self.error_message_is_set {
+                    self.error_message_is_set = true
+                    let alertController = UIAlertController(title: "Error", message:
+                        "Team data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
+                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                }
             } else {
                 let t = teams.filter({ (element) -> Bool in
                     element.matchGroupId != nil ? element.matchGroupId == groupId : false
@@ -431,11 +448,25 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             SharingManager.data.getMatches(nil, groupID: self.currentGroup!.id, teamID: nil, endplay: nil, completionHandler: { (matches, error) -> () in
                 if error{
                     print("Error in Teamviewcontroller.setupMatches")
+                    if !self.error_message_is_set {
+                        self.error_message_is_set = true
+                        let alertController = UIAlertController(title: "Error", message:
+                            "Team data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
+                        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                        self.presentViewController(alertController, animated: true, completion: nil)
+                    }
                 }else{
                     self.matches = matches
                     SharingManager.data.getTable(nil, playOffId: nil, teamId: self.currentTeam?.id, completionHandler: { (tables, error) -> () in
                         if error{
                             print("Error in Teamviewcontroller.setupMatches")
+                            if !self.error_message_is_set {
+                                self.error_message_is_set = true
+                                let alertController = UIAlertController(title: "Error", message:
+                                    "Team data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
+                                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                                self.presentViewController(alertController, animated: true, completion: nil)
+                            }
                         }
                         else{
                             self.matchTables = tables
@@ -449,11 +480,25 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             SharingManager.data.getMatches(nil, groupID: self.currentTeam?.matchGroupId, teamID: self.currentTeam?.id, endplay: nil, completionHandler: { (matches, error) -> () in
                 if error{
                     print("Error in Teamviewcontroller.setupMatches")
+                    if !self.error_message_is_set {
+                        self.error_message_is_set = true
+                        let alertController = UIAlertController(title: "Error", message:
+                            "Team data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
+                        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                        self.presentViewController(alertController, animated: true, completion: nil)
+                    }
                 }else{
                     self.matches = matches
                     SharingManager.data.getTable(nil, playOffId: nil, teamId: self.currentTeam?.id, completionHandler: { (tables, error) -> () in
                         if error{
                             print("Error in Teamviewcontroller.setupMatches")
+                            if !self.error_message_is_set {
+                                self.error_message_is_set = true
+                                let alertController = UIAlertController(title: "Error", message:
+                                    "Team data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
+                                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                                self.presentViewController(alertController, animated: true, completion: nil)
+                            }
                         }
                         else{
                             self.matchTables = tables
@@ -474,8 +519,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.activityIndicator.stopAnimating()
                 print("Time: \(CACurrentMediaTime()-self.start_time!)")
             })
-        } else {
-            print("nop")
         }
     }
     

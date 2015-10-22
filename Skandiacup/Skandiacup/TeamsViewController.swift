@@ -19,13 +19,15 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     var searchController: UISearchController!
     
     //get this dynamicly from teams
-    let countryPickerValues: [String] = ["Alle", "SE", "NO", "DE"]
+    var countryPickerValues: [String] = ["Alle"]
     let sexPickerValues = ["Alle", "Menn", "Damer"]
     var dropDownViewIsDisplayed = false
     var pickerActive : Bool = false
+    var error_message_is_set = false
 
     var teams: [TournamentTeam]? {
         didSet{
+            setupCountryPicker()
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.teamTableView.hidden = false
                 self.teamTableView.reloadData()
@@ -40,6 +42,16 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBAction func indexChanged(sender: AnyObject) {
         (self.parentViewController?.parentViewController as! TournamentViewController).switchTable(segmentController.selectedSegmentIndex)
         self.segmentController.selectedSegmentIndex = 0
+    }
+    
+    func setupCountryPicker() {
+        self.teams!.forEach({ (team) -> () in
+            if let countrycode = team.countryCode {
+                if !countryPickerValues.contains(countrycode){
+                    self.countryPickerValues.append(countrycode)
+                }
+            }
+        })
     }
     
     override func viewDidLoad() {
@@ -61,6 +73,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
         searchController.dimsBackgroundDuringPresentation = false // default is YES
         searchController.searchBar.delegate = self    // so we can monitor text changes + others
         self.teamTableView.layer.transform = CATransform3DTranslate(CATransform3DIdentity, 0, -Config.filterViewHeight, 0)
+        self.teamTableView.tableHeaderView?.frame.size.height = Config.filterViewHeight
     }
     
     func viewChangedTo() {
@@ -90,22 +103,45 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     override func viewWillAppear(animated: Bool) {
+        self.error_message_is_set = false
         SharingManager.data.getMatchClass { (matchclasses, error) -> () in
             if error{
                 print("Error in TeamsViewController.viewWillAppear")
+                if !self.error_message_is_set {
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.hidden = true
+                    self.error_message_is_set = true
+                    let alertController = UIAlertController(title: "Error", message:
+                        "Team data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
+                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                }
             }else{
-                self.matchClasses = matchclasses
+                if !self.error_message_is_set {
+                    self.matchClasses = matchclasses
+                }
             }
         }
         
         SharingManager.data.getTeams(nil) { (teams, error) -> () in
             if error {
                 print("error getting teams")
+                if !self.error_message_is_set {
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.hidden = true
+                    self.error_message_is_set = true
+                    let alertController = UIAlertController(title: "Error", message:
+                        "Team data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
+                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                }
                 // needs to be handled properly
             } else {
-                self.teams = teams
-                self.filteredTeams = teams
-                self.updateFilteredTeams()
+                if !self.error_message_is_set {
+                    self.teams = teams
+                    self.filteredTeams = teams
+                    self.updateFilteredTeams()
+                }
             }
         }
     }
@@ -217,11 +253,15 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
             pickerActive = true
         }
         updateFilteredTeams()
-        self.view.endEditing(true)
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            self.view.endEditing(true)
+        }
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        self.view.endEditing(true)
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            self.view.endEditing(true)
+        }
     }
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
@@ -279,6 +319,14 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.view.endEditing(true)
+        (self.teamTableView.tableHeaderView  as! filterView).sexPicker.resignFirstResponder()
+        (self.teamTableView.tableHeaderView  as! filterView).countryPicker.resignFirstResponder()
+        (self.teamTableView.tableHeaderView  as! filterView).sexPicker.endEditing(true)
+        (self.teamTableView.tableHeaderView  as! filterView).countryPicker.endEditing(true)
+    }
     
     func updateFilterViewHeight (){
         self.viewChangedTo()

@@ -10,12 +10,37 @@ import UIKit
 
 class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var feed: [RSSItem]?
+    
+    var RSS_timer = 0.0
+
     @IBOutlet var newTableView: UITableView!
     
     override func viewDidAppear(animated: Bool) {
-                                            (self.parentViewController?.parentViewController as! HomeViewController).activityIndicator.startAnimating()
+        (self.parentViewController?.parentViewController as! HomeViewController).activityIndicator.startAnimating()
+        if CACurrentMediaTime() > self.RSS_timer + 60 {
+            SharingManager.rssfeed.getRSSfeed { (RSSfeed, error) -> () in
+                if error {
+                    print("Error loading RSS")
+                    (self.parentViewController?.parentViewController as! HomeViewController).activityIndicator.stopAnimating()
+                    let alertController = UIAlertController(title: "Error", message:
+                        "RSS feed not available atm", preferredStyle: UIAlertControllerStyle.Alert)
+                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                    
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                    // needs to be handled properly
+                } else {
+                    self.RSS_timer = CACurrentMediaTime()
+                    self.feed = RSSfeed
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.newTableView.reloadData()
+                        (self.parentViewController?.parentViewController as! HomeViewController).activityIndicator.stopAnimating()
+                        (self.parentViewController?.parentViewController as! HomeViewController).newsView.hidden = false
+                    })
+                }
+            }
+        }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.tabBar.translucent = true
@@ -23,19 +48,6 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         //HomeViewController.activityIndicator.stopAnitmation()
         self.newTableView.delegate = self
         self.newTableView.dataSource = self
-        SharingManager.rssfeed.getRSSfeed { (RSSfeed, error) -> () in
-            if error {
-                print("Error loading RSS")
-                // needs to be handled properly
-            } else {
-                self.feed = RSSfeed
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.newTableView.reloadData()
-                    (self.parentViewController?.parentViewController as! HomeViewController).activityIndicator.stopAnimating()
-                    (self.parentViewController?.parentViewController as! HomeViewController).newsView.hidden = false
-                })
-            }
-        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

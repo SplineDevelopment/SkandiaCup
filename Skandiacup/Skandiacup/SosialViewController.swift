@@ -14,6 +14,8 @@ class SosialViewController: UICollectionViewController, SegmentChangeProto {
     private let sectionInsets = UIEdgeInsets(top: 0.0, left: 11.0, bottom: 0.0, right: 0.0)
     private var insta_photos = [InstagramPhotoObject]()
     
+    var insta_timer = 0.0
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "cellSegueInstaPopover") {
             let svc = segue.destinationViewController as! InstaPopover
@@ -25,35 +27,32 @@ class SosialViewController: UICollectionViewController, SegmentChangeProto {
     }
     
     func viewChangedTo() {
-        // remove -> replace with timer
-        if self.insta_photos.count > 0 {
+        // 2 min timer
+        if CACurrentMediaTime() < self.insta_timer + (60*2) {
 //            print("insta photos already initialized")
             return
         }
-        // TODO::: remove list and replace? or something else?
-        // need to be able to update based on a timer!
-        
-//        print("Loading data from instagram")
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
             SharingManager.data.getAllPhotoObjects() { (photoObjects, error) -> () in
                 dispatch_async(dispatch_get_main_queue()) {
                     if error {
                         print("ERROR IN SOSIAL VIEW GETTING INSTA PHOTOS")
-                        /*
+                        
                         let alertController = UIAlertController(title: "Error", message:
                             "Instagram not available atm", preferredStyle: UIAlertControllerStyle.Alert)
                         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
                         
                         self.presentViewController(alertController, animated: true, completion: nil)
-                        */
+
                         //let vc = self.storyboard?.instantiateViewControllerWithIdentifier("error_view") as! ErrorView
                         
                         //self.showViewController(vc as UIViewController, sender: vc)
                         //vc.error_label.text = "Instagram not available atm"
                     }
                     else {
-                        self.insta_photos.appendContentsOf(photoObjects)
+                        self.insta_timer = CACurrentMediaTime()
+                        self.insta_photos = photoObjects
                         self.viewOutlet.reloadData()
                     }
                 }

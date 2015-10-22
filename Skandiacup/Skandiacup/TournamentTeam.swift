@@ -42,10 +42,10 @@ class TournamentTeam : NSObject, NSCoding {
         self.clubId = decoder.decodeObjectForKey("TournamentTeamClubId") as? Int
         self.matchGroupId = decoder.decodeObjectForKey("TournamentTeamMatchGroupId") as? Int
         self.matchClassId = decoder.decodeObjectForKey("TournamentTeamMatchClassId") as? Int
-        self.tournamentTeamRegistrationId = decoder.decodeObjectForKey("TournamentTeamRegistrationId") as? Int
-        self.updateTimestamp = decoder.decodeObjectForKey("TournamentTeamUpdateTimeStamp") as? String
+        self.tournamentTeamRegistrationId = decoder.decodeObjectForKey("TournamentTeamTournamentTeamRegistrationId") as? Int
+        self.updateTimestamp = decoder.decodeObjectForKey("TournamentTeamUpdateTimestamp") as? String
         self.shirtColor = decoder.decodeObjectForKey("TournamentTeamShirtColor") as? String
-        self.countryCode = decoder.decodeObjectForKey("TournamentTeamUpdateCountryCode") as? String
+        self.countryCode = decoder.decodeObjectForKey("TournamentTeamCountryCode") as? String
     }
     
     func encodeWithCoder(coder: NSCoder) {
