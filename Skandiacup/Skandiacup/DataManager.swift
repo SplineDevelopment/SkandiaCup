@@ -111,15 +111,19 @@ class DataManager {
     
     func getMatches(classID: Int?, groupID: Int?, teamID: Int?, endplay: Int?, completionHandler: (matches: [TournamentMatch], error: Bool) -> ()) {
         let cachedMatches = SharingManager.cache.getMatches(classID, groupID: groupID, teamID: teamID, endplay: endplay)
-        // TODO: how to figure out what needs to be loaded from soap??
         if cachedMatches.isEmpty {
             SharingManager.soap.getMatches(classID, groupID: groupID, endplay: endplay, completionHandler: { (matches, soapError) -> () in
                 if soapError {
                     completionHandler(matches: matches, error: true)
                 }
                 SharingManager.cache.setMatches(matches)
-                let cachedMatchesNew = SharingManager.cache.getMatches(classID, groupID: groupID, teamID: teamID, endplay: endplay)
-                completionHandler(matches: cachedMatchesNew, error: false)
+                var m = matches
+                if teamID != nil {
+                    m = m.filter({
+                        $0.homeTeamId! == teamID! || teamID! == $0.awayTeamId!
+                    })
+                }
+                completionHandler(matches: m, error: false)
             })
             return
         }

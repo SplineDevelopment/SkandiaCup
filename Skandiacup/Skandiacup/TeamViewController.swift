@@ -219,9 +219,11 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         else if(section == 1){                            // Matches not yet played
             var numberOfRows = 0
             if(matches != nil){
-                for index in 0...matches!.count-1{
-                    if(matches![index].homegoal == nil){
-                        numberOfRows++
+                if matches?.count > 0 {
+                    for index in 0...matches!.count-1{
+                        if(matches![index].homegoal == nil){
+                            numberOfRows++
+                        }
                     }
                 }
             }
@@ -237,9 +239,11 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         else{              //matches played
             var numberOfRows = 0
             if(matches != nil){
-                for index in 0...matches!.count-1{
-                    if(matches![index].homegoal != nil){
-                        numberOfRows++
+                if matches?.count > 0 {
+                    for index in 0...matches!.count-1{
+                        if(matches![index].homegoal != nil){
+                            numberOfRows++
+                        }
                     }
                 }
             }
