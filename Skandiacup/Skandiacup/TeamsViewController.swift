@@ -297,9 +297,11 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     
     override func viewWillDisappear(animated: Bool) {
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
-            self.view.endEditing(true)
-        }
+        self.view.endEditing(true)
+        (self.teamTableView.tableHeaderView  as! filterView).sexPicker.resignFirstResponder()
+        (self.teamTableView.tableHeaderView  as! filterView).countryPicker.resignFirstResponder()
+        (self.teamTableView.tableHeaderView  as! filterView).sexPicker.endEditing(true)
+        (self.teamTableView.tableHeaderView  as! filterView).countryPicker.endEditing(true)
     }
     
     func updateFilterViewHeight (){
