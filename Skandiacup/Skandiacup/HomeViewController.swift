@@ -77,7 +77,6 @@ class HomeViewController: UIViewController {
         // Do any additional setup after loading the view.
         activityIndicator.startAnimating()
         newsView.hidden = true
-
         //Swipes
         let leftSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipes:"))
         let rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipes:"))

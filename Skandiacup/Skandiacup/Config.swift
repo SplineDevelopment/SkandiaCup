@@ -12,7 +12,7 @@ import UIKit
 class Config{
     static let soapMock = false //True = mock
     static let appKeyTournamentID = "<application_key>enKHJhF</application_key><tournamentID>16209</tournamentID>"
-    static let filterViewHeight:CGFloat = 169
+    static let filterViewHeight:CGFloat = 133
     static let teamCellHeight:CGFloat = 44
     static let matchCellViewHeight:CGFloat = 124
     static let tag_name = "Norwaycup2014"

@@ -39,8 +39,11 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    override func viewDidAppear(animated: Bool) {
+                                            (self.parentViewController?.parentViewController as! HomeViewController).activityIndicator.startAnimating()
+    }
+
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         self.tabBarController?.tabBar.translucent = true
         newTableView.backgroundColor = UIColor.clearColor()
