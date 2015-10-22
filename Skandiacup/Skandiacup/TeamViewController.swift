@@ -24,9 +24,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     var matchesLoadedOK = false
     var tableSortedOK = false
     var findTeamsLoadedOK = false
-    
     var matchTable: MatchTable?
-    
     var matchTables: [MatchTable]?{
         didSet{
             self.matchTables?.forEach({ (table) -> () in
@@ -302,22 +300,40 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
         else if (indexPath.section == 1){
-            let cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as UITableViewCell!
             if (noUpcomming == true){
-                cell.textLabel?.text = "Ingen kommende kamper"
+                let cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as! matchCellView!
+                cell.homeTeamNameLabel.text = "Ingen kommende kamper"
+                cell.dateView.backgroundColor = UIColor.whiteColor()
+                cell.view.backgroundColor = UIColor.whiteColor()
                 cell.userInteractionEnabled = false
+
                 return cell
             }
-            if let match = matches?[indexPath.row]{
-                cell.textLabel?.text = "\(match.homeTeamName!)  -  \(match.awayTeamName!) "
+            else if let match = matches?[indexPath.row]{
+                let cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as! matchCellView!
+                cell.dateLabel.text = match.matchDate!
+                cell.homeTeamNameLabel.text = match.homeTeamName!
+                cell.awayTeamNameLabel.text = match.awayTeamName!
+                cell.awayTeamGoalLabel.text = ""
+                cell.homeTeamGoalLabel.text = ""
+                cell.fieldNameLabel.text = String(match.fieldId!)
+                cell.classNameLabel.text = String(match.classId!)
                 cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
                 cell.userInteractionEnabled = true
+                cell.dateView.backgroundColor = UIColor(red:0.80, green:0.80, blue:0.80, alpha:1.0)
+                cell.view.backgroundColor = UIColor(red:0.91, green:0.91, blue:0.91, alpha:1.0)
                 return cell
                 }
             } else{
-                let cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as UITableViewCell!
                 if let match = matches?[indexPath.row]{
-                cell.textLabel?.text = "\(match.homeTeamName!) \(match.homegoal!)  - \(match.awaygoal!) \(match.awayTeamName!) "
+                    let cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as! matchCellView!
+                    cell.dateLabel.text = match.matchDate!
+                    cell.homeTeamNameLabel.text = match.homeTeamName!
+                    cell.awayTeamNameLabel.text = match.awayTeamName!
+                    cell.awayTeamGoalLabel.text = match.awaygoal!
+                    cell.homeTeamGoalLabel.text = match.homegoal!
+                    cell.fieldNameLabel.text = String(match.fieldId!)
+                    cell.classNameLabel.text = String(match.classId!)
                     cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
                     return cell
             }
@@ -325,6 +341,12 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         return UITableViewCell()
     }
 
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if (indexPath.section == 1 || indexPath.section == 2){
+            return Config.matchCellViewHeight
+        }
+        return UITableViewAutomaticDimension
+    }
     
     func configureView(){
         if let team = self.currentTeam{

@@ -13,7 +13,9 @@ class FieldDiariesViewController: UIViewController, UITableViewDelegate, UITable
     
     var fields: [Field]? {
         didSet {
+                  (self.parentViewController?.parentViewController as! FieldOverviewViewController).activityIndicator.startAnimating()
             dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                (self.parentViewController?.parentViewController as! FieldOverviewViewController).activityIndicator.stopAnimating()
                 self.fieldTableview.reloadData()
             }
         }
@@ -25,6 +27,7 @@ class FieldDiariesViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = true
         SharingManager.data.getField(nil, fieldID: nil) { (fields, error) -> () in
             if error{
                 print("Error in FieldDiariesViewController.viewWillAppear")
@@ -32,6 +35,10 @@ class FieldDiariesViewController: UIViewController, UITableViewDelegate, UITable
                 self.fields = fields
             }
         }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+  
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

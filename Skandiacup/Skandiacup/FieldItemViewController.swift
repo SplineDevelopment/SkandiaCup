@@ -36,6 +36,7 @@ class FieldItemViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     override func viewDidLoad() {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         super.viewDidLoad()
         self.fieldMatchTableView.delegate = self
         self.fieldMatchTableView.dataSource = self

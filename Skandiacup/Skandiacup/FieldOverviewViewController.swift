@@ -13,7 +13,7 @@ class FieldOverviewViewController: UIViewController {
     
     @IBOutlet weak var fieldMapView: UIView!
     
-    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var fieldsDiariesView: UIView!
     @IBOutlet weak var fieldSegmentController: UISegmentedControl!
     
@@ -27,9 +27,7 @@ class FieldOverviewViewController: UIViewController {
         default: break
             //            print("erroe")
         }
-
     }
-    
     
     func showFieldMap(){
         fieldMapView.hidden = false
