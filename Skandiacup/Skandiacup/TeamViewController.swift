@@ -14,12 +14,11 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     let defaults = NSUserDefaults.standardUserDefaults()
     var favorites: FavoriteTeams = FavoriteTeams()
     @IBOutlet weak var favButton: UIBarButtonItem!
+    var isEven = false
     var infoSectionIsSet = false
     var noUpcomming: Bool = false
     var teams = [String]()
-    
     var start_time : Double?
-    
     //Loaded OK?
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var matchesLoadedOK = false
@@ -271,6 +270,11 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             let cell = tableView.dequeueReusableCellWithIdentifier("tableSection") as! ResultTableViewCell
             if (matchTable == nil){
                 zeroTable(cell, nameTable: teams, index: indexPath.row-1)
+                if(isEven){
+                    cell.backgroundColor = UIColor(red:0.95, green:0.96, blue:0.91, alpha:1.0)
+                }
+                isEven = !isEven
+                cell.userInteractionEnabled = false
                 return cell
             } else{
                 cell.teamNameLabel.text = self.matchTable?.rows![indexPath.row-1].a
@@ -285,6 +289,11 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 gamesPlayed += Int((self.matchTable?.rows![indexPath.row-1].d)!)!
                 gamesPlayed += Int((self.matchTable?.rows![indexPath.row-1].c)!)!
                 cell.gamesPlayedLabel.text = String(gamesPlayed)
+                cell.userInteractionEnabled = false
+                if(isEven){
+                    cell.backgroundColor = UIColor(red:0.95, green:0.96, blue:0.91, alpha:1.0)
+                }
+                isEven = !isEven
                 return cell
             }
         }
@@ -296,9 +305,9 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 return cell
             }
             if let match = matches?[indexPath.row]{
-                // error here???? nil
                 cell.textLabel?.text = "\(match.homeTeamName!)  -  \(match.awayTeamName!) "
                 cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+                cell.userInteractionEnabled = true
                 return cell
                 }
             } else{
