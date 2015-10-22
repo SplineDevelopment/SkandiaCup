@@ -123,6 +123,11 @@ class DataManager {
                         $0.homeTeamId! == teamID! || teamID! == $0.awayTeamId!
                     })
                 }
+                if endplay != nil {
+                    m = m.filter({
+                        $0.endGameLevel! == endplay!
+                    })
+                }
                 completionHandler(matches: m, error: false)
             })
             return

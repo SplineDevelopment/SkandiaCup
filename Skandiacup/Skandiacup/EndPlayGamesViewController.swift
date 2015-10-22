@@ -24,11 +24,11 @@ class EndPlayGamesViewController: UIViewController, UITableViewDataSource, UITab
         self.endPlayGamesTable.dataSource = self
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         if segmentControl.selectedSegmentIndex == 0 {
             self.loadMatchClassGames(1)
         }
-        if segmentControl.selectedSegmentIndex == 1 {
+        else if segmentControl.selectedSegmentIndex == 1 {
             self.loadMatchClassGames(2)
         }
         self.endPlayGamesTable.tableHeaderView = UIView()
@@ -38,7 +38,7 @@ class EndPlayGamesViewController: UIViewController, UITableViewDataSource, UITab
         if segmentControl.selectedSegmentIndex == 0 {
             self.loadMatchClassGames(1)
         }
-        if segmentControl.selectedSegmentIndex == 1 {
+        else if segmentControl.selectedSegmentIndex == 1 {
             self.loadMatchClassGames(2)
         }
     }
@@ -47,7 +47,6 @@ class EndPlayGamesViewController: UIViewController, UITableViewDataSource, UITab
         self.endPlayMatchesInMatchClass = [String: [TournamentMatch]]()
         SharingManager.data.getMatches(self.selectedMatchClass!.id, groupID: nil, teamID: nil, endplay: endplay) { (matches, error) -> () in
             if error {
-                print("error getting matches (endplay)")
                 let alertController = UIAlertController(title: "Error", message:
                     "End play results not available atm", preferredStyle: UIAlertControllerStyle.Alert)
                 alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))

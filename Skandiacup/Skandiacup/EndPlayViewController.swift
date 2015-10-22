@@ -17,12 +17,10 @@ class EndPlayViewController: UITableViewController{
     }
     
     override func viewDidAppear(animated: Bool) {
-        print("testteterter")
         loadMatchClassses()
     }
     
     func loadMatchClassses(){
-        print("test....")
         SharingManager.data.getMatchClass { (matchclasses, error) -> () in
             if error {
                 print("error getting match classes")
