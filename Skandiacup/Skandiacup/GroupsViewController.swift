@@ -29,11 +29,13 @@ class GroupsViewController: UIViewController , UITableViewDataSource, UITableVie
         SharingManager.data.getMatchClass { (matchclasses, error) -> () in
             if error {
                 print("error getting matchclasses")
-                let alertController = UIAlertController(title: "Error", message:
-                    "Group data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
-                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
-                self.presentViewController(alertController, animated: true, completion: nil)
-                // needs to be handled properly
+                if !(self.parentViewController?.parentViewController as! TournamentViewController).groupsView.hidden {
+                    let alertController = UIAlertController(title: "Error", message:
+                        "Group data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
+                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                    // needs to be handled properly
+                }
             } else {
                 self.groups = matchclasses
             }

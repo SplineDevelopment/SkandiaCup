@@ -108,6 +108,8 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
             if error{
                 print("Error in TeamsViewController.viewWillAppear")
                 if !self.error_message_is_set {
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.hidden = true
                     self.error_message_is_set = true
                     let alertController = UIAlertController(title: "Error", message:
                         "Team data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
@@ -125,6 +127,8 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
             if error {
                 print("error getting teams")
                 if !self.error_message_is_set {
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.hidden = true
                     self.error_message_is_set = true
                     let alertController = UIAlertController(title: "Error", message:
                         "Team data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
