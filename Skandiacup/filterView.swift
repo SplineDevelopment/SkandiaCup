@@ -9,10 +9,8 @@
 import UIKit
 
 class filterView: UIView{
-    @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet var viewGUI: filterView!
     @IBOutlet weak var countryTextField: UITextField!
-    @IBOutlet weak var ageSlider: UISlider!
     @IBOutlet weak var sexTextField: UITextField!
     var sexPicker: UIPickerView!
     var countryPicker: UIPickerView!
@@ -32,9 +30,6 @@ class filterView: UIView{
         viewGUI.frame = self.bounds
         self.addSubview(viewGUI)
     }
-    @IBAction func ageSliderValueChanged(sender: UISlider) {
-        ageLabel.text = "\(Int(sender.value))"
-    }
     
     func setupDelegates(vc: TeamsViewController){
         sexPicker = UIPickerView()
@@ -49,7 +44,6 @@ class filterView: UIView{
         countryTextField.delegate = vc
         sexTextField.inputView = sexPicker
         countryTextField.inputView = countryPicker
-        ageLabel.text = "\(Int(ageSlider.value))"
         sexTextField.text = "Alle"
         countryTextField.text = "Alle"
     }
