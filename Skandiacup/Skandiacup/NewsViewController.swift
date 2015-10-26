@@ -11,6 +11,8 @@ import UIKit
 class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var feed: [RSSItem]?
     
+    var view_is_loaded = false
+    
     var RSS_timer = 0.0
 
     @IBOutlet var newTableView: UITableView!
@@ -33,8 +35,11 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     self.feed = RSSfeed
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.newTableView.reloadData()
-                        (self.parentViewController?.parentViewController as! HomeViewController).activityIndicator.stopAnimating()
-                        (self.parentViewController?.parentViewController as! HomeViewController).newsView.hidden = false
+                        if !self.view_is_loaded {
+                            self.view_is_loaded = true
+                            (self.parentViewController?.parentViewController as! HomeViewController).activityIndicator.stopAnimating()
+                            (self.parentViewController?.parentViewController as! HomeViewController).newsView.hidden = false
+                        }
                     })
                 }
             }
