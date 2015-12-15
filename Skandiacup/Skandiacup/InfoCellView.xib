@@ -23,8 +23,8 @@
                     <rect key="frame" x="8" y="0.0" width="584" height="104"/>
                     <color key="backgroundColor" white="1" alpha="0.78391702590000001" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="newLogo5" translatesAutoresizingMaskIntoConstraints="NO" id="Ev5-nJ-FXS">
-                    <rect key="frame" x="8" y="8" width="50" height="58"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="information38" translatesAutoresizingMaskIntoConstraints="NO" id="Ev5-nJ-FXS">
+                    <rect key="frame" x="8" y="8" width="50" height="46"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="nEJ-oN-ctd"/>
                     </constraints>
@@ -47,7 +47,7 @@
             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Ev5-nJ-FXS" firstAttribute="top" secondItem="1ah-gP-z2B" secondAttribute="topMargin" id="5zj-ZY-LCi"/>
-                <constraint firstAttribute="bottom" secondItem="Ev5-nJ-FXS" secondAttribute="bottom" constant="43" id="64Q-4f-Jk2"/>
+                <constraint firstAttribute="bottom" secondItem="Ev5-nJ-FXS" secondAttribute="bottom" constant="55" id="64Q-4f-Jk2"/>
                 <constraint firstItem="rLS-z9-e8o" firstAttribute="leading" secondItem="Ev5-nJ-FXS" secondAttribute="trailing" constant="8" symbolic="YES" id="A4s-rk-Xqq"/>
                 <constraint firstItem="Ll5-yx-vPq" firstAttribute="top" secondItem="1ah-gP-z2B" secondAttribute="top" constant="29" id="AFH-Ea-axX"/>
                 <constraint firstItem="Ev5-nJ-FXS" firstAttribute="leading" secondItem="1ah-gP-z2B" secondAttribute="leadingMargin" id="AXK-7V-i2I"/>
@@ -66,6 +66,6 @@
         </view>
     </objects>
     <resources>
-        <image name="newLogo5" width="243" height="280"/>
+        <image name="information38" width="64" height="64"/>
     </resources>
 </document>

@@ -312,10 +312,10 @@
 			children = (
 				3CC5530C1B98C2CA008FA445 /* HomeViewController.swift */,
 				3CDB8B321B99922A00439028 /* InfoViewController.swift */,
+				3C142BDE1C2047DA00609C1C /* InfoItemViewController.swift */,
 				3CDB8B341B99923200439028 /* SosialViewController.swift */,
 				D5D62FCE1BBAB0330097CFC7 /* NewsViewController.swift */,
 				D5D62FD01BBAB45E0097CFC7 /* NewsItemViewController.swift */,
-				3C142BDE1C2047DA00609C1C /* InfoItemViewController.swift */,
 			);
 			name = HomeViewContainers;
 			sourceTree = "<group>";

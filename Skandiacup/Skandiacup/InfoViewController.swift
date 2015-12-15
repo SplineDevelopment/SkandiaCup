@@ -81,12 +81,12 @@ class InfoViewController: UITableViewController, SegmentChangeProto {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        /*if (segue.identifier == "infoToInfoItemSeque") {
+        if (segue.identifier == "infoToInfoItemSeque") {
             if let indexPath = self.infoTableView.indexPathForSelectedRow{
                 let item = self.feed?[indexPath.row]
                 (segue.destinationViewController as! InfoItemViewController).currentItem = item
             }
-        }*/
+        }
         
     }
     
