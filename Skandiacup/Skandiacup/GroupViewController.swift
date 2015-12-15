@@ -18,7 +18,6 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         groupTableView.delegate = self
         groupTableView.dataSource = self
         groups = currentGroup!.matchGroups
-            // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {
@@ -39,17 +38,8 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if segue.identifier == "groupToTeamView"{
             if let indexPath = self.groupTableView.indexPathForSelectedRow{
                 (segue.destinationViewController as! TeamViewController).currentGroup = groups![indexPath.row]
+                (segue.destinationViewController as! TeamViewController).currentMatchClass = currentGroup
             }
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }

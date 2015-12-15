@@ -75,6 +75,8 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                     })
                 }
             }
+            
+        self.currentMatchGroup = currentGroup
         }
     }
     
