@@ -18,7 +18,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet var newTableView: UITableView!
     
     override func viewDidAppear(animated: Bool) {
-        //(self.parentViewController?.parentViewController as! HomeViewController).activityIndicator.startAnimating() //this is not started by default.
+        
         if CACurrentMediaTime() > self.RSS_timer + 60 {
             SharingManager.rssfeed.getRSSfeed { (RSSfeed, error) -> () in
                 if error {

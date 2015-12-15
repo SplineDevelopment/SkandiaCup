@@ -28,6 +28,9 @@
 		238C04C51BB2EAC3000492E7 /* InstagramRepoMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238C04C41BB2EAC3000492E7 /* InstagramRepoMock.swift */; };
 		238C04C71BB2EB18000492E7 /* InstagramPhotoObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238C04C61BB2EB18000492E7 /* InstagramPhotoObject.swift */; };
 		239EA7FF1BBD807000EEB2BC /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239EA7FE1BBD807000EEB2BC /* ToastView.swift */; };
+		3C142BDD1C20409300609C1C /* InfoCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C142BDC1C20409300609C1C /* InfoCellView.xib */; };
+		3C142BDF1C2047DA00609C1C /* InfoItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C142BDE1C2047DA00609C1C /* InfoItemViewController.swift */; };
+		3C142BE11C204C2C00609C1C /* InfoCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C142BE01C204C2C00609C1C /* InfoCellView.swift */; };
 		3C803E501B984D46001A51AA /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C803E4F1B984D46001A51AA /* Functions.swift */; };
 		3C803E541B98528A001A51AA /* Soap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C803E531B98528A001A51AA /* Soap.swift */; };
 		3C803E561B9852EF001A51AA /* SoapMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C803E551B9852EF001A51AA /* SoapMock.swift */; };
@@ -128,6 +131,9 @@
 		238C04C41BB2EAC3000492E7 /* InstagramRepoMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramRepoMock.swift; sourceTree = "<group>"; };
 		238C04C61BB2EB18000492E7 /* InstagramPhotoObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramPhotoObject.swift; sourceTree = "<group>"; };
 		239EA7FE1BBD807000EEB2BC /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		3C142BDC1C20409300609C1C /* InfoCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoCellView.xib; sourceTree = "<group>"; };
+		3C142BDE1C2047DA00609C1C /* InfoItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoItemViewController.swift; sourceTree = "<group>"; };
+		3C142BE01C204C2C00609C1C /* InfoCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoCellView.swift; sourceTree = "<group>"; };
 		3C803E4F1B984D46001A51AA /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		3C803E531B98528A001A51AA /* Soap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Soap.swift; sourceTree = "<group>"; };
 		3C803E551B9852EF001A51AA /* SoapMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoapMock.swift; sourceTree = "<group>"; };
@@ -242,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				D50391171BBAC4E000681A4A /* newsCellView.swift */,
+				3C142BE01C204C2C00609C1C /* InfoCellView.swift */,
 				D567802E1BD13F35003E2FF2 /* matchCellView.swift */,
 				239EA7FE1BBD807000EEB2BC /* ToastView.swift */,
 				D54FB6791BB3F2BE007FCCAF /* filterView.swift */,
@@ -278,6 +285,7 @@
 				D50391151BBAC49A00681A4A /* newsCellView.xib */,
 				D54FB67B1BB3F2F3007FCCAF /* filterView.xib */,
 				D56780301BD13F5C003E2FF2 /* matchCellView.xib */,
+				3C142BDC1C20409300609C1C /* InfoCellView.xib */,
 			);
 			name = xibfiles;
 			sourceTree = "<group>";
@@ -307,6 +315,7 @@
 				3CDB8B341B99923200439028 /* SosialViewController.swift */,
 				D5D62FCE1BBAB0330097CFC7 /* NewsViewController.swift */,
 				D5D62FD01BBAB45E0097CFC7 /* NewsItemViewController.swift */,
+				3C142BDE1C2047DA00609C1C /* InfoItemViewController.swift */,
 			);
 			name = HomeViewContainers;
 			sourceTree = "<group>";
@@ -523,7 +532,7 @@
 				TargetAttributes = {
 					D51E4B071B94A1E700FF5DDB = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 76MEKL2U3W;
+						DevelopmentTeam = F2MQ3X222M;
 					};
 					D51E4B1D1B94A1E700FF5DDB = {
 						CreatedOnToolsVersion = 7.0;
@@ -562,6 +571,7 @@
 			files = (
 				D56780311BD13F5C003E2FF2 /* matchCellView.xib in Resources */,
 				D54FB67C1BB3F2F3007FCCAF /* filterView.xib in Resources */,
+				3C142BDD1C20409300609C1C /* InfoCellView.xib in Resources */,
 				D50391161BBAC49A00681A4A /* newsCellView.xib in Resources */,
 				D51E4B181B94A1E700FF5DDB /* LaunchScreen.storyboard in Resources */,
 				D51E4B151B94A1E700FF5DDB /* Assets.xcassets in Resources */,
@@ -633,6 +643,7 @@
 				D5FD4ED01B94C79B009B53FC /* Arena.swift in Sources */,
 				D52496621B988364001D3577 /* TeamViewController.swift in Sources */,
 				D5FD4EDA1B94CD4D009B53FC /* TournamentMatch.swift in Sources */,
+				3C142BDF1C2047DA00609C1C /* InfoItemViewController.swift in Sources */,
 				3CCF4EE71BC6B9990068AF03 /* FieldMapViewController.swift in Sources */,
 				3C803E5C1B98563F001A51AA /* SharingManager.swift in Sources */,
 				235D71631BB3D56E0091E345 /* InstaPhotoCell.swift in Sources */,
@@ -651,6 +662,7 @@
 				3C803E561B9852EF001A51AA /* SoapMock.swift in Sources */,
 				230713C01BBC2ACC00F25D8B /* ErrorView.swift in Sources */,
 				D5FD4EE21B94CFB7009B53FC /* Tournament.swift in Sources */,
+				3C142BE11C204C2C00609C1C /* InfoCellView.swift in Sources */,
 				3C803E5E1B9856E8001A51AA /* SoapImpl.swift in Sources */,
 				D5EC2E931B9B5CBC00CBA235 /* TournamentTeamMapper.swift in Sources */,
 				729AAA691BA1BEC300E8B6E9 /* FavoriteTeams.swift in Sources */,
