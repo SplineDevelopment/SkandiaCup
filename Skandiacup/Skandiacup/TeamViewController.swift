@@ -28,6 +28,8 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     var tableSortedOK = false
     var findTeamsLoadedOK = false
     var matchTable: MatchTable?
+    var currentMatchClass: MatchClass?
+    var currentMatchGroup: MatchGroup?
     var matchTables: [MatchTable]?{
         didSet{
             self.matchTables?.forEach({ (table) -> () in
@@ -197,16 +199,24 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         let headerCell = tableView.dequeueReusableCellWithIdentifier("sectionHeader") as! CustomHeaderCell
         switch (section) {
         case 0:
-            headerCell.headerLabel.text = "Tabell";
+            var headerText = "Tabell"
+            if let mg = self.currentGroup {
+                if let mc = self.currentMatchClass{
+                    headerText = headerText + " - \(mc.name!) - \(mg.name!)"
+                }
+            }
+            
+            
+            headerCell.headerLabel.text = headerText
             //return sectionHeaderView
         case 1:
-            headerCell.headerLabel.text = "Kommende kamper";
+            headerCell.headerLabel.text = "Kommende kamper"
             //return sectionHeaderView
         case 2:
-            headerCell.headerLabel.text = "Kamper spilt";
+            headerCell.headerLabel.text = "Kamper spilt"
             //return sectionHeaderView
         default:
-            headerCell.headerLabel.text = "Other";
+            headerCell.headerLabel.text = "Other"
         }
         return headerCell
     }

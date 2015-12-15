@@ -97,7 +97,17 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = teamTableView.dequeueReusableCellWithIdentifier("teamCell") as UITableViewCell!
-        cell!.textLabel?.text = filteredTeams[indexPath.row].name
+        var cellText = filteredTeams[indexPath.row].name!
+        matchClasses?.forEach({ (mc) -> () in
+            if(mc.id! == filteredTeams[indexPath.row].matchClassId!){
+                mc.matchGroups?.forEach({ (mg) -> () in
+                    if(mg.id == filteredTeams[indexPath.row].matchGroupId){
+                        cellText = cellText + " - Class \(mc.code!) - Group \(mg.name!)"
+                    }
+                })
+            }
+        })
+        cell!.textLabel?.text = cellText
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell
     }
@@ -199,6 +209,18 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
             if let indexPath = self.teamTableView.indexPathForSelectedRow{
                 let selectedTeam = filteredTeams[indexPath.row]
                 (segue.destinationViewController as! TeamViewController).currentTeam = selectedTeam
+                
+                matchClasses?.forEach({ (mc) -> () in
+                    if(mc.id! == filteredTeams[indexPath.row].matchClassId!){
+                        mc.matchGroups?.forEach({ (mg) -> () in
+                            if(mg.id == filteredTeams[indexPath.row].matchGroupId){
+                                (segue.destinationViewController as! TeamViewController).currentMatchClass = mc
+                                (segue.destinationViewController as! TeamViewController).currentGroup = mg
+                            }
+                        })
+                    }
+                })
+                
                 self.searchController.active = false
                 self.searchController.searchBar.endEditing(true)
             }
