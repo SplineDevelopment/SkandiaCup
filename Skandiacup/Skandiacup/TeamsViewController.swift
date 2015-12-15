@@ -215,7 +215,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
                         mc.matchGroups?.forEach({ (mg) -> () in
                             if(mg.id == filteredTeams[indexPath.row].matchGroupId){
                                 (segue.destinationViewController as! TeamViewController).currentMatchClass = mc
-                                (segue.destinationViewController as! TeamViewController).currentGroup = mg
+                                (segue.destinationViewController as! TeamViewController).currentMatchGroup = mg
                             }
                         })
                     }

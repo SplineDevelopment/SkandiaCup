@@ -75,7 +75,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                     })
                 }
             }
-            
         self.currentMatchGroup = currentGroup
         }
     }
@@ -202,12 +201,11 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         switch (section) {
         case 0:
             var headerText = "Tabell"
-            if let mg = self.currentGroup {
+            if let mg = self.currentMatchGroup {
                 if let mc = self.currentMatchClass{
                     headerText = headerText + " - \(mc.name!) - \(mg.name!)"
                 }
             }
-            
             
             headerCell.headerLabel.text = headerText
             //return sectionHeaderView
