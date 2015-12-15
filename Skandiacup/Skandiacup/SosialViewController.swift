@@ -92,7 +92,6 @@ extension SosialViewController {
 }
 
 extension SosialViewController {
-    
     func collectionView(collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
