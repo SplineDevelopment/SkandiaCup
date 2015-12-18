@@ -61,11 +61,30 @@ class FieldItemViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if let cell = self.fieldMatchTableView.dequeueReusableCellWithIdentifier("fieldMatchCell"){
             if let match = matches?[indexPath.row]{
-                if match.endGameLevel == 0{
-                     cell.textLabel?.text = "\(Date.getDateMatchView(match.matchDate!)) - \(Date.getKickoffTimeMatchView(match.matchDate!)) - \(match.homeTeamName!) vs \(match.awayTeamName!)"
-                }else{
-                    cell.textLabel?.text = "\(Date.getDateMatchView(match.matchDate!)) - \(Date.getKickoffTimeMatchView(match.matchDate!)) - \(match.homeTeamText!) vs \(match.awayTeamText!)"
+                var text = ""
+                
+                if let date = match.matchDate{
+                    text = text + Date.getDateMatchView(date) + " - \(Date.getKickoffTimeMatchView(date))"
                 }
+                
+                if match.endGameLevel == 0{
+                    if let home = match.homeTeamName{
+                        text += " - \(home)"
+                    }
+                    
+                    if let away = match.awayTeamName{
+                        text += " - \(away)"
+                    }
+                }else{
+                    if let home = match.homeTeamText{
+                        text += " - \(home)"
+                    }
+                    
+                    if let away = match.awayTeamText{
+                        text += " - \(away)"
+                    }
+                }
+                cell.textLabel?.text = text
                 return cell
             }
         }
