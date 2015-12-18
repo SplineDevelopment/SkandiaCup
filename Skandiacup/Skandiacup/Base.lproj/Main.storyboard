@@ -662,7 +662,7 @@
                         <viewControllerLayoutGuide type="top" id="2wh-b4-GG0"/>
                         <viewControllerLayoutGuide type="bottom" id="jq2-cL-TEe"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Hhn-F2-NvB">
+                    <view key="view" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Hhn-F2-NvB">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -676,14 +676,9 @@
                                 <rect key="frame" x="8" y="52" width="584" height="499"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <view key="tableHeaderView" contentMode="scaleToFill" id="XuD-kN-RPM" customClass="filterView" customModule="Skandiacup" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="584" height="29"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="teamCell" id="X65-TL-ShU">
-                                        <rect key="frame" x="0.0" y="57" width="584" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="584" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="X65-TL-ShU" id="WgH-mE-W57">
                                             <rect key="frame" x="0.0" y="0.0" width="584" height="43.5"/>
@@ -737,7 +732,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="iRQ-5U-fT6" id="IEd-Uq-GkM"/>
-                        <outlet property="filterDropDownView" destination="XuD-kN-RPM" id="wkR-45-Wie"/>
                         <outlet property="segmentController" destination="R66-2e-Alh" id="rsB-oK-wGV"/>
                         <outlet property="teamTableView" destination="RHe-cH-bFp" id="toy-ax-I2x"/>
                     </connections>
@@ -1277,7 +1271,7 @@
                                 <rect key="frame" x="0.0" y="72" width="600" height="109"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="center" tableViewCell="sRF-f3-1SH" id="QjY-cy-JgX">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="106.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="108.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1925,7 +1919,7 @@
         <image name="trophy5" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SHZ-1m-rNu"/>
+        <segue reference="wPc-nx-wgx"/>
         <segue reference="s2g-qn-pE1"/>
     </inferredMetricsTieBreakers>
 </document>

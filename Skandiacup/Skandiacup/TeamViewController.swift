@@ -500,13 +500,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    override func willMoveToParentViewController(parent: UIViewController?) {
-        let grandpa = self.parentViewController?.parentViewController
-        if ((grandpa!.isKindOfClass(TournamentViewController))){
-            (grandpa as! TournamentViewController).testingFunc(TeamsViewController)
-        }
-    }
-    
     func setUpMatches(){
         if self.currentTeam != nil && self.currentGroup != nil {
             SharingManager.data.getMatches(nil, groupID: self.currentGroup!.id, teamID: nil, endplay: nil, completionHandler: { (matches, error) -> () in
