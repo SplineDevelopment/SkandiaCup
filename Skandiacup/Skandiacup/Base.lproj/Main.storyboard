@@ -110,7 +110,7 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <navigationItem key="navigationItem" id="Z1K-mO-VGD"/>
+                    <navigationItem key="navigationItem" title="Classes" id="Z1K-mO-VGD"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="endPlayMatchClassTable" destination="rbQ-UE-O7P" id="yEr-6B-oCs"/>
@@ -755,11 +755,11 @@
                         <viewControllerLayoutGuide type="bottom" id="zhO-p6-vDd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="FQ9-CF-mcY">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TestMatchView" translatesAutoresizingMaskIntoConstraints="NO" id="Sed-QG-6bN">
-                                <rect key="frame" x="0.0" y="7" width="600" height="544"/>
+                                <rect key="frame" x="0.0" y="7" width="600" height="549"/>
                                 <color key="tintColor" white="0.0" alpha="0.42999999999999999" colorSpace="calibratedWhite"/>
                             </imageView>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1uD-W6-KVd">
@@ -1611,10 +1611,10 @@
             </objects>
             <point key="canvasLocation" x="-2314" y="1699"/>
         </scene>
-        <!--End play-->
+        <!--Classes-->
         <scene sceneID="dVw-yb-RoS">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="caO-l4-mHs" sceneMemberID="viewController">
+                <navigationController title="Classes" automaticallyAdjustsScrollViewInsets="NO" id="caO-l4-mHs" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="End play" image="trophy5" id="gPl-0n-OON"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Jzz-0l-JFi">
@@ -1926,6 +1926,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="wPc-nx-wgx"/>
-        <segue reference="s2g-qn-pE1"/>
+        <segue reference="AOd-Ai-r1V"/>
     </inferredMetricsTieBreakers>
 </document>
