@@ -36,10 +36,6 @@ class InfoItemViewController: UIViewController {
         if let item = self.currentItem{
             if let bodytextview = self.textView{
                 let htmlstring = item.itemDescription!
-                //                let headerstring = item.title!
-                
-                //                print(headerstring)
-                //                htmlstring = headerstring + htmlstring
                 let bodytext: NSAttributedString
                 
                 do{
@@ -49,9 +45,6 @@ class InfoItemViewController: UIViewController {
                     self.headerLabel.font = UIFont(name: "Helvetica Neue", size: 20)
                     bodytextview.attributedText = bodytext
                     bodytextview.font = UIFont (name: "Helvetica Neue", size: 15)
-                    //bodytextview.font = UIFont (name: "Adelle sans", size: 20)
-                    
-                    //                    bodytextview.textColor = UIColor.lightGrayColor()
                 } catch _ as NSError{
                 }
             }

@@ -35,10 +35,18 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     self.feed = RSSfeed
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.newTableView.reloadData()
-                        if !self.view_is_loaded {
+                        
+                        if !(self.view_is_loaded) {
                             self.view_is_loaded = true
-                            (self.parentViewController?.parentViewController as! HomeViewController).activityIndicator.stopAnimating()
-                            (self.parentViewController?.parentViewController as! HomeViewController).newsView.hidden = false
+                            
+                            let parentView = self.parentViewController?.parentViewController as! HomeViewController
+                            
+                            
+                            if (parentView.viewShowing == 0){                            
+                                (self.parentViewController?.parentViewController as! HomeViewController).activityIndicator.stopAnimating()
+                                (self.parentViewController?.parentViewController as! HomeViewController).newsView.hidden = false
+                            }
+                            
                         }
                     })
                 }

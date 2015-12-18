@@ -19,11 +19,6 @@ class InfoViewController: UITableViewController, SegmentChangeProto {
     
     
     func viewChangedTo() {
-        print("ViewChangedTo")
-       
-    }
-    
-    override func viewDidAppear(animated: Bool) {
         if CACurrentMediaTime() > self.RSS_timer + 60 {
             SharingManager.rssfeed.getRSSfeed { (RSSfeed, error) -> () in
                 if error {
@@ -32,7 +27,6 @@ class InfoViewController: UITableViewController, SegmentChangeProto {
                     let alertController = UIAlertController(title: "Error", message:
                         "RSS feed not available atm", preferredStyle: UIAlertControllerStyle.Alert)
                     alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
-                    
                     self.presentViewController(alertController, animated: true, completion: nil)
                     // needs to be handled properly
                 } else {
@@ -43,13 +37,15 @@ class InfoViewController: UITableViewController, SegmentChangeProto {
                         if !self.view_is_loaded {
                             self.view_is_loaded = true
                             (self.parentViewController?.parentViewController as! HomeViewController).activityIndicator.stopAnimating()
-                            (self.parentViewController?.parentViewController as! HomeViewController).newsView.hidden = false
+                            (self.parentViewController?.parentViewController as! HomeViewController).infoView.hidden = false
                         }
                     })
                 }
             }
         }
-        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
     }
     
     
@@ -65,14 +61,13 @@ class InfoViewController: UITableViewController, SegmentChangeProto {
         if let feed = self.feed{
             let item = feed[indexPath.row] as RSSItem
             cell.headerLabel.text = item.title
-            //cell.headerLabel.font = UIFont(
             do{
                 bodytext =  try NSAttributedString(data: item.itemDescription!.dataUsingEncoding(NSUnicodeStringEncoding, allowLossyConversion: true)!, options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
                 cell.bodyText.attributedText = bodytext
                 cell.bodyText.font = UIFont (name: "Helvetica Neue", size: 12)
-                //cell.bodyText.font = UIFont (name: "Adelle sans", size: 12)
                 cell.bodyText.textColor = UIColor.blackColor()
                 cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+                
             } catch _ as NSError{
             }
         }

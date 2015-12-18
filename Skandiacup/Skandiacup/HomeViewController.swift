@@ -66,6 +66,13 @@ class HomeViewController: UIViewController {
             if let tempController = child as? T {
                 tempController.viewChangedTo()
             }
+            
+            //GrandChild
+            child.childViewControllers.forEach({ (grandChild) -> () in
+                if let grandTempController = grandChild as? T {
+                    grandTempController.viewChangedTo()
+                }
+            })
         })
     }
 
