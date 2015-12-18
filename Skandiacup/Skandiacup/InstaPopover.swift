@@ -44,7 +44,6 @@ class InstaPopover : UIViewController, UIPopoverPresentationControllerDelegate {
     
     func handleSwipes(sender:UISwipeGestureRecognizer) {
         if (sender.direction == .Left) {
-            print("Swipe Left")
             var temp_index : Int
             if index == instaPhotoTable.count-1 {
                 temp_index = 0
@@ -58,7 +57,6 @@ class InstaPopover : UIViewController, UIPopoverPresentationControllerDelegate {
         }
         
         if (sender.direction == .Right) {
-            print("Swipe Right")
             var temp_index : Int
             if index == 0 {
                 temp_index = instaPhotoTable.count-1

@@ -19,7 +19,6 @@ class InfoViewController: UITableViewController, SegmentChangeProto {
     
     
     func viewChangedTo() {
-        print("ViewChangedTo")
         if CACurrentMediaTime() > self.RSS_timer + 60 {
             SharingManager.rssfeed.getRSSfeed { (RSSfeed, error) -> () in
                 if error {
@@ -68,6 +67,7 @@ class InfoViewController: UITableViewController, SegmentChangeProto {
                 cell.bodyText.font = UIFont (name: "Helvetica Neue", size: 12)
                 cell.bodyText.textColor = UIColor.blackColor()
                 cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+                
             } catch _ as NSError{
             }
         }

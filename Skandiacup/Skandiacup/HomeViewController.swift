@@ -39,7 +39,6 @@ class HomeViewController: UIViewController {
         infoView.hidden = false
         sosialView.hidden = true
         headerLabel.hidden = true
-        print("kaller callViewChangedToChildController fra show info tab")
         self.callViewChangedToChildController(InfoViewController)
     }
     
@@ -64,14 +63,12 @@ class HomeViewController: UIViewController {
     
     func callViewChangedToChildController<T : SegmentChangeProto>(t : T.Type) {
         self.childViewControllers.forEach({ (child) -> () in
-            print(child);
             if let tempController = child as? T {
                 tempController.viewChangedTo()
             }
             
             //GrandChild
             child.childViewControllers.forEach({ (grandChild) -> () in
-                print("Grandchild \(grandChild)");
                 if let grandTempController = grandChild as? T {
                     grandTempController.viewChangedTo()
                 }

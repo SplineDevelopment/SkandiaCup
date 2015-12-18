@@ -22,7 +22,7 @@ class InfoCellView: UITableViewCell {
     }
     
     private func commonInit() {
-        NSBundle.mainBundle().loadNibNamed("newsCellView", owner: self, options: nil)
+        NSBundle.mainBundle().loadNibNamed("InfoCellView", owner: self, options: nil)
         cellView.frame = self.bounds
         self.addSubview(cellView)
         
