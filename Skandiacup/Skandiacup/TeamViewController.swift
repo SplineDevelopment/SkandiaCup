@@ -335,6 +335,16 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 cell.dateView.backgroundColor = UIColor(red:0.80, green:0.80, blue:0.80, alpha:1.0)
                 cell.view.backgroundColor = UIColor(red:0.91, green:0.91, blue:0.91, alpha:1.0)
                 return cell
+            }
+        } else if let match = matches?[indexPath.row]{
+            let cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as! matchCellView!
+            if let date = match.matchDate{
+                cell.dateLabel.text = date
+            }
+            
+            if match.endGameLevel == 0{
+                if let home = match.homeTeamName{
+                    cell.homeTeamNameLabel.text = home
                 }
             } else{
                 if let match = matches?[indexPath.row]{
@@ -350,6 +360,16 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                     cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
                     return cell
             }
+        
+            if let fieldId = match.fieldId{
+                cell.fieldNameLabel.text = String(fieldId)
+            }
+            
+            if let classId = match.classId{
+                cell.classNameLabel.text = String(classId)
+            }
+            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            return cell
         }
         return UITableViewCell()
     }
@@ -435,13 +455,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 let selectedTournamentMatch = matches![indexPath.row]
                 (segue.destinationViewController as! MatchViewController).selectedMatch = selectedTournamentMatch
             }
-        }
-    }
-    
-    override func willMoveToParentViewController(parent: UIViewController?) {
-        let grandpa = self.parentViewController?.parentViewController
-        if ((grandpa!.isKindOfClass(TournamentViewController))){
-            (grandpa as! TournamentViewController).testingFunc(TeamsViewController)
         }
     }
     

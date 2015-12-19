@@ -21,11 +21,9 @@ class GroupsViewController: UIViewController , UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         self.segmentController.selectedSegmentIndex = 1
-//        print("VIEWDIDLOADDDDD")
         super.viewDidLoad()
         groupTableView.dataSource = self
         groupTableView.delegate = self
-//        segmentController.selectedSegmentIndex = 1
         SharingManager.data.getMatchClass { (matchclasses, error) -> () in
             if error {
                 print("error getting matchclasses")
@@ -34,19 +32,15 @@ class GroupsViewController: UIViewController , UITableViewDataSource, UITableVie
                         "Group data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
                     alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
                     self.presentViewController(alertController, animated: true, completion: nil)
-                    // needs to be handled properly
                 }
             } else {
                 self.groups = matchclasses
             }
         }
-        // Do any additional setup after loading the view.
-        
     }
     
     @IBAction func indexChanged(sender: AnyObject) {
                 (self.parentViewController?.parentViewController as! TournamentViewController).switchTable(segmentController.selectedSegmentIndex)
-//        self.viewDidLoad()
         segmentController.selectedSegmentIndex = 1
     }
     
@@ -71,32 +65,8 @@ class GroupsViewController: UIViewController , UITableViewDataSource, UITableVie
             }
         }
     }
-
-    
-    //    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    //
-    //    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return groups != nil ? groups!.count : 0
     }
-    
-    func changeSegment(){
-//        self.segmentController.selectedSegmentIndex = 1
-    }
-    
-    // UITableViewDelegate Functions
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
-    
- 
-    
 }

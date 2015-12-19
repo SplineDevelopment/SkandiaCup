@@ -15,6 +15,7 @@ class filterView: UIView{
     var sexPicker: UIPickerView!
     var countryPicker: UIPickerView!
     
+    @IBOutlet weak var searchTextField: UITextField!
     override init(frame: CGRect) { // for using CustomView in code
         super.init(frame: frame)
         self.commonInit()
