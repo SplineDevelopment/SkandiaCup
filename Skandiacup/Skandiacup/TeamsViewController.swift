@@ -7,7 +7,9 @@
 
 import UIKit
 
-class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UISearchControllerDelegate, UISearchResultsUpdating, SegmentChangeProto, TeamsViewChangeProto{
+class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate{
+    var filterViewTest: filterView?
+    
     @IBOutlet weak var filterDropDownView: UIView!
     @IBOutlet weak var teamTableView: UITableView!
     @IBOutlet weak var segmentController: UISegmentedControl!
@@ -15,15 +17,12 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     var standardPixelHeight: CGFloat?
     var heighIsSet = false
     
-    /// Search controller to help us with filtering.
-    var searchController: UISearchController!
-    
-    //get this dynamicly from teams
     var countryPickerValues: [String] = ["Alle"]
     let sexPickerValues = ["Alle", "Menn", "Damer"]
     var dropDownViewIsDisplayed = false
     var pickerActive : Bool = false
     var error_message_is_set = false
+    var dimView:UIView?
 
     var teams: [TournamentTeam]? {
         didSet{
@@ -55,39 +54,32 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     override func viewDidLoad() {
-        self.teamTableView.backgroundColor = UIColor.clearColor()
         segmentController.selectedSegmentIndex = 0
         super.viewDidLoad()
-        self.teamTableView.tableHeaderView?.hidden = true
-        (self.teamTableView.tableHeaderView as! filterView).setupDelegates(self)
+        
+        filterViewTest = filterView(frame: CGRectZero)
+        filterViewTest?.setupDelegates(self)
+        let height = Config.filterViewHeight
+        var width = filterViewTest?.frame.size.width
+        width = teamTableView.frame.width
+        
+        self.filterViewTest?.frame = CGRectMake(0, -height, width!, height)
+        self.view.addSubview(filterViewTest!)
+        
+        self.filterViewTest!.searchTextField.addTarget(self, action: "updateFilteredTeams", forControlEvents: UIControlEvents.EditingChanged)
+        self.filterViewTest!.hidden = true
+        dimView = UIView(frame: CGRectInfinite)
+        self.dimView!.backgroundColor = .blackColor()
+        self.dimView!.alpha = 0
+        
+        self.teamTableView.addSubview(self.dimView!)
+        
+        
         teamTableView.dataSource = self
         teamTableView.delegate = self
         teamTableView.hidden = true
         activityIndicator.hidden = false
         activityIndicator.startAnimating()
-        searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.sizeToFit()
-        self.teamTableView.tableHeaderView?.addSubview(searchController.searchBar)
-        searchController.delegate = self
-        searchController.dimsBackgroundDuringPresentation = false // default is YES
-        searchController.searchBar.delegate = self    // so we can monitor text changes + others
-        self.teamTableView.layer.transform = CATransform3DTranslate(CATransform3DIdentity, 0, -Config.filterViewHeight, 0)
-        self.teamTableView.tableHeaderView?.frame.size.height = Config.filterViewHeight
-    }
-    
-    func viewChangedTo() {
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
-            if !(self.heighIsSet) {
-                self.standardPixelHeight = self.teamTableView.layer.frame.size.height
-                self.heighIsSet = true
-            }
-            if self.dropDownViewIsDisplayed {
-                self.teamTableView.layer.frame.size.height = self.standardPixelHeight!
-            } else {
-                self.teamTableView.layer.frame.size.height = self.standardPixelHeight! + Config.filterViewHeight
-            }
-        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -161,47 +153,85 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (self.searchController.active || self.pickerActive){
             return self.filteredTeams.count
-        }else{
-            return teams != nil ? teams!.count : 0
-        }
     }
 
     func changeSegment(){
         teamTableView.layer.frame.size.height = teamTableView.layer.frame.size.height + Config.filterViewHeight
     }
     
-    @IBAction func searchButtonPressed(sender: AnyObject) {
-        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, -Config.filterViewHeight, 0)
-        if !dropDownViewIsDisplayed{
-            teamTableView.setContentOffset(CGPointZero, animated:true)
-            self.teamTableView.tableHeaderView?.hidden = false
-            teamTableView.layer.transform = rotationTransform
+    
+    func hideDropDownView() {
+        var frame = self.filterViewTest!.frame
+        frame.origin.y = -frame.size.height
+        self.animateDropDownToFrame(frame) {
+            self.dropDownViewIsDisplayed = false
+            self.filterViewTest!.hidden = true
+            self.teamTableView.allowsSelection = true
+            self.teamTableView.scrollEnabled = true
+        }
+    }
+    
+    func showDropDownView() {
+        var frame = self.filterViewTest!.frame
+        frame.origin.y = self.navigationController!.navigationBar.frame.size.height+40
+        self.filterViewTest!.hidden = false
+        self.teamTableView.allowsSelection = false
+        self.teamTableView.scrollEnabled = false
+        self.animateDropDownToFrame(frame) {
+            self.dropDownViewIsDisplayed = true
+        }
+    }
+    
+    func animateDropDownToFrame(frame: CGRect, completion:() -> Void) {
+        UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: { () -> Void in
+            self.filterViewTest!.frame = frame
             
+            if(self.dropDownViewIsDisplayed){
+                self.dimView!.alpha = 0.5
+                UIView.animateWithDuration(0.3, animations: { () -> Void in
+                    self.dimView!.alpha = 0.0
+                })
+            }else if(!self.dropDownViewIsDisplayed){
+                self.dimView!.alpha = 0
+                UIView.animateWithDuration(0.3, animations: { () -> Void in
+                    self.dimView!.alpha = 0.5
+                })
+            }
+            
+        }) { (completed) -> Void in
+            if(completed){
+                completion()
+            }
+        }
+    }
+    
+    @IBAction func searchButtonPressed(sender: AnyObject) {
+        if(dropDownViewIsDisplayed){
+            let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, Config.filterViewHeight+40, 0)
+            self.teamTableView.layer.transform = rotationTransform
             UIView.animateWithDuration(0.5, animations: { () -> Void in
                 self.teamTableView.layer.transform = CATransform3DIdentity
-                self.dropDownViewIsDisplayed = true
-                self.teamTableView.layer.frame.size.height = self.teamTableView.layer.frame.size.height - Config.filterViewHeight
-            }, completion: { (success) -> Void in
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.teamTableView.reloadData()
-                })
+                }, completion: { (success) -> Void in
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    })
             })
-        } else if dropDownViewIsDisplayed{
-            self.teamTableView.layer.frame.size.height = self.teamTableView.layer.frame.size.height + Config.filterViewHeight
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.teamTableView.reloadData()
-            })
-            
-            teamTableView.layer.transform = CATransform3DIdentity
+        }else if !dropDownViewIsDisplayed{
+            self.teamTableView.layer.transform = CATransform3DIdentity
+            let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, Config.filterViewHeight+40, 0)
             UIView.animateWithDuration(0.5, animations: { () -> Void in
                 self.teamTableView.layer.transform = rotationTransform
-                self.dropDownViewIsDisplayed = false
                 }, completion: { (success) -> Void in
-                    self.teamTableView.tableHeaderView?.hidden = true
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    })
             })
         }
+        if(dropDownViewIsDisplayed){
+            hideDropDownView()
+        }else{
+            showDropDownView()
+        }
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -220,22 +250,8 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
                         })
                     }
                 })
-                
-                self.searchController.active = false
-                self.searchController.searchBar.endEditing(true)
             }
         }
-    }
-    
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        filteredTeams = teams!
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.teamTableView.reloadData()
-        })
-    }
-    
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        searchBar.endEditing(true)
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int{
@@ -266,12 +282,12 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         if(pickerView.accessibilityIdentifier == "sexPicker"){
-            (self.teamTableView.tableHeaderView as! filterView).sexTextField.text = self.sexPickerValues[row]
+            (self.filterViewTest!).sexTextField.text = self.sexPickerValues[row]
             pickerActive = true
         }
         
         if(pickerView.accessibilityIdentifier == "countryPicker"){
-            (self.teamTableView.tableHeaderView as! filterView).countryTextField.text = self.countryPickerValues[row]
+            (self.filterViewTest!).countryTextField.text = self.countryPickerValues[row]
             pickerActive = true
         }
         updateFilteredTeams()
@@ -281,21 +297,22 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        print("TOUCHES BEGAN")
+        let touch: UITouch = touches.first! as UITouch
+        if touch.view == self.teamTableView{
+            resign()
+        }
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
             self.view.endEditing(true)
         }
     }
-    
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
-        updateFilteredTeams()
-    }
         
     func updateFilteredTeams(){
         filteredTeams = teams!
-        let sexPickerValue = sexPickerValues[(self.teamTableView.tableHeaderView as! filterView).sexPicker.selectedRowInComponent(0)]
-        let countryPickerValue = countryPickerValues[(self.teamTableView.tableHeaderView as! filterView).countryPicker.selectedRowInComponent(0)]
-        let searchText = searchController.searchBar.text
-
+        let sexPickerValue = sexPickerValues[(self.filterViewTest!).sexPicker.selectedRowInComponent(0)]
+        let countryPickerValue = countryPickerValues[(self.filterViewTest!).countryPicker.selectedRowInComponent(0)]
+        let searchText = self.filterViewTest!.searchTextField.text
+        
         if sexPickerValue != "" && sexPickerValue != "Alle" {
             filteredTeams = filteredTeams.filter({ (team) -> Bool in
                 if(sexPickerValue == "Menn"){
@@ -324,7 +341,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
         if searchText != "" {
             filteredTeams = filteredTeams.filter({ (team) -> Bool in
                 let tmp: NSString = team.name!
-                let range = tmp.rangeOfString(searchController.searchBar.text!, options: NSStringCompareOptions.CaseInsensitiveSearch)
+                let range = tmp.rangeOfString(searchText!, options: NSStringCompareOptions.CaseInsensitiveSearch)
                 return range.location != NSNotFound
             })
         }
@@ -333,34 +350,14 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
         })
     }
     
-    override func viewDidAppear(animated: Bool) {
-        self.viewChangedTo()
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
-            self.viewChangedTo()
-            self.teamTableView.reloadData()
-        }
-    }
-    
-    
     override func viewWillDisappear(animated: Bool) {
         self.view.endEditing(true)
-        (self.teamTableView.tableHeaderView  as! filterView).sexPicker.resignFirstResponder()
-        (self.teamTableView.tableHeaderView  as! filterView).countryPicker.resignFirstResponder()
-        (self.teamTableView.tableHeaderView  as! filterView).sexPicker.endEditing(true)
-        (self.teamTableView.tableHeaderView  as! filterView).countryPicker.endEditing(true)
+        resign()
     }
-    
-    func updateFilterViewHeight (){
-        self.viewChangedTo()
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
-            if self.dropDownViewIsDisplayed {
-                self.teamTableView.layer.frame.size.height = self.standardPixelHeight!
-            } else {
-                self.teamTableView.layer.frame.size.height = self.standardPixelHeight! + Config.filterViewHeight
-            }
-        }
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
-            self.viewDidAppear(true)
-        }
+    private func resign(){
+        (self.filterViewTest!).sexPicker.resignFirstResponder()
+        (self.filterViewTest!).countryPicker.resignFirstResponder()
+        (self.filterViewTest!).sexPicker.endEditing(true)
+        (self.filterViewTest!).countryPicker.endEditing(true)
     }
 }

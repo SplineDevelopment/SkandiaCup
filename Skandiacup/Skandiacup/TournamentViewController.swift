@@ -18,26 +18,13 @@ class TournamentViewController: UIViewController{
         }
     }
 
-    func testingFunc<T : TeamsViewChangeProto>(t : T.Type) {
-        self.childViewControllers.forEach({ (child) -> () in
-            child.childViewControllers.forEach({ (child) -> () in
-                if let tempController = child as? TeamsViewChangeProto {
-                    tempController.updateFilterViewHeight()
-                }
-            })
-        })
-    }
-
    override func viewDidLoad() {
         super.viewDidLoad()
-//        print("COUNT \(self.childViewControllers.count)")
         teamsView.hidden = false
         groupsView.hidden = true
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }

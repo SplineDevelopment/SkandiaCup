@@ -21,7 +21,7 @@ class matchCellView: UITableViewCell {
     @IBOutlet weak var homeTeamNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var dateView: UIView!
-    
+    @IBOutlet weak var timeLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
