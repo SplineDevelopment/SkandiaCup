@@ -47,7 +47,7 @@
 "GbZ-z6-lac.text" = "#";
 
 /* Class = "UINavigationItem"; title = "Title"; ObjectID = "Ge9-kF-pp5"; */
-"Ge9-kF-pp5.title" = "Hvaskaldetståher7";
+"Ge9-kF-pp5.title" = "";
 
 /* Class = "UINavigationItem"; title = "Favoritter"; ObjectID = "IUE-o7-1G0"; */
 "IUE-o7-1G0.title" = "Favoritter";
@@ -59,7 +59,7 @@
 "JmS-mQ-W5K.text" = "Hvaskaldetståher8";
 
 /* Class = "UIViewController"; title = "GroupView"; ObjectID = "L7N-NF-54k"; */
-"L7N-NF-54k.title" = "Hvaskaldetståher9";
+"L7N-NF-54k.title" = "Grupper";
 
 /* Class = "UISegmentedControl"; LNv-VN-HDd.segmentTitles[0] = "News"; ObjectID = "LNv-VN-HDd"; */
 "LNv-VN-HDd.segmentTitles[0]" = "Nyheter";
@@ -98,7 +98,7 @@
 "XrD-WQ-1Wc.text" = "Hvaskaldetståher10";
 
 /* Class = "UILabel"; text = "Field"; ObjectID = "Yff-qG-7Ll"; */
-"Yff-qG-7Ll.text" = "Hvaskaldetståher11";
+"Yff-qG-7Ll.text" = "";
 
 /* Class = "UINavigationItem"; title = "Classes"; ObjectID = "Z1K-mO-VGD"; */
 "Z1K-mO-VGD.title" = "Årsklasser";
