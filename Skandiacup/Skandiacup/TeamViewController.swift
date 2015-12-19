@@ -312,7 +312,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
         else if (indexPath.section == 1){
-            print(noUpcomming)
             if (noUpcomming == true){
                 let cell = tableView.dequeueReusableCellWithIdentifier("noUpcommingMatches") as! matchCellView!
                 cell.homeTeamNameLabel.text = "Ingen kommende kamper"
@@ -364,7 +363,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 return cell
             }
         } else if let match = matches?[indexPath.row]{
-            let cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as! matchCellView!
+            let cell = tableView.dequeueReusableCellWithIdentifier("matchesPlayed") as! matchCellView!
             if let date = match.matchDate{
                 cell.dateLabel.text = getDate(match.matchDate!)
                 cell.timeLabel.text = getTime(match.matchDate!)

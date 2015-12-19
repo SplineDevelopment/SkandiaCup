@@ -977,7 +977,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Olf-rK-hXZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1352" y="4872.5"/>
+            <point key="canvasLocation" x="1913" y="4568.5"/>
         </scene>
         <!--teamView-->
         <scene sceneID="l84-4Y-fBT">
@@ -1295,6 +1295,22 @@
                                             <animations/>
                                         </tableViewCellContentView>
                                         <animations/>
+                                        <connections>
+                                            <segue destination="idp-YS-O2B" kind="show" identifier="identifierFromTeamToMatch" id="dsd-KO-Hds"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="matchesPlayed" id="SlH-aJ-uDv" customClass="matchCellView" customModule="Skandiacup" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="357" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SlH-aJ-uDv" id="xXh-59-BIo">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <connections>
+                                            <segue destination="idp-YS-O2B" kind="show" identifier="identifierFromTeamToMatch" id="d79-o8-1Fl"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -1615,6 +1631,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cqo-4N-bRs">
                                         <rect key="frame" x="98" y="5" width="408" height="35"/>
+                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="3pp-z7-TTb"/>
                                         </constraints>
@@ -1639,6 +1656,7 @@
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcI-PX-0VS">
                                         <rect key="frame" x="98" y="40" width="408" height="35"/>
+                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="9kZ-Wy-mHg"/>
                                             <constraint firstAttribute="width" constant="329" id="BQQ-ga-hSK"/>
@@ -1654,6 +1672,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="JQe-n8-pDa">
                                         <rect key="frame" x="514" y="8" width="78" height="64"/>
+                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="78" id="oLM-xV-7o5"/>
                                         </constraints>
@@ -2123,6 +2142,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="wPc-nx-wgx"/>
-        <segue reference="s2g-qn-pE1"/>
+        <segue reference="d79-o8-1Fl"/>
     </inferredMetricsTieBreakers>
 </document>

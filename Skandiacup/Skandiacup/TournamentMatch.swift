@@ -38,3 +38,7 @@ struct TournamentMatch{
     var UpdateTimeStamp: String?
     var matchGroupId: Int?
 }
+
+func emptyMatch()-> TournamentMatch{
+    return TournamentMatch()
+}
