@@ -4,7 +4,7 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var groups: [MatchGroup]? {
         didSet{
             groups = groups?.filter{
-                $0.name != "Playoff"
+                $0.isPlayoff == false
             }
             groups?.sortInPlace{($0.name < $1.name)}
             dispatch_async(dispatch_get_main_queue()) { () -> Void in
