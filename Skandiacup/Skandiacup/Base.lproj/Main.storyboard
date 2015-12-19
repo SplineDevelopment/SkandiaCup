@@ -712,7 +712,7 @@
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="R66-2e-Alh">
-                            <rect key="frame" x="105" y="7" width="390" height="30"/>
+                            <rect key="frame" x="107" y="7" width="386" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <segments>
@@ -724,14 +724,15 @@
                                 <action selector="indexChanged:" destination="Fqj-c4-U4g" eventType="valueChanged" id="T37-fX-pmt"/>
                             </connections>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="9i1-JF-jS1">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="search" id="4q3-HE-Pec">
                             <connections>
-                                <action selector="searchButtonPressed:" destination="Fqj-c4-U4g" id="3Op-NO-Xu3"/>
+                                <action selector="searchButtonPressed:" destination="Fqj-c4-U4g" id="49U-vk-GW7"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="iRQ-5U-fT6" id="IEd-Uq-GkM"/>
+                        <outlet property="searchButton" destination="4q3-HE-Pec" id="VSX-Y7-gOU"/>
                         <outlet property="segmentController" destination="R66-2e-Alh" id="rsB-oK-wGV"/>
                         <outlet property="teamTableView" destination="RHe-cH-bFp" id="toy-ax-I2x"/>
                     </connections>
@@ -1919,7 +1920,7 @@
         <image name="trophy5" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SHZ-1m-rNu"/>
+        <segue reference="wPc-nx-wgx"/>
         <segue reference="s2g-qn-pE1"/>
     </inferredMetricsTieBreakers>
 </document>

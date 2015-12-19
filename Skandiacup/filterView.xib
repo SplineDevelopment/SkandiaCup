@@ -9,6 +9,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="filterView" customModule="Skandiacup" customModuleProvider="target">
             <connections>
                 <outlet property="countryTextField" destination="BPJ-5K-ZZa" id="Gwb-im-Uas"/>
+                <outlet property="innerView" destination="X9D-w8-loM" id="OaV-fD-Gqh"/>
                 <outlet property="searchTextField" destination="DNH-nl-7gm" id="zgn-pI-mhF"/>
                 <outlet property="sexTextField" destination="t1C-ww-gw6" id="FGc-fl-phC"/>
                 <outlet property="viewGUI" destination="iN0-l3-epB" id="vvf-yN-CuH"/>
@@ -20,28 +21,28 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X9D-w8-loM">
-                    <rect key="frame" x="0.0" y="0.0" width="391" height="173"/>
+                    <rect key="frame" x="0.0" y="8" width="392" height="128"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Land" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5U-Ky-BKE">
                             <rect key="frame" x="8" y="49" width="128" height="21"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="128" id="a6A-wG-aI2"/>
+                                <constraint firstAttribute="width" constant="128" id="zbM-cj-Wcp"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t1C-ww-gw6">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Velg kjønn" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t1C-ww-gw6">
                             <rect key="frame" x="168" y="84" width="215" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BPJ-5K-ZZa">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Velg land" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BPJ-5K-ZZa">
                             <rect key="frame" x="168" y="46" width="215" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DNH-nl-7gm">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Søk etter lagnavn" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DNH-nl-7gm">
                             <rect key="frame" x="8" y="8" width="375" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
@@ -53,34 +54,34 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.86533301767676774" green="0.86533301767676774" blue="0.86533301767676774" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="t1C-ww-gw6" firstAttribute="top" secondItem="BPJ-5K-ZZa" secondAttribute="bottom" constant="8" symbolic="YES" id="0Ud-CH-YTV"/>
-                        <constraint firstItem="DNH-nl-7gm" firstAttribute="leading" secondItem="T5U-Ky-BKE" secondAttribute="leading" id="5LD-xj-CsP"/>
-                        <constraint firstItem="t1C-ww-gw6" firstAttribute="trailing" secondItem="X9D-w8-loM" secondAttribute="trailingMargin" id="HQJ-hx-mSu"/>
-                        <constraint firstItem="DNH-nl-7gm" firstAttribute="top" secondItem="X9D-w8-loM" secondAttribute="topMargin" id="Hpd-bN-MCR"/>
-                        <constraint firstItem="BPJ-5K-ZZa" firstAttribute="baseline" secondItem="T5U-Ky-BKE" secondAttribute="baseline" id="Lob-gC-q1u"/>
-                        <constraint firstItem="fcM-cp-uRB" firstAttribute="top" secondItem="T5U-Ky-BKE" secondAttribute="bottom" constant="17" id="NZY-L9-j8x"/>
-                        <constraint firstItem="fcM-cp-uRB" firstAttribute="baseline" secondItem="t1C-ww-gw6" secondAttribute="baseline" id="S8I-Nl-3pX"/>
-                        <constraint firstItem="T5U-Ky-BKE" firstAttribute="top" secondItem="DNH-nl-7gm" secondAttribute="bottom" constant="11" id="TiY-kA-7Tg"/>
-                        <constraint firstItem="fcM-cp-uRB" firstAttribute="trailing" secondItem="T5U-Ky-BKE" secondAttribute="trailing" id="W8w-8b-ekM"/>
-                        <constraint firstItem="BPJ-5K-ZZa" firstAttribute="leading" secondItem="T5U-Ky-BKE" secondAttribute="trailing" constant="32" id="huY-re-Qmn"/>
-                        <constraint firstAttribute="bottom" secondItem="t1C-ww-gw6" secondAttribute="bottom" constant="59" id="iaq-mI-9yX"/>
-                        <constraint firstItem="t1C-ww-gw6" firstAttribute="trailing" secondItem="BPJ-5K-ZZa" secondAttribute="trailing" id="lbT-pX-8JO"/>
-                        <constraint firstItem="T5U-Ky-BKE" firstAttribute="leading" secondItem="X9D-w8-loM" secondAttribute="leadingMargin" id="llg-OY-XxT"/>
-                        <constraint firstItem="BPJ-5K-ZZa" firstAttribute="top" secondItem="DNH-nl-7gm" secondAttribute="bottom" constant="8" symbolic="YES" id="m30-yy-oOo"/>
-                        <constraint firstItem="BPJ-5K-ZZa" firstAttribute="leading" secondItem="t1C-ww-gw6" secondAttribute="leading" id="neo-zh-Jt5"/>
-                        <constraint firstItem="fcM-cp-uRB" firstAttribute="leading" secondItem="T5U-Ky-BKE" secondAttribute="leading" id="wb8-Y4-pn7"/>
-                        <constraint firstItem="DNH-nl-7gm" firstAttribute="trailing" secondItem="BPJ-5K-ZZa" secondAttribute="trailing" id="xnb-y4-sxF"/>
+                        <constraint firstAttribute="bottom" secondItem="t1C-ww-gw6" secondAttribute="bottom" constant="14" id="3nG-tM-vVs"/>
+                        <constraint firstItem="T5U-Ky-BKE" firstAttribute="top" secondItem="DNH-nl-7gm" secondAttribute="bottom" constant="11" id="4UF-vb-ajJ"/>
+                        <constraint firstItem="DNH-nl-7gm" firstAttribute="top" secondItem="X9D-w8-loM" secondAttribute="topMargin" id="9o0-8W-WRV"/>
+                        <constraint firstItem="T5U-Ky-BKE" firstAttribute="trailing" secondItem="fcM-cp-uRB" secondAttribute="trailing" id="A0P-KE-f4y"/>
+                        <constraint firstItem="DNH-nl-7gm" firstAttribute="centerX" secondItem="X9D-w8-loM" secondAttribute="centerX" id="Dqu-4A-GQQ"/>
+                        <constraint firstItem="fcM-cp-uRB" firstAttribute="top" secondItem="T5U-Ky-BKE" secondAttribute="bottom" constant="17" id="EvU-O0-8cw"/>
+                        <constraint firstItem="T5U-Ky-BKE" firstAttribute="leading" secondItem="DNH-nl-7gm" secondAttribute="leading" id="IGG-ms-HRU"/>
+                        <constraint firstItem="t1C-ww-gw6" firstAttribute="trailing" secondItem="BPJ-5K-ZZa" secondAttribute="trailing" id="IvN-wN-S76"/>
+                        <constraint firstItem="T5U-Ky-BKE" firstAttribute="baseline" secondItem="BPJ-5K-ZZa" secondAttribute="baseline" id="Jh5-8X-liR"/>
+                        <constraint firstItem="t1C-ww-gw6" firstAttribute="baseline" secondItem="fcM-cp-uRB" secondAttribute="baseline" id="N0k-8B-Ncx"/>
+                        <constraint firstItem="t1C-ww-gw6" firstAttribute="leading" secondItem="BPJ-5K-ZZa" secondAttribute="leading" id="QY9-RQ-9Z0"/>
+                        <constraint firstItem="BPJ-5K-ZZa" firstAttribute="top" secondItem="DNH-nl-7gm" secondAttribute="bottom" constant="8" symbolic="YES" id="XLT-Tt-p3p"/>
+                        <constraint firstItem="BPJ-5K-ZZa" firstAttribute="leading" secondItem="T5U-Ky-BKE" secondAttribute="trailing" constant="32" id="idV-TL-uht"/>
+                        <constraint firstItem="DNH-nl-7gm" firstAttribute="leading" secondItem="X9D-w8-loM" secondAttribute="leadingMargin" id="jHp-Z0-f6l"/>
+                        <constraint firstItem="fcM-cp-uRB" firstAttribute="leading" secondItem="T5U-Ky-BKE" secondAttribute="leading" id="rpg-wC-8l5"/>
+                        <constraint firstItem="t1C-ww-gw6" firstAttribute="top" secondItem="BPJ-5K-ZZa" secondAttribute="bottom" constant="8" symbolic="YES" id="s5y-uu-0VF"/>
+                        <constraint firstItem="BPJ-5K-ZZa" firstAttribute="trailing" secondItem="DNH-nl-7gm" secondAttribute="trailing" id="z7c-5W-QFa"/>
                     </constraints>
                 </view>
             </subviews>
             <constraints>
-                <constraint firstItem="X9D-w8-loM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8TP-Sy-KRt"/>
-                <constraint firstItem="X9D-w8-loM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="F83-RS-QPi"/>
-                <constraint firstAttribute="trailing" secondItem="X9D-w8-loM" secondAttribute="trailing" constant="209" id="g9Q-yd-idH"/>
+                <constraint firstItem="X9D-w8-loM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ePv-kb-3cC"/>
+                <constraint firstAttribute="trailing" secondItem="X9D-w8-loM" secondAttribute="trailing" constant="208" id="iLy-ot-Xi5"/>
+                <constraint firstItem="X9D-w8-loM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" id="vK1-gd-YdY"/>
             </constraints>
-            <point key="canvasLocation" x="390" y="426"/>
+            <point key="canvasLocation" x="482.5" y="321.5"/>
         </view>
     </objects>
 </document>

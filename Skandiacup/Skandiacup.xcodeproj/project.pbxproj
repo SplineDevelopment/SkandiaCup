@@ -90,6 +90,7 @@
 		D5FD4EDE1B94CF3E009B53FC /* MatchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD4EDD1B94CF3E009B53FC /* MatchTable.swift */; };
 		D5FD4EE01B94CF70009B53FC /* TournamentTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD4EDF1B94CF70009B53FC /* TournamentTeam.swift */; };
 		D5FD4EE21B94CFB7009B53FC /* Tournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD4EE11B94CFB7009B53FC /* Tournament.swift */; };
+		D5FEBFDF1C256ABC009CDF0F /* DimView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FEBFDE1C256ABC009CDF0F /* DimView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -200,6 +201,7 @@
 		D5FD4EDD1B94CF3E009B53FC /* MatchTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchTable.swift; sourceTree = "<group>"; };
 		D5FD4EDF1B94CF70009B53FC /* TournamentTeam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentTeam.swift; sourceTree = "<group>"; };
 		D5FD4EE11B94CFB7009B53FC /* Tournament.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tournament.swift; sourceTree = "<group>"; };
+		D5FEBFDE1C256ABC009CDF0F /* DimView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,6 +259,7 @@
 				72B841C31BB6BB8C00E37CC1 /* ResultTableViewCell.swift */,
 				235D71621BB3D56E0091E345 /* InstaPhotoCell.swift */,
 				72B841C11BB6A39900E37CC1 /* CustomHeaderCell.swift */,
+				D5FEBFDE1C256ABC009CDF0F /* DimView.swift */,
 			);
 			name = GUIElements;
 			sourceTree = "<group>";
@@ -610,6 +613,7 @@
 				3CB9B3241B9D8F1400B48037 /* DateExtention.swift in Sources */,
 				D524965E1B9876EC001D3577 /* TeamsViewController.swift in Sources */,
 				D5FD4ED81B94CA23009B53FC /* MatchGroup.swift in Sources */,
+				D5FEBFDF1C256ABC009CDF0F /* DimView.swift in Sources */,
 				72B841C41BB6BB8C00E37CC1 /* ResultTableViewCell.swift in Sources */,
 				726A96841BB6911F00646497 /* TableMock.swift in Sources */,
 				D5FD4EE01B94CF70009B53FC /* TournamentTeam.swift in Sources */,
