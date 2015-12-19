@@ -44,6 +44,7 @@ class filterView: UIView{
         countryPicker.dataSource = vc
         countryPicker.delegate = vc
         countryTextField.delegate = vc
+        searchTextField.delegate = vc
         sexTextField.inputView = sexPicker
         countryTextField.inputView = countryPicker
         sexTextField.text = "Alle"

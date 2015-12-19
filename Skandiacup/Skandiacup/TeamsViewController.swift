@@ -378,4 +378,9 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
         (self.filterViewTest!).countryPicker.endEditing(true)
         self.view.resignFirstResponder()
     }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
