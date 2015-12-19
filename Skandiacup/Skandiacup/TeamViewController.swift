@@ -397,21 +397,12 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             if let homeGoal = match.homegoal{
                 cell.homeTeamGoalLabel.text = homeGoal
-<<<<<<< HEAD
             }
             
             if let awayGoal = match.awaygoal{
                 cell.awayTeamGoalLabel.text = awayGoal
             }
-            
-=======
-            }
-            
-            if let awayGoal = match.awaygoal{
-                cell.awayTeamGoalLabel.text = awayGoal
-            }
-            
->>>>>>> master
+        
             if let fieldId = match.fieldId{
                 cell.fieldNameLabel.text = String(fieldId)
             }
