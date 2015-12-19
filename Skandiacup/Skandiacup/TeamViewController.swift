@@ -14,7 +14,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     let defaults = NSUserDefaults.standardUserDefaults()
     var favorites: FavoriteTeams = FavoriteTeams()
     @IBOutlet weak var favButton: UIBarButtonItem!
-    var isEven = false
     var infoSectionIsSet = false
     var noUpcomming: Bool = false
     var teams = [String]()
@@ -293,10 +292,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             let cell = tableView.dequeueReusableCellWithIdentifier("tableSection") as! ResultTableViewCell
             if (matchTable == nil){
                 zeroTable(cell, nameTable: teams, index: indexPath.row-1)
-                if(isEven){
-                    cell.backgroundColor = UIColor(red:0.95, green:0.96, blue:0.91, alpha:1.0)
-                }
-                isEven = !isEven
                 cell.userInteractionEnabled = false
                 return cell
             } else{
@@ -313,27 +308,23 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 gamesPlayed += Int((self.matchTable?.rows![indexPath.row-1].c)!)!
                 cell.gamesPlayedLabel.text = String(gamesPlayed)
                 cell.userInteractionEnabled = false
-                if(isEven){
-                    cell.backgroundColor = UIColor(red:0.95, green:0.96, blue:0.91, alpha:1.0)
-                }
-                isEven = !isEven
                 return cell
             }
         }
         else if (indexPath.section == 1){
             if (noUpcomming == true){
-                let cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as! matchCellView!
+                let cell = tableView.dequeueReusableCellWithIdentifier("noUpcommingMatches") as! matchCellView!
                 cell.homeTeamNameLabel.text = "Ingen kommende kamper"
                 cell.dateView.backgroundColor = UIColor.whiteColor()
                 cell.view.backgroundColor = UIColor.whiteColor()
                 cell.userInteractionEnabled = false
-
                 return cell
             }
             else if let match = matches?[indexPath.row]{
                 let cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as! matchCellView!
                 if let date = match.matchDate{
-                    cell.dateLabel.text = date
+                    cell.dateLabel.text = getDate(match.matchDate!)
+                    cell.timeLabel.text = getTime(match.matchDate!)
                 }
                 
                 if match.endGameLevel == 0{
@@ -354,8 +345,8 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                     }
                 }
 
-                cell.awayTeamGoalLabel.text = ""
-                cell.homeTeamGoalLabel.text = ""
+                cell.awayTeamGoalLabel.text = "-"
+                cell.homeTeamGoalLabel.text = "-"
                 
                 if let fieldId = match.fieldId{
                     cell.fieldNameLabel.text = String(fieldId)
@@ -372,9 +363,10 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 return cell
             }
         } else if let match = matches?[indexPath.row]{
-            let cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as! matchCellView!
+            let cell = tableView.dequeueReusableCellWithIdentifier("matchesPlayed") as! matchCellView!
             if let date = match.matchDate{
-                cell.dateLabel.text = date
+                cell.dateLabel.text = getDate(match.matchDate!)
+                cell.timeLabel.text = getTime(match.matchDate!)
             }
             
             if match.endGameLevel == 0{
@@ -473,7 +465,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 if !self.error_message_is_set {
                     self.error_message_is_set = true
                     let alertController = UIAlertController(title: "Error", message:
-                        "Team data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
+                        "Team data not available", preferredStyle: UIAlertControllerStyle.Alert)
                     alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
                     self.presentViewController(alertController, animated: true, completion: nil)
                 }
@@ -508,7 +500,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                     if !self.error_message_is_set {
                         self.error_message_is_set = true
                         let alertController = UIAlertController(title: "Error", message:
-                            "Team data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
+                            "Team data not available", preferredStyle: UIAlertControllerStyle.Alert)
                         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
                         self.presentViewController(alertController, animated: true, completion: nil)
                     }
@@ -520,7 +512,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                             if !self.error_message_is_set {
                                 self.error_message_is_set = true
                                 let alertController = UIAlertController(title: "Error", message:
-                                    "Team data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
+                                    "Team data not available", preferredStyle: UIAlertControllerStyle.Alert)
                                 alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
                                 self.presentViewController(alertController, animated: true, completion: nil)
                             }
@@ -540,7 +532,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                     if !self.error_message_is_set {
                         self.error_message_is_set = true
                         let alertController = UIAlertController(title: "Error", message:
-                            "Team data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
+                            "Team data not available", preferredStyle: UIAlertControllerStyle.Alert)
                         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
                         self.presentViewController(alertController, animated: true, completion: nil)
                     }
@@ -552,7 +544,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                             if !self.error_message_is_set {
                                 self.error_message_is_set = true
                                 let alertController = UIAlertController(title: "Error", message:
-                                    "Team data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
+                                    "Team data not available", preferredStyle: UIAlertControllerStyle.Alert)
                                 alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
                                 self.presentViewController(alertController, animated: true, completion: nil)
                             }
@@ -577,6 +569,22 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 print("Time: \(CACurrentMediaTime()-self.start_time!)")
             })
         }
+    }
+    
+    func dateTimeConverter(dateString: String) -> [String]{
+        let dateTimeArr = dateString.characters.split{$0 == "T"}.map(String.init)
+        return dateTimeArr
+    }
+    
+    func getDate(dateString: String) ->String{
+        var array = dateTimeConverter(dateString)
+        return array[0]
+    }
+    
+    func getTime(dateString: String) ->String{
+        var array = dateTimeConverter(dateString)
+        var time = array[1].substringToIndex(array[1].endIndex.predecessor().predecessor().predecessor())
+        return time
     }
     
 }
