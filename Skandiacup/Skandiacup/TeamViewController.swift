@@ -14,7 +14,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     let defaults = NSUserDefaults.standardUserDefaults()
     var favorites: FavoriteTeams = FavoriteTeams()
     @IBOutlet weak var favButton: UIBarButtonItem!
-    var isEven = false
     var infoSectionIsSet = false
     var noUpcomming: Bool = false
     var teams = [String]()
@@ -293,10 +292,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             let cell = tableView.dequeueReusableCellWithIdentifier("tableSection") as! ResultTableViewCell
             if (matchTable == nil){
                 zeroTable(cell, nameTable: teams, index: indexPath.row-1)
-                if(isEven){
-                    cell.backgroundColor = UIColor(red:0.95, green:0.96, blue:0.91, alpha:1.0)
-                }
-                isEven = !isEven
                 cell.userInteractionEnabled = false
                 return cell
             } else{
@@ -313,10 +308,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 gamesPlayed += Int((self.matchTable?.rows![indexPath.row-1].c)!)!
                 cell.gamesPlayedLabel.text = String(gamesPlayed)
                 cell.userInteractionEnabled = false
-                if(isEven){
-                    cell.backgroundColor = UIColor(red:0.95, green:0.96, blue:0.91, alpha:1.0)
-                }
-                isEven = !isEven
                 return cell
             }
         }
@@ -327,16 +318,16 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 cell.dateView.backgroundColor = UIColor.whiteColor()
                 cell.view.backgroundColor = UIColor.whiteColor()
                 cell.userInteractionEnabled = false
-
                 return cell
             }
             else if let match = matches?[indexPath.row]{
                 let cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as! matchCellView!
-                cell.dateLabel.text = match.matchDate!
+                cell.dateLabel.text = getDate(match.matchDate!)
+                cell.timeLabel.text = getTime(match.matchDate!)
                 cell.homeTeamNameLabel.text = match.homeTeamName!
                 cell.awayTeamNameLabel.text = match.awayTeamName!
-                cell.awayTeamGoalLabel.text = ""
-                cell.homeTeamGoalLabel.text = ""
+                cell.awayTeamGoalLabel.text = "-"
+                cell.homeTeamGoalLabel.text = "-"
                 cell.fieldNameLabel.text = String(match.fieldId!)
                 cell.classNameLabel.text = String(match.classId!)
                 cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
@@ -348,7 +339,8 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             } else{
                 if let match = matches?[indexPath.row]{
                     let cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as! matchCellView!
-                    cell.dateLabel.text = match.matchDate!
+                    cell.dateLabel.text = getDate(match.matchDate!)
+                    cell.timeLabel.text = getTime(match.matchDate!)
                     cell.homeTeamNameLabel.text = match.homeTeamName!
                     cell.awayTeamNameLabel.text = match.awayTeamName!
                     cell.awayTeamGoalLabel.text = match.awaygoal!
@@ -419,7 +411,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 if !self.error_message_is_set {
                     self.error_message_is_set = true
                     let alertController = UIAlertController(title: "Error", message:
-                        "Team data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
+                        "Team data not available", preferredStyle: UIAlertControllerStyle.Alert)
                     alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
                     self.presentViewController(alertController, animated: true, completion: nil)
                 }
@@ -461,7 +453,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                     if !self.error_message_is_set {
                         self.error_message_is_set = true
                         let alertController = UIAlertController(title: "Error", message:
-                            "Team data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
+                            "Team data not available", preferredStyle: UIAlertControllerStyle.Alert)
                         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
                         self.presentViewController(alertController, animated: true, completion: nil)
                     }
@@ -473,7 +465,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                             if !self.error_message_is_set {
                                 self.error_message_is_set = true
                                 let alertController = UIAlertController(title: "Error", message:
-                                    "Team data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
+                                    "Team data not available", preferredStyle: UIAlertControllerStyle.Alert)
                                 alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
                                 self.presentViewController(alertController, animated: true, completion: nil)
                             }
@@ -493,7 +485,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                     if !self.error_message_is_set {
                         self.error_message_is_set = true
                         let alertController = UIAlertController(title: "Error", message:
-                            "Team data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
+                            "Team data not available", preferredStyle: UIAlertControllerStyle.Alert)
                         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
                         self.presentViewController(alertController, animated: true, completion: nil)
                     }
@@ -505,7 +497,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                             if !self.error_message_is_set {
                                 self.error_message_is_set = true
                                 let alertController = UIAlertController(title: "Error", message:
-                                    "Team data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
+                                    "Team data not available", preferredStyle: UIAlertControllerStyle.Alert)
                                 alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
                                 self.presentViewController(alertController, animated: true, completion: nil)
                             }
@@ -530,6 +522,22 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 print("Time: \(CACurrentMediaTime()-self.start_time!)")
             })
         }
+    }
+    
+    func dateTimeConverter(dateString: String) -> [String]{
+        let dateTimeArr = dateString.characters.split{$0 == "T"}.map(String.init)
+        return dateTimeArr
+    }
+    
+    func getDate(dateString: String) ->String{
+        var array = dateTimeConverter(dateString)
+        return array[0]
+    }
+    
+    func getTime(dateString: String) ->String{
+        var array = dateTimeConverter(dateString)
+        var time = array[1].substringToIndex(array[1].endIndex.predecessor().predecessor().predecessor())
+        return time
     }
     
 }
