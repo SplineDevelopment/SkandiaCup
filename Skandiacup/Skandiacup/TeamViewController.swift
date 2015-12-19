@@ -322,14 +322,40 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             else if let match = matches?[indexPath.row]{
                 let cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as! matchCellView!
-                cell.dateLabel.text = getDate(match.matchDate!)
-                cell.timeLabel.text = getTime(match.matchDate!)
-                cell.homeTeamNameLabel.text = match.homeTeamName!
-                cell.awayTeamNameLabel.text = match.awayTeamName!
-                cell.awayTeamGoalLabel.text = "-"
-                cell.homeTeamGoalLabel.text = "-"
-                cell.fieldNameLabel.text = String(match.fieldId!)
-                cell.classNameLabel.text = String(match.classId!)
+                if let date = match.matchDate{
+                    cell.dateLabel.text = getDate(match.matchDate!)
+                    cell.timeLabel.text = getTime(match.matchDate!)
+                }
+                
+                if match.endGameLevel == 0{
+                    if let home = match.homeTeamName{
+                        cell.homeTeamNameLabel.text = home
+                    }
+                    
+                    if let away = match.awayTeamName{
+                        cell.awayTeamNameLabel.text = away
+                    }
+                }else{
+                    if let home = match.homeTeamText{
+                        cell.homeTeamNameLabel.text = home
+                    }
+                    
+                    if let away = match.awayTeamText{
+                        cell.awayTeamNameLabel.text = away
+                    }
+                }
+
+                cell.awayTeamGoalLabel.text = ""
+                cell.homeTeamGoalLabel.text = ""
+                
+                if let fieldId = match.fieldId{
+                    cell.fieldNameLabel.text = String(fieldId)
+                }
+
+                if let classId = match.classId{
+                    cell.classNameLabel.text = String(classId)
+                }
+                
                 cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
                 cell.userInteractionEnabled = true
                 cell.dateView.backgroundColor = UIColor(red:0.80, green:0.80, blue:0.80, alpha:1.0)
@@ -346,19 +372,26 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 if let home = match.homeTeamName{
                     cell.homeTeamNameLabel.text = home
                 }
-            } else{
-                if let match = matches?[indexPath.row]{
-                    let cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as! matchCellView!
-                    cell.dateLabel.text = getDate(match.matchDate!)
-                    cell.timeLabel.text = getTime(match.matchDate!)
-                    cell.homeTeamNameLabel.text = match.homeTeamName!
-                    cell.awayTeamNameLabel.text = match.awayTeamName!
-                    cell.awayTeamGoalLabel.text = match.awaygoal!
-                    cell.homeTeamGoalLabel.text = match.homegoal!
-                    cell.fieldNameLabel.text = String(match.fieldId!)
-                    cell.classNameLabel.text = String(match.classId!)
-                    cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-                    return cell
+                
+                if let away = match.awayTeamName{
+                    cell.awayTeamNameLabel.text = away
+                }
+            }else{
+                if let home = match.homeTeamText{
+                    cell.homeTeamNameLabel.text = home
+                }
+                
+                if let away = match.awayTeamText{
+                    cell.awayTeamNameLabel.text = away
+                }
+            }
+            
+            if let homeGoal = match.homegoal{
+                cell.homeTeamGoalLabel.text = homeGoal
+            }
+            
+            if let awayGoal = match.awaygoal{
+                cell.awayTeamGoalLabel.text = awayGoal
             }
         
             if let fieldId = match.fieldId{
