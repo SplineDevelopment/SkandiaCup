@@ -1,0 +1,207 @@
+/* Class = "UISegmentedControl"; 0RF-uF-Wtb.segmentTitles[0] = "Field map"; ObjectID = "0RF-uF-Wtb"; */
+"0RF-uF-Wtb.segmentTitles[0]" = "Banekart";
+
+/* Class = "UISegmentedControl"; 0RF-uF-Wtb.segmentTitles[1] = "Field Diaries"; ObjectID = "0RF-uF-Wtb"; */
+"0RF-uF-Wtb.segmentTitles[1]" = "Baneoversikt";
+
+/* Class = "UILabel"; text = "losses"; ObjectID = "34g-c0-qy9"; */
+"34g-c0-qy9.text" = "Hvaskaldetståher1";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "3YP-ly-W81"; */
+"3YP-ly-W81.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UILabel"; text = "#Skandiacup2016"; ObjectID = "3xr-H8-hFL"; */
+"3xr-H8-hFL.text" = "#Skandiacup2016";
+
+/* Class = "UILabel"; text = "position"; ObjectID = "4S7-XV-QOq"; */
+"4S7-XV-QOq.text" = "Hvaskaldetståher2";
+
+/* Class = "UILabel"; text = "Winner is .. due to.."; ObjectID = "7kD-Pn-qS9"; */
+"7kD-Pn-qS9.text" = "Vinneren er .. fordi ..";
+
+/* Class = "UILabel"; text = "S"; ObjectID = "8o4-kt-qMS"; */
+"8o4-kt-qMS.text" = "S";
+
+/* Class = "UIViewController"; title = "Match"; ObjectID = "8rJ-Kc-sve"; */
+"8rJ-Kc-sve.title" = "Kamp";
+
+/* Class = "UILabel"; text = "Klikk på  ☆  for å legge til favorittlag "; ObjectID = "AQA-is-hws"; */
+"AQA-is-hws.text" = "Klikk på  ☆  for å legge til favorittlag ";
+
+/* Class = "UILabel"; text = "points"; ObjectID = "C7p-DW-S5c"; */
+"C7p-DW-S5c.text" = "poeng";
+
+/* Class = "UITableViewCell"; accessibilityIdentifier = "sectionHeader"; ObjectID = "Ccx-QQ-ADH"; */
+"Ccx-QQ-ADH.accessibilityIdentifier" = "Hvaskaldetståher3";
+
+/* Class = "UILabel"; text = "draws"; ObjectID = "Fbt-rS-2S1"; */
+"Fbt-rS-2S1.text" = "Hvaskaldetståher4";
+
+/* Class = "UIViewController"; title = "TeamsView"; ObjectID = "Fqj-c4-U4g"; */
+"Fqj-c4-U4g.title" = "Hvaskaldetståher5";
+
+/* Class = "UITableViewCell"; accessibilityIdentifier = "sectionHeader"; ObjectID = "FsT-on-VTb"; */
+"FsT-on-VTb.accessibilityIdentifier" = "Hvaskaldetståher6";
+
+/* Class = "UILabel"; text = "#"; ObjectID = "GbZ-z6-lac"; */
+"GbZ-z6-lac.text" = "#";
+
+/* Class = "UINavigationItem"; title = "Title"; ObjectID = "Ge9-kF-pp5"; */
+"Ge9-kF-pp5.title" = "Hvaskaldetståher7";
+
+/* Class = "UINavigationItem"; title = "Favoritter"; ObjectID = "IUE-o7-1G0"; */
+"IUE-o7-1G0.title" = "Favoritter";
+
+/* Class = "UIViewController"; title = "Favorites"; ObjectID = "JRB-iG-L09"; */
+"JRB-iG-L09.title" = "Favoritter";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "JmS-mQ-W5K"; */
+"JmS-mQ-W5K.text" = "Hvaskaldetståher8";
+
+/* Class = "UIViewController"; title = "GroupView"; ObjectID = "L7N-NF-54k"; */
+"L7N-NF-54k.title" = "Hvaskaldetståher9";
+
+/* Class = "UISegmentedControl"; LNv-VN-HDd.segmentTitles[0] = "News"; ObjectID = "LNv-VN-HDd"; */
+"LNv-VN-HDd.segmentTitles[0]" = "Nyheter";
+
+/* Class = "UISegmentedControl"; LNv-VN-HDd.segmentTitles[1] = "Info"; ObjectID = "LNv-VN-HDd"; */
+"LNv-VN-HDd.segmentTitles[1]" = "Info";
+
+/* Class = "UISegmentedControl"; LNv-VN-HDd.segmentTitles[2] = "Sosial"; ObjectID = "LNv-VN-HDd"; */
+"LNv-VN-HDd.segmentTitles[2]" = "Instagram";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "LrJ-au-SUj"; */
+"LrJ-au-SUj.text" = "Hvaskaldetståher9";
+
+/* Class = "UISegmentedControl"; M7f-LG-gr0.segmentTitles[0] = "A"; ObjectID = "M7f-LG-gr0"; */
+"M7f-LG-gr0.segmentTitles[0]" = "A";
+
+/* Class = "UISegmentedControl"; M7f-LG-gr0.segmentTitles[1] = "B"; ObjectID = "M7f-LG-gr0"; */
+"M7f-LG-gr0.segmentTitles[1]" = "B";
+
+/* Class = "UIButton"; normalTitle = "Rotate map"; ObjectID = "Nc6-4o-lM2"; */
+"Nc6-4o-lM2.normalTitle" = "Trykk for å rotere kart";
+
+/* Class = "UISegmentedControl"; R66-2e-Alh.segmentTitles[0] = "All teams"; ObjectID = "R66-2e-Alh"; */
+"R66-2e-Alh.segmentTitles[0]" = "Alle lag";
+
+/* Class = "UISegmentedControl"; R66-2e-Alh.segmentTitles[1] = "Groups"; ObjectID = "R66-2e-Alh"; */
+"R66-2e-Alh.segmentTitles[1]" = "Grupper";
+
+/* Class = "UILabel"; text = "gamesplayed"; ObjectID = "RVY-pd-sCO"; */
+"RVY-pd-sCO.text" = "Kamper spilt";
+
+/* Class = "UILabel"; text = "Du har ikke noen favorittlag enda"; ObjectID = "U2e-fC-84D"; */
+"U2e-fC-84D.text" = "Du har ikke noen favorittlag enda";
+
+/* Class = "UILabel"; text = "team 2"; ObjectID = "XrD-WQ-1Wc"; */
+"XrD-WQ-1Wc.text" = "Hvaskaldetståher10";
+
+/* Class = "UILabel"; text = "Field"; ObjectID = "Yff-qG-7Ll"; */
+"Yff-qG-7Ll.text" = "Hvaskaldetståher11";
+
+/* Class = "UINavigationItem"; title = "Classes"; ObjectID = "Z1K-mO-VGD"; */
+"Z1K-mO-VGD.title" = "Årsklasser";
+
+/* Class = "UILabel"; text = "teamname"; ObjectID = "aa5-K8-5va"; */
+"aa5-K8-5va.text" = "Hvaskaldetståher12";
+
+/* Class = "UITabBarItem"; title = "Field map"; ObjectID = "acW-dT-cKf"; */
+"acW-dT-cKf.title" = "Banekart";
+
+/* Class = "UIViewController"; title = "GroupsView"; ObjectID = "axj-hv-W7F"; */
+"axj-hv-W7F.title" = "Hvaskaldetståher13";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "az8-Nt-Uvs"; */
+"az8-Nt-Uvs.text" = "Hvaskaldetståher14";
+
+/* Class = "UITableViewCell"; accessibilityIdentifier = "sectionHeader"; ObjectID = "bI8-oS-a9F"; */
+"bI8-oS-a9F.accessibilityIdentifier" = "Hvaskaldetståher15";
+
+/* Class = "UILabel"; text = "score 2"; ObjectID = "bfo-Rn-gtR"; */
+"bfo-Rn-gtR.text" = "score 2";
+
+/* Class = "UITabBarItem"; title = "Tournament"; ObjectID = "cPa-gy-q4n"; */
+"cPa-gy-q4n.title" = "Turnering";
+
+/* Class = "UINavigationController"; title = "Classes"; ObjectID = "caO-l4-mHs"; */
+"caO-l4-mHs.title" = "Classes";
+
+/* Class = "UIViewController"; title = "teamView"; ObjectID = "dEn-gx-a0Q"; */
+"dEn-gx-a0Q.title" = "Hvaskaldetståher16";
+
+/* Class = "UISegmentedControl"; ewx-5A-qwn.segmentTitles[0] = "All teams"; ObjectID = "ewx-5A-qwn"; */
+"ewx-5A-qwn.segmentTitles[0]" = "Alle lag";
+
+/* Class = "UISegmentedControl"; ewx-5A-qwn.segmentTitles[1] = "Groups"; ObjectID = "ewx-5A-qwn"; */
+"ewx-5A-qwn.segmentTitles[1]" = "Grupper";
+
+/* Class = "UINavigationItem"; title = "Nyheter"; ObjectID = "fbS-1z-irp"; */
+"fbS-1z-irp.title" = "Nyheter";
+
+/* Class = "UILabel"; text = "score 1"; ObjectID = "gEq-jL-wFC"; */
+"gEq-jL-wFC.text" = "score 1";
+
+/* Class = "UITabBarItem"; title = "End play"; ObjectID = "gPl-0n-OON"; */
+"gPl-0n-OON.title" = "Sluttspill";
+
+/* Class = "UILabel"; text = "team 1"; ObjectID = "hpI-cv-SSn"; */
+"hpI-cv-SSn.text" = "team 1";
+
+/* Class = "UILabel"; text = "date"; ObjectID = "iCq-22-wJQ"; */
+"iCq-22-wJQ.text" = "Dato";
+
+/* Class = "UIViewController"; title = "Match result"; ObjectID = "idp-YS-O2B"; */
+"idp-YS-O2B.title" = "Kampresultat";
+
+/* Class = "UILabel"; text = ":"; ObjectID = "iyp-pk-y4o"; */
+"iyp-pk-y4o.text" = ":";
+
+/* Class = "UITabBarItem"; title = "End play"; ObjectID = "jcu-Wa-dYT"; */
+"jcu-Wa-dYT.title" = "Sluttspill";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "lBl-u4-HYL"; */
+"lBl-u4-HYL.title" = "Item";
+
+/* Class = "UILabel"; text = "Sp"; ObjectID = "mO9-iA-tLe"; */
+"mO9-iA-tLe.text" = "Sp";
+
+/* Class = "UITabBarItem"; title = "News"; ObjectID = "ppy-iN-LIH"; */
+"ppy-iN-LIH.title" = "Nyheter";
+
+/* Class = "UILabel"; text = "P"; ObjectID = "q1b-KD-sel"; */
+"q1b-KD-sel.text" = "P";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "rDu-W6-VMp"; */
+"rDu-W6-VMp.text" = "Hvaskaldetståher17";
+
+/* Class = "UILabel"; text = "+/-"; ObjectID = "rO8-Pg-Yyj"; */
+"rO8-Pg-Yyj.text" = "+/-";
+
+/* Class = "UINavigationItem"; title = "Info"; ObjectID = "rVW-SE-MS4"; */
+"rVW-SE-MS4.title" = "Info";
+
+/* Class = "UILabel"; text = "Lagnavn"; ObjectID = "rdl-oj-tn4"; */
+"rdl-oj-tn4.text" = "Lagnavn";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "rg0-Lq-4Lg"; */
+"rg0-Lq-4Lg.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UILabel"; text = "+/-"; ObjectID = "s7I-v8-5zk"; */
+"s7I-v8-5zk.text" = "+/-";
+
+/* Class = "UILabel"; text = "wins"; ObjectID = "sGs-xB-A4p"; */
+"sGs-xB-A4p.text" = "wins";
+
+/* Class = "UILabel"; text = "U"; ObjectID = "seE-N5-AiU"; */
+"seE-N5-AiU.text" = "U";
+
+/* Class = "UILabel"; text = "T"; ObjectID = "vxV-kj-heL"; */
+"vxV-kj-heL.text" = "T";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "xq9-Ww-B2N"; */
+"xq9-Ww-B2N.text" = "Hvaskaldetståher118";
+
+/* Class = "UILabel"; text = "time"; ObjectID = "ynB-9S-A3I"; */
+"ynB-9S-A3I.text" = "tid";
+

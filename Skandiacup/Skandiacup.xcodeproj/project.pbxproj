@@ -131,6 +131,7 @@
 		238C04C41BB2EAC3000492E7 /* InstagramRepoMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramRepoMock.swift; sourceTree = "<group>"; };
 		238C04C61BB2EB18000492E7 /* InstagramPhotoObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramPhotoObject.swift; sourceTree = "<group>"; };
 		239EA7FE1BBD807000EEB2BC /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		3C0662931C2457EC00303D39 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/Main.strings; sourceTree = "<group>"; };
 		3C142BDC1C20409300609C1C /* InfoCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoCellView.xib; sourceTree = "<group>"; };
 		3C142BDE1C2047DA00609C1C /* InfoItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoItemViewController.swift; sourceTree = "<group>"; };
 		3C142BE01C204C2C00609C1C /* InfoCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoCellView.swift; sourceTree = "<group>"; };
@@ -713,6 +714,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				D51E4B121B94A1E700FF5DDB /* Base */,
+				3C0662931C2457EC00303D39 /* nb */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
