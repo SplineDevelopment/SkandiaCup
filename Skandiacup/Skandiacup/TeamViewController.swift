@@ -312,8 +312,9 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
         else if (indexPath.section == 1){
+            print(noUpcomming)
             if (noUpcomming == true){
-                let cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as! matchCellView!
+                let cell = tableView.dequeueReusableCellWithIdentifier("noUpcommingMatches") as! matchCellView!
                 cell.homeTeamNameLabel.text = "Ingen kommende kamper"
                 cell.dateView.backgroundColor = UIColor.whiteColor()
                 cell.view.backgroundColor = UIColor.whiteColor()
@@ -345,8 +346,8 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                     }
                 }
 
-                cell.awayTeamGoalLabel.text = ""
-                cell.homeTeamGoalLabel.text = ""
+                cell.awayTeamGoalLabel.text = "-"
+                cell.homeTeamGoalLabel.text = "-"
                 
                 if let fieldId = match.fieldId{
                     cell.fieldNameLabel.text = String(fieldId)
@@ -365,7 +366,8 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         } else if let match = matches?[indexPath.row]{
             let cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as! matchCellView!
             if let date = match.matchDate{
-                cell.dateLabel.text = date
+                cell.dateLabel.text = getDate(match.matchDate!)
+                cell.timeLabel.text = getTime(match.matchDate!)
             }
             
             if match.endGameLevel == 0{
