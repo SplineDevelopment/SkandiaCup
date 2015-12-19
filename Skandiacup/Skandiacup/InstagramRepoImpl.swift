@@ -134,6 +134,18 @@ class InstagramRepoImpl : InstagramRepo {
                     }
                 }
                 
+                var temp_id: String?
+                if let jsonDict_url_u1 = json["id"] as? String{
+                    temp_id = jsonDict_url_u1
+                    b.id = temp_id
+                    print(temp_id)
+                } else {
+                    // how to handle this?
+                    print("ERROR id")
+                    //b.id = "Anonymous"
+                }
+                
+                
                 list.append(b)
                 
                 // Max size on list

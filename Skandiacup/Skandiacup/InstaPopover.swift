@@ -29,6 +29,12 @@ class InstaPopover : UIViewController, UIPopoverPresentationControllerDelegate {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    @IBAction func toInstagram(sender: AnyObject) {
+        //UIApplication.sharedApplication().openURL(NSURL(string: "tel://91323324")!)
+        UIApplication.sharedApplication().openURL(NSURL(string: "instagram://media?id=\(toPass.id!)")!)
+
+
+    }
     var toPass : InstagramPhotoObject!
     var instaPhotoTable : [InstagramPhotoObject]!
     var index : Int!

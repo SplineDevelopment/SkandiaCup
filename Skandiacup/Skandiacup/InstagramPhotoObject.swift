@@ -9,6 +9,7 @@
 import Foundation
 
 class InstagramPhotoObject : NSObject, NSCoding {
+    var id: String?
     var url : NSURL?
     var urlSmall : NSURL?
     var published : Int?
