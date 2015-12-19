@@ -397,12 +397,21 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             if let homeGoal = match.homegoal{
                 cell.homeTeamGoalLabel.text = homeGoal
+<<<<<<< HEAD
             }
             
             if let awayGoal = match.awaygoal{
                 cell.awayTeamGoalLabel.text = awayGoal
             }
             
+=======
+            }
+            
+            if let awayGoal = match.awaygoal{
+                cell.awayTeamGoalLabel.text = awayGoal
+            }
+            
+>>>>>>> master
             if let fieldId = match.fieldId{
                 cell.fieldNameLabel.text = String(fieldId)
             }
@@ -497,13 +506,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 let selectedTournamentMatch = matches![indexPath.row]
                 (segue.destinationViewController as! MatchViewController).selectedMatch = selectedTournamentMatch
             }
-        }
-    }
-    
-    override func willMoveToParentViewController(parent: UIViewController?) {
-        let grandpa = self.parentViewController?.parentViewController
-        if ((grandpa!.isKindOfClass(TournamentViewController))){
-            (grandpa as! TournamentViewController).testingFunc(TeamsViewController)
         }
     }
     
