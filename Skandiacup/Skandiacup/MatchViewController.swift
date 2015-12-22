@@ -41,9 +41,9 @@ class MatchViewController: UIViewController {
     }
     
     func configureView(){
-        homeTeam.text = selectedMatch?.homeTeamName
+        homeTeam.text = selectedMatch?.homeTeamText
         homeScore.text = selectedMatch?.homegoal
-        awayTeam.text = selectedMatch?.awayTeamName
+        awayTeam.text = selectedMatch?.awayTeamText
         awayScore.text = selectedMatch?.awaygoal
         //fieldLabel.text = String(selectedMatch!.fieldId)
         SharingManager.data.getField(nil, fieldID: selectedMatch!.fieldId) { (fields, error) -> () in

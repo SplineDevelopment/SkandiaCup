@@ -117,32 +117,35 @@ class EndPlayGamesViewController: UIViewController, UITableViewDataSource, UITab
                 cell.awayTeamGoalLabel.text = match.awaygoal!
                 
                 */
-                /*
-                 * The following lines are for when the endplaymatches ARE properly populated with teamnames.
-                 * Comment these lines, and uncomment the above snippet if they are not.
-                 */
                 
-                cell.homeTeamNameLabel.text = match.homeTeamName!
-                cell.awayTeamNameLabel.text = match.awayTeamName!
                 cell.homeTeamGoalLabel.text = match.homegoal!
                 cell.awayTeamGoalLabel.text = match.awaygoal!
                 
-                
-                //Bold text for the match winner 
-                if match.winner == "H" {
-                    cell.homeTeamNameLabel.font = UIFont.boldSystemFontOfSize(17.0)
-                } else if match.winner == "B" {
-                    cell.awayTeamNameLabel.font = UIFont.boldSystemFontOfSize(17.0)
-                }
             }else{
-                cell.homeTeamNameLabel.text = match.homeTeamText!
-                cell.awayTeamNameLabel.text = match.awayTeamText!
                 cell.homeTeamGoalLabel.text = "NA"
                 cell.awayTeamGoalLabel.text = "NA"
             }
-            cell.fieldNameLabel.text = String(match.matchno!)
-            cell.classNameLabel.text = String(match.fieldId!)
-            cell.dateLabel.text = "\(Date.getDateMatchView(match.matchDate!)) \(Date.getKickoffTimeMatchView(match.matchDate!))"
+            
+            if let home = match.homeTeamText{
+                cell.homeTeamNameLabel.text = home
+            }
+            
+            if let away = match.awayTeamText{
+                cell.awayTeamNameLabel.text = away
+            }
+            
+            if let matchno = match.matchno{
+                cell.fieldNameLabel.text = String(matchno)
+            }
+
+            if let fieldid = match.fieldId{
+                cell.classNameLabel.text = String(fieldid)
+            }
+
+            if let date = match.matchDate{
+                cell.dateLabel.text = "\(Date.getDateMatchView(date)) \(Date.getKickoffTimeMatchView(date))"
+            }
+
         }
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell
