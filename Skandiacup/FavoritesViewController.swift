@@ -13,6 +13,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     let defaults = NSUserDefaults.standardUserDefaults()
     var favorites: [TournamentTeam]? = []
     var matchesDict: [String:[TournamentMatch]] = [String:[TournamentMatch]]()
+    var matchClasses: [MatchClass]?
     @IBOutlet weak var favoriteMatchCell: UILabel!
     @IBOutlet weak var notYetFavView: UIView!
     var isLoaded: Bool = false
@@ -31,6 +32,17 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewWillAppear(animated: Bool) {
         self.notYetFavView.hidden=true
+        
+        SharingManager.data.getMatchClass { (matchclasses, error) -> () in
+            if error{
+                print("Error getting matches")
+                let alertController = UIAlertController(title: "Error", message:
+                    "Data not available at this moment", preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+            }else{
+                self.matchClasses = matchclasses
+            }
+        }
     }
     
     
@@ -88,7 +100,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         }
         return false
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -96,9 +108,19 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.row == 0{
-            //header in each section 
+            //header in each section
             let cell = tableView.dequeueReusableCellWithIdentifier("favoriteHeaderCell") as! CustomHeaderCell!
-            cell.headerLabel?.text = ("\(favorites![indexPath.section].name!)")
+            var cellText = favorites![indexPath.section].name!
+            matchClasses?.forEach({ (mc) -> () in
+                if(mc.id! == favorites![indexPath.section].matchClassId!){
+                    mc.matchGroups?.forEach({ (mg) -> () in
+                        if(mg.id == favorites![indexPath.section].matchGroupId){
+                            cellText = cellText + " - Class \(mc.code!) - Group \(mg.name!)"
+                        }
+                    })
+                }
+            })
+            cell.headerLabel?.text = cellText
             cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             return cell
         }
@@ -155,8 +177,8 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "favoriteToMatchSegue") {
             if let indexPath = self.favoriteTableView.indexPathForSelectedRow{
-                    let selectedMatch = matchesDict[favorites![indexPath.section].name!]![indexPath.row-1]
-                    (segue.destinationViewController as! MatchViewController).selectedMatch = selectedMatch
+                let selectedMatch = matchesDict[favorites![indexPath.section].name!]![indexPath.row-1]
+                (segue.destinationViewController as! MatchViewController).selectedMatch = selectedMatch
             }
         }
         
@@ -164,6 +186,16 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
             if let indexPath = self.favoriteTableView.indexPathForSelectedRow{
                 let selectedTeam = favorites![indexPath.section]
                 (segue.destinationViewController as! TeamViewController).currentTeam = selectedTeam
+                matchClasses?.forEach({ (mc) -> () in
+                    if(mc.id! == selectedTeam.matchClassId!){
+                        mc.matchGroups?.forEach({ (mg) -> () in
+                            if(mg.id == selectedTeam.matchGroupId){
+                                (segue.destinationViewController as! TeamViewController).currentMatchClass = mc
+                                (segue.destinationViewController as! TeamViewController).currentMatchGroup = mg
+                            }
+                        })
+                    }
+                })
             }
         }
     }

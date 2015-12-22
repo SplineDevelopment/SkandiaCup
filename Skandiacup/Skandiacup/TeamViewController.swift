@@ -29,6 +29,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     var matchTable: MatchTable?
     var currentMatchClass: MatchClass?
     var currentMatchGroup: MatchGroup?
+    
     var matchTables: [MatchTable]?{
         didSet{
             self.matchTables?.forEach({ (table) -> () in
@@ -131,7 +132,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             if (tempFav!.favorites.count > 0) {
                 for index in 0...tempFav!.favorites.count-1{
                     let convert = (tempFav!.favorites[index] as! NSObject) as! TournamentTeam
-                    if (convert.name! == team.name!) {
+                    if (convert.id! == team.id!) {
                         return true
                     }
                 }
@@ -149,7 +150,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 if (tempFav!.favorites.count > 0) {
                     for index in 0...tempFav!.favorites.count-1{
                         let favoriteTeam = (tempFav!.favorites[index] as! NSObject) as! TournamentTeam
-                        if (currentTeam!.name! == favoriteTeam.name!){
+                        if (currentTeam!.id! == favoriteTeam.id!){
                             tempFav!.removeFav(index)
                             break
                         }
