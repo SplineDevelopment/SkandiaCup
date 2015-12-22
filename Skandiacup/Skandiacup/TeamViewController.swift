@@ -573,7 +573,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func getTime(dateString: String) ->String{
         var array = dateTimeConverter(dateString)
-        var time = array[1].substringToIndex(array[1].endIndex.predecessor().predecessor().predecessor())
+        let time = array[1].substringWithRange(Range<String.Index>(start: array[1].startIndex, end: array[1].endIndex.advancedBy(-3)))
         return time
     }
     
