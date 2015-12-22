@@ -621,14 +621,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="G01-di-RUh">
-                                <rect key="frame" x="0.0" y="109" width="600" height="442"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="teamCell" id="3wQ-Ri-52g">
                                         <rect key="frame" x="0.0" y="72" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3wQ-Ri-52g" id="tpM-Cq-5wF">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -640,10 +640,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="G01-di-RUh" secondAttribute="trailing" id="Dm3-Ui-TbR"/>
-                            <constraint firstItem="G01-di-RUh" firstAttribute="top" secondItem="05s-cb-QAd" secondAttribute="bottom" constant="65" id="S3r-Ki-O4N"/>
-                            <constraint firstItem="G01-di-RUh" firstAttribute="leading" secondItem="KwF-dG-1YX" secondAttribute="leading" id="mfJ-4p-tdv"/>
-                            <constraint firstItem="G01-di-RUh" firstAttribute="bottom" secondItem="uoW-ac-rLY" secondAttribute="top" id="vDt-FR-Zez"/>
+                            <constraint firstItem="G01-di-RUh" firstAttribute="leading" secondItem="KwF-dG-1YX" secondAttribute="leading" id="1WF-Rf-Gf8"/>
+                            <constraint firstItem="G01-di-RUh" firstAttribute="top" secondItem="KwF-dG-1YX" secondAttribute="top" id="6ab-PF-Rjf"/>
+                            <constraint firstAttribute="trailing" secondItem="G01-di-RUh" secondAttribute="trailing" id="ZfS-1X-4kq"/>
+                            <constraint firstItem="G01-di-RUh" firstAttribute="bottom" secondItem="uoW-ac-rLY" secondAttribute="top" id="q1Y-Bp-a0F"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1989,7 +1989,7 @@
         <image name="trophy5" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wPc-nx-wgx"/>
+        <segue reference="SHZ-1m-rNu"/>
         <segue reference="d79-o8-1Fl"/>
     </inferredMetricsTieBreakers>
 </document>
