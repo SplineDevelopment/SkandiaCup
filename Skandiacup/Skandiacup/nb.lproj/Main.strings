@@ -85,8 +85,8 @@
 /* Class = "UISegmentedControl"; R66-2e-Alh.segmentTitles[0] = "All teams"; ObjectID = "R66-2e-Alh"; */
 "R66-2e-Alh.segmentTitles[0]" = "Alle lag";
 
-/* Class = "UISegmentedControl"; R66-2e-Alh.segmentTitles[1] = "Groups"; ObjectID = "R66-2e-Alh"; */
-"R66-2e-Alh.segmentTitles[1]" = "Grupper";
+/* Class = "UISegmentedControl"; R66-2e-Alh.segmentTitles[1] = "Classes"; ObjectID = "R66-2e-Alh"; */
+"R66-2e-Alh.segmentTitles[1]" = "Klasser";
 
 /* Class = "UILabel"; text = "gamesplayed"; ObjectID = "RVY-pd-sCO"; */
 "RVY-pd-sCO.text" = "Kamper spilt";
@@ -125,7 +125,7 @@
 "cPa-gy-q4n.title" = "Turnering";
 
 /* Class = "UINavigationController"; title = "Classes"; ObjectID = "caO-l4-mHs"; */
-"caO-l4-mHs.title" = "Classes";
+"caO-l4-mHs.title" = "Klasser";
 
 /* Class = "UIViewController"; title = "teamView"; ObjectID = "dEn-gx-a0Q"; */
 "dEn-gx-a0Q.title" = "Hvaskaldetståher16";
@@ -134,7 +134,7 @@
 "ewx-5A-qwn.segmentTitles[0]" = "Alle lag";
 
 /* Class = "UISegmentedControl"; ewx-5A-qwn.segmentTitles[1] = "Groups"; ObjectID = "ewx-5A-qwn"; */
-"ewx-5A-qwn.segmentTitles[1]" = "Grupper";
+"ewx-5A-qwn.segmentTitles[1]" = "Klasser";
 
 /* Class = "UINavigationItem"; title = "Nyheter"; ObjectID = "fbS-1z-irp"; */
 "fbS-1z-irp.title" = "Nyheter";

@@ -589,7 +589,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <segments>
                                 <segment title="All teams"/>
-                                <segment title="Groups"/>
+                                <segment title="Classes"/>
                             </segments>
                             <connections>
                                 <action selector="indexChanged:" destination="axj-hv-W7F" eventType="valueChanged" id="pMB-zv-5K0"/>
@@ -717,7 +717,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <segments>
                                 <segment title="All teams"/>
-                                <segment title="Groups"/>
+                                <segment title="Classes"/>
                             </segments>
                             <connections>
                                 <action selector="indexChanged:" destination="8rJ-Kc-sve" eventType="valueChanged" id="7hb-qQ-ASp"/>
