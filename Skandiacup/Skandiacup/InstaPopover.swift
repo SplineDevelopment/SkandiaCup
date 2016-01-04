@@ -30,9 +30,18 @@ class InstaPopover : UIViewController, UIPopoverPresentationControllerDelegate {
     }
     
     @IBAction func toInstagram(sender: AnyObject) {
-        //UIApplication.sharedApplication().openURL(NSURL(string: "tel://91323324")!)
-        UIApplication.sharedApplication().openURL(NSURL(string: "instagram://media?id=\(toPass.id!)")!)
-
+        if (UIApplication.sharedApplication().openURL(NSURL(string: "instagram://media?id=\(toPass.id!)")!)){
+        } else {
+            //TODO multispråk
+            let alertController = UIAlertController(title: "App not installed.", message:
+                "Instagram not installed ", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "done", style: UIAlertActionStyle.Default,handler: nil))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+            
+            
+        }
+        
 
     }
     var toPass : InstagramPhotoObject!
