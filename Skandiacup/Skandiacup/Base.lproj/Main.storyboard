@@ -693,10 +693,10 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="G01-di-RUh" secondAttribute="trailing" id="Dm3-Ui-TbR"/>
-                            <constraint firstItem="G01-di-RUh" firstAttribute="top" secondItem="05s-cb-QAd" secondAttribute="bottom" constant="65" id="S3r-Ki-O4N"/>
-                            <constraint firstItem="G01-di-RUh" firstAttribute="leading" secondItem="KwF-dG-1YX" secondAttribute="leading" id="mfJ-4p-tdv"/>
-                            <constraint firstItem="G01-di-RUh" firstAttribute="bottom" secondItem="uoW-ac-rLY" secondAttribute="top" id="vDt-FR-Zez"/>
+                            <constraint firstItem="G01-di-RUh" firstAttribute="leading" secondItem="KwF-dG-1YX" secondAttribute="leading" id="1WF-Rf-Gf8"/>
+                            <constraint firstItem="G01-di-RUh" firstAttribute="top" secondItem="KwF-dG-1YX" secondAttribute="top" id="6ab-PF-Rjf"/>
+                            <constraint firstAttribute="trailing" secondItem="G01-di-RUh" secondAttribute="trailing" id="ZfS-1X-4kq"/>
+                            <constraint firstItem="G01-di-RUh" firstAttribute="bottom" secondItem="uoW-ac-rLY" secondAttribute="top" id="q1Y-Bp-a0F"/>
                         </constraints>
                     </view>
                     <connections>
