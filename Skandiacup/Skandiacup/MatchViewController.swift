@@ -80,7 +80,7 @@ class MatchViewController: UIViewController {
                 winner = (selectedMatch?.awayTeamName)!
             }
             
-            reasonForWinLabel.text = "\(winner) vant etter straffesparkkonkurranse"
+            reasonForWinLabel.text = "\(winner) \(SharingManager.locale.penaltyReason)"
 
         //walkover
         } else if (selectedMatch?.reason=="WO"){
@@ -90,7 +90,7 @@ class MatchViewController: UIViewController {
             } else {
                 winner = (selectedMatch?.awayTeamName)!
             }
-            reasonForWinLabel.text = "\(winner) vant på walkover"
+            reasonForWinLabel.text = "\(winner) \(SharingManager.locale.walkoverReason)"
             
         } else {
             reasonForWinLabel.text = ""        

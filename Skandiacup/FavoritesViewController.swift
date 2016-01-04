@@ -117,7 +117,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
                 if(mc.id! == favorites![indexPath.section].matchClassId!){
                     mc.matchGroups?.forEach({ (mg) -> () in
                         if(mg.id == favorites![indexPath.section].matchGroupId){
-                            cellText = cellText + " - Class \(mc.code!) - Group \(mg.name!)"
+                            cellText = cellText + " - \(SharingManager.locale.teamCellClass) \(mc.code!) - \(SharingManager.locale.teamCellGroup) \(mg.name!)"
                         }
                     })
                 }
