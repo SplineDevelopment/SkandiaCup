@@ -49,7 +49,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidAppear(animated: Bool) {
         favorites = getFavoritedTeams()
         favorites?.forEach({ (team) -> () in
-            matchesLoaded[team.name!] = false
+            matchesLoaded[String(team.id!)] = false
             SharingManager.data.getMatches(nil, groupID: team.matchGroupId, teamID: team.id, endplay: nil, completionHandler: { (matches, error) -> () in
                 if error {
                     print("Error getting matches")
@@ -60,13 +60,15 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
                     self.presentViewController(alertController, animated: true, completion: nil)
                     // needs to be handled properly
                 } else {
-                    self.matchesDict[team.name!] = matches
-                    self.matchesLoaded[team.name!] = true
-                    self.reloadTableIfAllMatchesAreLoaded()
+                    self.matchesDict[String(team.id!)] = matches
+                    self.matchesLoaded[String(team.id!)] = true
+                    if(self.favorites!.count == self.matchesLoaded.count ){
+                        self.reloadTableIfAllMatchesAreLoaded()
+                    }
                 }
             })
         })
-        
+
         if (favorites == nil){
             self.favoriteTableView.hidden = true
             self.notYetFavView.hidden=false
@@ -92,7 +94,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     func allMatchesAreLoaded() -> Bool {
         if favorites != nil {
             for team in self.favorites!{
-                if !matchesLoaded[team.name!]! {
+                if !matchesLoaded[String(team.id!)]! {
                     return false
                 }
             }
@@ -126,7 +128,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         }
         let cell = tableView.dequeueReusableCellWithIdentifier("favoriteMatchCell") as UITableViewCell!
         
-        if let match = matchesDict[favorites![indexPath.section].name!]?[indexPath.row-1]{
+        if let match = matchesDict[String(favorites![indexPath.section].id!)]?[indexPath.row-1]{
             if match.homegoal != nil{
                 cell.textLabel?.text = "\(match.homeTeamName!) \(match.homegoal!)  - \(match.awaygoal!) \(match.awayTeamName!) "
             }else{
@@ -141,8 +143,8 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         if favorites != nil{
             let currentTeam = favorites![section]
             
-            if matchesDict[currentTeam.name!] != nil{
-                return matchesDict[currentTeam.name!]!.count + 1
+            if matchesDict[String(currentTeam.id!)] != nil{
+                return matchesDict[String(currentTeam.id!)]!.count + 1
             }
         }
         return 0
@@ -177,7 +179,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "favoriteToMatchSegue") {
             if let indexPath = self.favoriteTableView.indexPathForSelectedRow{
-                let selectedMatch = matchesDict[favorites![indexPath.section].name!]![indexPath.row-1]
+                let selectedMatch = matchesDict[String(favorites![indexPath.section].id!)]![indexPath.row-1]
                 (segue.destinationViewController as! MatchViewController).selectedMatch = selectedMatch
             }
         }
