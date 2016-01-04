@@ -21,8 +21,8 @@ class RSS {
         task.resume()
     }
     
-    func getRSSfeed(completionHandler: (RSSfeed: [RSSItem], error: Bool) -> ()) {
-        let uri = "http://skandiacup.no/?feed=rss"
+    func getRSSfeed(uri:String, completionHandler: (RSSfeed: [RSSItem], error: Bool) -> ()) {
+        //let uri = "http://skandiacup.no/category/nyheter/feed/"
         let req = NSMutableURLRequest(URL: NSURL(string: uri)!)
         self.sendReceive(req) { (responseData, responseError) -> Void in
             if responseError || responseData == nil {
