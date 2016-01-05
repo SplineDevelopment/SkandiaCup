@@ -53,19 +53,18 @@ class MatchViewController: UIViewController {
                     "Field data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
                 alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
                 self.presentViewController(alertController, animated: true, completion: nil)
-                // needs to be handled properly
             } else {
-                // check for count here? fields can be empty with no error
-                // testing needed?
+                print(fields[0].fieldName)
                 if fields.count > 0 {
-                    self.fieldLabel.text = fields[0].fieldName
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.fieldLabel.text = fields[0].fieldName
+                    }
                 } else {
                     self.fieldLabel.text = "Unknown field"
                 }
             }
         }
         print(selectedMatch?.fieldId)
-        //fieldLabel.text = "Bane nummer: \(selectedMatch?.fieldId)"
         
         dateLabel.text = Date.getDateMatchView((selectedMatch?.matchDate)!)
         kickoffTimeLabel.text = Date.getKickoffTimeMatchView((selectedMatch?.matchDate)!)
