@@ -114,8 +114,8 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Prints out the faved teams in the code below
         let data2 = NSKeyedArchiver.archivedDataWithRootObject(tempFav!)
         defaults.setObject(data2, forKey: "favorites")
-        let dataRecieved2 = defaults.objectForKey("favorites") as? NSData
-        let name = NSKeyedUnarchiver.unarchiveObjectWithData(dataRecieved2!) as! FavoriteTeams
+        //let dataRecieved2 = defaults.objectForKey("favorites") as? NSData
+        //let name = NSKeyedUnarchiver.unarchiveObjectWithData(dataRecieved2!) as! FavoriteTeams
         changeButton()
         // error handling?
         self.view.makeToast(message: "Added \(currentTeam!.name!) to favorites", duration: 1, position: "center", title: "Favorites", image: UIImage(named: "ball")!)
@@ -162,8 +162,8 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             // prints out the new faved teams
             let data2 = NSKeyedArchiver.archivedDataWithRootObject(tempFav!)
             defaults.setObject(data2, forKey: "favorites")
-            let dataRecieved2 = defaults.objectForKey("favorites") as? NSData
-            let name = NSKeyedUnarchiver.unarchiveObjectWithData(dataRecieved2!) as! FavoriteTeams
+            //let dataRecieved2 = defaults.objectForKey("favorites") as? NSData
+            //let name = NSKeyedUnarchiver.unarchiveObjectWithData(dataRecieved2!) as! FavoriteTeams
             changeButton()
             // error handling?
             self.view.makeToast(message: "Removed \(currentTeam!.name!) from favorites", duration: 1, position: "center", title: "Favorites", image: UIImage(named: "ball")!)
