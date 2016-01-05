@@ -203,6 +203,32 @@ class LocaleManager{
         }
     }
     
+    var openInInstagramErrorName: String {
+        get{
+            if(locale == "en"){
+                return "Oops!"
+            }
+            
+            if(locale == "nb"){
+                return "Oops"
+            }
+            return ""
+        }
+    }
+    var openInInstagramErrorText: String {
+        get{
+            if(locale == "en"){
+                return "Instagram is not install on this device"
+            }
+            
+            if(locale == "nb"){
+                return "Instagram er ikke installert på enheten"
+            }
+            return ""
+        }
+    }
+    
+    
     
 }
 
