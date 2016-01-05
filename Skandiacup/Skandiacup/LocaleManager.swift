@@ -228,7 +228,31 @@ class LocaleManager{
         }
     }
     
+    var countryLabel: String {
+        get{
+            if(locale == "nb" || locale == "nn"){
+                return "Land"
+            }
+            return "Country"
+        }
+    }
     
+    var genderLabel: String{
+        get{
+            if(locale == "nb" || locale == "nn"){
+                return "Kjønn"
+            }
+            return "Gender"
+        }
+    }
     
+    var searchBoxPlaceholder: String{
+        get{
+            if(locale == "nb" || locale == "nn"){
+                return "Søk etter lagnavn"
+            }
+            return "Search for team name"
+        }
+    }
 }
 

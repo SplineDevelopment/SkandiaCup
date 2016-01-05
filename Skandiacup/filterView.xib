@@ -8,7 +8,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="filterView" customModule="Skandiacup" customModuleProvider="target">
             <connections>
+                <outlet property="countryLabel" destination="T5U-Ky-BKE" id="AE2-oZ-Txi"/>
                 <outlet property="countryTextField" destination="BPJ-5K-ZZa" id="Gwb-im-Uas"/>
+                <outlet property="genderLabel" destination="fcM-cp-uRB" id="s7K-iL-PnT"/>
                 <outlet property="innerView" destination="X9D-w8-loM" id="OaV-fD-Gqh"/>
                 <outlet property="searchTextField" destination="DNH-nl-7gm" id="zgn-pI-mhF"/>
                 <outlet property="sexTextField" destination="t1C-ww-gw6" id="FGc-fl-phC"/>
@@ -32,18 +34,19 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose sex" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t1C-ww-gw6">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t1C-ww-gw6">
                             <rect key="frame" x="168" y="84" width="215" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose country" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BPJ-5K-ZZa">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BPJ-5K-ZZa">
                             <rect key="frame" x="168" y="46" width="215" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search for team name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DNH-nl-7gm">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DNH-nl-7gm">
                             <rect key="frame" x="8" y="8" width="375" height="30"/>
+                            <accessibility key="accessibilityConfiguration" identifier="searchTextField"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>

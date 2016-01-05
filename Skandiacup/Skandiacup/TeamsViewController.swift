@@ -21,7 +21,6 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     var countryPickerValues: [String] = [SharingManager.locale.all]
     let sexPickerValues = [SharingManager.locale.all,SharingManager.locale.male, SharingManager.locale.female]
     var dropDownViewIsDisplayed = false
-    var pickerActive : Bool = false
     var error_message_is_set = false
     var dimView:UIView?
 
@@ -173,6 +172,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.navigationItem.rightBarButtonItem?.enabled = false
         var frame = self.filterViewTest!.frame
         frame.origin.y = -frame.size.height
+        resign()
         self.animateDropDownToFrame(frame) {
             self.dropDownViewIsDisplayed = false
             self.filterViewTest!.hidden = true
@@ -297,12 +297,10 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         if(pickerView.accessibilityIdentifier == "sexPicker"){
             (self.filterViewTest!).sexTextField.text = self.sexPickerValues[row]
-            pickerActive = true
         }
         
         if(pickerView.accessibilityIdentifier == "countryPicker"){
             (self.filterViewTest!).countryTextField.text = self.countryPickerValues[row]
-            pickerActive = true
         }
         updateFilteredTeams()
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
@@ -317,7 +315,6 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
             if(dropDownViewIsDisplayed){
                 moveTeamTableView()
                 hideDropDownView()
-                
             }
         }
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
@@ -356,7 +353,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
             })
         }
         
-        if searchText != "" {
+        if searchText != "" && searchText != SharingManager.locale.searchBoxPlaceholder {
             filteredTeams = filteredTeams.filter({ (team) -> Bool in
                 let tmp: NSString = team.name!
                 let range = tmp.rangeOfString(searchText!, options: NSStringCompareOptions.CaseInsensitiveSearch)
@@ -378,10 +375,28 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
         (self.filterViewTest!).sexPicker.endEditing(true)
         (self.filterViewTest!).countryPicker.endEditing(true)
         self.view.resignFirstResponder()
+        self.view.endEditing(true)
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if textField.accessibilityIdentifier == "searchTextField"{
+            (self.filterViewTest!).searchTextField.textColor = UIColor.blackColor()
+            if (self.filterViewTest!).searchTextField.text! == SharingManager.locale.searchBoxPlaceholder {
+                (self.filterViewTest!).searchTextField.text! = ""
+            }
+        }
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        if textField.accessibilityIdentifier == "searchTextField"{
+            if (self.filterViewTest!).searchTextField.text!.isEmpty {
+                (self.filterViewTest!).searchTextField.text = SharingManager.locale.searchBoxPlaceholder
+                (self.filterViewTest!).searchTextField.textColor = UIColor.grayColor()
+            }
+        }
     }
 }
