@@ -17,11 +17,8 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     var infoSectionIsSet = false
     var noUpcomming: Bool = false
     var teams = [String]()
-    
     var error_message_is_set = false
-    
     var start_time : Double?
-    //Loaded OK?
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var matchesLoadedOK = false
     var tableSortedOK = false
@@ -29,7 +26,8 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     var matchTable: MatchTable?
     var currentMatchClass: MatchClass?
     var currentMatchGroup: MatchGroup?
-    
+    var matchesNotYetPlayed: [TournamentMatch]?
+    var matchesPlayed: [TournamentMatch]?
     var matchTables: [MatchTable]?{
         didSet{
             self.matchTables?.forEach({ (table) -> () in
@@ -43,9 +41,14 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.isItOkToShowMatches()
         }
     }
-    
-    var matches: [TournamentMatch]?
-    
+    var matches: [TournamentMatch]? {
+        didSet {
+            if matches != nil{
+                matchesNotYetPlayed = findUpcommingMatches(matches!)
+                matchesPlayed = findMatchesPlayed(matches!)
+            }
+        }
+    }
     var currentTeam: TournamentTeam? {
         didSet {
             configureView()
@@ -53,7 +56,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.isItOkToShowMatches()
         }
     }
-    
     var currentGroup: MatchGroup? {
         didSet{
             SharingManager.data.getTeams(nil) { (teams, error) -> () in
@@ -321,7 +323,8 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 cell.userInteractionEnabled = false
                 return cell
             }
-            else if let match = matches?[indexPath.row]{
+            else if let match = matchesNotYetPlayed?[indexPath.row]{
+                print("\(indexPath.row) indexpath kommende kamper")
                 let cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as! matchCellView!
                 if let date = match.matchDate{
                     cell.dateLabel.text = getDate(date)
@@ -363,7 +366,8 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 cell.view.backgroundColor = UIColor(red:0.91, green:0.91, blue:0.91, alpha:1.0)
                 return cell
             }
-        } else if let match = matches?[indexPath.row]{
+        } else if let match = matchesPlayed?[indexPath.row]{
+            print("\(indexPath.row) indexpath kamper spilt")
             let cell = tableView.dequeueReusableCellWithIdentifier("matchesPlayed") as! matchCellView!
             if let date = match.matchDate{
                 cell.dateLabel.text = getDate(date)
@@ -399,6 +403,10 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         return UITableViewCell()
     }
 
+    func setUpcomming(){
+        
+    }
+    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if (indexPath.section == 1 || indexPath.section == 2){
             return Config.matchCellViewHeight
@@ -477,7 +485,12 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         //code
         if (segue.identifier == "identifierFromTeamToMatch"){
             if let indexPath = self.matchTableView.indexPathForSelectedRow{
-                let selectedTournamentMatch = matches![indexPath.row]
+                var selectedTournamentMatch = TournamentMatch()
+                if (indexPath.section == 1){
+                    selectedTournamentMatch = matchesNotYetPlayed![indexPath.row]
+                } else {
+                    selectedTournamentMatch = matchesPlayed![indexPath.row]
+                }
                 (segue.destinationViewController as! MatchViewController).selectedMatch = selectedTournamentMatch
             }
         }
@@ -497,6 +510,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                     }
                 }else{
                     self.matches = matches
+                    print("Halaaaa \(self.matches!.count)")
                     SharingManager.data.getTable(nil, playOffId: nil, teamId: self.currentTeam?.id, completionHandler: { (tables, error) -> () in
                         if error{
                             print("Error in Teamviewcontroller.setupMatches")
@@ -529,6 +543,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                     }
                 }else{
                     self.matches = matches
+                    print("Halaaaa \(self.matches!.count)")
                     SharingManager.data.getTable(nil, playOffId: nil, teamId: self.currentTeam?.id, completionHandler: { (tables, error) -> () in
                         if error{
                             print("Error in Teamviewcontroller.setupMatches")
@@ -560,6 +575,26 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 print("Time: \(CACurrentMediaTime()-self.start_time!)")
             })
         }
+    }
+    
+    func findUpcommingMatches(matches: [TournamentMatch]) -> [TournamentMatch]{
+        var result = [TournamentMatch]()
+        for m in matches{
+            if m.homegoal == nil{
+                result.append(m)
+            }
+        }
+        return result
+    }
+    
+    func findMatchesPlayed(matches: [TournamentMatch]) -> [TournamentMatch]{
+        var result = [TournamentMatch]()
+        for m in matches{
+            if m.homegoal != nil{
+                result.append(m)
+            }
+        }
+        return result
     }
     
     func dateTimeConverter(dateString: String) -> [String]{

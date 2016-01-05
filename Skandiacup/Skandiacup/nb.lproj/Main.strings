@@ -5,16 +5,16 @@
 "0RF-uF-Wtb.segmentTitles[1]" = "Baneoversikt";
 
 /* Class = "UILabel"; text = "losses"; ObjectID = "34g-c0-qy9"; */
-"34g-c0-qy9.text" = "Hvaskaldetståher1";
+"34g-c0-qy9.text" = "";
 
 /* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "3YP-ly-W81"; */
-"3YP-ly-W81.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+"3YP-ly-W81.text" = "";
 
 /* Class = "UILabel"; text = "#Skandiacup2016"; ObjectID = "3xr-H8-hFL"; */
 "3xr-H8-hFL.text" = "#Skandiacup2016";
 
 /* Class = "UILabel"; text = "position"; ObjectID = "4S7-XV-QOq"; */
-"4S7-XV-QOq.text" = "Hvaskaldetståher2";
+"4S7-XV-QOq.text" = "";
 
 /* Class = "UILabel"; text = "Winner is .. due to.."; ObjectID = "7kD-Pn-qS9"; */
 "7kD-Pn-qS9.text" = "Vinneren er .. fordi ..";
@@ -35,10 +35,10 @@
 "Ccx-QQ-ADH.accessibilityIdentifier" = "Hvaskaldetståher3";
 
 /* Class = "UILabel"; text = "draws"; ObjectID = "Fbt-rS-2S1"; */
-"Fbt-rS-2S1.text" = "Hvaskaldetståher4";
+"Fbt-rS-2S1.text" = "";
 
 /* Class = "UIViewController"; title = "TeamsView"; ObjectID = "Fqj-c4-U4g"; */
-"Fqj-c4-U4g.title" = "Hvaskaldetståher5";
+"Fqj-c4-U4g.title" = "";
 
 /* Class = "UITableViewCell"; accessibilityIdentifier = "sectionHeader"; ObjectID = "FsT-on-VTb"; */
 "FsT-on-VTb.accessibilityIdentifier" = "Hvaskaldetståher6";
@@ -47,7 +47,7 @@
 "GbZ-z6-lac.text" = "#";
 
 /* Class = "UINavigationItem"; title = "Title"; ObjectID = "Ge9-kF-pp5"; */
-"Ge9-kF-pp5.title" = "";
+"Ge9-kF-pp5.title" = "asd";
 
 /* Class = "UINavigationItem"; title = "Favoritter"; ObjectID = "IUE-o7-1G0"; */
 "IUE-o7-1G0.title" = "Favoritter";
@@ -56,7 +56,7 @@
 "JRB-iG-L09.title" = "Favoritter";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "JmS-mQ-W5K"; */
-"JmS-mQ-W5K.text" = "Hvaskaldetståher8";
+"JmS-mQ-W5K.text" = "";
 
 /* Class = "UIViewController"; title = "GroupView"; ObjectID = "L7N-NF-54k"; */
 "L7N-NF-54k.title" = "Grupper";
@@ -71,7 +71,7 @@
 "LNv-VN-HDd.segmentTitles[2]" = "Instagram";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "LrJ-au-SUj"; */
-"LrJ-au-SUj.text" = "Hvaskaldetståher9";
+"LrJ-au-SUj.text" = "";
 
 /* Class = "UISegmentedControl"; M7f-LG-gr0.segmentTitles[0] = "A"; ObjectID = "M7f-LG-gr0"; */
 "M7f-LG-gr0.segmentTitles[0]" = "A";
@@ -95,22 +95,22 @@
 "U2e-fC-84D.text" = "Du har ikke noen favorittlag enda";
 
 /* Class = "UILabel"; text = "team 2"; ObjectID = "XrD-WQ-1Wc"; */
-"XrD-WQ-1Wc.text" = "Hvaskaldetståher10";
+"XrD-WQ-1Wc.text" = "";
 
 /* Class = "UILabel"; text = "Field"; ObjectID = "Yff-qG-7Ll"; */
-"Yff-qG-7Ll.text" = "";
+"Yff-qG-7Ll.text" = "Laster inn banenavn...";
 
 /* Class = "UINavigationItem"; title = "Classes"; ObjectID = "Z1K-mO-VGD"; */
 "Z1K-mO-VGD.title" = "Årsklasser";
 
 /* Class = "UILabel"; text = "teamname"; ObjectID = "aa5-K8-5va"; */
-"aa5-K8-5va.text" = "Hvaskaldetståher12";
+"aa5-K8-5va.text" = "";
 
 /* Class = "UITabBarItem"; title = "Field map"; ObjectID = "acW-dT-cKf"; */
 "acW-dT-cKf.title" = "Banekart";
 
 /* Class = "UIViewController"; title = "GroupsView"; ObjectID = "axj-hv-W7F"; */
-"axj-hv-W7F.title" = "Hvaskaldetståher13";
+"axj-hv-W7F.title" = "";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "az8-Nt-Uvs"; */
 "az8-Nt-Uvs.text" = "Hvaskaldetståher14";
@@ -128,7 +128,7 @@
 "caO-l4-mHs.title" = "Klasser";
 
 /* Class = "UIViewController"; title = "teamView"; ObjectID = "dEn-gx-a0Q"; */
-"dEn-gx-a0Q.title" = "Hvaskaldetståher16";
+"dEn-gx-a0Q.title" = "";
 
 /* Class = "UISegmentedControl"; ewx-5A-qwn.segmentTitles[0] = "All teams"; ObjectID = "ewx-5A-qwn"; */
 "ewx-5A-qwn.segmentTitles[0]" = "Alle lag";
@@ -173,7 +173,7 @@
 "q1b-KD-sel.text" = "P";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "rDu-W6-VMp"; */
-"rDu-W6-VMp.text" = "Hvaskaldetståher17";
+"rDu-W6-VMp.text" = "";
 
 /* Class = "UILabel"; text = "+/-"; ObjectID = "rO8-Pg-Yyj"; */
 "rO8-Pg-Yyj.text" = "+/-";
