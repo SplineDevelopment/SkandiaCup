@@ -18,8 +18,8 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     var heighIsSet = false
     var matchClasses: [MatchClass]?
     var filteredTeams = [TournamentTeam]()
-    var countryPickerValues: [String] = ["Alle"]
-    let sexPickerValues = ["Alle", "Menn", "Damer"]
+    var countryPickerValues: [String] = [SharingManager.locale.all]
+    let sexPickerValues = [SharingManager.locale.all,SharingManager.locale.male, SharingManager.locale.female]
     var dropDownViewIsDisplayed = false
     var pickerActive : Bool = false
     var error_message_is_set = false
@@ -91,6 +91,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     override func viewWillAppear(animated: Bool) {
+        print(NSLocale.preferredLanguages()[0])
         self.error_message_is_set = false
         SharingManager.data.getMatchClass { (matchclasses, error) -> () in
             if error{
@@ -145,7 +146,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
             if(mc.id! == filteredTeams[indexPath.row].matchClassId!){
                 mc.matchGroups?.forEach({ (mg) -> () in
                     if(mg.id == filteredTeams[indexPath.row].matchGroupId){
-                        cellText = cellText + " - Class \(mc.code!) - Group \(mg.name!)"
+                        cellText = cellText + " - \(SharingManager.locale.teamCellClass) \(mc.code!) - \(SharingManager.locale.teamCellGroup) \(mg.name!)"
                     }
                 })
             }
@@ -330,15 +331,15 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
         let countryPickerValue = countryPickerValues[(self.filterViewTest!).countryPicker.selectedRowInComponent(0)]
         let searchText = self.filterViewTest!.searchTextField.text
         
-        if sexPickerValue != "" && sexPickerValue != "Alle" {
+        if sexPickerValue != "" && sexPickerValue != SharingManager.locale.all {
             filteredTeams = filteredTeams.filter({ (team) -> Bool in
-                if(sexPickerValue == "Menn"){
+                if(sexPickerValue == SharingManager.locale.male){
                     for matchclass in self.matchClasses!{
                         if team.matchClassId == matchclass.id{
                             return matchclass.gender == "M"
                         }
                     }
-                }else if sexPickerValue == "Damer"{
+                }else if sexPickerValue == SharingManager.locale.female{
                     for matchclass in self.matchClasses!{
                         if team.matchClassId == matchclass.id{
                             return matchclass.gender == "F"
@@ -349,7 +350,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
             })
         }
         
-        if countryPickerValue != "" && countryPickerValue != "Alle"{
+        if countryPickerValue != "" && countryPickerValue != SharingManager.locale.all{
             filteredTeams = filteredTeams.filter({ (team) -> Bool in
                 return team.countryCode == countryPickerValue
             })
