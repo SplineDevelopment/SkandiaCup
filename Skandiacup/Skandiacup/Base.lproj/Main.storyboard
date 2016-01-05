@@ -518,7 +518,7 @@
                             <constraint firstItem="91c-dk-SH6" firstAttribute="leading" secondItem="0Wb-k2-hwX" secondAttribute="leading" id="zRU-wY-DKH"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Favoritter" id="IUE-o7-1G0"/>
+                    <navigationItem key="navigationItem" title="Favorites" id="IUE-o7-1G0"/>
                     <connections>
                         <outlet property="actInd" destination="IMs-YZ-SNr" id="RWz-0x-prh"/>
                         <outlet property="favoriteTableView" destination="Q7v-Qk-f1M" id="uad-Tc-Fbm"/>
@@ -1989,7 +1989,7 @@
         <image name="trophy5" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AOd-Ai-r1V"/>
         <segue reference="TGL-NV-dxn"/>
+        <segue reference="i89-pu-2S1"/>
     </inferredMetricsTieBreakers>
 </document>
