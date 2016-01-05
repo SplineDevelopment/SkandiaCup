@@ -21,10 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         //navigationBarAppearace.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
-       // navigationBarAppearace.shadowImage = UIImage()
+        // navigationBarAppearace.shadowImage = UIImage()
         navigationBarAppearace.translucent = true
         
-       // UITabBar.appearance().barTintColor = UIColor(red: 41.0/255.0, green: 40.0/255.0, blue: 39.0/255.0, alpha: 1.0)
+        // UITabBar.appearance().barTintColor = UIColor(red: 41.0/255.0, green: 40.0/255.0, blue: 39.0/255.0, alpha: 1.0)
         UITabBar.appearance().barTintColor = UIColor.whiteColor()
         UITabBar.appearance().tintColor = UIColor(red:0.02, green:0.54, blue:0.02, alpha:1.0)
         //UITabBar.appearance().backgroundImage = UIImage()

@@ -30,9 +30,17 @@ class InstaPopover : UIViewController, UIPopoverPresentationControllerDelegate {
     }
     
     @IBAction func toInstagram(sender: AnyObject) {
-        //UIApplication.sharedApplication().openURL(NSURL(string: "tel://91323324")!)
-        UIApplication.sharedApplication().openURL(NSURL(string: "instagram://media?id=\(toPass.id!)")!)
-
+        if (UIApplication.sharedApplication().openURL(NSURL(string: "instagram://media?id=\(toPass.id!)")!)){
+        } else {
+            let alertController = UIAlertController(title: SharingManager.locale.openInInstagramErrorName , message:
+                SharingManager.locale.openInInstagramErrorText, preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+            
+            
+        }
+        
 
     }
     var toPass : InstagramPhotoObject!

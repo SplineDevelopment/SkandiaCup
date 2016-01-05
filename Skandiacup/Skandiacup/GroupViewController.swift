@@ -33,7 +33,7 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCellWithIdentifier("teamCell") as UITableViewCell!
         if let group = groups?[indexPath.row]{
             if let name = group.name{
-                cell.textLabel?.text = "Gruppe \(name)"
+                cell.textLabel?.text = "\(SharingManager.locale.teamCellGroup) \(name)"
             }
         }
         return cell

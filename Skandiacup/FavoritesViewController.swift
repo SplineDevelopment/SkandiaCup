@@ -32,7 +32,6 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewWillAppear(animated: Bool) {
         self.notYetFavView.hidden=true
-        
         SharingManager.data.getMatchClass { (matchclasses, error) -> () in
             if error{
                 print("Error getting matches")
@@ -48,6 +47,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidAppear(animated: Bool) {
         favorites = getFavoritedTeams()
+        matchesLoaded = [String: Bool]()
         favorites?.forEach({ (team) -> () in
             matchesLoaded[String(team.id!)] = false
             SharingManager.data.getMatches(nil, groupID: team.matchGroupId, teamID: team.id, endplay: nil, completionHandler: { (matches, error) -> () in
@@ -117,7 +117,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
                 if(mc.id! == favorites![indexPath.section].matchClassId!){
                     mc.matchGroups?.forEach({ (mg) -> () in
                         if(mg.id == favorites![indexPath.section].matchGroupId){
-                            cellText = cellText + " - Class \(mc.code!) - Group \(mg.name!)"
+                            cellText = cellText + " - \(SharingManager.locale.teamCellClass) \(mc.code!) - \(SharingManager.locale.teamCellGroup) \(mg.name!)"
                         }
                     })
                 }

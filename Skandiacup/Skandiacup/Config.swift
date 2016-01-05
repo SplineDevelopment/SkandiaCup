@@ -17,4 +17,6 @@ class Config{
     static let matchCellViewHeight:CGFloat = 124
     static let tag_name = "beachday"
     static let client_id_insta = "7b9d2e2f9ef04d81939c7c61f381184e"
+    static let rss_info = "http://skandiacup.no/category/info/feed/"
+    static let rss_news = "http://skandiacup.no/category/nyheter/feed/"
 }

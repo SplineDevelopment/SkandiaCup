@@ -116,8 +116,8 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Prints out the faved teams in the code below
         let data2 = NSKeyedArchiver.archivedDataWithRootObject(tempFav!)
         defaults.setObject(data2, forKey: "favorites")
-        let dataRecieved2 = defaults.objectForKey("favorites") as? NSData
-        let name = NSKeyedUnarchiver.unarchiveObjectWithData(dataRecieved2!) as! FavoriteTeams
+        //let dataRecieved2 = defaults.objectForKey("favorites") as? NSData
+        //let name = NSKeyedUnarchiver.unarchiveObjectWithData(dataRecieved2!) as! FavoriteTeams
         changeButton()
         // error handling?
         self.view.makeToast(message: "Added \(currentTeam!.name!) to favorites", duration: 1, position: "center", title: "Favorites", image: UIImage(named: "ball")!)
@@ -164,8 +164,8 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             // prints out the new faved teams
             let data2 = NSKeyedArchiver.archivedDataWithRootObject(tempFav!)
             defaults.setObject(data2, forKey: "favorites")
-            let dataRecieved2 = defaults.objectForKey("favorites") as? NSData
-            let name = NSKeyedUnarchiver.unarchiveObjectWithData(dataRecieved2!) as! FavoriteTeams
+            //let dataRecieved2 = defaults.objectForKey("favorites") as? NSData
+            //let name = NSKeyedUnarchiver.unarchiveObjectWithData(dataRecieved2!) as! FavoriteTeams
             changeButton()
             // error handling?
             self.view.makeToast(message: "Removed \(currentTeam!.name!) from favorites", duration: 1, position: "center", title: "Favorites", image: UIImage(named: "ball")!)
@@ -202,7 +202,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         let headerCell = tableView.dequeueReusableCellWithIdentifier("sectionHeader") as! CustomHeaderCell
         switch (section) {
         case 0:
-            var headerText = "Tabell"
+            var headerText = SharingManager.locale.tableHeader
             if let mg = self.currentMatchGroup {
                 if let mc = self.currentMatchClass{
                     headerText = headerText + " - \(mc.name!) - \(mg.name!)"
@@ -212,13 +212,13 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             headerCell.headerLabel.text = headerText
             //return sectionHeaderView
         case 1:
-            headerCell.headerLabel.text = "Kommende kamper"
+            headerCell.headerLabel.text = SharingManager.locale.upcomingMatches
             //return sectionHeaderView
         case 2:
-            headerCell.headerLabel.text = "Kamper spilt"
+            headerCell.headerLabel.text = SharingManager.locale.playedMatches
             //return sectionHeaderView
         default:
-            headerCell.headerLabel.text = "Other"
+            headerCell.headerLabel.text = SharingManager.locale.otherMatches
         }
         return headerCell
     }
@@ -317,7 +317,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         else if (indexPath.section == 1){
             if (noUpcomming == true){
                 let cell = tableView.dequeueReusableCellWithIdentifier("noUpcommingMatches") as! matchCellView!
-                cell.homeTeamNameLabel.text = "Ingen kommende kamper"
+                cell.homeTeamNameLabel.text = SharingManager.locale.noUpcomingMatches
                 cell.dateView.backgroundColor = UIColor.whiteColor()
                 cell.view.backgroundColor = UIColor.whiteColor()
                 cell.userInteractionEnabled = false
