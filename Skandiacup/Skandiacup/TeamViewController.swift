@@ -565,7 +565,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.matchTableView.reloadData()
                 self.matchTableView.hidden = false
                 self.activityIndicator.stopAnimating()
-                print("Time: \(CACurrentMediaTime()-self.start_time!)")
             })
         }
     }
