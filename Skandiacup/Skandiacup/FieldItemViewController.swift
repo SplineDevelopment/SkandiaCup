@@ -38,14 +38,13 @@ class FieldItemViewController: UIViewController, UITableViewDataSource, UITableV
                 print("matches count = \(self.matches?.count)")
                 dispatch_async(dispatch_get_main_queue()) { () -> Void in
                     self.fieldMatchTableView.reloadData()
-                    self.activityIndicator.hidden = true;
                     if(self.matches?.count == 0){
                         self.fieldMatchTableView.hidden = true
                         self.errormessage.text = SharingManager.locale.emptyTableFieldDiaries
                     } else{
                         self.fieldMatchTableView.hidden = false
                     }
-                    
+                    self.activityIndicator.stopAnimating()
                 }
             }
         }
@@ -65,6 +64,9 @@ class FieldItemViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewWillAppear(animated: Bool) {
         if let field = self.field{
             self.title = field.fieldName
+        }
+        if let row = self.fieldMatchTableView.indexPathForSelectedRow{
+            self.fieldMatchTableView.deselectRowAtIndexPath(row, animated: false)
         }
     }
     
