@@ -196,5 +196,14 @@ class LocaleManager{
             return "Search for team name"
         }
     }
+    
+    var emptyTableFieldDiaries: String{
+        get{
+            if(locale == "nb" || locale == "nn"){
+                return "Ingen kamper tilgjengelig"
+            }
+            return "No matches available"
+        }
+    }
 }
 

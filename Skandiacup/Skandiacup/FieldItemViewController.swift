@@ -19,7 +19,7 @@ class FieldItemViewController: UIViewController, UITableViewDataSource, UITableV
             configureView()
         }
     }
-    
+    @IBOutlet weak var errormessage: UILabel!
     func configureView(){
         SharingManager.data.getMatches(nil, groupID: nil, teamID: nil, endplay: nil) { (matches, error) -> () in
             if error{
@@ -35,9 +35,17 @@ class FieldItemViewController: UIViewController, UITableViewDataSource, UITableV
                     return match.homegoal == nil && match.fieldId == self.field?.fieldID
                 })
                 self.matches?.sortInPlace({$0.matchDate < $1.matchDate})
+                print("matches count = \(self.matches?.count)")
                 dispatch_async(dispatch_get_main_queue()) { () -> Void in
                     self.fieldMatchTableView.reloadData()
                     self.activityIndicator.hidden = true;
+                    if(self.matches?.count == 0){
+                        self.fieldMatchTableView.hidden = true
+                        self.errormessage.text = SharingManager.locale.emptyTableFieldDiaries
+                    } else{
+                        self.fieldMatchTableView.hidden = false
+                    }
+                    
                 }
             }
         }
@@ -48,13 +56,13 @@ class FieldItemViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         self.fieldMatchTableView.delegate = self
         self.fieldMatchTableView.dataSource = self
+        self.fieldMatchTableView.hidden = true
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(animated: Bool) {
         if let field = self.field{
             self.title = field.fieldName
-
         }
     }
     
@@ -90,8 +98,6 @@ class FieldItemViewController: UIViewController, UITableViewDataSource, UITableV
         cell.homeTeamGoalLabel.text = "-"
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         cell.userInteractionEnabled = true
-        cell.dateView.backgroundColor = UIColor(red:0.80, green:0.80, blue:0.80, alpha:1.0)
-        cell.view.backgroundColor = UIColor(red:0.91, green:0.91, blue:0.91, alpha:1.0)
         }
       return cell
     }
@@ -110,6 +116,7 @@ class FieldItemViewController: UIViewController, UITableViewDataSource, UITableV
             }
         }
     }
+    
     func getDate(dateString: String) ->String{
         var array = dateTimeConverter(dateString)
         return array[0]
