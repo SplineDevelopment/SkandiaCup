@@ -44,6 +44,8 @@ class FieldItemViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     override func viewDidLoad() {
+        self.activityIndicator.hidden = false;
+        self.activityIndicator.startAnimating();
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         super.viewDidLoad()
         self.fieldMatchTableView.delegate = self
@@ -54,7 +56,6 @@ class FieldItemViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewWillAppear(animated: Bool) {
         if let field = self.field{
             self.title = field.fieldName
-
         }
     }
     
@@ -90,8 +91,6 @@ class FieldItemViewController: UIViewController, UITableViewDataSource, UITableV
         cell.homeTeamGoalLabel.text = "-"
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         cell.userInteractionEnabled = true
-        cell.dateView.backgroundColor = UIColor(red:0.80, green:0.80, blue:0.80, alpha:1.0)
-        cell.view.backgroundColor = UIColor(red:0.91, green:0.91, blue:0.91, alpha:1.0)
         }
       return cell
     }
