@@ -10,6 +10,8 @@ import UIKit
 
 class FieldItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var fieldMatchTableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+
     var matches: [TournamentMatch]?
     
     var field: Field?{
@@ -35,6 +37,7 @@ class FieldItemViewController: UIViewController, UITableViewDataSource, UITableV
                 self.matches?.sortInPlace({$0.matchDate < $1.matchDate})
                 dispatch_async(dispatch_get_main_queue()) { () -> Void in
                     self.fieldMatchTableView.reloadData()
+                    self.activityIndicator.hidden = true;
                 }
             }
         }
@@ -51,6 +54,7 @@ class FieldItemViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewWillAppear(animated: Bool) {
         if let field = self.field{
             self.title = field.fieldName
+
         }
     }
     

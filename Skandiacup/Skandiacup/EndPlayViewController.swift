@@ -1,10 +1,8 @@
 //
 //  EndPlayViewController.swift
 //  Skandiacup
-//
-//  Created by Bjørn Hoxmark on 25/09/15.
+
 //  Copyright © 2015 Spline Development. All rights reserved.
-//
 
 import UIKit
 
@@ -31,7 +29,6 @@ class EndPlayViewController: UITableViewController{
                 self.presentViewController(alertController, animated: true, completion: nil)
                 // needs to be handled properly
             } else {
-                print("no error")
                 self.endPlayMatchClasses = matchclasses
                 var isEndplay = false
                 self.endPlayMatchClasses = self.endPlayMatchClasses?.filter({ (matchclass) -> Bool in

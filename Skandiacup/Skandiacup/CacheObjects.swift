@@ -2,9 +2,7 @@
 //  CacheObjects.swift
 //  Skandiacup
 //
-//  Created by Borgar Lie on 08/09/15.
 //  Copyright © 2015 Spline Development. All rights reserved.
-//
 
 import Foundation
 
@@ -99,7 +97,6 @@ class TournamentClubCacheObject: GenericTableCacheObject<TournamentClub>{
             var elementFound = false
             for (key, dictValue) in self.objects {
                 // can matchID be nil ?
-                //print(dictValue.value)
                 if element.id == dictValue.value.id {
                     elementFound = true
                     self.objects[key] = CacheObject<TournamentClub>(cacheSetTime: currentTime, value: element)
@@ -149,7 +146,6 @@ class TournamentMatchTableCacheObject : GenericTableCacheObject<TournamentMatch>
             var elementFound = false
             for (key, dictValue) in self.objects {
                 // can matchID be nil ?
-                //print(dictValue.value)
                 if element.id == dictValue.value.id {
                     elementFound = true
                     self.objects[key] = CacheObject<TournamentMatch>(cacheSetTime: currentTime, value: element)

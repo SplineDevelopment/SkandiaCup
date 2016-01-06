@@ -1,8 +1,7 @@
 //
 //  NewsItemViewController.swift
 //  Skandiacup
-//
-//  Created by Jørgen Wilhelmsen on 29/09/15.
+
 //  Copyright © 2015 Spline Development. All rights reserved.
 //
 
@@ -35,10 +34,6 @@ class NewsItemViewController: UIViewController {
         if let item = self.currentItem{
             if let bodytextview = self.textView{
                 let htmlstring = item.itemDescription!
-//                let headerstring = item.title!
-                
-//                print(headerstring)
-//                htmlstring = headerstring + htmlstring
                 let bodytext: NSAttributedString
                 
                 do{

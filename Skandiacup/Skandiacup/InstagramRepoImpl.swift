@@ -1,10 +1,8 @@
 //
 //  InstagramRepoImpl.swift
 //  Skandiacup
-//
-//  Created by Borgar Lie on 23/09/15.
+
 //  Copyright © 2015 Spline Development. All rights reserved.
-//
 
 import Foundation
 
@@ -12,10 +10,6 @@ import Foundation
 // static let maxCacheTime = 60 * 60 * 24
 
 class InstagramRepoImpl : InstagramRepo {
-    init() {
-//        print("using InstagramRepoImpl")
-    }
-    
     private func sendReceive(request: NSMutableURLRequest, completionHandler: (responseData: NSData?, error: Bool) -> Void) -> Void {
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
             if error != nil {
@@ -43,7 +37,6 @@ class InstagramRepoImpl : InstagramRepo {
                 let anyObj: AnyObject? = try NSJSONSerialization.JSONObjectWithData(responseData!, options: NSJSONReadingOptions(rawValue: 0))
                 // this is not safe!
                 let test_o = anyObj as! NSDictionary
-//                print(test_o)
                 let arr = self.parseJson(test_o["data"]!)
                 completionHandler(photoObjects: arr, error: false)
             } catch let error as NSError {
@@ -138,7 +131,6 @@ class InstagramRepoImpl : InstagramRepo {
                 if let jsonDict_url_u1 = json["id"] as? String{
                     temp_id = jsonDict_url_u1
                     b.id = temp_id
-                    print(temp_id)
                 } else {
                     // how to handle this?
                     print("ERROR id")

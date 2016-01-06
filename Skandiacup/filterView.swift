@@ -14,7 +14,9 @@ class filterView: UIView{
     @IBOutlet weak var sexTextField: UITextField!
     var sexPicker: UIPickerView!
     var countryPicker: UIPickerView!
+    @IBOutlet weak var countryLabel: UILabel!
     
+    @IBOutlet weak var genderLabel: UILabel!
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var searchTextField: UITextField!
     override init(frame: CGRect) { // for using CustomView in code
@@ -31,6 +33,11 @@ class filterView: UIView{
         NSBundle.mainBundle().loadNibNamed("filterView", owner: self, options: nil)
         viewGUI.frame = self.bounds
         self.addSubview(viewGUI)
+        countryLabel.text = SharingManager.locale.countryLabel
+        genderLabel.text = SharingManager.locale.genderLabel
+        searchTextField.text = SharingManager.locale.searchBoxPlaceholder
+        searchTextField.textColor = UIColor.grayColor()
+        searchTextField.clearButtonMode = UITextFieldViewMode.WhileEditing
     }
     
     func setupDelegates(vc: TeamsViewController){
@@ -47,7 +54,7 @@ class filterView: UIView{
         searchTextField.delegate = vc
         sexTextField.inputView = sexPicker
         countryTextField.inputView = countryPicker
-        sexTextField.text = "Alle"
-        countryTextField.text = "Alle"
+        sexTextField.text = SharingManager.locale.all
+        countryTextField.text = SharingManager.locale.all
     }
 }

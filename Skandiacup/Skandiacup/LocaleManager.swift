@@ -17,32 +17,26 @@ class LocaleManager{
     
     /*
     Locale-specific names for use in TeamsViewController
+    
+    return default: ->  locale == "en"
     */
     
    
     var teamCellClass: String {
         get{
-            if(locale == "en"){
-                return "Class"
-            }
-            
-            if(locale == "nb"){
+            if(locale == "nb" || locale == "nn"){
                 return "Klasse"
             }
-            return ""
+            return "Class"
         }
     }
     
     var teamCellGroup: String {
         get{
-            if(locale == "en"){
-                return "Group"
-            }
-            
-            if(locale == "nb"){
+            if(locale == "nb" || locale == "nn"){
                 return "Gruppe"
             }
-            return ""
+            return "Group"
         }
     }
     
@@ -53,40 +47,28 @@ class LocaleManager{
     
     var male: String {
         get{
-            if(locale == "en"){
-                return "Boys"
-            }
-            
-            if(locale == "nb"){
+            if(locale == "nb" || locale == "nn"){
                 return "Gutter"
             }
-            return ""
+            return "Boys"
         }
     }
     
     var female: String {
         get{
-            if(locale == "en"){
-                return "Girls"
-            }
-            
-            if(locale == "nb"){
+            if(locale == "nb" || locale == "nn"){
                 return "Jenter"
             }
-            return ""
+            return "Girls"
         }
     }
     
     var all: String {
         get{
-            if(locale == "en"){
-                return "All"
-            }
-            
-            if(locale == "nb"){
+            if(locale == "nb" || locale == "nn"){
                 return "Alle"
             }
-            return ""
+            return "All"
         }
     }
     
@@ -95,27 +77,19 @@ class LocaleManager{
     */
     var penaltyReason: String {
         get{
-            if(locale == "en"){
-                return "won after a penalty shootout"
-            }
-            
-            if(locale == "nb"){
+            if(locale == "nb" || locale == "nn"){
                 return "vant etter straffesparkkonkurranse"
             }
-            return ""
+            return "won after a penalty shootout"
         }
     }
     
     var walkoverReason: String {
         get{
-            if(locale == "en"){
-                return "won by walkover"
-            }
-            
-            if(locale == "nb"){
+            if(locale == "nb" || locale == "nn"){
                 return "vant på walkover"
             }
-            return ""
+            return "won by walkover"
         }
     }
     
@@ -124,14 +98,10 @@ class LocaleManager{
     */
     var matchHeaders: [String: String] {
         get{
-            if(locale == "en"){
-                return ["1.0000": "Final", "2.0000": "Semi-finals", "4.0000": "Quarter-finals", "8.0000": "8th-finals", "16.0000": "16th-finals", "32.0000": "32nd-finals", "64.0000": "64th-finals", "128.0000": "128th-finals", "256.0000": "256th-finals"]
-            }
-            
-            if(locale == "nb"){
+            if(locale == "nb" || locale == "nn"){
                 return ["1.0000": "Finale", "2.0000": "Semifinaler", "4.0000": "Kvartfinaler", "8.0000": "Åttendedelsfinaler", "16.0000": "Sekstensdelsfinaler", "32.0000": "32-delsfinale", "64.0000": "64-delsfinaler", "128.0000": "128-delsfinaler", "256.0000": "256-delsfinaler"]
             }
-            return ["":""]
+            return ["1.0000": "Final", "2.0000": "Semi-finals", "4.0000": "Quarter-finals", "8.0000": "8th-finals", "16.0000": "16th-finals", "32.0000": "32nd-finals", "64.0000": "64th-finals", "128.0000": "128th-finals", "256.0000": "256th-finals"]
         }
     }
     
@@ -140,95 +110,91 @@ class LocaleManager{
     */
     var tableHeader: String {
         get{
-            if(locale == "en"){
-                return "Table"
-            }
-            
-            if(locale == "nb"){
+            if(locale == "nb" || locale == "nn"){
                 return "Tabell"
             }
-            return ""
+            return "Table"
         }
     }
     
     var upcomingMatches: String {
         get{
-            if(locale == "en"){
-                return "Upcoming matches"
-            }
-            
-            if(locale == "nb"){
+            if(locale == "nb" || locale == "nn"){
                 return "Kommende kamper"
             }
-            return ""
+            return "Upcoming matches"
         }
     }
     
     var playedMatches: String {
         get{
-            if(locale == "en"){
-                return "Matches played"
-            }
-            
-            if(locale == "nb"){
+            if(locale == "nb" || locale == "nn"){
                 return "Kamper spilt"
             }
-            return ""
+            return "Matches played"
         }
     }
     
     var otherMatches: String {
         get{
-            if(locale == "en"){
-                return "Other"
-            }
-            
-            if(locale == "nb"){
+            if(locale == "nb" || locale == "nn"){
                 return "Andre"
             }
-            return ""
+            return "Other"
         }
     }
     
     var noUpcomingMatches: String {
         get{
-            if(locale == "en"){
-                return "No upcoming matches"
-            }
-            
-            if(locale == "nb"){
+            if(locale == "nb" || locale == "nn"){
                 return "Ingen kommende kamper"
             }
-            return ""
+            return "No upcoming matches"
         }
     }
     
     var openInInstagramErrorName: String {
         get{
-            if(locale == "en"){
+            if(locale == "nb" || locale == "nn"){
                 return "Oops!"
             }
-            
-            if(locale == "nb"){
-                return "Oops"
-            }
-            return ""
+            return "Oops!"
         }
     }
     var openInInstagramErrorText: String {
         get{
-            if(locale == "en"){
-                return "Instagram is not install on this device"
+            if(locale == "nb" || locale == "nn"){
+                return "Instagram er ikke installert på denne enheten"
             }
-            
-            if(locale == "nb"){
-                return "Instagram er ikke installert på enheten"
-            }
-            return ""
+            return "Instagram is not installed on this device"
         }
     }
     
+    var countryLabel: String {
+        get{
+            if(locale == "nb" || locale == "nn"){
+                return "Land"
+            }
+            return "Country"
+        }
+    }
     
+    var genderLabel: String{
+        get{
+            if(locale == "nb" || locale == "nn"){
+                return "Kjønn"
+            }
+            return "Gender"
+        }
+    }
     
+    var searchBoxPlaceholder: String{
+        get{
+            if(locale == "nb" || locale == "nn"){
+                return "Søk etter lagnavn"
+            }
+            return "Search for team name"
+        }
+    }
 }
 
