@@ -750,11 +750,11 @@
                         <viewControllerLayoutGuide type="bottom" id="zhO-p6-vDd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="FQ9-CF-mcY">
-                        <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TestMatchView" translatesAutoresizingMaskIntoConstraints="NO" id="Sed-QG-6bN">
-                                <rect key="frame" x="0.0" y="7" width="600" height="549"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="TestMatchView" translatesAutoresizingMaskIntoConstraints="NO" id="Sed-QG-6bN">
+                                <rect key="frame" x="0.0" y="7" width="600" height="593"/>
                                 <color key="tintColor" white="0.0" alpha="0.42999999999999999" colorSpace="calibratedWhite"/>
                             </imageView>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1uD-W6-KVd">
@@ -1874,7 +1874,7 @@
                                         <rect key="frame" x="0.0" y="72" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qHI-e5-gVN" id="Onf-9t-lXK">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -1883,9 +1883,14 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="djY-e9-JUX">
+                                <rect key="frame" x="290" y="234" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="djY-e9-JUX" firstAttribute="centerY" secondItem="AGD-WE-sJc" secondAttribute="centerY" id="7iO-ia-GSY"/>
+                            <constraint firstItem="djY-e9-JUX" firstAttribute="centerX" secondItem="AGD-WE-sJc" secondAttribute="centerX" id="A0h-C3-ED3"/>
                             <constraint firstItem="AGD-WE-sJc" firstAttribute="bottom" secondItem="Rww-4e-vJP" secondAttribute="top" id="Ab1-lG-xzw"/>
                             <constraint firstItem="AGD-WE-sJc" firstAttribute="leading" secondItem="bS4-uB-65H" secondAttribute="leading" id="fGm-Xw-0sM"/>
                             <constraint firstAttribute="trailing" secondItem="AGD-WE-sJc" secondAttribute="trailing" id="lrI-DQ-L58"/>
@@ -1893,6 +1898,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="djY-e9-JUX" id="5eO-WW-A2O"/>
                         <outlet property="fieldMatchTableView" destination="AGD-WE-sJc" id="uS4-JS-DuH"/>
                     </connections>
                 </viewController>
@@ -1989,7 +1995,7 @@
         <image name="trophy5" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="OJv-TB-YQj"/>
         <segue reference="TGL-NV-dxn"/>
-        <segue reference="i89-pu-2S1"/>
     </inferredMetricsTieBreakers>
 </document>

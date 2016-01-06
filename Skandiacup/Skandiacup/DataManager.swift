@@ -116,7 +116,7 @@ class DataManager {
                 if soapError {
                     completionHandler(matches: matches, error: true)
                 }
-                SharingManager.cache.setMatches(matches)
+
                 var m = matches
                 if teamID != nil {
                     m = m.filter({
@@ -129,6 +129,7 @@ class DataManager {
                     })
                 }
                 completionHandler(matches: m, error: false)
+                SharingManager.cache.setMatches(matches)
             })
             return
         }

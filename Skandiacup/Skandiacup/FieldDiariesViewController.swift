@@ -1,3 +1,4 @@
+
 //
 //  FieldDiariesViewController.swift
 //  Skandiacup
@@ -15,6 +16,7 @@ class FieldDiariesViewController: UIViewController, UITableViewDelegate, UITable
         didSet {
             dispatch_async(dispatch_get_main_queue()) { () -> Void in
                 self.fieldTableview.reloadData()
+                
             }
         }
     }
