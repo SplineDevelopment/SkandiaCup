@@ -1,8 +1,3 @@
-//
-//  TeamViewController.swift
-//  Skandiacup
-//
-//  Created by Jørgen Wilhelmsen on 03/09/15.
 //  Copyright © 2015 Spline Development. All rights reserved.
 
 import UIKit
@@ -64,10 +59,6 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
         /* Creating and setting up a filterview for use in the dropdownview */
         filterViewTest = filterView(frame: CGRectZero)
         filterViewTest?.setupDelegates(self)
-        let height = filterViewTest?.innerView.frame.height
-        var width = filterViewTest?.innerView.frame.size.width
-        width = teamTableView.frame.width
-        self.filterViewTest?.frame = CGRectMake(0, -height!, width!, height!)
         self.filterViewTest?.layer.cornerRadius = 5
         self.view.insertSubview(filterViewTest!, aboveSubview: self.view)
         self.filterViewTest!.searchTextField.addTarget(self, action: "updateFilteredTeams", forControlEvents: UIControlEvents.EditingChanged)
@@ -76,7 +67,8 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.filterViewTest!.innerView.layer.borderColor = UIColor.grayColor().CGColor
         self.filterViewTest!.innerView.layer.borderWidth = 0.5
         self.filterViewTest!.innerView.clipsToBounds = true
-
+        let height = filterViewTest?.innerView.frame.height
+        self.filterViewTest!.frame = CGRectMake(0 , -height!, UIScreen.mainScreen().bounds.width, height!)
         
         /* Delegates for the tableview */
         teamTableView.dataSource = self
@@ -86,7 +78,6 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.dimView?.userInteractionEnabled = true
         
         activityIndicator.startAnimating()
-        self.teamTableView.delegate = self
     }
     
     override func viewWillAppear(animated: Bool) {

@@ -37,6 +37,7 @@ class filterView: UIView{
         genderLabel.text = SharingManager.locale.genderLabel
         searchTextField.text = SharingManager.locale.searchBoxPlaceholder
         searchTextField.textColor = UIColor.grayColor()
+        searchTextField.clearButtonMode = UITextFieldViewMode.WhileEditing
     }
     
     func setupDelegates(vc: TeamsViewController){
