@@ -66,7 +66,6 @@ class FieldItemViewController: UIViewController, UITableViewDataSource, UITableV
         let cell = self.fieldMatchTableView.dequeueReusableCellWithIdentifier("fieldMatchCell") as! matchCellView!
         if let match = matches?[indexPath.row]{
         if let date = match.matchDate{
-            print("date =  + \(date)")
             cell.dateLabel.text = getDate(date)
             cell.timeLabel.text = getTime(date)
         }
