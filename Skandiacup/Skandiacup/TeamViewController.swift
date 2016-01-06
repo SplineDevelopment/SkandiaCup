@@ -313,7 +313,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         else if (indexPath.section == 1){
             if (noUpcomming == true){
                 let cell = tableView.dequeueReusableCellWithIdentifier("noUpcommingMatches") as! matchCellView!
-                cell.homeTeamNameLabel.text = SharingManager.locale.noUpcomingMatches
+                cell.noUpcommingMatchesLabel.text = SharingManager.locale.noUpcomingMatches
                 cell.dateView.backgroundColor = UIColor.whiteColor()
                 cell.view.backgroundColor = UIColor.whiteColor()
                 cell.userInteractionEnabled = false
