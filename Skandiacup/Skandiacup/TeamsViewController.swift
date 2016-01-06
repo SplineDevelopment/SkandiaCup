@@ -81,7 +81,6 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     override func viewWillAppear(animated: Bool) {
-        print(NSLocale.preferredLanguages()[0])
         self.error_message_is_set = false
         SharingManager.data.getMatchClass { (matchclasses, error) -> () in
             if error{

@@ -1,8 +1,7 @@
 //
 //  TournamentMatchStatusMapper.swift
 //  Skandiacup
-//
-//  Created by Borgar Lie on 26/09/15.
+
 //  Copyright © 2015 Spline Development. All rights reserved.
 //
 
@@ -11,9 +10,6 @@ import Foundation
 class TournamentMatchStatusMapper {
     static func mapTournamentMatchStatus(xml: XMLIndexer) -> TournamentMatchStatus {
         let status = TournamentMatchStatus()
-        
-//        print(xml)
-        
         if let needTotalRefresh_status = xml["SOAP-ENV:Envelope"]["SOAP-ENV:Body"]["ns1:getTournamentMatchStatusResponse"]["getTournamentMatchStatusResult"]["needTotalRefresh"].element?.text {
             if needTotalRefresh_status == "true" {
                 status.needTotalRefresh = true

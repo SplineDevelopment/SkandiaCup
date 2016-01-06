@@ -1,22 +1,14 @@
 //
 //  MatchViewController.swift
 //  Skandiacup
-//
-//  Created by Bjørn Hoxmark on 04/09/15.
+
 //  Copyright © 2015 Spline Development. All rights reserved.
 //
 
 import UIKit
 
 class MatchViewController: UIViewController {
-    var selectedMatch: TournamentMatch? {
-        didSet{
-            //TODO
-            if (selectedMatch==nil){
-                print("send tilbake til start med feilmeld")
-            }
-        }
-    }
+    var selectedMatch: TournamentMatch?
     
     @IBOutlet weak var reasonForWinLabel: UILabel!
     @IBOutlet weak var homeScore: UILabel!
@@ -54,7 +46,6 @@ class MatchViewController: UIViewController {
                 alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
                 self.presentViewController(alertController, animated: true, completion: nil)
             } else {
-                print(fields[0].fieldName)
                 if fields.count > 0 {
                     dispatch_async(dispatch_get_main_queue()) {
                         self.fieldLabel.text = fields[0].fieldName
@@ -64,8 +55,6 @@ class MatchViewController: UIViewController {
                 }
             }
         }
-        print(selectedMatch?.fieldId)
-        
         dateLabel.text = Date.getDateMatchView((selectedMatch?.matchDate)!)
         kickoffTimeLabel.text = Date.getKickoffTimeMatchView((selectedMatch?.matchDate)!)
         

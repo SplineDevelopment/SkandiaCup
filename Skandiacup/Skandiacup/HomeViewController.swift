@@ -21,7 +21,6 @@ class HomeViewController: UIViewController {
         case 2:
             showSosialTab()
         default: break
-//            print("erroe")
         }
     }
     
