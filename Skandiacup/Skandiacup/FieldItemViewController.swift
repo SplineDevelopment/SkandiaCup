@@ -63,43 +63,44 @@ class FieldItemViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let cell = self.fieldMatchTableView.dequeueReusableCellWithIdentifier("fieldMatchCell"){
-            if let match = matches?[indexPath.row]{
-                var text = ""
-                
-                if let date = match.matchDate{
-                    text = text + Date.getDateMatchView(date) + " - \(Date.getKickoffTimeMatchView(date))"
-                }
-                
-                if match.endGameLevel == 0{
-                    if let home = match.homeTeamName{
-                        text += " - \(home)"
-                    }
-                    
-                    if let away = match.awayTeamName{
-                        text += " - \(away)"
-                    }
-                }else{
-                    if let home = match.homeTeamText{
-                        text += " - \(home)"
-                    }
-                    
-                    if let away = match.awayTeamText{
-                        text += " - \(away)"
-                    }
-                }
-                cell.textLabel?.text = text
-                return cell
+        let cell = self.fieldMatchTableView.dequeueReusableCellWithIdentifier("fieldMatchCell") as! matchCellView!
+        if let match = matches?[indexPath.row]{
+        if let date = match.matchDate{
+            cell.dateLabel.text = getDate(date)
+            cell.timeLabel.text = getTime(date)
+        }
+        if match.endGameLevel == 0{
+            if let home = match.homeTeamName{
+                cell.homeTeamNameLabel.text = home
+            }
+            
+            if let away = match.awayTeamName{
+                cell.awayTeamNameLabel.text = away
+            }
+        }else{
+            if let home = match.homeTeamText{
+                cell.homeTeamNameLabel.text = home
+            }
+            
+            if let away = match.awayTeamText{
+                cell.awayTeamNameLabel.text = away
             }
         }
-        return UITableViewCell()
+        cell.awayTeamGoalLabel.text = "-"
+        cell.homeTeamGoalLabel.text = "-"
+        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+        cell.userInteractionEnabled = true
+        cell.dateView.backgroundColor = UIColor(red:0.80, green:0.80, blue:0.80, alpha:1.0)
+        cell.view.backgroundColor = UIColor(red:0.91, green:0.91, blue:0.91, alpha:1.0)
+        }
+      return cell
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "fieldMatchToMatchView" {
             if let indexPath = self.fieldMatchTableView.indexPathForSelectedRow{
@@ -109,4 +110,20 @@ class FieldItemViewController: UIViewController, UITableViewDataSource, UITableV
             }
         }
     }
+    func getDate(dateString: String) ->String{
+        var array = dateTimeConverter(dateString)
+        return array[0]
+    }
+    
+    func getTime(dateString: String) ->String{
+        var array = dateTimeConverter(dateString)
+        let time = array[1].substringWithRange(Range<String.Index>(start: array[1].startIndex, end: array[1].endIndex.advancedBy(-3)))
+        return time
+    }
+    
+    func dateTimeConverter(dateString: String) -> [String]{
+        let dateTimeArr = dateString.characters.split{$0 == "T"}.map(String.init)
+        return dateTimeArr
+    }
+    
 }
