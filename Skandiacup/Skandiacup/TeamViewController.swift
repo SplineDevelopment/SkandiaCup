@@ -324,7 +324,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 return cell
             }
             else if let match = matchesNotYetPlayed?[indexPath.row]{
-                print("\(indexPath.row) indexpath kommende kamper")
                 let cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as! matchCellView!
                 if let date = match.matchDate{
                     cell.dateLabel.text = getDate(date)
@@ -367,7 +366,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 return cell
             }
         } else if let match = matchesPlayed?[indexPath.row]{
-            print("\(indexPath.row) indexpath kamper spilt")
             let cell = tableView.dequeueReusableCellWithIdentifier("matchesPlayed") as! matchCellView!
             if let date = match.matchDate{
                 cell.dateLabel.text = getDate(date)
