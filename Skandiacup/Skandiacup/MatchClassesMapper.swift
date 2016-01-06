@@ -1,8 +1,7 @@
 //
 //  MatchClassesMapper.swift
 //  Skandiacup
-//
-//  Created by Eirik Sandberg on 25.09.15.
+
 //  Copyright © 2015 Spline Development. All rights reserved.
 //
 
@@ -11,7 +10,6 @@ import Foundation
 class MatchClassesMapper {
     static func mapMatchClasses(xml: XMLIndexer) -> [MatchClass] {
         var arr = [MatchClass]()
-//        print(xml)
         
         for elem in xml["SOAP-ENV:Envelope"]["SOAP-ENV:Body"]["ns1:getMatchClassesResponse"]["getMatchClassesResult"]["item"] {
             var a = MatchClass()

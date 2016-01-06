@@ -1,10 +1,8 @@
 //
 //  CacheImpl.swift
 //  Skandiacup
-//
-//  Created by Borgar Lie on 07/09/15.
+
 //  Copyright © 2015 Spline Development. All rights reserved.
-//
 
 import Foundation
 
@@ -88,10 +86,8 @@ class CacheImpl : Cache {
                 completionHandler(teams: [TournamentTeam](), error: true)
             }
             if status.needTotalRefresh {
-                print("Need total refresh!!! (teams)")
                 completionHandler(teams: [TournamentTeam](), error: false)
             } else if status.teamCount != self.tournamentTeams.teams!.count {
-                print("teamCount != cached teams!!! - refreshing (teams)")
                 completionHandler(teams: [TournamentTeam](), error: false)
             } else {
                 // safe unwrapping here?

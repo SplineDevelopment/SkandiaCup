@@ -1,8 +1,7 @@
 //
 //  SosialViewController.swift
 //  Skandiacup
-//
-//  Created by Bjørn Hoxmark on 04/09/15.
+
 //  Copyright © 2015 Spline Development. All rights reserved.
 //
 
@@ -29,7 +28,6 @@ class SosialViewController: UICollectionViewController, SegmentChangeProto {
     func viewChangedTo() {
         // 2 min timer
         if CACurrentMediaTime() < self.insta_timer + (60*2) {
-//            print("insta photos already initialized")
             return
         }
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT

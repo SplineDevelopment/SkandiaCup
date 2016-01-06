@@ -1,8 +1,7 @@
 //
 //  FavoritesViewController.swift
 //  Skandiacup
-//
-//  Created by Jørgen Wilhelmsen on 31/08/15.
+
 //  Copyright © 2015 Spline Development. All rights reserved.
 //
 
@@ -34,7 +33,6 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         self.notYetFavView.hidden=true
         SharingManager.data.getMatchClass { (matchclasses, error) -> () in
             if error{
-                print("Error getting matches")
                 let alertController = UIAlertController(title: "Error", message:
                     "Data not available at this moment", preferredStyle: UIAlertControllerStyle.Alert)
                 alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
@@ -52,7 +50,6 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
             matchesLoaded[String(team.id!)] = false
             SharingManager.data.getMatches(nil, groupID: team.matchGroupId, teamID: team.id, endplay: nil, completionHandler: { (matches, error) -> () in
                 if error {
-                    print("Error getting matches")
                     let alertController = UIAlertController(title: "Error", message:
                         "Match data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
                     alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))

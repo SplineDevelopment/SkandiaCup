@@ -1,8 +1,7 @@
 //
 //  TeamViewController.swift
 //  Skandiacup
-//
-//  Created by Jørgen Wilhelmsen on 03/09/15.
+
 //  Copyright © 2015 Spline Development. All rights reserved.
 //
 
@@ -113,11 +112,8 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             tempFav = NSKeyedUnarchiver.unarchiveObjectWithData(dataRecieved!) as? FavoriteTeams
         }
         tempFav!.addFav(currentTeam!)
-        // Prints out the faved teams in the code below
         let data2 = NSKeyedArchiver.archivedDataWithRootObject(tempFav!)
         defaults.setObject(data2, forKey: "favorites")
-        //let dataRecieved2 = defaults.objectForKey("favorites") as? NSData
-        //let name = NSKeyedUnarchiver.unarchiveObjectWithData(dataRecieved2!) as! FavoriteTeams
         changeButton()
         // error handling?
         self.view.makeToast(message: "Added \(currentTeam!.name!) to favorites", duration: 1, position: "center", title: "Favorites", image: UIImage(named: "ball")!)
@@ -324,7 +320,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 return cell
             }
             else if let match = matchesNotYetPlayed?[indexPath.row]{
-                print("\(indexPath.row) indexpath kommende kamper")
                 let cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as! matchCellView!
                 if let date = match.matchDate{
                     cell.dateLabel.text = getDate(date)
@@ -367,7 +362,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 return cell
             }
         } else if let match = matchesPlayed?[indexPath.row]{
-            print("\(indexPath.row) indexpath kamper spilt")
             let cell = tableView.dequeueReusableCellWithIdentifier("matchesPlayed") as! matchCellView!
             if let date = match.matchDate{
                 cell.dateLabel.text = getDate(date)
@@ -543,7 +537,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                     }
                 }else{
                     self.matches = matches
-                    print("Halaaaa \(self.matches!.count)")
                     SharingManager.data.getTable(nil, playOffId: nil, teamId: self.currentTeam?.id, completionHandler: { (tables, error) -> () in
                         if error{
                             print("Error in Teamviewcontroller.setupMatches")
@@ -572,7 +565,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.matchTableView.reloadData()
                 self.matchTableView.hidden = false
                 self.activityIndicator.stopAnimating()
-                print("Time: \(CACurrentMediaTime()-self.start_time!)")
             })
         }
     }
