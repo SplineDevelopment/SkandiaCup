@@ -2017,7 +2017,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="122" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AGD-WE-sJc">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="443"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -2044,16 +2044,16 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="djY-e9-JUX" firstAttribute="centerY" secondItem="AGD-WE-sJc" secondAttribute="centerY" id="7iO-ia-GSY"/>
-                            <constraint firstItem="djY-e9-JUX" firstAttribute="centerX" secondItem="AGD-WE-sJc" secondAttribute="centerX" id="A0h-C3-ED3"/>
-                            <constraint firstItem="AGD-WE-sJc" firstAttribute="bottom" secondItem="Rww-4e-vJP" secondAttribute="top" id="Ab1-lG-xzw"/>
-                            <constraint firstItem="Sdt-rU-8Ly" firstAttribute="leading" secondItem="AGD-WE-sJc" secondAttribute="leading" id="Sqm-Mc-6yD"/>
+                            <constraint firstItem="AGD-WE-sJc" firstAttribute="trailing" secondItem="Sdt-rU-8Ly" secondAttribute="trailing" id="EWe-k5-UgC"/>
+                            <constraint firstItem="djY-e9-JUX" firstAttribute="centerY" secondItem="Sdt-rU-8Ly" secondAttribute="centerY" id="GNt-fY-5sB"/>
+                            <constraint firstItem="AGD-WE-sJc" firstAttribute="leading" secondItem="Sdt-rU-8Ly" secondAttribute="leading" id="KI0-bv-vbE"/>
+                            <constraint firstItem="AGD-WE-sJc" firstAttribute="bottom" secondItem="Rww-4e-vJP" secondAttribute="top" id="L7B-By-xtl"/>
                             <constraint firstItem="Sdt-rU-8Ly" firstAttribute="top" secondItem="22A-VU-Mt4" secondAttribute="bottom" constant="169" id="TGn-iQ-Kit"/>
-                            <constraint firstItem="Sdt-rU-8Ly" firstAttribute="centerY" secondItem="djY-e9-JUX" secondAttribute="centerY" id="Unn-X9-cPs"/>
-                            <constraint firstItem="Sdt-rU-8Ly" firstAttribute="trailing" secondItem="AGD-WE-sJc" secondAttribute="trailing" id="aw6-Z5-ebV"/>
-                            <constraint firstItem="AGD-WE-sJc" firstAttribute="leading" secondItem="bS4-uB-65H" secondAttribute="leading" id="fGm-Xw-0sM"/>
-                            <constraint firstAttribute="trailing" secondItem="AGD-WE-sJc" secondAttribute="trailing" id="lrI-DQ-L58"/>
-                            <constraint firstItem="AGD-WE-sJc" firstAttribute="top" secondItem="bS4-uB-65H" secondAttribute="top" id="oHz-8p-HAu"/>
+                            <constraint firstItem="AGD-WE-sJc" firstAttribute="top" secondItem="22A-VU-Mt4" secondAttribute="bottom" id="TZV-Mu-erX"/>
+                            <constraint firstItem="djY-e9-JUX" firstAttribute="centerX" secondItem="Sdt-rU-8Ly" secondAttribute="centerX" id="jpm-Sr-bZw"/>
+                            <constraint firstAttribute="trailing" secondItem="AGD-WE-sJc" secondAttribute="trailing" id="oph-ki-8mf"/>
+                            <constraint firstItem="AGD-WE-sJc" firstAttribute="leading" secondItem="bS4-uB-65H" secondAttribute="leading" id="p4I-G3-dYo"/>
+                            <constraint firstItem="djY-e9-JUX" firstAttribute="centerY" secondItem="bS4-uB-65H" secondAttribute="centerY" id="zRs-Rc-2CA"/>
                         </constraints>
                     </view>
                     <connections>
