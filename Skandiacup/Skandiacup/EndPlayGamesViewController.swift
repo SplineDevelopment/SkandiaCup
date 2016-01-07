@@ -63,7 +63,11 @@ class EndPlayGamesViewController: UIViewController, UITableViewDataSource, UITab
                         self.endPlayMatchesInMatchClass[match.sortOrder!]!.append(match)
                     }
                 })
-                self.sortedKeys = Array(self.endPlayMatchesInMatchClass.keys).sort({$0 < $1})
+                self.sortedKeys = Array(self.endPlayMatchesInMatchClass.keys).sort({
+                    let sort1: Double? = Double($0)
+                    let sort2: Double? = Double($1)
+                    return sort1 < sort2
+                })
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.endPlayGamesTable.reloadData()
                 })
