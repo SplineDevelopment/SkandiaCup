@@ -2,8 +2,7 @@
 //  HRToast + UIView.swift
 //  ToastDemo
 //
-//  Created by Rannie on 14/7/6.
-//  Copyright (c) 2014年 Rannie. All rights reserved.
+//  Copyright 2016 Bjørn Hoxmark, Borgar Lie, Eirik Sandberg, Jørgen Wilhelmsen
 //
 
 import UIKit

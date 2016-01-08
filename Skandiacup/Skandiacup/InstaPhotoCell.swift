@@ -2,8 +2,7 @@
 //  InstaPhotoCell.swift
 //  Skandiacup
 //
-//  Created by Borgar Lie on 24/09/15.
-//  Copyright © 2015 Spline Development. All rights reserved.
+//  Copyright 2016 Bjørn Hoxmark, Borgar Lie, Eirik Sandberg, Jørgen Wilhelmsen
 //
 
 import Foundation

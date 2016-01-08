@@ -1,8 +1,9 @@
 //
 //  FieldOverviewViewController.swift
 //  Skandiacup
-
-//  Copyright © 2015 Spline Development. All rights reserved.
+//
+//  Copyright 2016 Bjørn Hoxmark, Borgar Lie, Eirik Sandberg, Jørgen Wilhelmsen
+//
 
 import UIKit
 

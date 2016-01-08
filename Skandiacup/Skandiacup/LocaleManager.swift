@@ -2,8 +2,7 @@
 //  LocaleManager.swift
 //  Skandiacup
 //
-//  Created by Jørgen Wilhelmsen on 04/01/16.
-//  Copyright © 2016 Spline Development. All rights reserved.
+//  Copyright 2016 Bjørn Hoxmark, Borgar Lie, Eirik Sandberg, Jørgen Wilhelmsen
 //
 
 import Foundation
