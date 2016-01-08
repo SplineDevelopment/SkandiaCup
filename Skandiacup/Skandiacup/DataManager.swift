@@ -8,6 +8,8 @@
 import Foundation
 
 class DataManager {
+    var last_all_matches_timer : Int = 0
+    
     func getArena(id: [Int]?, completionHandler: (arenas: [Arena], error: Bool) -> ()) {
         if id == nil {
             // can not know if arena is in cache, if no ID is given. need to get all!
@@ -109,7 +111,18 @@ class DataManager {
     }
     
     func getMatches(classID: Int?, groupID: Int?, teamID: Int?, endplay: Int?, completionHandler: (matches: [TournamentMatch], error: Bool) -> ()) {
-        let cachedMatches = SharingManager.cache.getMatches(classID, groupID: groupID, teamID: teamID, endplay: endplay)
+        // all nil means there is a request from fields
+        var cachedMatches : [TournamentMatch] = [TournamentMatch]()
+        if (classID == nil && groupID == nil && teamID == nil && endplay == nil) {
+            let currentTime = Functions.getCurrentTimeInSeconds()
+            if currentTime < last_all_matches_timer + TournamentMatch.maxCacheTime {
+                cachedMatches = SharingManager.cache.getMatches(classID, groupID: groupID, teamID: teamID, endplay: endplay)
+            } else {
+                last_all_matches_timer = currentTime
+            }
+        } else {
+            cachedMatches = SharingManager.cache.getMatches(classID, groupID: groupID, teamID: teamID, endplay: endplay)
+        }
         if cachedMatches.isEmpty {
             SharingManager.soap.getMatches(classID, groupID: groupID, endplay: endplay, completionHandler: { (matches, soapError) -> () in
                 if soapError {
