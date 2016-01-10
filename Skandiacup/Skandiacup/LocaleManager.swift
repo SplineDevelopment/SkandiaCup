@@ -204,5 +204,42 @@ class LocaleManager{
             return "No matches available"
         }
     }
+    
+    //Table headers 
+    var playedLabelText: String{
+        get{
+            if(locale == "nb" || locale == "nn"){
+                return "Sp"
+            }
+            return "Pl"
+        }
+    }
+    
+    var victoriesLabelText: String{
+        get{
+            if(locale == "nb" || locale == "nn"){
+                return "S"
+            }
+            return "V"
+        }
+    }
+    
+    var drawsLabelText: String{
+        get{
+            if(locale == "nb" || locale == "nn"){
+                return "U"
+            }
+            return "D"
+        }
+    }
+    
+    var lossesLabelText: String{
+        get{
+            if(locale == "nb" || locale == "nn"){
+                return "T"
+            }
+            return "L"
+        }
+    }
 }
 

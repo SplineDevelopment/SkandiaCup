@@ -91,6 +91,7 @@
 		D5FD4EDE1B94CF3E009B53FC /* MatchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD4EDD1B94CF3E009B53FC /* MatchTable.swift */; };
 		D5FD4EE01B94CF70009B53FC /* TournamentTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD4EDF1B94CF70009B53FC /* TournamentTeam.swift */; };
 		D5FD4EE21B94CFB7009B53FC /* Tournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD4EE11B94CFB7009B53FC /* Tournament.swift */; };
+		D5FDA4A81C42A410004DEC62 /* tableHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FDA4A71C42A410004DEC62 /* tableHeaderCell.swift */; };
 		D5FEBFDF1C256ABC009CDF0F /* DimView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FEBFDE1C256ABC009CDF0F /* DimView.swift */; };
 /* End PBXBuildFile section */
 
@@ -203,6 +204,7 @@
 		D5FD4EDD1B94CF3E009B53FC /* MatchTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchTable.swift; sourceTree = "<group>"; };
 		D5FD4EDF1B94CF70009B53FC /* TournamentTeam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentTeam.swift; sourceTree = "<group>"; };
 		D5FD4EE11B94CFB7009B53FC /* Tournament.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tournament.swift; sourceTree = "<group>"; };
+		D5FDA4A71C42A410004DEC62 /* tableHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tableHeaderCell.swift; sourceTree = "<group>"; };
 		D5FEBFDE1C256ABC009CDF0F /* DimView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -262,6 +264,7 @@
 				235D71621BB3D56E0091E345 /* InstaPhotoCell.swift */,
 				72B841C11BB6A39900E37CC1 /* CustomHeaderCell.swift */,
 				D5FEBFDE1C256ABC009CDF0F /* DimView.swift */,
+				D5FDA4A71C42A410004DEC62 /* tableHeaderCell.swift */,
 			);
 			name = GUIElements;
 			sourceTree = "<group>";
@@ -608,6 +611,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5FD4ED41B94C8FF009B53FC /* Field.swift in Sources */,
+				D5FDA4A81C42A410004DEC62 /* tableHeaderCell.swift in Sources */,
 				236D8D671B9D8FE900669E51 /* CacheImpl.swift in Sources */,
 				D5D62FC21BBA87300097CFC7 /* TeamsViewChangeProto.swift in Sources */,
 				236D8D601B9D8DF000669E51 /* DataManager.swift in Sources */,

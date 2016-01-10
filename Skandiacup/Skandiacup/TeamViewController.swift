@@ -281,7 +281,11 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         //Table header
         if(indexPath.section == 0 && indexPath.row == 0){
-            let cell = tableView.dequeueReusableCellWithIdentifier("tableInfoSection") as UITableViewCell!
+            let cell = tableView.dequeueReusableCellWithIdentifier("tableInfoSection") as! tableHeaderCell!
+            cell.playedLabel.text = SharingManager.locale.playedLabelText
+            cell.victoriesLabel.text = SharingManager.locale.victoriesLabelText
+            cell.drawsLabel.text = SharingManager.locale.drawsLabelText
+            cell.losseslabel.text = SharingManager.locale.lossesLabelText
             infoSectionIsSet = true
             return cell
         }
