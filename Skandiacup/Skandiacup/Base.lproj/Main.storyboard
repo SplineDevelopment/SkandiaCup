@@ -1191,6 +1191,7 @@
                                             <outlet property="drawsLabel" destination="seE-N5-AiU" id="CZN-y8-Qv7"/>
                                             <outlet property="losseslabel" destination="vxV-kj-heL" id="eeD-pe-Bqz"/>
                                             <outlet property="playedLabel" destination="mO9-iA-tLe" id="oAA-S3-KVF"/>
+                                            <outlet property="teamNameLabel" destination="rdl-oj-tn4" id="2My-cj-DkM"/>
                                             <outlet property="victoriesLabel" destination="8o4-kt-qMS" id="Qh0-Cb-tpF"/>
                                         </connections>
                                     </tableViewCell>

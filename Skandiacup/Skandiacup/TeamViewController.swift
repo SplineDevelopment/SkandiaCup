@@ -286,6 +286,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.victoriesLabel.text = SharingManager.locale.victoriesLabelText
             cell.drawsLabel.text = SharingManager.locale.drawsLabelText
             cell.losseslabel.text = SharingManager.locale.lossesLabelText
+            cell.teamNameLabel.text = SharingManager.locale.teamNamelabel
             infoSectionIsSet = true
             return cell
         }

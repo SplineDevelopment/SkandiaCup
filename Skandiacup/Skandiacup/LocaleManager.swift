@@ -241,5 +241,14 @@ class LocaleManager{
             return "L"
         }
     }
+    
+    var teamNamelabel: String{
+        get{
+            if(locale == "nb" || locale == "nn"){
+                return "Lagnavn"
+            }
+            return "Team name"
+        }
+    }
 }
 

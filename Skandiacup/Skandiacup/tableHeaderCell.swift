@@ -14,4 +14,5 @@ class tableHeaderCell: UITableViewCell {
     @IBOutlet weak var victoriesLabel: UILabel!
     @IBOutlet weak var drawsLabel: UILabel!
     @IBOutlet weak var losseslabel: UILabel!
+    @IBOutlet weak var teamNameLabel: UILabel!
 }
