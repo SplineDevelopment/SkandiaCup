@@ -548,7 +548,7 @@
 				TargetAttributes = {
 					D51E4B071B94A1E700FF5DDB = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 76MEKL2U3W;
+						DevelopmentTeam = F2MQ3X222M;
 					};
 					D51E4B1D1B94A1E700FF5DDB = {
 						CreatedOnToolsVersion = 7.0;
@@ -842,7 +842,7 @@
 				INFOPLIST_FILE = Skandiacup/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = SplineDevelopment.Skandiacup;
+				PRODUCT_BUNDLE_IDENTIFIER = SplineDevelopment1.Skandiacup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -857,7 +857,7 @@
 				INFOPLIST_FILE = Skandiacup/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = SplineDevelopment.Skandiacup;
+				PRODUCT_BUNDLE_IDENTIFIER = SplineDevelopment1.Skandiacup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
