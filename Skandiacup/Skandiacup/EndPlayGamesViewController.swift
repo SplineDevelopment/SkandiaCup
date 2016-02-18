@@ -210,6 +210,6 @@ class EndPlayGamesViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return Config.matchCellViewHeight
+        return SharingManager.config.matchCellViewHeight
     }
 }

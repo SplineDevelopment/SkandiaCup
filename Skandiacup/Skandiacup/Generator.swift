@@ -12,7 +12,7 @@ class Generator {
     private static func generateMessage(messageFor: String, innerXML: String?) -> String {
         let start = "<soapenv:Envelope xmlns:soapenv='http://schemas.xmlsoap.org/soap/envelope/' xmlns:for='http://profixio.com/soap/tournament/ForTournamentExt.php'><soapenv:Header/><soapenv:Body>"
         let forXML = "<for:" + messageFor + ">"
-        let appKeyTournamentID = Config.appKeyTournamentID
+        let appKeyTournamentID = SharingManager.config.appKeyTournamentID
         let endForXML = "</for:" + messageFor + ">"
         let end = "</soapenv:Body></soapenv:Envelope>"
         if innerXML != nil {

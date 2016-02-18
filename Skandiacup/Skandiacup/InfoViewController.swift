@@ -19,7 +19,7 @@ class InfoViewController: UITableViewController, SegmentChangeProto {
     
     func viewChangedTo() {
         if CACurrentMediaTime() > self.RSS_timer + 60 {
-            SharingManager.rssfeed.getRSSfeed(Config.rss_info, completionHandler: { (RSSfeed, error) -> () in
+            SharingManager.rssfeed.getRSSfeed(SharingManager.config.rss_info, completionHandler: { (RSSfeed, error) -> () in
                 if error {
                     print("Error loading RSS")
                     (self.parentViewController?.parentViewController as! HomeViewController).activityIndicator.stopAnimating()

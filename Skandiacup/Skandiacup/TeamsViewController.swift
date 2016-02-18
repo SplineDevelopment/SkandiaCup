@@ -148,7 +148,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return Config.teamCellHeight
+        return SharingManager.config.teamCellHeight
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -156,7 +156,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
 
     func changeSegment(){
-        teamTableView.layer.frame.size.height = teamTableView.layer.frame.size.height + Config.filterViewHeight
+        teamTableView.layer.frame.size.height = teamTableView.layer.frame.size.height + SharingManager.config.filterViewHeight
     }
     
     

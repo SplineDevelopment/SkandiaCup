@@ -77,6 +77,8 @@
 		D5D62FCF1BBAB0330097CFC7 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D62FCE1BBAB0330097CFC7 /* NewsViewController.swift */; };
 		D5D62FD11BBAB45E0097CFC7 /* NewsItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D62FD01BBAB45E0097CFC7 /* NewsItemViewController.swift */; };
 		D5D7BA3E1BB5777400687A98 /* SegmentChangeProto.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D7BA3D1BB5777400687A98 /* SegmentChangeProto.swift */; };
+		D5DBEBB41C76312A0049EA6A /* GetFromFTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DBEBB31C76312A0049EA6A /* GetFromFTP.swift */; };
+		D5DBEBB61C7632030049EA6A /* HiddenConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DBEBB51C7632030049EA6A /* HiddenConfig.swift */; };
 		D5EAE5481B99C55100AA3AF1 /* FieldsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EAE5471B99C55100AA3AF1 /* FieldsMapper.swift */; };
 		D5EAE54A1B99C82700AA3AF1 /* MatchTablesMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EAE5491B99C82700AA3AF1 /* MatchTablesMapper.swift */; };
 		D5EC2E931B9B5CBC00CBA235 /* TournamentTeamMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC2E921B9B5CBC00CBA235 /* TournamentTeamMapper.swift */; };
@@ -190,6 +192,8 @@
 		D5D62FCE1BBAB0330097CFC7 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		D5D62FD01BBAB45E0097CFC7 /* NewsItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsItemViewController.swift; sourceTree = "<group>"; };
 		D5D7BA3D1BB5777400687A98 /* SegmentChangeProto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegmentChangeProto.swift; path = ../SegmentChangeProto.swift; sourceTree = "<group>"; };
+		D5DBEBB31C76312A0049EA6A /* GetFromFTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetFromFTP.swift; sourceTree = "<group>"; };
+		D5DBEBB51C7632030049EA6A /* HiddenConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiddenConfig.swift; sourceTree = "<group>"; };
 		D5EAE5471B99C55100AA3AF1 /* FieldsMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldsMapper.swift; sourceTree = "<group>"; };
 		D5EAE5491B99C82700AA3AF1 /* MatchTablesMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchTablesMapper.swift; sourceTree = "<group>"; };
 		D5EC2E921B9B5CBC00CBA235 /* TournamentTeamMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentTeamMapper.swift; sourceTree = "<group>"; };
@@ -303,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				3C803E591B98550D001A51AA /* Config.swift */,
+				D5DBEBB51C7632030049EA6A /* HiddenConfig.swift */,
 			);
 			name = Config;
 			sourceTree = "<group>";
@@ -334,6 +339,7 @@
 			children = (
 				D55D9CF51B99949B00DD01E1 /* SWXMLHash.swift */,
 				3C803E4F1B984D46001A51AA /* Functions.swift */,
+				D5DBEBB31C76312A0049EA6A /* GetFromFTP.swift */,
 				236B0C3A1B987C6700CDEC89 /* Generator.swift */,
 				729AAA681BA1BEC300E8B6E9 /* FavoriteTeams.swift */,
 			);
@@ -625,6 +631,7 @@
 				726A96841BB6911F00646497 /* TableMock.swift in Sources */,
 				D5FD4EE01B94CF70009B53FC /* TournamentTeam.swift in Sources */,
 				D57465721C3AD0E0004B4EDA /* LocaleManager.swift in Sources */,
+				D5DBEBB41C76312A0049EA6A /* GetFromFTP.swift in Sources */,
 				3CDB8B331B99922A00439028 /* InfoViewController.swift in Sources */,
 				D50391181BBAC4E000681A4A /* newsCellView.swift in Sources */,
 				D5D7BA3E1BB5777400687A98 /* SegmentChangeProto.swift in Sources */,
@@ -681,6 +688,7 @@
 				729AAA691BA1BEC300E8B6E9 /* FavoriteTeams.swift in Sources */,
 				3CCE5A231BCFA84F0068A25D /* FieldDiariesViewController.swift in Sources */,
 				D5EAE5481B99C55100AA3AF1 /* FieldsMapper.swift in Sources */,
+				D5DBEBB61C7632030049EA6A /* HiddenConfig.swift in Sources */,
 				236B0C3B1B987C6700CDEC89 /* Generator.swift in Sources */,
 				D5EAE54A1B99C82700AA3AF1 /* MatchTablesMapper.swift in Sources */,
 				238C04C11BB2EA9D000492E7 /* InstagramRepo.swift in Sources */,

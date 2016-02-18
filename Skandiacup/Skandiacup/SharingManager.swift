@@ -8,10 +8,11 @@
 import Foundation
 
 class SharingManager{
-    static let soap : Soap = (Config.soapMock ? SoapMock() : SoapImpl())
-    static let cache : Cache = (Config.soapMock ? CacheMock() : CacheImpl())
+    static var config: Config = Config();
+    static let soap : Soap = (config.soapMock ? SoapMock() : SoapImpl())
+    static let cache : Cache = (config.soapMock ? CacheMock() : CacheImpl())
     static let data : DataManager = DataManager()
-    static let insta : InstagramRepo = (Config.soapMock ? InstagramRepoMock() : InstagramRepoImpl())
+    static let insta : InstagramRepo = (config.soapMock ? InstagramRepoMock() : InstagramRepoImpl())
     static let rssfeed : RSS = RSS()
     static let locale: LocaleManager = LocaleManager()
 }

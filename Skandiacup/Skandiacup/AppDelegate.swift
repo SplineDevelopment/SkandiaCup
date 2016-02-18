@@ -9,11 +9,19 @@ import UIKit
     
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    let defaults = NSUserDefaults.standardUserDefaults()
     var window: UIWindow?
-
-
+    var lastDate: NSDate?
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        let configFromDisk = defaults.objectForKey("config") as? NSData
+        if(configFromDisk == nil){
+            getFromFtp()
+        } else{
+            if let config = NSKeyedUnarchiver.unarchiveObjectWithData(configFromDisk!){
+                SharingManager.config = config as! Config
+            }
+        }
         
         let navigationBarAppearace = UINavigationBar.appearance()
         navigationBarAppearace.tintColor = UIColor.darkGrayColor()
@@ -46,13 +54,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
+        if let last = SharingManager.config.lastdate{
+            let today = NSDate()
+            let timeSinceLast = today.timeIntervalSinceDate(last)
+            if timeSinceLast > 30 {
+                getFromFtp();
+            }
+        }
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
-
+    
+    func getFromFtp(){
+        GetFromFTP.openAndGetConfigJSON({ () -> Void in
+            SharingManager.config.lastdate = NSDate();
+            let data = NSKeyedArchiver.archivedDataWithRootObject(SharingManager.config)
+            self.defaults.setObject(data, forKey: "config")
+        })
+    }
+    
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
 

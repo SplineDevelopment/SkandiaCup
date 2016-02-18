@@ -406,7 +406,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if (indexPath.section == 1 || indexPath.section == 2){
-            return Config.matchCellViewHeight
+            return SharingManager.config.matchCellViewHeight
         }
         return UITableViewAutomaticDimension
     }
