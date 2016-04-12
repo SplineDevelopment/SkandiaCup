@@ -13,7 +13,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var view_is_loaded = false
     
     var RSS_timer = 0.0
-
+    
     @IBOutlet var newTableView: UITableView!
     
     override func viewDidAppear(animated: Bool) {
@@ -41,7 +41,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
                             let parentView = self.parentViewController?.parentViewController as! HomeViewController
                             
                             
-                            if (parentView.viewShowing == 0){                            
+                            if (parentView.viewShowing == 0){
                                 (self.parentViewController?.parentViewController as! HomeViewController).activityIndicator.stopAnimating()
                                 (self.parentViewController?.parentViewController as! HomeViewController).newsView.hidden = false
                             }
@@ -62,21 +62,21 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.newTableView.dataSource = self
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let feed = self.feed
@@ -85,12 +85,12 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         return 0
-
+        
     }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("newsCell", forIndexPath: indexPath) as! newsCellView
         let bodytext: NSAttributedString
@@ -116,6 +116,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden = true
+
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

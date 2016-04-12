@@ -43,9 +43,6 @@ class NewsItemViewController: UIViewController {
                     self.headerLabel.font = UIFont(name: "Helvetica Neue", size: 20)
                     bodytextview.attributedText = bodytext
                     bodytextview.font = UIFont (name: "Helvetica Neue", size: 15)
-                    //bodytextview.font = UIFont (name: "Adelle sans", size: 20)
-
-//                    bodytextview.textColor = UIColor.lightGrayColor()
                 } catch _ as NSError{
                 }
             }
