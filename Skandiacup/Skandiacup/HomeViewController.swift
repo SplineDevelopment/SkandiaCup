@@ -94,6 +94,9 @@ class HomeViewController: UIViewController {
         rightSwipe.direction = .Right
         view.addGestureRecognizer(leftSwipe)
         view.addGestureRecognizer(rightSwipe)
+        if (SharingManager.config.tag_name != "") {
+            headerLabel.text = "#" + SharingManager.config.tag_name
+        }
     }
     
     override func didReceiveMemoryWarning() {
