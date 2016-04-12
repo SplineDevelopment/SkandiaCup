@@ -20,16 +20,15 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
     var dropDownViewIsDisplayed = false
     var error_message_is_set = false
     var dimView:UIView?
+    var matchclassesLoaded = false
+    var teamsloaded = false
 
     @IBOutlet weak var searchButton: UIBarButtonItem!
     
     var teams: [TournamentTeam]? {
         didSet{
             setupCountryPicker()
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.teamTableView.hidden = false
-                self.activityIndicator.stopAnimating()
-            })
+            self.reloadIfDataIsLoaded()
         }
     }
     
@@ -82,7 +81,19 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
         activityIndicator.startAnimating()
     }
     
+    func reloadIfDataIsLoaded(){
+        if(self.matchclassesLoaded && self.teamsloaded){
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.teamTableView.hidden = false
+                self.activityIndicator.stopAnimating()
+                self.teamTableView.reloadData()
+            })
+        }
+    }
+    
     override func viewWillAppear(animated: Bool) {
+        self.matchclassesLoaded = false
+        self.teamsloaded = false
         self.error_message_is_set = false
         SharingManager.data.getMatchClass { (matchclasses, error) -> () in
             if error{
@@ -99,6 +110,8 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
             }else{
                 if !self.error_message_is_set {
                     self.matchClasses = matchclasses
+                    self.matchclassesLoaded = true
+                    self.reloadIfDataIsLoaded()
                 }
             }
         }
@@ -120,6 +133,8 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
                 if !self.error_message_is_set {
                     self.teams = teams
                     self.filteredTeams = teams
+                    self.teamsloaded = true
+                    self.reloadIfDataIsLoaded()
                     self.updateFilteredTeams()
                 }
             }
@@ -352,9 +367,7 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
                 return range.location != NSNotFound
             })
         }
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.teamTableView.reloadData()
-        })
+       self.reloadIfDataIsLoaded()
     }
     
     override func viewWillDisappear(animated: Bool) {
