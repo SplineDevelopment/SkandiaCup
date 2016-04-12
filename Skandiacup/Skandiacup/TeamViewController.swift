@@ -62,9 +62,9 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                     print("error in TeamViewController.CurrentGroup.didSet")
                     if !self.error_message_is_set {
                         self.error_message_is_set = true
-                        let alertController = UIAlertController(title: "Error", message:
-                            "Team data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
-                        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                        let alertController = UIAlertController(title: SharingManager.locale.errorTitle, message:
+                            SharingManager.locale.errorMessage, preferredStyle: UIAlertControllerStyle.Alert)
+                        alertController.addAction(UIAlertAction(title: SharingManager.locale.errorDismiss, style: UIAlertActionStyle.Default,handler: nil))
                         self.presentViewController(alertController, animated: true, completion: nil)
                     }
                 } else {
@@ -500,9 +500,9 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                     print("Error in Teamviewcontroller.setupMatches")
                     if !self.error_message_is_set {
                         self.error_message_is_set = true
-                        let alertController = UIAlertController(title: "Error", message:
-                            "Team data not available", preferredStyle: UIAlertControllerStyle.Alert)
-                        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                        let alertController = UIAlertController(title: SharingManager.locale.errorTitle, message:
+                            SharingManager.locale.errorMessage, preferredStyle: UIAlertControllerStyle.Alert)
+                        alertController.addAction(UIAlertAction(title: SharingManager.locale.errorDismiss, style: UIAlertActionStyle.Default,handler: nil))
                         self.presentViewController(alertController, animated: true, completion: nil)
                     }
                 }else{
@@ -513,9 +513,9 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                             print("Error in Teamviewcontroller.setupMatches")
                             if !self.error_message_is_set {
                                 self.error_message_is_set = true
-                                let alertController = UIAlertController(title: "Error", message:
-                                    "Team data not available", preferredStyle: UIAlertControllerStyle.Alert)
-                                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                                let alertController = UIAlertController(title: SharingManager.locale.errorTitle, message:
+                                    SharingManager.locale.errorMessage, preferredStyle: UIAlertControllerStyle.Alert)
+                                alertController.addAction(UIAlertAction(title: SharingManager.locale.errorDismiss, style: UIAlertActionStyle.Default,handler: nil))
                                 self.presentViewController(alertController, animated: true, completion: nil)
                             }
                         }
@@ -533,9 +533,9 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                     print("Error in Teamviewcontroller.setupMatches")
                     if !self.error_message_is_set {
                         self.error_message_is_set = true
-                        let alertController = UIAlertController(title: "Error", message:
-                            "Team data not available", preferredStyle: UIAlertControllerStyle.Alert)
-                        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                        let alertController = UIAlertController(title: SharingManager.locale.errorTitle, message:
+                            SharingManager.locale.errorMessage, preferredStyle: UIAlertControllerStyle.Alert)
+                        alertController.addAction(UIAlertAction(title: SharingManager.locale.errorDismiss, style: UIAlertActionStyle.Default,handler: nil))
                         self.presentViewController(alertController, animated: true, completion: nil)
                     }
                 }else{
@@ -545,9 +545,9 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                             print("Error in Teamviewcontroller.setupMatches")
                             if !self.error_message_is_set {
                                 self.error_message_is_set = true
-                                let alertController = UIAlertController(title: "Error", message:
-                                    "Team data not available", preferredStyle: UIAlertControllerStyle.Alert)
-                                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                                let alertController = UIAlertController(title: SharingManager.locale.errorTitle, message:
+                                    SharingManager.locale.errorMessage, preferredStyle: UIAlertControllerStyle.Alert)
+                                alertController.addAction(UIAlertAction(title: SharingManager.locale.errorDismiss, style: UIAlertActionStyle.Default,handler: nil))
                                 self.presentViewController(alertController, animated: true, completion: nil)
                             }
                         }

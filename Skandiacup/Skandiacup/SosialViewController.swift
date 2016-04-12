@@ -37,9 +37,9 @@ class SosialViewController: UICollectionViewController, SegmentChangeProto {
                     if error {
                         print("ERROR IN SOSIAL VIEW GETTING INSTA PHOTOS")
                         
-                        let alertController = UIAlertController(title: "Error", message:
-                            "Instagram not available atm", preferredStyle: UIAlertControllerStyle.Alert)
-                        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                        let alertController = UIAlertController(title: SharingManager.locale.errorTitle, message:
+                           SharingManager.locale.errorMessage, preferredStyle: UIAlertControllerStyle.Alert)
+                        alertController.addAction(UIAlertAction(title: SharingManager.locale.errorDismiss, style: UIAlertActionStyle.Default,handler: nil))
                         
                         self.presentViewController(alertController, animated: true, completion: nil)
 

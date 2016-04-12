@@ -33,9 +33,9 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         self.notYetFavView.hidden=true
         SharingManager.data.getMatchClass { (matchclasses, error) -> () in
             if error{
-                let alertController = UIAlertController(title: "Error", message:
-                    "Data not available at this moment", preferredStyle: UIAlertControllerStyle.Alert)
-                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                let alertController = UIAlertController(title: SharingManager.locale.errorTitle, message:
+                    SharingManager.locale.errorMessage, preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: SharingManager.locale.errorDismiss, style: UIAlertActionStyle.Default,handler: nil))
             }else{
                 self.matchClasses = matchclasses
             }
@@ -50,10 +50,9 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
             matchesLoaded[String(team.id!)] = false
             SharingManager.data.getMatches(nil, groupID: team.matchGroupId, teamID: team.id, endplay: nil, completionHandler: { (matches, error) -> () in
                 if error {
-                    let alertController = UIAlertController(title: "Error", message:
-                        "Match data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
-                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
-                    
+                    let alertController = UIAlertController(title: SharingManager.locale.errorTitle, message:
+                        SharingManager.locale.errorMessage, preferredStyle: UIAlertControllerStyle.Alert)
+                    alertController.addAction(UIAlertAction(title: SharingManager.locale.errorDismiss, style: UIAlertActionStyle.Default,handler: nil))
                     self.presentViewController(alertController, animated: true, completion: nil)
                     // needs to be handled properly
                 } else {

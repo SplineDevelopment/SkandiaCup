@@ -23,9 +23,9 @@ class EndPlayViewController: UITableViewController{
         SharingManager.data.getMatchClass { (matchclasses, error) -> () in
             if error {
                 print("error getting match classes")
-                let alertController = UIAlertController(title: "Error", message:
-                    "Endplay results not available atm", preferredStyle: UIAlertControllerStyle.Alert)
-                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                let alertController = UIAlertController(title: SharingManager.locale.errorTitle, message:
+                    SharingManager.locale.errorMessage, preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: SharingManager.locale.errorDismiss, style: UIAlertActionStyle.Default,handler: nil))
                 
                 self.presentViewController(alertController, animated: true, completion: nil)
                 // needs to be handled properly
