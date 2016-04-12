@@ -220,7 +220,7 @@ class LocaleManager{
             if(locale == "nb" || locale == "nn"){
                 return "S"
             }
-            return "V"
+            return "W"
         }
     }
     

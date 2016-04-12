@@ -115,8 +115,9 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     override func viewWillAppear(animated: Bool) {
-                self.navigationController?.navigationBarHidden = true
+        self.navigationController?.navigationBarHidden = true
     }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "newsToNewsItemSegue") {
             if let indexPath = self.newTableView.indexPathForSelectedRow{

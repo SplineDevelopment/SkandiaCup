@@ -86,6 +86,9 @@ class InfoViewController: UITableViewController, SegmentChangeProto {
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden = true
+        if let row = self.infoTableView.indexPathForSelectedRow{
+            self.infoTableView.deselectRowAtIndexPath(row, animated: false)
+        }
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
