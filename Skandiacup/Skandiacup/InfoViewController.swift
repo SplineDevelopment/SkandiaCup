@@ -81,7 +81,6 @@ class InfoViewController: UITableViewController, SegmentChangeProto {
                 (segue.destinationViewController as! InfoItemViewController).currentItem = item
             }
         }
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -89,6 +88,7 @@ class InfoViewController: UITableViewController, SegmentChangeProto {
         if let row = self.infoTableView.indexPathForSelectedRow{
             self.infoTableView.deselectRowAtIndexPath(row, animated: false)
         }
+        infoTableView.reloadData();
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -107,8 +107,6 @@ class InfoViewController: UITableViewController, SegmentChangeProto {
         infoTableView.backgroundColor = UIColor.clearColor()
         self.infoTableView.delegate = self
         self.infoTableView.dataSource = self
-        
-        
     }
     
 }
