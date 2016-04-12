@@ -32,7 +32,6 @@ class GetFromFTP{
             numBytesRead = CFReadStreamRead(ftpstream, &buf, bufSize)
         } while (numBytesRead > 0);
         
-        var doCompletion = true
         if let jsonstring = NSString(bytes: buf, length: buf.count, encoding: NSUTF8StringEncoding){
             var jsonproper = jsonstring.stringByReplacingOccurrencesOfString("\t", withString: "");
             jsonproper = jsonproper.stringByReplacingOccurrencesOfString("\0", withString: "");
@@ -56,13 +55,9 @@ class GetFromFTP{
                                 if config.fieldImageVersion != fieldversion! as! String{
                                     getImageFromFTP({ (image) in
                                         SharingManager.config.fieldImageVersion = fieldversion! as! String
-                                        
                                         print("We are getting ftp image. Our new version is: \(SharingManager.config.fieldImageVersion)")
                                         defaults.setObject(UIImagePNGRepresentation(image), forKey: "fieldMapImage")
-                                        if(doCompletion){
-                                            doCompletion = false
-                                            completion()
-                                        }
+                                        completion()
                                     })
                                 }
                             }
@@ -72,10 +67,7 @@ class GetFromFTP{
                             getImageFromFTP({ (image) in
                                 SharingManager.config.fieldImageVersion = fieldversion! as! String
                                 defaults.setObject(UIImagePNGRepresentation(image), forKey: "fieldMapImage")
-                                if(doCompletion){
-                                    doCompletion = false
-                                    completion()
-                                }
+                                completion()
                             })
                         }
                         print("successfully got config from FTP. Appkey id : \(SharingManager.config.appKeyTournamentID), hashtag is: \(SharingManager.config.tag_name) ");
