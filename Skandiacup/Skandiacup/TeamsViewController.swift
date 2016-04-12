@@ -91,9 +91,9 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
                     self.activityIndicator.stopAnimating()
                     self.activityIndicator.hidden = true
                     self.error_message_is_set = true
-                    let alertController = UIAlertController(title: "Error", message:
-                        "Team data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
-                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                    let alertController = UIAlertController(title: SharingManager.locale.errorTitle, message:
+                        SharingManager.locale.errorMessage, preferredStyle: UIAlertControllerStyle.Alert)
+                    alertController.addAction(UIAlertAction(title: SharingManager.locale.errorDismiss, style: UIAlertActionStyle.Default,handler: nil))
                     self.presentViewController(alertController, animated: true, completion: nil)
                 }
             }else{
@@ -110,9 +110,9 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
                     self.activityIndicator.stopAnimating()
                     self.activityIndicator.hidden = true
                     self.error_message_is_set = true
-                    let alertController = UIAlertController(title: "Error", message:
-                        "Team data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
-                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                    let alertController = UIAlertController(title: SharingManager.locale.errorTitle, message:
+                        SharingManager.locale.errorMessage, preferredStyle: UIAlertControllerStyle.Alert)
+                    alertController.addAction(UIAlertAction(title: SharingManager.locale.errorDismiss, style: UIAlertActionStyle.Default,handler: nil))
                     self.presentViewController(alertController, animated: true, completion: nil)
                 }
                 // needs to be handled properly

@@ -23,9 +23,9 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 if error {
                     print("Error loading RSS")
                     (self.parentViewController?.parentViewController as! HomeViewController).activityIndicator.stopAnimating()
-                    let alertController = UIAlertController(title: "Error", message:
-                        "RSS feed not available atm", preferredStyle: UIAlertControllerStyle.Alert)
-                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                    let alertController = UIAlertController(title: SharingManager.locale.errorTitle, message:
+                        SharingManager.locale.errorMessage, preferredStyle: UIAlertControllerStyle.Alert)
+                    alertController.addAction(UIAlertAction(title: SharingManager.locale.errorDismiss, style: UIAlertActionStyle.Default,handler: nil))
                     
                     self.presentViewController(alertController, animated: true, completion: nil)
                     // needs to be handled properly
@@ -94,7 +94,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("newsCell", forIndexPath: indexPath) as! newsCellView
         let bodytext: NSAttributedString
-        
+    
         if let feed = self.feed{
             let item = feed[indexPath.row] as RSSItem
             cell.headerLabel.text = item.title

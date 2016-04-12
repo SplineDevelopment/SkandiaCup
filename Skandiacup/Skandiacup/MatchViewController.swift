@@ -41,9 +41,9 @@ class MatchViewController: UIViewController {
         SharingManager.data.getField(nil, fieldID: selectedMatch!.fieldId) { (fields, error) -> () in
             if error {
                 print("error getting fields")
-                let alertController = UIAlertController(title: "Error", message:
-                    "Field data not available atm", preferredStyle: UIAlertControllerStyle.Alert)
-                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                let alertController = UIAlertController(title: SharingManager.locale.errorTitle, message:
+                    SharingManager.locale.errorMessage, preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: SharingManager.locale.errorDismiss, style: UIAlertActionStyle.Default,handler: nil))
                 self.presentViewController(alertController, animated: true, completion: nil)
             } else {
                 if fields.count > 0 {

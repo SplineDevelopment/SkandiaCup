@@ -250,5 +250,32 @@ class LocaleManager{
             return "Team name"
         }
     }
+    
+    var errorTitle: String{
+        get{
+            if(locale == "nb" || locale == "nn"){
+                return "Feil"
+            }
+            return "Error"
+        }
+    }
+    
+    var errorMessage: String{
+        get{
+            if(locale == "nb" || locale == "nn"){
+                return "Kunne ikke å hente data"
+            }
+            return "Could not retrieve data"
+        }
+    }
+    
+    var errorDismiss: String{
+        get{
+            if(locale == "nb" || locale == "nn"){
+                return "Lukk"
+            }
+            return "Dismiss"
+        }
+    }
 }
 
