@@ -78,11 +78,6 @@ class GetFromFTP{
                                 }
                             })
                         }
-                        
-                        if(doCompletion){
-                            doCompletion = false
-                            completion()
-                        }
                         print("successfully got config from FTP. Appkey id : \(SharingManager.config.appKeyTournamentID), hashtag is: \(SharingManager.config.tag_name) ");
                     }
                 } catch {
