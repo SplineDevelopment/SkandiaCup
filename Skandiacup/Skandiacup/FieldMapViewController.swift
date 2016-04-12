@@ -52,7 +52,7 @@ extension UIImage {
 }
 
 class FieldMapViewController: UIViewController, UIScrollViewDelegate {
-    
+    let defaults = NSUserDefaults.standardUserDefaults()
     var isZoomedIn = false
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -85,6 +85,17 @@ class FieldMapViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @IBOutlet weak var imageView: UIImageView!
+    
+    override func viewWillAppear(animated: Bool) {
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+           let fieldImageFromDisk = self.defaults.objectForKey("fieldMapImage") as? NSData
+            if(fieldImageFromDisk != nil){
+                if let image = UIImage(data: fieldImageFromDisk!){
+                    self.imageView.image = image
+                }
+            }
+        })
+    }
     
     override func viewDidLoad() {
         self.scrollView.minimumZoomScale = 1.0

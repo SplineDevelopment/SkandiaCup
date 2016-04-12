@@ -32,6 +32,8 @@ class Config : NSObject, NSCoding{
     let client_id_insta = "7b9d2e2f9ef04d81939c7c61f381184e"
     let rss_info = "http://skandiacup.no/category/info/feed/"
     let rss_news = "http://skandiacup.no/category/nyheter/feed/"
+    var fieldImage = ""
+    var fieldImageVersion = ""
     var lastdate: NSDate?
     
     required convenience init?(coder decoder: NSCoder) {
@@ -39,11 +41,17 @@ class Config : NSObject, NSCoding{
         self.appKeyTournamentID = (decoder.decodeObjectForKey("ConfigAppkeyTournamentID") as? String)!
         self.tag_name = (decoder.decodeObjectForKey("ConfigTagName") as? String)!
         self.lastdate = (decoder.decodeObjectForKey("lastdate") as? NSDate)!
+        self.tag_name = (decoder.decodeObjectForKey("tag_name") as? String)!
+        self.fieldImage = (decoder.decodeObjectForKey("fieldImage") as? String)!
+        self.fieldImageVersion = (decoder.decodeObjectForKey("fieldImageVersion") as? String)!
     }
     
     func encodeWithCoder(coder: NSCoder) {
         coder.encodeObject(self.appKeyTournamentID, forKey: "ConfigAppkeyTournamentID")
         coder.encodeObject(self.tag_name, forKey: "ConfigTagName")
         coder.encodeObject(self.lastdate, forKey: "lastdate")
+        coder.encodeObject(self.tag_name, forKey: "tag_name")
+        coder.encodeObject(self.fieldImage, forKey: "fieldImage")
+        coder.encodeObject(self.fieldImageVersion, forKey: "fieldImageVersion")
     }
 }

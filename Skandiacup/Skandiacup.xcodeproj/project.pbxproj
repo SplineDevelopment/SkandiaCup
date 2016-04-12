@@ -82,6 +82,7 @@
 		D5EAE5481B99C55100AA3AF1 /* FieldsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EAE5471B99C55100AA3AF1 /* FieldsMapper.swift */; };
 		D5EAE54A1B99C82700AA3AF1 /* MatchTablesMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EAE5491B99C82700AA3AF1 /* MatchTablesMapper.swift */; };
 		D5EC2E931B9B5CBC00CBA235 /* TournamentTeamMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC2E921B9B5CBC00CBA235 /* TournamentTeamMapper.swift */; };
+		D5ECD66F1CBD1E3B0019221F /* RebekkaTouch.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = D5ECD66B1CBD1DF40019221F /* RebekkaTouch.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D5FD4ECB1B94B8CA009B53FC /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD4ECA1B94B8CA009B53FC /* FavoritesViewController.swift */; };
 		D5FD4ED01B94C79B009B53FC /* Arena.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD4ECF1B94C79B009B53FC /* Arena.swift */; };
 		D5FD4ED21B94C8B7009B53FC /* TournamentClub.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD4ED11B94C8B7009B53FC /* TournamentClub.swift */; };
@@ -112,7 +113,42 @@
 			remoteGlobalIDString = D51E4B071B94A1E700FF5DDB;
 			remoteInfo = Skandiacup;
 		};
+		D5ECD6681CBD1DF40019221F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D5ECD6631CBD1DF40019221F /* Rebekka.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 47FFC2831B09279200D3EDFE;
+			remoteInfo = Rebekka;
+		};
+		D5ECD66A1CBD1DF40019221F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D5ECD6631CBD1DF40019221F /* Rebekka.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 47FFC2DC1B09297E00D3EDFE;
+			remoteInfo = RebekkaTouch;
+		};
+		D5ECD66C1CBD1E0A0019221F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D5ECD6631CBD1DF40019221F /* Rebekka.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 47FFC2DB1B09297E00D3EDFE;
+			remoteInfo = RebekkaTouch;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D5ECD66E1CBD1E170019221F /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D5ECD66F1CBD1E3B0019221F /* RebekkaTouch.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		230713BF1BBC2ACC00F25D8B /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
@@ -197,6 +233,7 @@
 		D5EAE5471B99C55100AA3AF1 /* FieldsMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldsMapper.swift; sourceTree = "<group>"; };
 		D5EAE5491B99C82700AA3AF1 /* MatchTablesMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchTablesMapper.swift; sourceTree = "<group>"; };
 		D5EC2E921B9B5CBC00CBA235 /* TournamentTeamMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentTeamMapper.swift; sourceTree = "<group>"; };
+		D5ECD6631CBD1DF40019221F /* Rebekka.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Rebekka.xcodeproj; path = "../../../Desktop/rebekka/rebekka-source/Rebekka.xcodeproj"; sourceTree = "<group>"; };
 		D5FD4ECA1B94B8CA009B53FC /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritesViewController.swift; path = ../FavoritesViewController.swift; sourceTree = "<group>"; };
 		D5FD4ECF1B94C79B009B53FC /* Arena.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Arena.swift; sourceTree = "<group>"; };
 		D5FD4ED11B94C8B7009B53FC /* TournamentClub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentClub.swift; sourceTree = "<group>"; };
@@ -389,6 +426,7 @@
 		D51E4AFF1B94A1E700FF5DDB = {
 			isa = PBXGroup;
 			children = (
+				D5ECD6631CBD1DF40019221F /* Rebekka.xcodeproj */,
 				D51E4B0A1B94A1E700FF5DDB /* Skandiacup */,
 				D51E4B211B94A1E700FF5DDB /* SkandiacupTests */,
 				D51E4B2C1B94A1E700FF5DDB /* SkandiacupUITests */,
@@ -460,6 +498,15 @@
 			name = Mappers;
 			sourceTree = "<group>";
 		};
+		D5ECD6641CBD1DF40019221F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D5ECD6691CBD1DF40019221F /* Rebekka.framework */,
+				D5ECD66B1CBD1DF40019221F /* RebekkaTouch.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		D5FD4ECE1B94C781009B53FC /* Domain */ = {
 			isa = PBXGroup;
 			children = (
@@ -491,10 +538,12 @@
 				D51E4B041B94A1E700FF5DDB /* Sources */,
 				D51E4B051B94A1E700FF5DDB /* Frameworks */,
 				D51E4B061B94A1E700FF5DDB /* Resources */,
+				D5ECD66E1CBD1E170019221F /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D5ECD66D1CBD1E0A0019221F /* PBXTargetDependency */,
 			);
 			name = Skandiacup;
 			productName = Skandiacup;
@@ -571,6 +620,12 @@
 			mainGroup = D51E4AFF1B94A1E700FF5DDB;
 			productRefGroup = D51E4B091B94A1E700FF5DDB /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D5ECD6641CBD1DF40019221F /* Products */;
+					ProjectRef = D5ECD6631CBD1DF40019221F /* Rebekka.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D51E4B071B94A1E700FF5DDB /* Skandiacup */,
@@ -579,6 +634,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D5ECD6691CBD1DF40019221F /* Rebekka.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Rebekka.framework;
+			remoteRef = D5ECD6681CBD1DF40019221F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D5ECD66B1CBD1DF40019221F /* RebekkaTouch.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RebekkaTouch.framework;
+			remoteRef = D5ECD66A1CBD1DF40019221F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D51E4B061B94A1E700FF5DDB /* Resources */ = {
@@ -726,6 +798,11 @@
 			isa = PBXTargetDependency;
 			target = D51E4B071B94A1E700FF5DDB /* Skandiacup */;
 			targetProxy = D51E4B2A1B94A1E700FF5DDB /* PBXContainerItemProxy */;
+		};
+		D5ECD66D1CBD1E0A0019221F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RebekkaTouch;
+			targetProxy = D5ECD66C1CBD1E0A0019221F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
