@@ -8,8 +8,6 @@
 
 import Foundation
 import UIKit
-import RebekkaTouch
-
 
 class GetFromFTP{
     static func openAndGetConfigJSON(completion: (() -> Void)){
@@ -46,13 +44,20 @@ class GetFromFTP{
                         SharingManager.config.tag_name = hashtag! as! String
                         SharingManager.config.fieldImage = fieldImage as! String
                         
+                        
+                        print(SharingManager.config.fieldImageVersion)
+                        print(fieldversion! as! String)
+                        
+                        // Try to get config from disk
                         let configFromDisk = defaults.objectForKey("config") as? NSData
                         if(configFromDisk != nil){
                             if let config = NSKeyedUnarchiver.unarchiveObjectWithData(configFromDisk!) as? Config{
-                                if config.fieldImageVersion != fieldversion as! String{
-                                    config.fieldImageVersion = fieldversion as! String
+                                // If we have a differet imageversion, get the new one from the FTP repo.
+                                if config.fieldImageVersion != fieldversion! as! String{
                                     getImageFromFTP({ (image) in
-                                        print("We are getting ftp image. Our new version is: \(config.fieldImageVersion)")
+                                        SharingManager.config.fieldImageVersion = fieldversion! as! String
+                                        
+                                        print("We are getting ftp image. Our new version is: \(SharingManager.config.fieldImageVersion)")
                                         defaults.setObject(UIImagePNGRepresentation(image), forKey: "fieldMapImage")
                                         if(doCompletion){
                                             doCompletion = false
@@ -61,9 +66,11 @@ class GetFromFTP{
                                     })
                                 }
                             }
+                            // Config is nil - get the image currently hosted on the FTP repo.
                         } else {
-                            SharingManager.config.fieldImageVersion = fieldversion as! String
+                            print("Config is nil. Getting version: \(fieldversion)")
                             getImageFromFTP({ (image) in
+                                SharingManager.config.fieldImageVersion = fieldversion! as! String
                                 defaults.setObject(UIImagePNGRepresentation(image), forKey: "fieldMapImage")
                                 if(doCompletion){
                                     doCompletion = false
@@ -97,10 +104,9 @@ class GetFromFTP{
                 if let fileURL = URL {
                     do {
                         print(fileURL.absoluteString)
-                        var hei = fileURL.absoluteString
-                        hei.removeRange(hei.rangeOfString("file://")!)
-                        print(hei)
-                        completion(image: UIImage(contentsOfFile: hei)!)
+                        var imageurl = fileURL.absoluteString
+                        imageurl.removeRange(imageurl.rangeOfString("file://")!)
+                        completion(image: UIImage(contentsOfFile: imageurl)!)
                     } catch let error as NSError {
                         print("Error: \(error)")
                     }
