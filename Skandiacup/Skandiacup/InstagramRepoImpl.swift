@@ -38,15 +38,18 @@ class InstagramRepoImpl : InstagramRepo {
                 let anyObj: AnyObject? = try NSJSONSerialization.JSONObjectWithData(responseData!, options: NSJSONReadingOptions(rawValue: 0))
                 // this is not safe!
                 let test_o = anyObj as! NSDictionary
-                let arr = self.parseJson(test_o["data"]!)
-                completionHandler(photoObjects: arr, error: false)
+                if (test_o["data"] != nil){
+                    let arr = self.parseJson(test_o["data"]!)
+                    completionHandler(photoObjects: arr, error: false)
+                } else {
+                    print(test_o)
+                    completionHandler(photoObjects: [InstagramPhotoObject](), error: true)
+                }
             } catch let error as NSError {
                 print(error)
                 completionHandler(photoObjects: [InstagramPhotoObject](), error: true)
             }
         }
-        
-        
     }
     
     func parseJson(anyObj:AnyObject) -> Array<InstagramPhotoObject>{
