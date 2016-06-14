@@ -25,29 +25,7 @@ class MatchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureView()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func configureView(){
-        if let text = selectedMatch?.homeTeamText{
-            homeTeam.text = text;
-        } else {
-            homeTeam.text = selectedMatch?.homeTeamName;
-        }
         
-        if let text = selectedMatch?.awayTeamText{
-            awayTeam.text = text;
-        } else {
-            awayTeam.text = selectedMatch?.awayTeamName;
-        }
-        
-        homeScore.text = selectedMatch?.homegoal
-        awayTeam.text = selectedMatch?.awayTeamText
-        awayScore.text = selectedMatch?.awaygoal
         SharingManager.data.getField(nil, fieldID: selectedMatch!.fieldId) { (fields, error) -> () in
             if error {
                 print("error getting fields")
@@ -56,42 +34,70 @@ class MatchViewController: UIViewController {
                 alertController.addAction(UIAlertAction(title: SharingManager.locale.errorDismiss, style: UIAlertActionStyle.Default,handler: nil))
                 self.presentViewController(alertController, animated: true, completion: nil)
             } else {
-                if fields.count > 0 {
-                    dispatch_async(dispatch_get_main_queue()) {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    if fields.count > 0 {
                         self.fieldLabel.text = fields[0].fieldName
+                    } else {
+                        self.fieldLabel.text = "Unknown field"
                     }
-                } else {
-                    self.fieldLabel.text = "Unknown field"
-                }
+                })
             }
         }
-        dateLabel.text = Date.getDateMatchView((selectedMatch?.matchDate)!)
-        kickoffTimeLabel.text = Date.getKickoffTimeMatchView((selectedMatch?.matchDate)!)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func configureView(){
+        
+        if let text = self.selectedMatch?.homeTeamText{
+            self.homeTeam.text = text;
+        } else {
+            self.homeTeam.text = self.selectedMatch?.homeTeamName;
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            if let text = self.selectedMatch?.awayTeamText{
+                self.awayTeam.text = text;
+            } else {
+                self.awayTeam.text = self.selectedMatch?.awayTeamName;
+            }
+        })
+        
+        
+        self.homeScore.text = self.selectedMatch?.homegoal
+        self.awayTeam.text = self.selectedMatch?.awayTeamText
+        self.awayScore.text = self.selectedMatch?.awaygoal
+        self.dateLabel.text = Date.getDateMatchView((self.selectedMatch?.matchDate)!)
+        self.kickoffTimeLabel.text = Date.getKickoffTimeMatchView((self.selectedMatch?.matchDate)!)
         
         
         //Straff
-        if (selectedMatch?.reason=="ST"){
+        if (self.selectedMatch?.reason=="ST"){
             var winner = ""
-            if (selectedMatch?.winner=="H"){
-                winner = (selectedMatch?.homeTeamName)!
+            if (self.selectedMatch?.winner=="H"){
+                winner = (self.selectedMatch?.homeTeamName)!
             } else {
-                winner = (selectedMatch?.awayTeamName)!
+                winner = (self.selectedMatch?.awayTeamName)!
             }
             
-            reasonForWinLabel.text = "\(winner) \(SharingManager.locale.penaltyReason)"
-
-        //walkover
-        } else if (selectedMatch?.reason=="WO"){
+            self.reasonForWinLabel.text = "\(winner) \(SharingManager.locale.penaltyReason)"
+            
+            //walkover
+        } else if (self.selectedMatch?.reason=="WO"){
             var winner = ""
-            if (selectedMatch?.winner=="H"){
-               winner = (selectedMatch?.homeTeamName)!
+            if (self.selectedMatch?.winner=="H"){
+                winner = (self.selectedMatch?.homeTeamName)!
             } else {
-                winner = (selectedMatch?.awayTeamName)!
+                winner = (self.selectedMatch?.awayTeamName)!
             }
-            reasonForWinLabel.text = "\(winner) \(SharingManager.locale.walkoverReason)"
+            self.reasonForWinLabel.text = "\(winner) \(SharingManager.locale.walkoverReason)"
             
         } else {
-            reasonForWinLabel.text = ""        
+            self.reasonForWinLabel.text = ""
         }
+        //        })
     }
 }
