@@ -24,7 +24,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     var findTeamsLoadedOK = false
     var matchTable: MatchTable?
     var currentMatchClass: MatchClass?
-    var currentMatchGroup: MatchGroup?
     var matchesNotYetPlayed: [TournamentMatch]?
     var matchesPlayed: [TournamentMatch]?
     var matchTables: [MatchTable]?{
@@ -76,7 +75,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                     })
                 }
             }
-        self.currentMatchGroup = currentGroup
         }
     }
     
@@ -199,7 +197,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         switch (section) {
         case 0:
             var headerText = SharingManager.locale.tableHeader
-            if let mg = self.currentMatchGroup {
+            if let mg = self.currentGroup {
                 if let mc = self.currentMatchClass{
                     headerText = headerText + " - \(mc.name!) - \(mg.name!)"
                 }
@@ -457,7 +455,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         let groupId = currentTeam?.matchGroupId
         SharingManager.data.getTeams(nil) { (teams, error) -> () in
             if error {
-                print("error...")
+                print("error in teamViewController.findTeams()");
                 if !self.error_message_is_set {
                     self.error_message_is_set = true
                     let alertController = UIAlertController(title: "Error", message:
@@ -507,7 +505,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                     }
                 }else{
                     self.matches = matches
-                    print("Halaaaa \(self.matches!.count)")
                     SharingManager.data.getTable(nil, playOffId: nil, teamId: self.currentTeam?.id, completionHandler: { (tables, error) -> () in
                         if error{
                             print("Error in Teamviewcontroller.setupMatches")

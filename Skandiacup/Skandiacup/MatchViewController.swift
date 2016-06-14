@@ -25,7 +25,7 @@ class MatchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureView()
-        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -33,11 +33,21 @@ class MatchViewController: UIViewController {
     }
     
     func configureView(){
-        homeTeam.text = selectedMatch?.homeTeamText
+        if let text = selectedMatch?.homeTeamText{
+            homeTeam.text = text;
+        } else {
+            homeTeam.text = selectedMatch?.homeTeamName;
+        }
+        
+        if let text = selectedMatch?.awayTeamText{
+            awayTeam.text = text;
+        } else {
+            awayTeam.text = selectedMatch?.awayTeamName;
+        }
+        
         homeScore.text = selectedMatch?.homegoal
         awayTeam.text = selectedMatch?.awayTeamText
         awayScore.text = selectedMatch?.awaygoal
-        //fieldLabel.text = String(selectedMatch!.fieldId)
         SharingManager.data.getField(nil, fieldID: selectedMatch!.fieldId) { (fields, error) -> () in
             if error {
                 print("error getting fields")

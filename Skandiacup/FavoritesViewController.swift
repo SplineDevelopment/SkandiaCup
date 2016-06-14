@@ -189,7 +189,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
                         mc.matchGroups?.forEach({ (mg) -> () in
                             if(mg.id == selectedTeam.matchGroupId){
                                 (segue.destinationViewController as! TeamViewController).currentMatchClass = mc
-                                (segue.destinationViewController as! TeamViewController).currentMatchGroup = mg
+                                (segue.destinationViewController as! TeamViewController).currentGroup = mg
                             }
                         })
                     }

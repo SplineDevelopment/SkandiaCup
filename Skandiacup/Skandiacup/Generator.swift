@@ -32,8 +32,7 @@ class Generator {
     
     static func generateGetArenasXML() -> NSMutableURLRequest {
         let messageFor = "getArenas"
-        let innerXML = "<since>2015-09-03 09:00:00</since>"
-        let getArenaMessage = generateMessage(messageFor, innerXML: innerXML)
+        let getArenaMessage = generateMessage(messageFor, innerXML: nil)
         return generateRequest(getArenaMessage)
     }
     
@@ -49,8 +48,6 @@ class Generator {
         if endplay != nil{
             innerXML += "<endplay>\(endplay!)</endplay>"
         }
-        let since = "<since>2014-09-03 09:00:00</since>"
-        innerXML += since
         let getTournamentMatches = generateMessage(messageFor, innerXML: innerXML)
         return generateRequest(getTournamentMatches)
     }
@@ -71,8 +68,7 @@ class Generator {
     
     static func generateGetTeamsXML() -> NSMutableURLRequest {
         let messageFor = "getTeams"
-        let innerXML = "<since>2015-09-03 09:00:00</since>"
-        let getTeamsMessage = generateMessage(messageFor, innerXML: innerXML)
+        let getTeamsMessage = generateMessage(messageFor, innerXML: nil)
         return generateRequest(getTeamsMessage)
     }
     
@@ -82,15 +78,13 @@ class Generator {
         if arenaID != nil {
             innerXML += "<arenaID>" + String(arenaID) + "</arenaID>"
         }
-        innerXML += "<since>2015-09-03 09:00:00</since>"
         let getFieldsMessage = generateMessage(messageFor, innerXML: innerXML)
         return generateRequest(getFieldsMessage)
     }
     
     static func generateGetTournamentMatchStatusXML(since: String) -> NSMutableURLRequest {
         let messageFor = "getTournamentMatchStatus"
-        let innerXML = "<since>" + since + "</since>"
-        let getTournamentMatchStatusMessage = generateMessage(messageFor, innerXML: innerXML)
+        let getTournamentMatchStatusMessage = generateMessage(messageFor, innerXML: nil)
         return generateRequest(getTournamentMatchStatusMessage)
     }
     
