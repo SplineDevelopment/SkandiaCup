@@ -43,10 +43,6 @@ class GetFromFTP{
                         SharingManager.config.tag_name = hashtag! as! String
                         SharingManager.config.fieldImage = fieldImage as! String
                         
-                        
-                        print(SharingManager.config.fieldImageVersion)
-                        print(fieldversion! as! String)
-                        
                         // Try to get config from disk
                         let configFromDisk = defaults.objectForKey("config") as? NSData
                         if(configFromDisk != nil){
@@ -55,7 +51,6 @@ class GetFromFTP{
                                 if config.fieldImageVersion != fieldversion! as! String{
                                     getImageFromFTP({ (image) in
                                         SharingManager.config.fieldImageVersion = fieldversion! as! String
-                                        print("We are getting ftp image. Our new version is: \(SharingManager.config.fieldImageVersion)")
                                         defaults.setObject(UIImagePNGRepresentation(image), forKey: "fieldMapImage")
                                         completion()
                                     })
@@ -63,14 +58,12 @@ class GetFromFTP{
                             }
                             // Config is nil - get the image currently hosted on the FTP repo.
                         } else {
-                            print("Config is nil. Getting version: \(fieldversion)")
                             getImageFromFTP({ (image) in
                                 SharingManager.config.fieldImageVersion = fieldversion! as! String
                                 defaults.setObject(UIImagePNGRepresentation(image), forKey: "fieldMapImage")
                                 completion()
                             })
                         }
-                        print("successfully got config from FTP. Appkey id : \(SharingManager.config.appKeyTournamentID), hashtag is: \(SharingManager.config.tag_name) ");
                     }
                 } catch {
                     print(error)
@@ -90,7 +83,6 @@ class GetFromFTP{
             session.download(SharingManager.config.fieldImage, completionHandler: { (URL, error) in
                 if let fileURL = URL {
                     do {
-                        print(fileURL.absoluteString)
                         var imageurl = fileURL.absoluteString
                         imageurl.removeRange(imageurl.rangeOfString("file://")!)
                         completion(image: UIImage(contentsOfFile: imageurl)!)

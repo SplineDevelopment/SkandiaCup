@@ -34,7 +34,6 @@ class FieldItemViewController: UIViewController, UITableViewDataSource, UITableV
                     return match.homegoal == nil && match.fieldId == self.field?.fieldID
                 })
                 self.matches?.sortInPlace({$0.matchDate < $1.matchDate})
-                print("matches count = \(self.matches?.count)")
                 dispatch_async(dispatch_get_main_queue()) { () -> Void in
                     self.fieldMatchTableView.reloadData()
                     if(self.matches?.count == 0){

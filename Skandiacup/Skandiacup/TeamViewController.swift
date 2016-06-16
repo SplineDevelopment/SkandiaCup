@@ -24,6 +24,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     var findTeamsLoadedOK = false
     var matchTable: MatchTable?
     var currentMatchClass: MatchClass?
+    var currentMatchGroup: MatchGroup?
     var matchesNotYetPlayed: [TournamentMatch]?
     var matchesPlayed: [TournamentMatch]?
     var matchTables: [MatchTable]?{
@@ -51,7 +52,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         didSet {
             configureView()
             findTeams()
-            self.isItOkToShowMatches()
+            //            self.isItOkToShowMatches()
         }
     }
     var currentGroup: MatchGroup? {
@@ -67,12 +68,16 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                         self.presentViewController(alertController, animated: true, completion: nil)
                     }
                 } else {
-                    teams.forEach({ (team) -> () in
+                    for team in teams{
                         if team.matchGroupId == self.currentGroup?.id{
                             self.currentTeam = team
-                            return
+                            self.currentMatchGroup = self.currentGroup;
+                            if(!self.matchesLoadedOK){
+                                self.setUpMatches()
+                            }
+                            break;
                         }
-                    })
+                    }
                 }
             }
         }
@@ -85,15 +90,16 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.configureView()
     }
     
-    override func viewDidAppear(animated: Bool) {
-        self.setUpMatches()
-    }
-    
     override func viewWillAppear(animated: Bool) {
         self.error_message_is_set = false
         self.start_time = CACurrentMediaTime()
         self.matchTableView.hidden = true
         self.activityIndicator.startAnimating()
+        if(!matchesLoadedOK){
+            self.setUpMatches()
+        } else {
+            self.isItOkToShowMatches();
+        }
         changeButton()
     }
     
@@ -178,7 +184,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         if let currentTeam = self.currentTeam{
             if (checkIfFaved(currentTeam) == true){
-             //   let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Stop, target: self, action: "unFavorite")
+                //   let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Stop, target: self, action: "unFavorite")
                 let button = UIBarButtonItem(image: UIImage(named: "Star Filled-32-2"), style: .Plain, target: self, action: "unFavorite")
                 button.tintColor = UIColor(red:0.95, green:0.77, blue:0.06, alpha:1.0)
                 self.navigationItem.rightBarButtonItem = button
@@ -189,7 +195,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.navigationItem.rightBarButtonItem = button
             }
         }
-       
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -197,20 +202,20 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         switch (section) {
         case 0:
             var headerText = SharingManager.locale.tableHeader
-            if let mg = self.currentGroup {
+            if let mg = self.currentMatchGroup {
                 if let mc = self.currentMatchClass{
                     headerText = headerText + " - \(mc.name!) - \(mg.name!)"
                 }
             }
             
             headerCell.headerLabel.text = headerText
-            //return sectionHeaderView
+        //return sectionHeaderView
         case 1:
             headerCell.headerLabel.text = SharingManager.locale.upcomingMatches
-            //return sectionHeaderView
+        //return sectionHeaderView
         case 2:
             headerCell.headerLabel.text = SharingManager.locale.playedMatches
-            //return sectionHeaderView
+        //return sectionHeaderView
         default:
             headerCell.headerLabel.text = SharingManager.locale.otherMatches
         }
@@ -224,7 +229,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(section == 0){           //Table rows in grouptable
-           // return self.matchTable != nil ? (self.matchTable?.rows?.count)! + 1 : 0
+            // return self.matchTable != nil ? (self.matchTable?.rows?.count)! + 1 : 0
             if(self.matchTable == nil){
                 return teams.count+1
             } else{
@@ -249,7 +254,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 noUpcomming = false
                 return numberOfRows
             }
-
+            
         }
         else{              //matches played
             var numberOfRows = 0
@@ -346,14 +351,14 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                         cell.awayTeamNameLabel.text = away
                     }
                 }
-
+                
                 cell.awayTeamGoalLabel.text = "-"
                 cell.homeTeamGoalLabel.text = "-"
                 
                 if let fieldId = match.fieldId{
                     cell.fieldNameLabel.text = String(fieldId)
                 }
-
+                
                 if let classId = match.classId{
                     cell.classNameLabel.text = String(classId)
                 }
@@ -368,7 +373,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 cell.dateLabel.text = getDate(date)
                 cell.timeLabel.text = getTime(date)
             }
-        
+            
             if let home = match.homeTeamText{
                 cell.homeTeamNameLabel.text = home
             }
@@ -384,7 +389,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             if let awayGoal = match.awaygoal{
                 cell.awayTeamGoalLabel.text = awayGoal
             }
-        
+            
             if let fieldId = match.fieldId{
                 cell.fieldNameLabel.text = String(fieldId)
             }
@@ -397,7 +402,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         return UITableViewCell()
     }
-
+    
     func setUpcomming(){
         
     }
@@ -427,17 +432,17 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         return String(res)
     }
     
-
+    
     
     /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
     
     func zeroTable(cell: ResultTableViewCell, nameTable: [String], index: Int){
         cell.teamNameLabel.text = nameTable[index]
@@ -455,7 +460,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         let groupId = currentTeam?.matchGroupId
         SharingManager.data.getTeams(nil) { (teams, error) -> () in
             if error {
-                print("error in teamViewController.findTeams()");
+                print("error...")
                 if !self.error_message_is_set {
                     self.error_message_is_set = true
                     let alertController = UIAlertController(title: "Error", message:
@@ -473,6 +478,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             self.teams = tm
             self.findTeamsLoadedOK = true
+            self.isItOkToShowMatches();
         }
     }
     
@@ -505,6 +511,9 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                     }
                 }else{
                     self.matches = matches
+                    self.matches?.sortInPlace({ (team1, team2) -> Bool in
+                        return team1.matchDate < team2.matchDate
+                    });
                     SharingManager.data.getTable(nil, playOffId: nil, teamId: self.currentTeam?.id, completionHandler: { (tables, error) -> () in
                         if error{
                             print("Error in Teamviewcontroller.setupMatches")
@@ -522,6 +531,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                     })
                 }
                 self.matchesLoadedOK = true
+                self.isItOkToShowMatches();
             })
         }
         else if currentTeam != nil {
@@ -537,6 +547,9 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                     }
                 }else{
                     self.matches = matches
+                    self.matches?.sortInPlace({ (team1, team2) -> Bool in
+                        return team1.matchDate < team2.matchDate
+                    });
                     SharingManager.data.getTable(nil, playOffId: nil, teamId: self.currentTeam?.id, completionHandler: { (tables, error) -> () in
                         if error{
                             print("Error in Teamviewcontroller.setupMatches")
@@ -553,8 +566,9 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                         }
                     })
                     
-             }
+                }
                 self.matchesLoadedOK = true
+                self.isItOkToShowMatches();
             })
         }
     }
